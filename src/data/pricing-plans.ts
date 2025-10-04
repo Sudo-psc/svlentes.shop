@@ -5,8 +5,8 @@ export const pricingPlans: PricingPlan[] = [
     {
         id: 'basic',
         name: 'Plano Básico',
-        priceMonthly: 89.90,
-        priceAnnual: 899.90, // 2 meses grátis
+        priceMonthly: 99.00,
+        priceAnnual: 990.00, // 2 meses grátis
         features: [
             'Lentes de contato mensais',
             'Entrega a cada 3 meses',
