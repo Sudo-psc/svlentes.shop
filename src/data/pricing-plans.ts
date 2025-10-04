@@ -6,7 +6,7 @@ export const pricingPlans: PricingPlan[] = [
         id: 'basic',
         name: 'Plano Básico',
         priceMonthly: 99.00,
-        priceAnnual: 990.00, // 2 meses grátis
+        priceAnnual: 1089.00, // 1 mês grátis
         features: [
             'Lentes de contato mensais',
             'Entrega a cada 3 meses',
@@ -24,7 +24,7 @@ export const pricingPlans: PricingPlan[] = [
         id: 'premium',
         name: 'Plano Premium',
         priceMonthly: 149.90,
-        priceAnnual: 1499.90, // 2 meses grátis
+        priceAnnual: 1648.90, // 1 mês grátis
         features: [
             'Lentes de contato diárias ou mensais',
             'Entrega mensal automática',
@@ -44,7 +44,7 @@ export const pricingPlans: PricingPlan[] = [
         id: 'vip',
         name: 'Plano VIP',
         priceMonthly: 249.90,
-        priceAnnual: 2499.90, // 2 meses grátis
+        priceAnnual: 2749.00, // 1 mês grátis
         features: [
             'Lentes premium de última geração',
             'Entrega quinzenal se necessário',
