@@ -98,7 +98,7 @@ When implementing any user-facing features, ensure:
 
 ## Technology Stack
 
-Based on specifications in `Frontend/Specs/arquitetura-nextjs.md`:
+Based on specifications in `Frontend/Specs/arquitetura-asaas.md` (updated for Asaas integration):
 
 ### Core Framework
 - **Next.js 14** with App Router
@@ -113,7 +113,7 @@ Based on specifications in `Frontend/Specs/arquitetura-nextjs.md`:
 - **Vercel Blob/S3** for file storage
 
 ### Payment & Communication
-- **Stripe** for recurring payments
+- **Asaas API v3** for recurring payments (PIX, Boleto, Cartão de Crédito)
 - **Vercel Cron** for scheduled tasks
 - **Resend** for email notifications
 - **WebRTC** for telemedicine video calls
@@ -241,22 +241,32 @@ When beginning implementation:
    ```bash
    npm install prisma @prisma/client
    npx prisma init
-   # Copy schema from Frontend/Specs/arquitetura-nextjs.md
+   # Copy schema from Frontend/Specs/arquitetura-asaas.md
    npx prisma generate
    ```
 
 3. **Install core dependencies**:
    ```bash
-   npm install next-auth@beta stripe zod react-hook-form @hookform/resolvers zustand @tanstack/react-query
+   npm install next-auth@beta zod react-hook-form @hookform/resolvers zustand @tanstack/react-query
    ```
 
 4. **Configure environment variables** (`.env.local`):
    ```
    DATABASE_URL="postgresql://..."
    NEXTAUTH_SECRET="..."
-   STRIPE_SECRET_KEY="sk_test_..."
-   STRIPE_WEBHOOK_SECRET="whsec_..."
+
+   # Asaas Payment Integration
+   ASAAS_ENV="sandbox"  # ou "production"
+   ASAAS_API_KEY_SANDBOX="$aact_hmlg_..."
+   ASAAS_API_KEY_PROD="$aact_prod_..."
    ```
+
+5. **Set up Asaas Integration**:
+   - Create Asaas account at [asaas.com](https://www.asaas.com)
+   - Generate API keys (sandbox and production)
+   - Configure webhook URLs in Asaas dashboard
+   - Implement customer and subscription management
+   - Test payment flows (PIX, Boleto, Cartão de Crédito)
 
 ### Code Organization Patterns
 
@@ -281,6 +291,85 @@ When implementing tests:
 - **API responses**: P95 < 300ms
 - **Telemedicine video**: < 150ms latency for Brazilian connections
 
+## Asaas Payment Integration
+
+### Overview
+O projeto utiliza **Asaas** como gateway de pagamento para processar assinaturas recorrentes. Asaas é uma instituição de pagamento regulada pelo Banco Central do Brasil, certificada PCI-DSS, oferecendo:
+
+- **PIX**: Pagamento instantâneo
+- **Boleto Bancário**: Tradicional método brasileiro
+- **Cartão de Crédito**: Pagamentos recorrentes automatizados
+
+### Arquitetura da Integração
+
+**Componentes Principais**:
+1. **Cliente Asaas** (`src/lib/payments/asaas.ts`): Wrapper para API Asaas v3
+2. **Types** (`src/types/asaas.ts`): TypeScript types para entidades Asaas
+3. **Webhooks** (`src/app/api/payments/webhook/route.ts`): Eventos de cobrança
+4. **Server Actions** (`src/lib/actions/subscription.ts`): Operações de assinatura
+
+### Fluxo de Pagamento
+
+**Criação de Assinatura**:
+1. Usuário seleciona plano e método de pagamento
+2. Sistema cria/atualiza cliente no Asaas
+3. Cria assinatura no Asaas com ciclo definido
+4. Asaas gera primeira cobrança automaticamente
+5. Webhook notifica sobre criação da cobrança
+
+**Processamento de Pagamento**:
+1. Cliente efetua pagamento (PIX/Boleto/Cartão)
+2. Asaas envia webhook `PAYMENT_RECEIVED`
+3. Sistema atualiza status do pagamento
+4. Agenda entrega das lentes
+5. Atualiza período da assinatura
+
+**Eventos de Webhook**:
+- `PAYMENT_CREATED`: Cobrança gerada
+- `PAYMENT_RECEIVED`: Pagamento recebido
+- `PAYMENT_CONFIRMED`: Pagamento confirmado
+- `PAYMENT_OVERDUE`: Cobrança vencida
+- `PAYMENT_REFUNDED`: Pagamento estornado
+
+### Dados Armazenados
+
+**User**:
+- `asaasCustomerId`: ID do cliente no Asaas
+
+**Subscription**:
+- `asaasSubscriptionId`: ID da assinatura no Asaas
+- `billingType`: BOLETO, CREDIT_CARD, PIX
+- `status`: ACTIVE, PAST_DUE, CANCELED, PAUSED
+
+**Payment**:
+- `asaasPaymentId`: ID da cobrança no Asaas
+- `invoiceUrl`: URL do invoice
+- `bankSlipUrl`: URL do boleto (se aplicável)
+- `pixQrCode`: QR Code PIX (se aplicável)
+
+### Segurança
+
+- API Keys separadas para sandbox e produção
+- Headers obrigatórios: `access_token`, `User-Agent`, `Content-Type`
+- Validação de webhooks por IP permitido
+- HTTPS obrigatório (TLS 1.2+)
+- Não expor API keys no código ou logs
+
+### Ambientes
+
+**Sandbox**:
+- URL: `https://sandbox.asaas.com/api/v3`
+- API Key: `$aact_hmlg_...`
+- Para testes e desenvolvimento
+
+**Produção**:
+- URL: `https://api.asaas.com/v3`
+- API Key: `$aact_prod_...`
+- Para clientes reais
+
+### Documentação Completa
+Consulte [Frontend/Specs/arquitetura-asaas.md](Frontend/Specs/arquitetura-asaas.md) para detalhes técnicos completos da integração.
+
 ## Important Notes
 
 - **Healthcare Platform**: Prioritize user safety and data protection above all
@@ -290,3 +379,4 @@ When implementing tests:
 - **Medical Responsibility**: All medical features must be reviewed by Dr. Philipe Saraiva Cruz
 - **Data Encryption**: Medical records must use AES-256-GCM encryption at rest
 - **Audit Trail**: Log all access to sensitive medical data with user ID, timestamp, and action
+- **Payment Security**: Never store sensitive payment data (card numbers, CVV). Use Asaas tokenization

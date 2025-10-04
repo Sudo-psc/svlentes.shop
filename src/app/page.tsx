@@ -66,14 +66,10 @@ export default function HomePage() {
             </LazySection>
 
             {/* Seção de Add-ons */}
-            <LazySection>
-                <AddOns services={addOnsData} layout="cards" />
-            </LazySection>
+            <AddOns services={addOnsData} layout="cards" />
 
             {/* Seção FAQ */}
-            <LazySection>
-                <FAQ />
-            </LazySection>
+            <FAQ />
 
             {/* CTA Final */}
             <LazySection>
