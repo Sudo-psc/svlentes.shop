@@ -129,7 +129,10 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
                     {/* Right Column - Hero Image */}
                     <div className="space-y-6 animate-slide-up" style={{ animationDelay: '0.3s' }}>
                         {/* Hero Image */}
-                        <HeroImage className="lg:scale-105" />
+                        <HeroImage
+                            className="lg:scale-105 transform hover:scale-110 transition-transform duration-500"
+                            imageVariant="hero1"
+                        />
                     </div>
                 </div>
             </div>

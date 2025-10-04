@@ -89,8 +89,8 @@ export function Icon({
     size === 'custom' && customSize
       ? customSize
       : size === 'md'
-      ? iconMetadata.recommendedSize
-      : SIZE_MAP[size];
+        ? iconMetadata.recommendedSize
+        : SIZE_MAP[size as keyof typeof SIZE_MAP] || SIZE_MAP.md;
 
   // Alt text final (customizado ou padrão)
   const altText = alt || getIconAlt(name);
@@ -237,9 +237,8 @@ export function IconBadge({
   );
 
   const style = {
-    transform: `translate(${position.includes('right') ? offset : -offset}px, ${
-      position.includes('bottom') ? offset : -offset
-    }px)`
+    transform: `translate(${position.includes('right') ? offset : -offset}px, ${position.includes('bottom') ? offset : -offset
+      }px)`
   };
 
   return (

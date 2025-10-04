@@ -71,14 +71,28 @@ const nextConfig = {
         ]
     },
     webpack: (config, { dev, isServer }) => {
-        // Optimize bundle size
+        // Optimize bundle size and fix chunk loading issues
         if (!dev && !isServer) {
             config.optimization.splitChunks = {
                 chunks: 'all',
+                minSize: 20000,
+                maxSize: 244000,
                 cacheGroups: {
+                    default: {
+                        minChunks: 2,
+                        priority: -20,
+                        reuseExistingChunk: true,
+                    },
                     vendor: {
                         test: /[\\/]node_modules[\\/]/,
                         name: 'vendors',
+                        priority: -10,
+                        chunks: 'all',
+                    },
+                    react: {
+                        test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+                        name: 'react',
+                        priority: 20,
                         chunks: 'all',
                     },
                     common: {
@@ -86,9 +100,18 @@ const nextConfig = {
                         minChunks: 2,
                         chunks: 'all',
                         enforce: true,
+                        priority: 5,
                     },
                 },
             }
+        }
+
+        // Fix for potential module resolution issues
+        config.resolve.fallback = {
+            ...config.resolve.fallback,
+            fs: false,
+            net: false,
+            tls: false,
         }
 
         return config

@@ -11,7 +11,7 @@ interface LeadCaptureSectionProps {
 
 export function LeadCaptureSection({ className = '' }: LeadCaptureSectionProps) {
     return (
-        <section id="formulario-contato" className={`bg-white py-16 lg:py-20 ${className}`}>
+        <section id="formulario-contato" className={`bg-white py-16 lg:py-24 ${className}`}>
             <div className="container-custom">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
 

@@ -2,7 +2,7 @@
 
 export const doctorInfo = {
     name: 'Dr. Philipe Saraiva Cruz',
-    crm: 'CRM 65.870',
+    crm: 'CRM 69.870',
     crmEquipe: 'CRM_EQP 155869.006',
     specialty: 'Oftalmologia',
     photo: '/drphilipe_perfil.jpeg',
@@ -16,9 +16,9 @@ export const doctorInfo = {
     experience: '15+ anos de experiência em oftalmologia',
     bio: 'Dr. Philipe Saraiva Cruz é pioneiro no Brasil em serviços de assinatura de lentes de contato com acompanhamento médico especializado. Com mais de 15 anos de experiência, dedica-se a proporcionar cuidado oftalmológico personalizado e acessível.',
     contact: {
-        whatsapp: '+5511999999999',
+        whatsapp: '+5511947038078',
         email: 'dr.philipe@svlentes.shop',
-        clinicAddress: 'Rua das Flores, 123 - São Paulo, SP'
+        clinicAddress: 'Rua Joaquim Floriano, 466 - Itaim Bibi, São Paulo, SP'
     },
     socialProof: {
         patientsServed: '5000+',
@@ -38,7 +38,7 @@ export const trustIndicators = {
     crm: {
         name: 'Conselho Regional de Medicina',
         description: 'Médico registrado no CRM-SP',
-        number: 'CRM 65.870',
+        number: 'CRM 69.870',
         logo: '/images/selo-crm.png',
         verified: true
     },
@@ -67,16 +67,16 @@ export const clinicInfo = {
     fullName: 'SV Lentes - Serviços Oftalmológicos Especializados',
     cnpj: '12.345.678/0001-90',
     address: {
-        street: 'Rua das Flores, 123',
-        neighborhood: 'Vila Madalena',
+        street: 'Rua Joaquim Floriano, 466',
+        neighborhood: 'Itaim Bibi',
         city: 'São Paulo',
         state: 'SP',
-        zipCode: '05435-000',
+        zipCode: '04534-002',
         country: 'Brasil'
     },
     contact: {
         phone: '+55 11 3456-7890',
-        whatsapp: '+55 11 99999-9999',
+        whatsapp: '+55 11 94703-8078',
         email: 'contato@svlentes.shop',
         website: 'https://svlentes.shop'
     },

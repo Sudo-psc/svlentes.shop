@@ -8,8 +8,12 @@ import { AnalyticsProvider } from '@/components/analytics/AnalyticsProvider'
 import { StructuredData } from '@/components/seo/StructuredData'
 import { PerformanceMonitor } from '@/components/performance/PerformanceMonitor'
 import { ResourcePreloader } from '@/components/performance/ResourcePreloader'
+import { ServiceWorkerCleanup } from '@/components/performance/ServiceWorkerCleanup'
+import { ErrorHandler } from '@/components/performance/ErrorHandler'
+import { initializeChunkErrorHandler } from '@/lib/chunk-error-handler'
 import { PrivacyProvider } from '@/components/privacy/PrivacyProvider'
 import { CookieConsent } from '@/components/privacy/CookieConsent'
+import { SmoothScroll } from '@/components/ui/SmoothScroll'
 import {
     baseMetadata,
     generateOrganizationStructuredData,
@@ -26,9 +30,15 @@ export default function RootLayout({
     const organizationData = generateOrganizationStructuredData()
     const websiteData = generateWebSiteStructuredData()
 
+    // Initialize chunk error handler
+    if (typeof window !== 'undefined') {
+        initializeChunkErrorHandler()
+    }
+
     return (
         <html lang="pt-BR">
             <head>
+                <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
                 <link rel="icon" href="/favicon.ico" />
                 <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
                 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
@@ -45,6 +55,8 @@ export default function RootLayout({
             </head>
             <body className="antialiased">
                 <PrivacyProvider>
+                    <ErrorHandler />
+                    <ServiceWorkerCleanup />
                     <GoogleAnalytics />
                     <PerformanceMonitor />
                     <ResourcePreloader />
@@ -56,6 +68,7 @@ export default function RootLayout({
                     <Footer />
                     <WhatsAppFloat />
                     <CookieConsent />
+                    <SmoothScroll />
                     <AnalyticsProvider />
                 </PrivacyProvider>
             </body>

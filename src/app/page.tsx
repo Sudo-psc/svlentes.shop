@@ -39,45 +39,59 @@ export default function HomePage() {
             <StructuredData data={[medicalBusinessData, faqData, serviceData, breadcrumbData]} />
 
             {/* Hero Section */}
-            <HeroSection />
+            <section id="hero">
+                <HeroSection />
+            </section>
 
             {/* Lead Capture Section */}
-            <LeadCaptureSection />
+            <section id="planos-precos">
+                <LeadCaptureSection />
+            </section>
 
             {/* Seção Problema-Solução */}
             <LazySection>
-                <ProblemSolutionSection />
+                <section id="problema-solucao">
+                    <ProblemSolutionSection />
+                </section>
             </LazySection>
 
             {/* Calculadora de Economia */}
             <LazySection>
-                <EconomySection />
+                <section id="calculadora-economia">
+                    <EconomySection />
+                </section>
             </LazySection>
-
 
             {/* Seção Como Funciona */}
             <LazySection>
-                <HowItWorksSection />
+                <section id="como-funciona">
+                    <HowItWorksSection />
+                </section>
             </LazySection>
 
             {/* Programa de Indicação */}
             <LazySection>
-                <ReferralProgram />
+                <section id="programa-indicacao">
+                    <ReferralProgram />
+                </section>
             </LazySection>
 
             {/* Seção de Add-ons */}
-            <AddOns services={addOnsData} layout="cards" />
+            <section id="servicos-adicionais">
+                <AddOns services={addOnsData} layout="cards" />
+            </section>
 
             {/* Seção FAQ */}
-            <FAQ />
+            <section id="perguntas-frequentes">
+                <FAQ />
+            </section>
 
             {/* CTA Final */}
             <LazySection>
-                <FinalCTA />
+                <section id="contato">
+                    <FinalCTA />
+                </section>
             </LazySection>
-
-            <div id="planos-precos" className="h-20 bg-gray-50"></div>
-            <div id="contato" className="h-20 bg-gray-50"></div>
         </div>
     )
 }

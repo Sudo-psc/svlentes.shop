@@ -42,7 +42,7 @@ export default function FAQ({ className }: FAQSectionProps) {
     return (
         <section
             id="perguntas-frequentes"
-            className={`py-16 bg-white ${className || ''}`}
+            className={`py-16 lg:py-24 bg-white ${className || ''}`}
         >
             {/* Structured Data for SEO */}
             <script
@@ -106,7 +106,7 @@ export default function FAQ({ className }: FAQSectionProps) {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <a
-                            href="https://wa.me/5511999999999?text=Olá! Tenho uma dúvida sobre o serviço de assinatura de lentes."
+                            href="https://wa.me/5511947038078?text=Olá! Tenho uma dúvida sobre o serviço de assinatura de lentes."
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center justify-center px-6 py-3 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700 transition-colors"

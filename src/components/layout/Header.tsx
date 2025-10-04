@@ -54,7 +54,7 @@ export function Header({ className }: HeaderProps) {
 Vim através do site SV Lentes e tenho interesse no serviço de assinatura com acompanhamento médico.`
 
         const whatsappLink = generateWhatsAppLink(
-            process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5511999999999',
+            process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5511947038078',
             whatsappMessage
         )
 
@@ -171,7 +171,7 @@ Vim através do site SV Lentes e tenho interesse no serviço de assinatura com a
                         <div className="flex items-center justify-center space-x-6 text-xs text-primary-700">
                             <div className="flex items-center space-x-1">
                                 <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                                <span>CRM 65.870</span>
+                                <span>CRM 69.870</span>
                             </div>
                             <div className="flex items-center space-x-1">
                                 <span className="w-2 h-2 bg-blue-500 rounded-full"></span>

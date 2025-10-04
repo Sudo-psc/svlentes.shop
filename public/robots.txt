@@ -1,0 +1,16 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://laas.com.br/sitemap.xml
+
+# Disallow admin areas
+Disallow: /api/
+Disallow: /_next/
+Disallow: /admin/
+
+# Allow important pages
+Allow: /
+Allow: /agendar-consulta
+Allow: /success
+Allow: /cancel
