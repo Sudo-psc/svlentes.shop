@@ -43,7 +43,7 @@
             "headers": [
                 {
                     "key": "Access-Control-Allow-Origin",
-                    "value": "https://laas-landing.vercel.app"
+                    "value": "https://svlentes.shop"
                 },
                 {
                     "key": "Access-Control-Allow-Methods",

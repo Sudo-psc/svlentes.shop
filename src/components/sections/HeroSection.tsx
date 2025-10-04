@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/Badge'
 import { InlineTrustIndicators } from '@/components/trust/TrustBadges'
 import { DoctorCard } from '@/components/trust/DoctorCard'
 import { LeadCaptureForm } from '@/components/forms/LeadCaptureForm'
+import { HeroImage } from '@/components/sections/HeroImage'
 import { openWhatsAppWithContext } from '@/lib/whatsapp'
 import { scrollToSection } from '@/lib/utils'
 import { Phone, MessageCircle, Star, Users, Award, Clock } from 'lucide-react'
@@ -82,9 +83,10 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
                             <Button
                                 onClick={handleAgendarConsulta}
                                 size="lg"
-                                className="flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                                className="flex items-center justify-center space-x-2 shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-200 text-base font-bold"
+                                aria-label="Agendar consulta com Dr. Philipe Saraiva Cruz"
                             >
-                                <Phone className="w-5 h-5" />
+                                <Phone className="w-5 h-5" aria-hidden="true" />
                                 <span>Agendar Consulta</span>
                             </Button>
 
@@ -92,9 +94,10 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
                                 onClick={handleFalarWhatsApp}
                                 variant="whatsapp"
                                 size="lg"
-                                className="flex items-center space-x-2 shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-200"
+                                className="flex items-center justify-center space-x-2 shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-200 text-base font-bold"
+                                aria-label="Falar com especialista pelo WhatsApp"
                             >
-                                <MessageCircle className="w-5 h-5" />
+                                <MessageCircle className="w-5 h-5" aria-hidden="true" />
                                 <span>Falar no WhatsApp</span>
                             </Button>
                         </div>
@@ -123,36 +126,10 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
                         </div>
                     </div>
 
-                    {/* Right Column - Doctor Card & Lead Form */}
+                    {/* Right Column - Hero Image */}
                     <div className="space-y-6 animate-slide-up" style={{ animationDelay: '0.3s' }}>
-
-                        {/* Doctor Card */}
-                        <DoctorCard variant="hero" showCTA={false} />
-
-                        {/* Lead Capture Form */}
-                        <LeadCaptureForm
-                            variant="hero"
-                            onSubmit={(data) => {
-                                // Redirecionar para calculadora com dados do lead
-                                console.log('Lead capturado:', data)
-                                scrollToSection('calculadora-economia')
-                            }}
-                        />
-
-                        {/* Additional Trust Elements */}
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="bg-white rounded-lg p-4 shadow-md border border-gray-100 text-center">
-                                <div className="text-2xl mb-2">🚚</div>
-                                <p className="text-sm font-medium text-gray-900">Entrega Grátis</p>
-                                <p className="text-xs text-gray-600">Todo Brasil</p>
-                            </div>
-
-                            <div className="bg-white rounded-lg p-4 shadow-md border border-gray-100 text-center">
-                                <div className="text-2xl mb-2">🔒</div>
-                                <p className="text-sm font-medium text-gray-900">100% Seguro</p>
-                                <p className="text-xs text-gray-600">SSL + LGPD</p>
-                            </div>
-                        </div>
+                        {/* Hero Image */}
+                        <HeroImage className="lg:scale-105" />
                     </div>
                 </div>
             </div>

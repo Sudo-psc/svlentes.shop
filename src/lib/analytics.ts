@@ -4,7 +4,7 @@
 declare global {
     interface Window {
         gtag: (
-            command: 'config' | 'event' | 'js' | 'set',
+            command: 'config' | 'event' | 'js' | 'set' | 'consent',
             targetId: string | Date | object,
             config?: object
         ) => void;

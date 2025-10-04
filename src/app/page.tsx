@@ -1,5 +1,6 @@
 import { Metadata } from 'next'
 import { HeroSection } from '@/components/sections/HeroSection'
+import { LeadCaptureSection } from '@/components/sections/LeadCaptureSection'
 import { EconomySection } from '@/components/sections/EconomySection'
 import { ProblemSolutionSection } from '@/components/sections/ProblemSolutionSection'
 import { HowItWorksSection } from '@/components/sections/HowItWorksSection'
@@ -40,6 +41,9 @@ export default function HomePage() {
             {/* Hero Section */}
             <HeroSection />
 
+            {/* Lead Capture Section */}
+            <LeadCaptureSection />
+
             {/* Seção Problema-Solução */}
             <LazySection>
                 <ProblemSolutionSection />
@@ -50,36 +54,6 @@ export default function HomePage() {
                 <EconomySection />
             </LazySection>
 
-            {/* Temporary progress indicator */}
-            <div className="bg-white py-16">
-                <div className="container-custom">
-                    <div className="text-center">
-                        <div className="bg-primary-50 border border-primary-200 rounded-lg p-6 max-w-2xl mx-auto">
-                            <h2 className="text-2xl font-semibold text-primary-800 mb-4">
-                                🚧 Progresso da Implementação
-                            </h2>
-                            <ul className="text-left text-primary-700 space-y-2">
-                                <li>✅ Next.js 14 com App Router</li>
-                                <li>✅ Tailwind CSS configurado</li>
-                                <li>✅ Estrutura de diretórios criada</li>
-                                <li>✅ Dependências instaladas</li>
-                                <li>✅ Dados estáticos implementados</li>
-                                <li>✅ Integração Stripe configurada</li>
-                                <li>✅ Header, Footer e WhatsApp flutuante</li>
-                                <li>✅ Hero Section com formulário de leads</li>
-                                <li>✅ Calculadora de economia completa</li>
-                                <li>✅ Seção Problema-Solução implementada</li>
-                                <li>✅ Seção Como Funciona com abas</li>
-                                <li>✅ Programa de Indicação implementado</li>
-                                <li>✅ Seção de Add-ons implementada</li>
-                                <li>✅ Seção FAQ implementada</li>
-                                <li>✅ CTA Final implementado</li>
-                                <li>⏳ Próximo: APIs e integrações</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
 
             {/* Seção Como Funciona */}
             <LazySection>

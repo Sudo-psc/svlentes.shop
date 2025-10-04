@@ -30,7 +30,7 @@ export function Footer({ className }: FooterProps) {
     const [showDataControl, setShowDataControl] = useState(false)
 
     const handleWhatsAppContact = () => {
-        const message = `Olá! Entrei em contato através do site LAAS e gostaria de mais informações sobre o serviço de assinatura de lentes de contato com acompanhamento médico.`
+        const message = `Olá! Entrei em contato através do site SV Lentes e gostaria de mais informações sobre o serviço de assinatura de lentes de contato com acompanhamento médico.`
 
         const whatsappLink = generateWhatsAppLink(
             clinicInfo.contact.whatsapp,
@@ -67,33 +67,43 @@ export function Footer({ className }: FooterProps) {
         <footer className={`bg-medical-900 text-white ${className}`}>
             {/* Main Footer Content */}
             <div className="container-custom py-16">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
 
                     {/* Company Info */}
-                    <div className="lg:col-span-2">
-                        <div className="mb-6">
-                            <h3 className="text-3xl font-bold text-gradient mb-2">LAAS</h3>
-                            <p className="text-lg text-gray-300 mb-4">
-                                Lens as a Service - Pioneiro no Brasil
+                    <div className="lg:col-span-2 space-y-6">
+                        <div>
+                            <h3 className="text-3xl font-bold mb-3">
+                                <span className="bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">
+                                    SV Lentes
+                                </span>
+                            </h3>
+                            <p className="text-lg text-gray-200 font-medium mb-3">
+                                SV Lentes - Pioneiro no Brasil
                             </p>
-                            <p className="text-gray-400 leading-relaxed">
+                            <p className="text-gray-300 leading-relaxed">
                                 Assinatura de lentes de contato com acompanhamento médico especializado.
                                 Nunca mais fique sem lentes com a comodidade e segurança que você merece.
                             </p>
                         </div>
 
                         {/* Doctor Info */}
-                        <div className="bg-medical-800 rounded-lg p-6 mb-6">
+                        <div className="bg-medical-800 rounded-xl p-6 border border-medical-700">
+                            <h4 className="text-sm font-semibold text-gray-400 uppercase tracking-wide mb-4">
+                                Responsável Técnico
+                            </h4>
                             <div className="flex items-start space-x-4">
-                                <div className="w-12 h-12 bg-primary-600 rounded-full flex items-center justify-center">
-                                    <Heart className="w-6 h-6 text-white" />
+                                <div className="w-12 h-12 bg-gradient-to-br from-primary-600 to-primary-700 rounded-full flex items-center justify-center flex-shrink-0">
+                                    <Heart className="w-6 h-6 text-white" aria-hidden="true" />
                                 </div>
                                 <div>
-                                    <h4 className="font-semibold text-lg text-white mb-1">
+                                    <h5 className="font-semibold text-lg text-white mb-1">
                                         {doctorInfo.name}
-                                    </h4>
+                                    </h5>
                                     <p className="text-primary-400 font-medium mb-1">
-                                        {doctorInfo.crm} | {doctorInfo.specialty}
+                                        {doctorInfo.crm}
+                                    </p>
+                                    <p className="text-gray-300 text-sm mb-1">
+                                        {doctorInfo.specialty}
                                     </p>
                                     <p className="text-gray-400 text-sm">
                                         {doctorInfo.experience}
@@ -106,53 +116,61 @@ export function Footer({ className }: FooterProps) {
                         <Button
                             onClick={handleWhatsAppContact}
                             variant="whatsapp"
-                            className="flex items-center space-x-2"
+                            className="w-full sm:w-auto flex items-center justify-center space-x-2"
+                            aria-label="Falar com especialista pelo WhatsApp"
                         >
-                            <MessageCircle className="w-5 h-5" />
+                            <MessageCircle className="w-5 h-5" aria-hidden="true" />
                             <span>Falar com Especialista</span>
                         </Button>
                     </div>
 
                     {/* Quick Links */}
                     <div>
-                        <h4 className="font-semibold text-lg mb-6">Links Rápidos</h4>
-                        <ul className="space-y-3">
-                            {quickLinks.map((link) => (
-                                <li key={link.name}>
-                                    <a
-                                        href={link.href}
-                                        className="text-gray-400 hover:text-primary-400 transition-colors duration-200 flex items-center group"
-                                    >
-                                        <span className="w-1 h-1 bg-primary-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity"></span>
-                                        {link.name}
-                                    </a>
-                                </li>
-                            ))}
-                        </ul>
+                        <h4 className="font-semibold text-lg text-white mb-6 pb-2 border-b border-medical-700">
+                            Navegação
+                        </h4>
+                        <nav aria-label="Links rápidos">
+                            <ul className="space-y-3">
+                                {quickLinks.map((link) => (
+                                    <li key={link.name}>
+                                        <a
+                                            href={link.href}
+                                            className="text-gray-300 hover:text-primary-400 transition-colors duration-200 flex items-center group text-sm"
+                                        >
+                                            <span className="w-1.5 h-1.5 bg-primary-500 rounded-full mr-3 opacity-0 group-hover:opacity-100 transition-opacity" aria-hidden="true"></span>
+                                            {link.name}
+                                        </a>
+                                    </li>
+                                ))}
+                            </ul>
+                        </nav>
                     </div>
 
                     {/* Contact Info */}
                     <div>
-                        <h4 className="font-semibold text-lg mb-6">Contato</h4>
-                        <div className="space-y-4">
+                        <h4 className="font-semibold text-lg text-white mb-6 pb-2 border-b border-medical-700">
+                            Atendimento
+                        </h4>
+                        <div className="space-y-5">
 
                             {/* Address */}
                             <div className="flex items-start space-x-3">
-                                <MapPin className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
-                                <div className="text-gray-400 text-sm">
+                                <MapPin className="w-5 h-5 text-primary-400 mt-0.5 flex-shrink-0" aria-hidden="true" />
+                                <address className="text-gray-300 text-sm not-italic">
                                     <p>{clinicInfo.address.street}</p>
                                     <p>{clinicInfo.address.neighborhood}</p>
                                     <p>{clinicInfo.address.city}, {clinicInfo.address.state}</p>
                                     <p>CEP: {clinicInfo.address.zipCode}</p>
-                                </div>
+                                </address>
                             </div>
 
                             {/* Phone */}
                             <div className="flex items-center space-x-3">
-                                <Phone className="w-5 h-5 text-primary-500 flex-shrink-0" />
+                                <Phone className="w-5 h-5 text-primary-400 flex-shrink-0" aria-hidden="true" />
                                 <a
                                     href={`tel:${clinicInfo.contact.phone}`}
-                                    className="text-gray-400 hover:text-primary-400 transition-colors text-sm"
+                                    className="text-gray-300 hover:text-primary-400 transition-colors text-sm font-medium"
+                                    aria-label={`Ligar para ${clinicInfo.contact.phone}`}
                                 >
                                     {clinicInfo.contact.phone}
                                 </a>
@@ -160,10 +178,11 @@ export function Footer({ className }: FooterProps) {
 
                             {/* Email */}
                             <div className="flex items-center space-x-3">
-                                <Mail className="w-5 h-5 text-primary-500 flex-shrink-0" />
+                                <Mail className="w-5 h-5 text-primary-400 flex-shrink-0" aria-hidden="true" />
                                 <a
                                     href={`mailto:${clinicInfo.contact.email}`}
-                                    className="text-gray-400 hover:text-primary-400 transition-colors text-sm"
+                                    className="text-gray-300 hover:text-primary-400 transition-colors text-sm break-all"
+                                    aria-label={`Enviar email para ${clinicInfo.contact.email}`}
                                 >
                                     {clinicInfo.contact.email}
                                 </a>
@@ -171,11 +190,12 @@ export function Footer({ className }: FooterProps) {
 
                             {/* Business Hours */}
                             <div className="flex items-start space-x-3">
-                                <Clock className="w-5 h-5 text-primary-500 mt-0.5 flex-shrink-0" />
-                                <div className="text-gray-400 text-sm">
+                                <Clock className="w-5 h-5 text-primary-400 mt-0.5 flex-shrink-0" aria-hidden="true" />
+                                <div className="text-gray-300 text-sm">
+                                    <p className="font-medium mb-1">Horário de Atendimento:</p>
                                     <p>{clinicInfo.businessHours.weekdays}</p>
                                     <p>{clinicInfo.businessHours.saturday}</p>
-                                    <p className="text-xs text-gray-500 mt-1">
+                                    <p className="text-xs text-gray-400 mt-2 italic">
                                         {clinicInfo.businessHours.emergency}
                                     </p>
                                 </div>
@@ -202,63 +222,64 @@ export function Footer({ className }: FooterProps) {
             </div>
 
             {/* Bottom Bar */}
-            <div className="bg-medical-950 py-6">
+            <div className="bg-medical-950 py-8">
                 <div className="container-custom">
-                    <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
-
-                        {/* Copyright */}
-                        <div className="text-gray-400 text-sm text-center md:text-left">
-                            <p>© {currentYear} LAAS - Lens as a Service. Todos os direitos reservados.</p>
-                            <p className="text-xs mt-1">
-                                CNPJ: {clinicInfo.cnpj} | {doctorInfo.crm} | {doctorInfo.crmEquipe}
-                            </p>
-                        </div>
-
-                        {/* Legal Links */}
-                        <div className="flex flex-wrap items-center justify-center space-x-6">
-                            {legalLinks.map((link) => (
-                                link.href ? (
-                                    <a
-                                        key={link.name}
-                                        href={link.href}
-                                        className="text-gray-400 hover:text-primary-400 transition-colors text-xs flex items-center space-x-1"
-                                    >
-                                        <FileText className="w-3 h-3" />
-                                        <span>{link.name}</span>
-                                    </a>
-                                ) : (
-                                    <button
-                                        key={link.name}
-                                        onClick={link.action}
-                                        className="text-gray-400 hover:text-primary-400 transition-colors text-xs flex items-center space-x-1"
-                                    >
-                                        {link.name.includes('Configurações') ? (
-                                            <Settings className="w-3 h-3" />
-                                        ) : (
-                                            <FileText className="w-3 h-3" />
-                                        )}
-                                        <span>{link.name}</span>
-                                    </button>
-                                )
-                            ))}
-                        </div>
+                    {/* Legal Links */}
+                    <div className="flex flex-wrap items-center justify-center gap-4 mb-6">
+                        {legalLinks.map((link) => (
+                            link.href ? (
+                                <a
+                                    key={link.name}
+                                    href={link.href}
+                                    className="text-gray-400 hover:text-primary-400 transition-colors text-sm flex items-center space-x-1.5 group"
+                                >
+                                    <FileText className="w-3.5 h-3.5 group-hover:text-primary-400 transition-colors" aria-hidden="true" />
+                                    <span>{link.name}</span>
+                                </a>
+                            ) : (
+                                <button
+                                    key={link.name}
+                                    onClick={link.action}
+                                    className="text-gray-400 hover:text-primary-400 transition-colors text-sm flex items-center space-x-1.5 group"
+                                >
+                                    {link.name.includes('Configurações') ? (
+                                        <Settings className="w-3.5 h-3.5 group-hover:text-primary-400 transition-colors" aria-hidden="true" />
+                                    ) : (
+                                        <FileText className="w-3.5 h-3.5 group-hover:text-primary-400 transition-colors" aria-hidden="true" />
+                                    )}
+                                    <span>{link.name}</span>
+                                </button>
+                            )
+                        ))}
                     </div>
 
                     {/* Trust Indicators */}
-                    <div className="mt-6 pt-6 border-t border-medical-800">
-                        <div className="flex items-center justify-center space-x-8 text-xs text-gray-500">
-                            <div className="flex items-center space-x-2">
-                                <div className="w-2 h-2 bg-green-500 rounded-full"></div>
-                                <span>Site Seguro SSL</span>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                                <div className="w-2 h-2 bg-blue-500 rounded-full"></div>
-                                <span>Conformidade LGPD</span>
-                            </div>
-                            <div className="flex items-center space-x-2">
-                                <div className="w-2 h-2 bg-purple-500 rounded-full"></div>
-                                <span>Produtos ANVISA</span>
-                            </div>
+                    <div className="flex flex-wrap items-center justify-center gap-6 mb-6 pb-6 border-b border-medical-800">
+                        <div className="flex items-center space-x-2 text-gray-400">
+                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true"></div>
+                            <span className="text-sm">Site Seguro SSL</span>
+                        </div>
+                        <div className="flex items-center space-x-2 text-gray-400">
+                            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" aria-hidden="true"></div>
+                            <span className="text-sm">Conformidade LGPD</span>
+                        </div>
+                        <div className="flex items-center space-x-2 text-gray-400">
+                            <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" aria-hidden="true"></div>
+                            <span className="text-sm">Produtos ANVISA</span>
+                        </div>
+                    </div>
+
+                    {/* Copyright & Company Info */}
+                    <div className="text-center space-y-2">
+                        <p className="text-gray-400 text-sm">
+                            © {currentYear} SV Lentes. Todos os direitos reservados.
+                        </p>
+                        <div className="flex flex-wrap items-center justify-center gap-3 text-xs text-gray-500">
+                            <span>CNPJ: {clinicInfo.cnpj}</span>
+                            <span aria-hidden="true">•</span>
+                            <span>Responsável Técnico: {doctorInfo.crm}</span>
+                            <span aria-hidden="true">•</span>
+                            <span>Equipe: {doctorInfo.crmEquipe}</span>
                         </div>
                     </div>
                 </div>

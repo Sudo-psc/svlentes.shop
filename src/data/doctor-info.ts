@@ -1,11 +1,11 @@
-// Dados do Dr. Philipe Saraiva Cruz - Médico responsável pelo LAAS
+// Dados do Dr. Philipe Saraiva Cruz - Médico responsável pela SV Lentes
 
 export const doctorInfo = {
     name: 'Dr. Philipe Saraiva Cruz',
     crm: 'CRM 65.870',
     crmEquipe: 'CRM_EQP 155869.006',
     specialty: 'Oftalmologia',
-    photo: '/images/dr-philipe-saraiva-cruz.jpg',
+    photo: '/drphilipe_perfil.jpeg',
     credentials: [
         'Especialista em Oftalmologia',
         'Graduado em Medicina pela Universidade Federal',
@@ -17,7 +17,7 @@ export const doctorInfo = {
     bio: 'Dr. Philipe Saraiva Cruz é pioneiro no Brasil em serviços de assinatura de lentes de contato com acompanhamento médico especializado. Com mais de 15 anos de experiência, dedica-se a proporcionar cuidado oftalmológico personalizado e acessível.',
     contact: {
         whatsapp: '+5511999999999',
-        email: 'dr.philipe@laas.com.br',
+        email: 'dr.philipe@svlentes.shop',
         clinicAddress: 'Rua das Flores, 123 - São Paulo, SP'
     },
     socialProof: {
@@ -63,8 +63,8 @@ export const trustIndicators = {
 }
 
 export const clinicInfo = {
-    name: 'LAAS - Lens as a Service',
-    fullName: 'LAAS - Serviços Oftalmológicos Especializados',
+    name: 'SV Lentes',
+    fullName: 'SV Lentes - Serviços Oftalmológicos Especializados',
     cnpj: '12.345.678/0001-90',
     address: {
         street: 'Rua das Flores, 123',
@@ -77,8 +77,8 @@ export const clinicInfo = {
     contact: {
         phone: '+55 11 3456-7890',
         whatsapp: '+55 11 99999-9999',
-        email: 'contato@laas.com.br',
-        website: 'https://laas.com.br'
+        email: 'contato@svlentes.shop',
+        website: 'https://svlentes.shop'
     },
     businessHours: {
         weekdays: 'Segunda a Sexta: 8h às 18h',

@@ -144,8 +144,8 @@ export function openWhatsAppWithContext(
     // Analytics tracking
     trackEvent('whatsapp_redirect', {
         context: context,
-        user_data: !!data?.userData,
-        message_type: data?.type || 'support',
+        user_data: !!data?.userInfo,
+        message_type: 'support',
     })
 
     window.open(link, '_blank')

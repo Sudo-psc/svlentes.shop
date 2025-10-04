@@ -16,14 +16,14 @@ export async function GET(request: NextRequest) {
     try {
         const checks = {
             timestamp: new Date().toISOString(),
-            status: 'healthy',
+            status: 'healthy' as 'healthy' | 'degraded' | 'unhealthy' | 'warning',
             version: process.env.npm_package_version || '1.0.0',
             environment: process.env.NODE_ENV || 'development',
+            uptime: process.uptime(),
             checks: {
-                database: { status: 'healthy', responseTime: 0 },
-                stripe: { status: 'unknown', responseTime: 0 },
-                memory: { status: 'healthy', usage: 0 },
-                uptime: process.uptime()
+                database: { status: 'healthy' as string, responseTime: 0 },
+                stripe: { status: 'unknown' as string, responseTime: 0, error: undefined as string | undefined },
+                memory: { status: 'healthy' as string, usage: 0 }
             }
         }
 
@@ -33,7 +33,8 @@ export async function GET(request: NextRequest) {
             await stripe.accounts.retrieve()
             checks.checks.stripe = {
                 status: 'healthy',
-                responseTime: Date.now() - stripeStart
+                responseTime: Date.now() - stripeStart,
+                error: undefined
             }
         } catch (error) {
             checks.checks.stripe = {

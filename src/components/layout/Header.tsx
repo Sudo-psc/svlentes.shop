@@ -51,7 +51,7 @@ export function Header({ className }: HeaderProps) {
     const handleAgendarConsulta = () => {
         const whatsappMessage = `Olá! Gostaria de agendar uma consulta com o Dr. Philipe Saraiva Cruz para avaliar minha necessidade de lentes de contato.
 
-Vim através do site LAAS e tenho interesse no serviço de assinatura com acompanhamento médico.`
+Vim através do site SV Lentes e tenho interesse no serviço de assinatura com acompanhamento médico.`
 
         const whatsappLink = generateWhatsAppLink(
             process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5511999999999',
@@ -78,10 +78,10 @@ Vim através do site LAAS e tenho interesse no serviço de assinatura com acompa
                             }}
                             className="text-2xl lg:text-3xl font-bold text-gradient hover:opacity-80 transition-opacity"
                         >
-                            LAAS
+                            SV Lentes
                         </a>
                         <div className="hidden lg:block ml-3 text-xs text-gray-500">
-                            <div>Lens as a Service</div>
+                            <div>SV Lentes</div>
                             <div className="text-primary-600 font-medium">Dr. Philipe Saraiva Cruz</div>
                         </div>
                     </div>

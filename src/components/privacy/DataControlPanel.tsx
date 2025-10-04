@@ -95,8 +95,8 @@ export function DataControlPanel({ isOpen, onClose }: DataControlPanelProps) {
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id as any)}
                                 className={`py-4 px-2 border-b-2 font-medium text-sm flex items-center space-x-2 ${activeTab === tab.id
-                                        ? 'border-blue-500 text-blue-600'
-                                        : 'border-transparent text-gray-500 hover:text-gray-700'
+                                    ? 'border-blue-500 text-blue-600'
+                                    : 'border-transparent text-gray-500 hover:text-gray-700'
                                     }`}
                             >
                                 <tab.icon className="h-4 w-4" />
@@ -149,16 +149,11 @@ export function DataControlPanel({ isOpen, onClose }: DataControlPanelProps) {
                                         <Label htmlFor="requestType">Tipo de solicitação</Label>
                                         <Select
                                             value={formData.requestType}
-                                            onValueChange={(value) => setFormData({ ...formData, requestType: value })}
+                                            onChange={(e) => setFormData({ ...formData, requestType: e.target.value })}
                                             required
-                                        >
-                                            <option value="">Selecione uma opção</option>
-                                            {requestTypes.map((type) => (
-                                                <option key={type.value} value={type.value}>
-                                                    {type.label}
-                                                </option>
-                                            ))}
-                                        </Select>
+                                            placeholder="Selecione uma opção"
+                                            options={requestTypes.map(type => ({ value: type.value, label: type.label }))}
+                                        />
                                     </div>
 
                                     {formData.requestType && (
@@ -214,8 +209,8 @@ export function DataControlPanel({ isOpen, onClose }: DataControlPanelProps) {
                                         <Checkbox
                                             id="userConsent"
                                             checked={formData.userConsent}
-                                            onCheckedChange={(checked) =>
-                                                setFormData({ ...formData, userConsent: checked as boolean })
+                                            onChange={(e) =>
+                                                setFormData({ ...formData, userConsent: e.target.checked })
                                             }
                                             required
                                         />

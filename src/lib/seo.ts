@@ -5,10 +5,10 @@ import { featuredFAQ } from '@/data/faq-data'
 
 // Base metadata configuration
 export const baseMetadata: Metadata = {
-    metadataBase: new URL('https://laas.com.br'),
+    metadataBase: new URL('https://svlentes.shop'),
     title: {
-        default: 'LAAS - Nunca mais fique sem lentes | Assinatura com Acompanhamento Médico',
-        template: '%s | LAAS'
+        default: 'SV Lentes - Nunca mais fique sem lentes | Assinatura com Acompanhamento Médico',
+        template: '%s | SV Lentes'
     },
     description: 'Pioneiro no Brasil em assinatura de lentes de contato com acompanhamento médico especializado. Dr. Philipe Saraiva Cruz - CRM 65.870. Economia de até 40%.',
     keywords: [
@@ -23,12 +23,12 @@ export const baseMetadata: Metadata = {
         'consulta oftalmológica',
         'telemedicina',
         'entrega domicilio',
-        'LAAS',
-        'lens as a service'
+        'SV Lentes',
+        'svlentes.shop'
     ],
     authors: [{
         name: doctorInfo.name,
-        url: 'https://laas.com.br'
+        url: 'https://svlentes.shop'
     }],
     creator: doctorInfo.name,
     publisher: clinicInfo.name,
@@ -40,22 +40,22 @@ export const baseMetadata: Metadata = {
     openGraph: {
         type: 'website',
         locale: 'pt_BR',
-        url: 'https://laas.com.br',
-        siteName: 'LAAS',
-        title: 'LAAS - Nunca mais fique sem lentes',
+        url: 'https://svlentes.shop',
+        siteName: 'SV Lentes',
+        title: 'SV Lentes - Nunca mais fique sem lentes',
         description: 'Assinatura de lentes de contato com acompanhamento médico especializado. Pioneiro no Brasil.',
         images: [
             {
                 url: '/images/og-image.jpg',
                 width: 1200,
                 height: 630,
-                alt: 'LAAS - Assinatura de Lentes de Contato com Acompanhamento Médico',
+                alt: 'SV Lentes - Assinatura de Lentes de Contato com Acompanhamento Médico',
             }
         ],
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'LAAS - Nunca mais fique sem lentes',
+        title: 'SV Lentes - Nunca mais fique sem lentes',
         description: 'Assinatura de lentes de contato com acompanhamento médico especializado',
         images: ['/images/og-image.jpg'],
     },
@@ -76,7 +76,7 @@ export const baseMetadata: Metadata = {
         google: process.env.GOOGLE_VERIFICATION_CODE,
     },
     alternates: {
-        canonical: 'https://laas.com.br',
+        canonical: 'https://svlentes.shop',
     },
     category: 'healthcare',
 }
@@ -89,9 +89,9 @@ export function generateMedicalBusinessStructuredData() {
         name: clinicInfo.name,
         alternateName: clinicInfo.fullName,
         description: 'Serviço pioneiro no Brasil de assinatura de lentes de contato com acompanhamento médico especializado',
-        url: 'https://laas.com.br',
-        logo: 'https://laas.com.br/images/logo.png',
-        image: 'https://laas.com.br/images/og-image.jpg',
+        url: 'https://svlentes.shop',
+        logo: 'https://svlentes.shop/images/logo.png',
+        image: 'https://svlentes.shop/images/og-image.jpg',
         telephone: clinicInfo.contact.phone,
         email: clinicInfo.contact.email,
         address: {
@@ -127,12 +127,12 @@ export function generateMedicalBusinessStructuredData() {
             alumniOf: 'Universidade Federal',
             memberOf: 'Sociedade Brasileira de Oftalmologia',
             yearsOfExperience: 15,
-            image: `https://laas.com.br${doctorInfo.photo}`,
+            image: `https://svlentes.shop${doctorInfo.photo}`,
             description: doctorInfo.bio
         },
         hasOfferCatalog: {
             '@type': 'OfferCatalog',
-            name: 'Planos de Assinatura LAAS',
+            name: 'Planos de Assinatura SV Lentes',
             itemListElement: pricingPlans.map(plan => ({
                 '@type': 'Offer',
                 name: plan.name,
@@ -216,7 +216,7 @@ export function generateServiceStructuredData() {
         },
         availableChannel: {
             '@type': 'ServiceChannel',
-            serviceUrl: 'https://laas.com.br',
+            serviceUrl: 'https://svlentes.shop',
             serviceSmsNumber: clinicInfo.contact.whatsapp,
             servicePhone: clinicInfo.contact.phone
         },
@@ -252,8 +252,8 @@ export function generateOrganizationStructuredData() {
         '@type': 'Organization',
         name: clinicInfo.name,
         alternateName: clinicInfo.fullName,
-        url: 'https://laas.com.br',
-        logo: 'https://laas.com.br/images/logo.png',
+        url: 'https://svlentes.shop',
+        logo: 'https://svlentes.shop/images/logo.png',
         contactPoint: {
             '@type': 'ContactPoint',
             telephone: clinicInfo.contact.phone,
@@ -262,9 +262,9 @@ export function generateOrganizationStructuredData() {
             availableLanguage: 'Portuguese'
         },
         sameAs: [
-            'https://www.instagram.com/laas.brasil',
-            'https://www.facebook.com/laas.brasil',
-            'https://www.linkedin.com/company/laas-brasil'
+            'https://www.instagram.com/svlentes.shop',
+            'https://www.facebook.com/svlentes.shop',
+            'https://www.linkedin.com/company/svlentes'
         ],
         address: {
             '@type': 'PostalAddress',
@@ -282,14 +282,14 @@ export function generateWebSiteStructuredData() {
     return {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
-        name: 'LAAS',
-        alternateName: 'Lens as a Service',
-        url: 'https://laas.com.br',
+        name: 'SV Lentes',
+        alternateName: 'SV Lentes',
+        url: 'https://svlentes.shop',
         potentialAction: {
             '@type': 'SearchAction',
             target: {
                 '@type': 'EntryPoint',
-                urlTemplate: 'https://laas.com.br/search?q={search_term_string}'
+                urlTemplate: 'https://svlentes.shop/search?q={search_term_string}'
             },
             'query-input': 'required name=search_term_string'
         }

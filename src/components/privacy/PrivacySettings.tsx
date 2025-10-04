@@ -89,8 +89,8 @@ export function PrivacySettings({ isOpen, onClose }: PrivacySettingsProps) {
                                 key={tab.id}
                                 onClick={() => setActiveTab(tab.id as any)}
                                 className={`py-4 px-2 border-b-2 font-medium text-sm flex items-center space-x-2 ${activeTab === tab.id
-                                        ? 'border-blue-500 text-blue-600'
-                                        : 'border-transparent text-gray-500 hover:text-gray-700'
+                                    ? 'border-blue-500 text-blue-600'
+                                    : 'border-transparent text-gray-500 hover:text-gray-700'
                                     }`}
                             >
                                 <tab.icon className="h-4 w-4" />
@@ -133,8 +133,8 @@ export function PrivacySettings({ isOpen, onClose }: PrivacySettingsProps) {
                                         </div>
                                         <Checkbox
                                             checked={cookiePrefs.analytics}
-                                            onCheckedChange={(checked) =>
-                                                setCookiePrefs({ ...cookiePrefs, analytics: checked as boolean })
+                                            onChange={(e) =>
+                                                setCookiePrefs({ ...cookiePrefs, analytics: e.target.checked })
                                             }
                                         />
                                     </div>
@@ -150,8 +150,8 @@ export function PrivacySettings({ isOpen, onClose }: PrivacySettingsProps) {
                                         </div>
                                         <Checkbox
                                             checked={cookiePrefs.marketing}
-                                            onCheckedChange={(checked) =>
-                                                setCookiePrefs({ ...cookiePrefs, marketing: checked as boolean })
+                                            onChange={(e) =>
+                                                setCookiePrefs({ ...cookiePrefs, marketing: e.target.checked })
                                             }
                                         />
                                     </div>
@@ -178,8 +178,8 @@ export function PrivacySettings({ isOpen, onClose }: PrivacySettingsProps) {
                                     <Checkbox
                                         id="email-marketing"
                                         checked={marketingPrefs.email}
-                                        onCheckedChange={(checked) =>
-                                            setMarketingPrefs({ ...marketingPrefs, email: checked as boolean })
+                                        onChange={(e) =>
+                                            setMarketingPrefs({ ...marketingPrefs, email: e.target.checked })
                                         }
                                     />
                                     <Label htmlFor="email-marketing">
@@ -196,8 +196,8 @@ export function PrivacySettings({ isOpen, onClose }: PrivacySettingsProps) {
                                     <Checkbox
                                         id="whatsapp-marketing"
                                         checked={marketingPrefs.whatsapp}
-                                        onCheckedChange={(checked) =>
-                                            setMarketingPrefs({ ...marketingPrefs, whatsapp: checked as boolean })
+                                        onChange={(e) =>
+                                            setMarketingPrefs({ ...marketingPrefs, whatsapp: e.target.checked })
                                         }
                                     />
                                     <Label htmlFor="whatsapp-marketing">
@@ -214,8 +214,8 @@ export function PrivacySettings({ isOpen, onClose }: PrivacySettingsProps) {
                                     <Checkbox
                                         id="sms-marketing"
                                         checked={marketingPrefs.sms}
-                                        onCheckedChange={(checked) =>
-                                            setMarketingPrefs({ ...marketingPrefs, sms: checked as boolean })
+                                        onChange={(e) =>
+                                            setMarketingPrefs({ ...marketingPrefs, sms: e.target.checked })
                                         }
                                     />
                                     <Label htmlFor="sms-marketing">

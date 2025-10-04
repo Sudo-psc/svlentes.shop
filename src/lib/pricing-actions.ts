@@ -2,7 +2,7 @@
 
 import { stripeProducts } from './stripe'
 import { trackEvent, trackSubscriptionEvent } from './analytics'
-import { trackPlanSelection, trackCheckoutStarted, trackConsultationBooked } from './conversion-tracking'
+import { trackPlanSelection as trackPlanSelectionConversion, trackCheckoutStarted, trackConsultationBooked } from './conversion-tracking'
 
 // Tipos para as ações de pricing
 export interface SubscriptionData {
@@ -71,12 +71,7 @@ export async function handleSubscription(data: SubscriptionData) {
         const planPrice = getPlanPrice(data.planId, data.billingInterval)
         const planTier = data.planId.includes('premium') ? 'premium' : data.planId.includes('vip') ? 'vip' : 'basic'
 
-        trackPlanSelection({
-            planId: data.planId,
-            billingInterval: data.billingInterval,
-            price: planPrice,
-            planTier,
-        })
+        trackPlanSelection(data.planId, data.billingInterval)
 
         trackCheckoutStarted({
             planId: data.planId,
@@ -229,13 +224,4 @@ export function trackTabChange(tabId: string) {
     console.log('Tab changed to:', tabId)
 }
 
-// Declaração de tipos para gtag (analytics)
-declare global {
-    interface Window {
-        gtag?: (
-            command: 'event',
-            eventName: string,
-            parameters?: Record<string, any>
-        ) => void
-    }
-}
+// Tipos do gtag já declarados em analytics.ts

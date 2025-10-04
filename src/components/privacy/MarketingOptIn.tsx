@@ -32,7 +32,7 @@ export function MarketingOptIn({
                 <Checkbox
                     id="marketing-opt-in"
                     checked={optIn}
-                    onCheckedChange={handleOptInChange}
+                    onChange={(e) => handleOptInChange(e.target.checked)}
                     required={required}
                 />
                 <div className="flex-1">
@@ -117,7 +117,7 @@ export function MarketingPreferences({ preferences, onPreferencesChange }: Marke
                     <Checkbox
                         id="email-marketing"
                         checked={preferences.email}
-                        onCheckedChange={(checked) => handleChannelChange('email', checked as boolean)}
+                        onChange={(e) => handleChannelChange('email', e.target.checked)}
                     />
                     <Label htmlFor="email-marketing" className="text-sm">
                         E-mail (newsletters, promoções, lembretes)
@@ -128,7 +128,7 @@ export function MarketingPreferences({ preferences, onPreferencesChange }: Marke
                     <Checkbox
                         id="whatsapp-marketing"
                         checked={preferences.whatsapp}
-                        onCheckedChange={(checked) => handleChannelChange('whatsapp', checked as boolean)}
+                        onChange={(e) => handleChannelChange('whatsapp', e.target.checked)}
                     />
                     <Label htmlFor="whatsapp-marketing" className="text-sm">
                         WhatsApp (lembretes importantes, suporte)
@@ -139,7 +139,7 @@ export function MarketingPreferences({ preferences, onPreferencesChange }: Marke
                     <Checkbox
                         id="sms-marketing"
                         checked={preferences.sms}
-                        onCheckedChange={(checked) => handleChannelChange('sms', checked as boolean)}
+                        onChange={(e) => handleChannelChange('sms', e.target.checked)}
                     />
                     <Label htmlFor="sms-marketing" className="text-sm">
                         SMS (apenas lembretes urgentes)

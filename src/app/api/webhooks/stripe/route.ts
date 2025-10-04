@@ -481,7 +481,8 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
         })
 
         // 5. Preparar campanha de reativação (se apropriado)
-        if (cancellationReason !== 'fraudulent' && cancellationReason !== 'duplicate') {
+        const reasonString = cancellationReason as string
+        if (cancellationReason && reasonString !== 'fraudulent' && reasonString !== 'duplicate') {
             const winbackCampaign = {
                 customerId,
                 canceledAt: canceledAt.toISOString(),
@@ -511,12 +512,12 @@ async function handleSubscriptionDeleted(subscription: Stripe.Subscription) {
 }
 
 // Função para processar eventos de atualização de assinatura
-async function handleSubscriptionUpdated(subscription: Stripe.Subscription) {
+async function handleSubscriptionUpdated(subscription: Stripe.Subscription, event?: Stripe.Event) {
     try {
         const subscriptionId = subscription.id
         const customerId = subscription.customer as string
         const status = subscription.status
-        const previousAttributes = subscription.previous_attributes || {}
+        const previousAttributes = (event?.data as any)?.previous_attributes || {}
 
         logWebhookEvent({
             eventType: 'customer.subscription.updated',
@@ -660,7 +661,7 @@ export async function POST(request: NextRequest) {
                 break
 
             case 'customer.subscription.updated':
-                result = await handleSubscriptionUpdated(event.data.object as Stripe.Subscription)
+                result = await handleSubscriptionUpdated(event.data.object as Stripe.Subscription, event)
                 break
 
             case 'customer.subscription.deleted':

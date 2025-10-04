@@ -4,18 +4,21 @@ import React from 'react'
 // Performance optimization utilities
 
 // Lazy loading utility for components
-export const createLazyComponent = <T extends React.ComponentType<any>>(
+export function createLazyComponent<T extends React.ComponentType<any>>(
     importFunc: () => Promise<{ default: T }>,
     fallback?: React.ComponentType
-) => {
+) {
     const LazyComponent = React.lazy(importFunc)
 
-    return (props: React.ComponentProps<T>) => (
-        <React.Suspense fallback= { fallback? React.createElement(fallback) : < div > Carregando...</div>
-}>
-    <LazyComponent { ...props } />
-    </React.Suspense>
-    )
+    return function WrappedComponent(props: React.ComponentProps<T>) {
+        const fallbackElement = fallback ? React.createElement(fallback) : React.createElement('div', {}, 'Carregando...')
+
+        return React.createElement(
+            React.Suspense,
+            { fallback: fallbackElement },
+            React.createElement(LazyComponent, props)
+        )
+    }
 }
 
 // Intersection Observer hook for lazy loading
@@ -114,7 +117,7 @@ export const trackWebVitals = () => {
 
     const observer = new PerformanceObserver((list) => {
         for (const entry of list.getEntries()) {
-            if (!entry.hadRecentInput) {
+            if (!(entry as any).hadRecentInput) {
                 clsValue += (entry as any).value
                 clsEntries.push(entry)
             }
@@ -160,4 +163,3 @@ export const getOptimizedImageProps = (
         ).toString('base64')}`,
     }
 }
-

@@ -111,7 +111,7 @@ export function CookieConsent() {
                                     <Checkbox
                                         id="analytics"
                                         checked={preferences.analytics}
-                                        onCheckedChange={(checked) => handlePreferenceChange('analytics', checked as boolean)}
+                                        onChange={(e) => handlePreferenceChange('analytics', e.target.checked)}
                                     />
                                     <Label htmlFor="analytics" className="text-sm">
                                         <strong>Cookies de Análise</strong> - Nos ajudam a entender como você usa o site
@@ -122,7 +122,7 @@ export function CookieConsent() {
                                     <Checkbox
                                         id="marketing"
                                         checked={preferences.marketing}
-                                        onCheckedChange={(checked) => handlePreferenceChange('marketing', checked as boolean)}
+                                        onChange={(e) => handlePreferenceChange('marketing', e.target.checked)}
                                     />
                                     <Label htmlFor="marketing" className="text-sm">
                                         <strong>Cookies de Marketing</strong> - Para personalizar anúncios e comunicações

@@ -92,8 +92,7 @@ export function LeadCaptureForm({
                 nome: data.nome,
                 email: data.email,
                 whatsapp: data.whatsapp,
-                source: variant || 'hero_form',
-                marketingOptIn
+                source: variant || 'hero_form'
             })
 
         } catch (error) {
@@ -235,15 +234,17 @@ export function LeadCaptureForm({
                     error={errors.lgpdConsent?.message}
                     required
                 >
-                    <span className="text-sm text-gray-700">
+                    <span className="text-sm text-gray-800 leading-relaxed">
                         Aceito receber contato sobre o serviço LAAS e concordo com a{' '}
                         <a
                             href="/politica-privacidade"
-                            className="text-primary-600 hover:underline"
+                            className="text-primary-700 hover:text-primary-800 underline font-medium"
                             target="_blank"
+                            rel="noopener noreferrer"
                         >
                             política de privacidade
                         </a>
+                        .
                     </span>
                 </Checkbox>
 
@@ -256,15 +257,21 @@ export function LeadCaptureForm({
                     <Button
                         onClick={handleCalculateEconomy}
                         type="button"
-                        className="w-full flex items-center justify-center space-x-2"
+                        className="w-full flex items-center justify-center space-x-2 font-semibold text-base"
                         disabled={!watch('lgpdConsent')}
+                        aria-label="Calcular economia com assinatura de lentes"
                     >
-                        <Calculator className="w-4 h-4" />
+                        <Calculator className="w-5 h-5" aria-hidden="true" />
                         <span>Calcular Economia</span>
                     </Button>
 
-                    <div className="text-center">
-                        <span className="text-sm text-gray-500">ou</span>
+                    <div className="relative">
+                        <div className="absolute inset-0 flex items-center">
+                            <div className="w-full border-t border-gray-200"></div>
+                        </div>
+                        <div className="relative flex justify-center text-sm">
+                            <span className="px-2 bg-white text-gray-500">ou</span>
+                        </div>
                     </div>
 
                     <Button
@@ -272,23 +279,24 @@ export function LeadCaptureForm({
                         variant="outline"
                         loading={isSubmitting}
                         disabled={!watch('lgpdConsent')}
-                        className="w-full flex items-center justify-center space-x-2"
+                        className="w-full flex items-center justify-center space-x-2 font-semibold text-base"
+                        aria-label="Agendar consulta oftalmológica diretamente"
                     >
-                        <Phone className="w-4 h-4" />
+                        <Phone className="w-5 h-5" aria-hidden="true" />
                         <span>Agendar Consulta Direta</span>
                     </Button>
                 </div>
 
                 {/* Trust indicators */}
                 <div className="pt-4 border-t border-gray-200">
-                    <div className="flex items-center justify-center space-x-4 text-xs text-gray-500">
-                        <div className="flex items-center space-x-1">
-                            <Shield className="w-3 h-3" />
-                            <span>100% Seguro</span>
+                    <div className="flex items-center justify-center space-x-6 text-xs">
+                        <div className="flex items-center space-x-1.5 text-green-700">
+                            <Shield className="w-4 h-4" aria-hidden="true" />
+                            <span className="font-medium">100% Seguro</span>
                         </div>
-                        <div className="flex items-center space-x-1">
-                            <CheckCircle className="w-3 h-3" />
-                            <span>Sem Compromisso</span>
+                        <div className="flex items-center space-x-1.5 text-blue-700">
+                            <CheckCircle className="w-4 h-4" aria-hidden="true" />
+                            <span className="font-medium">Sem Compromisso</span>
                         </div>
                     </div>
                 </div>

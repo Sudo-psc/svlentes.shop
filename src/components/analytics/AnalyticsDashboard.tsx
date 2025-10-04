@@ -15,7 +15,7 @@ export function AnalyticsDashboard({ isVisible = false, onToggle }: AnalyticsDas
         stagesCompleted: 0,
         conversionRate: 0,
         abandonmentPoints: 0,
-        currentStage: 'page_view' as const
+        currentStage: 'page_view' as any
     });
     const [events, setEvents] = useState<Array<{ timestamp: string; event: string; data: any }>>([]);
 
