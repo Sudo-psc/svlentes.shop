@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
+import { Logo } from '@/components/ui/Logo'
 import { generateWhatsAppLink } from '@/lib/utils'
 import { doctorInfo, clinicInfo } from '@/data/doctor-info'
 import { PrivacyPolicy } from '@/components/privacy/PrivacyPolicy'
@@ -72,13 +73,12 @@ export function Footer({ className }: FooterProps) {
                     {/* Company Info */}
                     <div className="lg:col-span-2 space-y-6">
                         <div>
-                            <h3 className="text-3xl font-bold mb-3">
-                                <span className="bg-gradient-to-r from-primary-400 to-secondary-400 bg-clip-text text-transparent">
-                                    SV Lentes
-                                </span>
-                            </h3>
+                            {/* Logo */}
+                            <div className="mb-4">
+                                <Logo variant="full" size="lg" />
+                            </div>
                             <p className="text-lg text-gray-200 font-medium mb-3">
-                                SV Lentes - Pioneiro no Brasil
+                                Pioneiro no Brasil em Assinatura de Lentes de Contato
                             </p>
                             <p className="text-gray-300 leading-relaxed">
                                 Assinatura de lentes de contato com acompanhamento médico especializado.

@@ -66,6 +66,35 @@ export {
     RETENTION_POLICIES
 } from './config'
 
+// Persona analyzer
+export {
+    PersonaAnalyzer,
+    createPersonaAnalyzer,
+    analyzeUserPersona
+} from './persona-analyzer'
+
+export type {
+    AnalysisContext,
+    DeviceInfo,
+    PageAnalysis,
+    TrafficSource,
+    TemporalData,
+    PersonaScore,
+    ScoreFactor
+} from './persona-analyzer'
+
+// Personalization engine
+export {
+    PersonalizationEngine,
+    createPersonalizationEngine,
+    createPersonalizationEngineWithConfig
+} from './personalization-engine'
+
+export type {
+    PersonalizationEngineConfig,
+    PersonalizationState
+} from './personalization-engine'
+
 // Storage and cache utilities
 export {
     StorageAdapter,
@@ -82,5 +111,5 @@ export {
 } from './storage'
 
 // Re-export commonly used utilities
-export type { DEFAULT_PERSONALIZATION_CONFIG as CONFIG } from './config'
+export { DEFAULT_PERSONALIZATION_CONFIG as CONFIG } from './config'
 export { personalizationStorage as storage } from './storage'

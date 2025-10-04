@@ -598,7 +598,7 @@ export class PersonaAnalyzer {
         let bestPersona = ''
         let bestScore = 0
 
-        for (const [personaId, score] of scores) {
+        for (const [personaId, score] of Array.from(scores.entries())) {
             if (score.score > bestScore) {
                 bestScore = score.score
                 bestPersona = personaId

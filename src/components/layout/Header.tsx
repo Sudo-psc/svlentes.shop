@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/Button'
+import { Logo } from '@/components/ui/Logo'
 import { scrollToSection, generateWhatsAppLink } from '@/lib/utils'
 import { Menu, X, Phone } from 'lucide-react'
 
@@ -69,22 +70,17 @@ Vim através do site SV Lentes e tenho interesse no serviço de assinatura com a
             <div className="container-custom">
                 <div className="flex items-center justify-between h-16 lg:h-20">
                     {/* Logo */}
-                    <div className="flex items-center">
-                        <a
-                            href="#hero"
-                            onClick={(e) => {
-                                e.preventDefault()
-                                scrollToSection('hero')
-                            }}
-                            className="text-2xl lg:text-3xl font-bold text-gradient hover:opacity-80 transition-opacity"
-                        >
-                            SV Lentes
-                        </a>
-                        <div className="hidden lg:block ml-3 text-xs text-gray-500">
-                            <div>SV Lentes</div>
-                            <div className="text-primary-600 font-medium">Dr. Philipe Saraiva Cruz</div>
-                        </div>
-                    </div>
+                    <a
+                        href="#hero"
+                        onClick={(e) => {
+                            e.preventDefault()
+                            scrollToSection('hero')
+                        }}
+                        className="hover:opacity-90 transition-opacity"
+                        aria-label="SV Lentes - Ir para o início"
+                    >
+                        <Logo variant="full" size="md" priority showSubtitle />
+                    </a>
 
                     {/* Navigation Desktop */}
                     <nav className="hidden md:flex items-center space-x-8">
