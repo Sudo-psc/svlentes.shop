@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
 import { Tabs, TabItem } from '@/components/ui/tabs'
+import { Icon } from '@/components/ui/Icon'
 import { howItWorksSteps, processTimeline, serviceFeatures } from '@/data/how-it-works'
 import { openWhatsAppWithContext } from '@/lib/whatsapp'
 import { trackEvent } from '@/lib/analytics'
@@ -329,38 +330,38 @@ export function HowItWorksSection({ className = '' }: HowItWorksSectionProps) {
                             </Button>
                         </div>
 
-                        {/* Trust Elements */}
+                        {/* Trust Elements - Usando Ícones Customizados */}
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-8 border-t border-gray-200">
                             <div className="text-center">
-                                <div className="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                                    <Shield className="w-6 h-6 text-green-600" />
+                                <div className="flex items-center justify-center mx-auto mb-2">
+                                    <Icon name="shieldSecurity" size="md" />
                                 </div>
                                 <div className="text-sm font-medium text-gray-900">100% Seguro</div>
                                 <div className="text-xs text-gray-600">Processo protegido</div>
                             </div>
 
                             <div className="text-center">
-                                <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                                    <Heart className="w-6 h-6 text-blue-600" />
+                                <div className="flex items-center justify-center mx-auto mb-2">
+                                    <Icon name="amorSaude" size="md" />
                                 </div>
                                 <div className="text-sm font-medium text-gray-900">Cuidado Médico</div>
                                 <div className="text-xs text-gray-600">Dr. Philipe CRM 65.870</div>
                             </div>
 
                             <div className="text-center">
-                                <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                                    <Users className="w-6 h-6 text-purple-600" />
+                                <div className="flex items-center justify-center mx-auto mb-2">
+                                    <Icon name="delivery" size="md" />
                                 </div>
-                                <div className="text-sm font-medium text-gray-900">5.000+ Clientes</div>
-                                <div className="text-xs text-gray-600">Já confiam no LAAS</div>
+                                <div className="text-sm font-medium text-gray-900">Entrega Garantida</div>
+                                <div className="text-xs text-gray-600">Lentes em casa</div>
                             </div>
 
                             <div className="text-center">
-                                <div className="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center mx-auto mb-2">
-                                    <Award className="w-6 h-6 text-yellow-600" />
+                                <div className="flex items-center justify-center mx-auto mb-2">
+                                    <Icon name="eyeCheckAward" size="md" />
                                 </div>
-                                <div className="text-sm font-medium text-gray-900">Pioneiro</div>
-                                <div className="text-xs text-gray-600">Primeiro no Brasil</div>
+                                <div className="text-sm font-medium text-gray-900">Qualidade Certificada</div>
+                                <div className="text-xs text-gray-600">Exames completos</div>
                             </div>
                         </div>
                     </div>

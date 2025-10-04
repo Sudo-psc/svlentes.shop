@@ -18,7 +18,9 @@
         "deploy:production": "./scripts/deploy.sh production",
         "deploy:rollback": "./scripts/deploy.sh rollback",
         "health-check": "curl -f http://localhost:3000/api/health-check",
-        "lighthouse": "lhci autorun"
+        "lighthouse": "lhci autorun",
+        "optimize:icons": "node scripts/optimize-icons.js",
+        "icons:catalog": "open docs/ICONES.md"
     },
     "dependencies": {
         "@heroicons/react": "^2.2.0",

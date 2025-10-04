@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { EconomyCalculator } from '@/components/forms/EconomyCalculator'
 import { Badge } from '@/components/ui/Badge'
+import { Icon } from '@/components/ui/Icon'
 import { type CalculatorData } from '@/lib/validations'
 import { type EconomyCalculationResult } from '@/lib/economy-calculator'
 import { formatCurrency } from '@/lib/utils'
@@ -81,14 +82,9 @@ export function EconomySection({ className = '' }: EconomySectionProps) {
 
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <Badge
-                        variant="info"
-                        size="lg"
-                        className="mb-6"
-                    >
-                        <Calculator className="w-4 h-4 mr-2" />
-                        Calculadora Gratuita
-                    </Badge>
+                    <div className="flex justify-center mb-6">
+                        <Icon name="calculator" size="lg" priority />
+                    </div>
 
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                         Descubra sua{' '}
@@ -101,9 +97,18 @@ export function EconomySection({ className = '' }: EconomySectionProps) {
                     </p>
                 </div>
 
-                {/* Stats */}
+                {/* Stats - Com Ícones Customizados */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-                    {economyStats.map((stat, index) => (
+                    <div className="text-center p-6 bg-white rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
+                        <div className="flex items-center justify-center mx-auto mb-4">
+                            <Icon name="piggyBank" size="md" />
+                        </div>
+                        <div className="text-2xl font-bold text-gray-900 mb-1">R$ 800</div>
+                        <div className="text-sm font-medium text-gray-700 mb-1">Economia média anual</div>
+                        <div className="text-xs text-gray-500">Nossos clientes economizam em média</div>
+                    </div>
+
+                    {economyStats.slice(1).map((stat, index) => (
                         <div
                             key={index}
                             className="text-center p-6 bg-white rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
