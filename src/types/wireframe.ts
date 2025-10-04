@@ -1,0 +1,152 @@
+// Tipos baseados no wireframe da landing page
+
+export interface HeaderProps {
+    logo: string; // "LAAS"
+    navigation: {
+        planos: string;
+        comoFunciona: string;
+        faq: string;
+        contato: string;
+    };
+    ctaPrimary: string; // "Agendar Consulta"
+    utilityIcons: string[]; // idioma/conta
+}
+
+export interface HeroSectionProps {
+    badge: string; // "Pioneiro no Brasil"
+    headline: string; // "Nunca mais fique sem lentes"
+    subheadline: string; // Assinatura integrada com logística e consulta
+    ctaPrimary: string; // "Agendar Consulta"
+    ctaSecondary: string; // "Falar no WhatsApp"
+    trustIndicators: {
+        anvisa: string;
+        crm: string; // "CRM 65.870"
+        outros: string[];
+    };
+    doctorCard: {
+        photo: string;
+        name: string; // Dr. Philipe Saraiva Cruz
+        crm: string; // CRM real
+        credentials: string;
+    };
+    leadForm: {
+        fields: ['nome', 'whatsapp', 'email'];
+        lgpdConsent: boolean;
+        ctaCalculator: string; // "Calcule sua economia"
+    };
+}
+
+export interface ProblemSolutionProps {
+    problems: Array<{
+        icon: string;
+        text: string;
+    }>;
+    solutions: Array<{
+        icon: string;
+        title: string;
+        description: string;
+    }>;
+    ctaContextual: string; // "Fale com um especialista"
+}
+
+export interface HowItWorksProps {
+    tabs: ['Mensal', 'Anual'];
+    steps: Array<{
+        number: number;
+        title: string;
+        description: string;
+        cost?: string;
+        economy?: string;
+    }>;
+    timeline: {
+        visual: string;
+        steps: string[];
+    };
+}
+
+export interface PricingPlan {
+    id: string;
+    name: string;
+    priceMonthly: number;
+    priceAnnual: number;
+    features: string[];
+    recommended?: boolean;
+    stripeProductId: string;
+    stripePriceId: string;
+    ctaText: string; // "Assinar" ou "Agendar"
+}
+
+export interface PricingSectionProps {
+    tabs: ['Mensal', 'Anual'];
+    plans: PricingPlan[];
+    comparisonTable: {
+        features: string[];
+        planComparison: Record<string, boolean | string>[];
+    };
+}
+
+export interface ReferralProgramProps {
+    mainCard: {
+        title: string;
+        description: string;
+        benefitIndicator: string;
+        benefitIndicated: string;
+    };
+    rulesCard: {
+        title: string;
+        rules: string[];
+    };
+}
+
+export interface AddOn {
+    id: string;
+    name: string;
+    description: string;
+    price?: number;
+    type: 'consulta' | 'teleorientacao' | 'seguro' | 'vip';
+}
+
+export interface AddOnsProps {
+    services: AddOn[];
+    layout: 'chips' | 'cards';
+}
+
+export interface FAQItem {
+    id: string;
+    question: string;
+    answer: string;
+    category?: string;
+}
+
+export interface FAQProps {
+    items: FAQItem[];
+    layout: 'accordion';
+    numbering: boolean; // true para numeração
+}
+
+export interface FinalCTAProps {
+    valueReinforcement: string;
+    benefits: string[];
+    ctaPrimary: string; // "Agendar Consulta"
+    ctaWhatsApp: string; // "Falar no WhatsApp"
+    quickForm?: {
+        fields: string[];
+        placement: 'mobile' | 'desktop';
+    };
+}
+
+export interface FooterProps {
+    legalInfo: {
+        address: string;
+        doctorCRM: string; // "CRM 106.888" / "CRM_EQP 155869.006"
+        businessHours: string;
+    };
+    utilityLinks: {
+        policies: string[];
+        terms: string[];
+    };
+    contact: {
+        whatsappFloat: boolean; // ícone flutuante mobile
+        businessCoverage: string; // "atendimento Brasil"
+    };
+}

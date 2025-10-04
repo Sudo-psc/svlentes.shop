@@ -1,0 +1,270 @@
+'use client'
+
+import { Badge } from '@/components/ui/Badge'
+import { Button } from '@/components/ui/Button'
+import { OptimizedImage } from '@/components/ui/OptimizedImage'
+import { doctorInfo } from '@/data/doctor-info'
+import { socialProofStats } from '@/data/trust-indicators'
+import { openWhatsAppWithContext } from '@/lib/whatsapp'
+import {
+    User,
+    Award,
+    GraduationCap,
+    Heart,
+    Star,
+    Users,
+    Clock,
+    MessageCircle,
+    Phone
+} from 'lucide-react'
+
+interface DoctorCardProps {
+    variant?: 'hero' | 'full' | 'compact'
+    showCTA?: boolean
+    className?: string
+}
+
+export function DoctorCard({
+    variant = 'hero',
+    showCTA = true,
+    className = ''
+}: DoctorCardProps) {
+
+    const handleConsultation = () => {
+        openWhatsAppWithContext('consultation', {
+            page: 'landing-page',
+            section: 'doctor-card',
+            userInfo: {
+                nome: 'Interessado via Doctor Card'
+            }
+        })
+    }
+
+    const handleWhatsApp = () => {
+        openWhatsAppWithContext('hero', {
+            page: 'landing-page',
+            section: 'doctor-card-whatsapp'
+        })
+    }
+
+    if (variant === 'compact') {
+        return (
+            <div className={`bg-white rounded-lg shadow-md border border-gray-100 p-4 ${className}`}>
+                <div className="flex items-center space-x-3">
+                    {/* Doctor Avatar */}
+                    <div className="w-12 h-12 rounded-full overflow-hidden flex-shrink-0">
+                        <OptimizedImage
+                            src={doctorInfo.photo}
+                            alt={`Foto do ${doctorInfo.name}`}
+                            width={48}
+                            height={48}
+                            quality={85}
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+
+                    {/* Doctor Info */}
+                    <div className="flex-1 min-w-0">
+                        <h4 className="font-semibold text-gray-900 truncate">
+                            {doctorInfo.name}
+                        </h4>
+                        <p className="text-sm text-primary-600">{doctorInfo.crm}</p>
+                    </div>
+
+                    {/* Quick CTA */}
+                    {showCTA && (
+                        <Button
+                            onClick={handleWhatsApp}
+                            size="sm"
+                            variant="outline"
+                            className="flex-shrink-0"
+                        >
+                            <MessageCircle className="w-4 h-4" />
+                        </Button>
+                    )}
+                </div>
+            </div>
+        )
+    }
+
+    if (variant === 'full') {
+        return (
+            <div className={`bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden ${className}`}>
+                {/* Header with gradient */}
+                <div className="bg-gradient-to-r from-primary-600 to-secondary-600 p-6 text-white">
+                    <div className="flex items-center space-x-4">
+                        {/* Doctor Photo */}
+                        <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-white/20">
+                            <OptimizedImage
+                                src={doctorInfo.photo}
+                                alt={`Foto do ${doctorInfo.name}`}
+                                width={80}
+                                height={80}
+                                quality={85}
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
+
+                        <div className="flex-1">
+                            <h3 className="text-2xl font-bold">{doctorInfo.name}</h3>
+                            <p className="text-primary-100 font-medium">{doctorInfo.crm} | {doctorInfo.specialty}</p>
+                            <p className="text-primary-200 text-sm mt-1">{doctorInfo.experience}</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Content */}
+                <div className="p-6 space-y-6">
+
+                    {/* Bio */}
+                    <div>
+                        <p className="text-gray-600 leading-relaxed">{doctorInfo.bio}</p>
+                    </div>
+
+                    {/* Credentials */}
+                    <div>
+                        <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
+                            <GraduationCap className="w-5 h-5 mr-2 text-primary-600" />
+                            Formação e Especialização
+                        </h4>
+                        <div className="space-y-2">
+                            {doctorInfo.credentials.map((credential, index) => (
+                                <div key={index} className="flex items-center space-x-2 text-sm text-gray-600">
+                                    <Award className="w-4 h-4 text-secondary-500" />
+                                    <span>{credential}</span>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Social Proof */}
+                    <div>
+                        <h4 className="font-semibold text-gray-900 mb-3 flex items-center">
+                            <Star className="w-5 h-5 mr-2 text-primary-600" />
+                            Números que Comprovam
+                        </h4>
+                        <div className="grid grid-cols-2 gap-4">
+                            {socialProofStats.map((stat) => (
+                                <div key={stat.id} className="text-center p-3 bg-gray-50 rounded-lg">
+                                    <div className="text-2xl font-bold text-primary-600">{stat.value}</div>
+                                    <div className="text-sm text-gray-600">{stat.label}</div>
+                                </div>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* CTAs */}
+                    {showCTA && (
+                        <div className="space-y-3 pt-4 border-t border-gray-200">
+                            <Button
+                                onClick={handleConsultation}
+                                className="w-full flex items-center justify-center space-x-2"
+                            >
+                                <Phone className="w-4 h-4" />
+                                <span>Agendar Consulta</span>
+                            </Button>
+
+                            <Button
+                                onClick={handleWhatsApp}
+                                variant="outline"
+                                className="w-full flex items-center justify-center space-x-2"
+                            >
+                                <MessageCircle className="w-4 h-4" />
+                                <span>Conversar no WhatsApp</span>
+                            </Button>
+                        </div>
+                    )}
+                </div>
+            </div>
+        )
+    }
+
+    // Default: hero variant
+    return (
+        <div className={`bg-white rounded-2xl shadow-xl border border-gray-100 p-6 transform hover:scale-105 transition-all duration-300 ${className}`}>
+            <div className="text-center space-y-4">
+
+                {/* Doctor Photo */}
+                <div className="relative">
+                    <div className="w-24 h-24 mx-auto rounded-full overflow-hidden border-4 border-primary-100">
+                        <OptimizedImage
+                            src={doctorInfo.photo}
+                            alt={`Foto do ${doctorInfo.name}`}
+                            width={96}
+                            height={96}
+                            quality={85}
+                            priority={true}
+                            className="w-full h-full object-cover"
+                        />
+                    </div>
+
+                    {/* Verification Badge */}
+                    <div className="absolute -bottom-1 -right-1 w-8 h-8 bg-green-500 rounded-full flex items-center justify-center border-2 border-white">
+                        <Award className="w-4 h-4 text-white" />
+                    </div>
+                </div>
+
+                {/* Doctor Info */}
+                <div>
+                    <h3 className="text-xl font-bold text-gray-900">
+                        {doctorInfo.name}
+                    </h3>
+                    <p className="text-primary-600 font-medium">
+                        {doctorInfo.crm} | {doctorInfo.specialty}
+                    </p>
+                    <p className="text-sm text-gray-600 mt-1">
+                        {doctorInfo.experience}
+                    </p>
+                </div>
+
+                {/* Key Credentials */}
+                <div className="space-y-2">
+                    <div className="flex flex-wrap justify-center gap-2">
+                        <Badge variant="success" size="sm">
+                            <Heart className="w-3 h-3 mr-1" />
+                            SBO
+                        </Badge>
+                        <Badge variant="info" size="sm">
+                            <GraduationCap className="w-3 h-3 mr-1" />
+                            Especialista
+                        </Badge>
+                        <Badge variant="default" size="sm">
+                            <Users className="w-3 h-3 mr-1" />
+                            5000+ pacientes
+                        </Badge>
+                    </div>
+                </div>
+
+                {/* Quick Stats */}
+                <div className="grid grid-cols-2 gap-4 py-4 border-t border-gray-200">
+                    <div className="text-center">
+                        <div className="text-2xl font-bold text-primary-600">98%</div>
+                        <div className="text-xs text-gray-600">Satisfação</div>
+                    </div>
+                    <div className="text-center">
+                        <div className="text-2xl font-bold text-secondary-600">24/7</div>
+                        <div className="text-xs text-gray-600">Suporte</div>
+                    </div>
+                </div>
+
+                {/* CTA */}
+                {showCTA && (
+                    <div className="space-y-2">
+                        <Button
+                            onClick={handleConsultation}
+                            size="sm"
+                            className="w-full flex items-center justify-center space-x-2"
+                        >
+                            <Phone className="w-4 h-4" />
+                            <span>Agendar Consulta</span>
+                        </Button>
+
+                        <p className="text-xs text-gray-500">
+                            ✓ Primeira consulta sem compromisso
+                        </p>
+                    </div>
+                )}
+            </div>
+        </div>
+    )
+}
