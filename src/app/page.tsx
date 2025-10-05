@@ -14,7 +14,7 @@ export const metadata: Metadata = {
         'Dr. Philipe Saraiva Cruz oftalmologista',
         'lentes tóricas para astigmatismo',
         'lentes multifocais presbiopia',
-        'clínica oftalmológica Itaim Bibi',
+        'clínica oftalmológica Caratinga',
         'entrega domiciliar lentes de contato',
         'economia lentes de contato assinatura',
         'lentes de contato descartáveis qualidade',

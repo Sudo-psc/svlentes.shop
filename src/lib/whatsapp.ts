@@ -137,7 +137,7 @@ export function openWhatsAppWithContext(
     context: keyof typeof whatsappMessages,
     data?: WhatsAppContextData
 ) {
-    const phone = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5511947038078'
+    const phone = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5533998601427'
     const message = generateContextualMessage(context, data)
     const link = generateWhatsAppLink(phone, message)
 

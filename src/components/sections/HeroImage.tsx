@@ -37,7 +37,7 @@ export function HeroImage({ className = '', imageVariant = 'hero1' }: HeroImageP
                     />
                     <Image
                         src={imageSrc}
-                        alt="Paciente usando lentes com acompanhamento do Dr. Philipe em Itaim Bibi, São Paulo"
+                        alt="Paciente usando lentes com acompanhamento do Dr. Philipe em Caratinga, MG"
                         fill
                         priority={false}
                         loading="lazy"

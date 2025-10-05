@@ -55,7 +55,7 @@ export function Header({ className }: HeaderProps) {
 Vim através do site SV Lentes e tenho interesse no serviço de assinatura com acompanhamento médico.`
 
         const whatsappLink = generateWhatsAppLink(
-            process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5511947038078',
+            process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5533998601427',
             whatsappMessage
         )
 
