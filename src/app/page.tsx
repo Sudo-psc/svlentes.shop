@@ -1,97 +1,74 @@
 import { Metadata } from 'next'
 import { HeroSection } from '@/components/sections/HeroSection'
-import { LeadCaptureSection } from '@/components/sections/LeadCaptureSection'
-import { EconomySection } from '@/components/sections/EconomySection'
-import { ProblemSolutionSection } from '@/components/sections/ProblemSolutionSection'
-import { HowItWorksSection } from '@/components/sections/HowItWorksSection'
-import ReferralProgram from '@/components/sections/ReferralProgram'
-import AddOns from '@/components/sections/AddOns'
-import FAQ from '@/components/sections/FAQ'
-import { FinalCTA } from '@/components/sections/FinalCTA'
-import { StructuredData } from '@/components/seo/StructuredData'
-import { LazySection } from '@/components/ui/LazySection'
-import { addOnsData } from '@/data/add-ons'
-import {
-    generateMedicalBusinessStructuredData,
-    generateFAQStructuredData,
-    generateServiceStructuredData,
-    generateBreadcrumbStructuredData
-} from '@/lib/seo'
+import { MetricsStrip } from '@/components/sections/MetricsStrip'
+import { QuickStartSection } from '@/components/sections/QuickStartSection'
 
 export const metadata: Metadata = {
-    title: 'SV Lentes - Nunca mais fique sem lentes | Assinatura com Acompanhamento Médico',
-    description: 'Pioneiro no Brasil em assinatura de lentes de contato com acompanhamento médico especializado. Dr. Philipe Saraiva Cruz - CRM 65.870. Economia de até 40%.',
+    title: 'SV Lentes Itaim Bibi São Paulo | Assinatura Lentes com Dr. Philipe Saraiva Cruz',
+    description: 'Assinatura de lentes de contato em Itaim Bibi, São Paulo, com acompanhamento médico do Dr. Philipe Saraiva Cruz - CRM 69.870. Lentes diárias, mensais, tóricas e multifocais. Economia de até 40% e entrega grátis.',
+    keywords: [
+        'lentes de contato São Paulo',
+        'lentes diárias Itaim Bibi',
+        'lentes mensais assinatura',
+        'lentes tóricas astigmatismo',
+        'lentes multifocais presbiopia',
+        'oftalmologista lentes de contato',
+        'Dr. Philipe Saraiva Cruz CRM 69.870',
+        'entrega lentes de contato São Paulo',
+        'assinatura lentes de contato mensal',
+        'lentes de contato descartáveis',
+        'clínica oftalmológica Itaim Bibi'
+    ],
     alternates: {
         canonical: 'https://svlentes.shop',
     },
 }
 
 export default function HomePage() {
-    const medicalBusinessData = generateMedicalBusinessStructuredData()
-    const faqData = generateFAQStructuredData()
-    const serviceData = generateServiceStructuredData()
-    const breadcrumbData = generateBreadcrumbStructuredData([
-        { name: 'Início', url: 'https://svlentes.shop' }
-    ])
-
     return (
         <div className="min-h-screen">
-            <StructuredData data={[medicalBusinessData, faqData, serviceData, breadcrumbData]} />
-
             {/* Hero Section */}
             <section id="hero">
                 <HeroSection />
             </section>
 
-            {/* Lead Capture Section */}
-            <section id="planos-precos">
+            {/* Metrics Strip - Consolidado após Hero */}
+            <section className="bg-white">
+                <MetricsStrip />
+            </section>
+
+            {/* Quick Start Section - Novo fluxo */}
+            <section className="bg-gradient-to-br from-primary-600 to-primary-700">
+                <QuickStartSection />
+            </section>
+
+            {/* Temporariamente comentado para debug */}
+            {/* <section id="planos-precos" className="bg-gray-50">
                 <LeadCaptureSection />
-            </section>
-
-            {/* Seção Problema-Solução */}
-            <LazySection>
-                <section id="problema-solucao">
-                    <ProblemSolutionSection />
-                </section>
+            </section> */}
+            {/* <LazySection>
+                <ProblemSolutionSection />
             </LazySection>
 
-            {/* Calculadora de Economia */}
             <LazySection>
-                <section id="calculadora-economia">
-                    <EconomySection />
-                </section>
+                <EconomySection />
             </LazySection>
 
-            {/* Seção Como Funciona */}
             <LazySection>
-                <section id="como-funciona">
-                    <HowItWorksSection />
-                </section>
+                <HowItWorksSection />
             </LazySection>
 
-            {/* Programa de Indicação */}
             <LazySection>
-                <section id="programa-indicacao">
-                    <ReferralProgram />
-                </section>
+                <ReferralProgram />
             </LazySection>
 
-            {/* Seção de Add-ons */}
-            <section id="servicos-adicionais">
-                <AddOns services={addOnsData} layout="cards" />
-            </section>
+            <AddOns services={addOnsData} layout="cards" />
 
-            {/* Seção FAQ */}
-            <section id="perguntas-frequentes">
-                <FAQ />
-            </section>
+            <FAQ />
 
-            {/* CTA Final */}
             <LazySection>
-                <section id="contato">
-                    <FinalCTA />
-                </section>
-            </LazySection>
+                <FinalCTA />
+            </LazySection> */}
         </div>
     )
 }

@@ -1,16 +1,28 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://svlentes.com.br/sitemap.xml
+# Permitir indexação de todas as páginas importantes
+Allow: /planos-precos
+Allow: /como-funciona
+Allow: /lentes-diarias
+Allow: /calculadora
+Allow: /perguntas-frequentes
 
-# Disallow admin areas
+# Sitemap
+Sitemap: https://svlentes.shop/sitemap.xml
+
+# Bloquear acesso a áreas administrativas
+Disallow: /admin/
 Disallow: /api/
 Disallow: /_next/
-Disallow: /admin/
+Disallow: /static/
 
-# Allow important pages
-Allow: /
-Allow: /agendar-consulta
-Allow: /success
-Allow: /cancel
+# Bloquear acesso a arquivos temporários
+Disallow: /temp/
+Disallow: /.well-known/
+
+# Tempo de crawl (opcional)
+Crawl-delay: 1
+
+# Host (opcional)
+Host: svlentes.shop

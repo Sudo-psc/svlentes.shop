@@ -13,7 +13,9 @@ export async function POST(request: NextRequest) {
         const enrichedReport = {
             ...errorReport,
             serverTimestamp: new Date().toISOString(),
-            ip: request.ip || 'unknown',
+            ip: request.headers.get('x-forwarded-for') ||
+                request.headers.get('x-real-ip') ||
+                'unknown',
             headers: {
                 userAgent: request.headers.get('user-agent'),
                 referer: request.headers.get('referer'),

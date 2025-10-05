@@ -161,7 +161,7 @@ export function DoctorCard({
                                 className="w-full flex items-center justify-center space-x-2"
                             >
                                 <Phone className="w-4 h-4" />
-                                <span>Agendar Consulta</span>
+                                <span>Agendar consulta com oftalmologista</span>
                             </Button>
 
                             <Button
@@ -170,7 +170,7 @@ export function DoctorCard({
                                 className="w-full flex items-center justify-center space-x-2"
                             >
                                 <MessageCircle className="w-4 h-4" />
-                                <span>Conversar no WhatsApp</span>
+                                <span>Tirar dúvidas no WhatsApp</span>
                             </Button>
                         </div>
                     )}
@@ -193,7 +193,7 @@ export function DoctorCard({
                             width={96}
                             height={96}
                             quality={85}
-                            priority={true}
+                            priority={false}
                             className="w-full h-full object-cover"
                         />
                     </div>
@@ -235,17 +235,6 @@ export function DoctorCard({
                     </div>
                 </div>
 
-                {/* Quick Stats */}
-                <div className="grid grid-cols-2 gap-4 py-4 border-t border-gray-200/50">
-                    <div className="text-center bg-gradient-to-br from-primary-50/80 to-primary-100/50 backdrop-blur-sm rounded-xl p-3">
-                        <div className="text-2xl font-bold text-primary-600 drop-shadow-sm">98%</div>
-                        <div className="text-xs text-gray-700 font-medium">Satisfação</div>
-                    </div>
-                    <div className="text-center bg-gradient-to-br from-secondary-50/80 to-secondary-100/50 backdrop-blur-sm rounded-xl p-3">
-                        <div className="text-2xl font-bold text-secondary-600 drop-shadow-sm">24/7</div>
-                        <div className="text-xs text-gray-700 font-medium">Suporte</div>
-                    </div>
-                </div>
 
                 {/* CTA */}
                 {showCTA && (
@@ -256,7 +245,7 @@ export function DoctorCard({
                             className="w-full flex items-center justify-center space-x-2"
                         >
                             <Phone className="w-4 h-4" />
-                            <span>Agendar Consulta</span>
+                            <span>Agendar consulta com oftalmologista</span>
                         </Button>
 
                         <p className="text-xs text-gray-500">

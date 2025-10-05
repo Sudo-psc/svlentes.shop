@@ -4,7 +4,20 @@ const nextConfig = {
         optimizePackageImports: ['@heroicons/react'],
     },
     images: {
-        domains: ['images.unsplash.com', 'via.placeholder.com'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'images.unsplash.com',
+                port: '',
+                pathname: '/**',
+            },
+            {
+                protocol: 'https',
+                hostname: 'via.placeholder.com',
+                port: '',
+                pathname: '/**',
+            },
+        ],
         formats: ['image/webp', 'image/avif'],
         minimumCacheTTL: 60 * 60 * 24 * 7, // 7 days
         dangerouslyAllowSVG: true,
@@ -70,42 +83,7 @@ const nextConfig = {
             },
         ]
     },
-    webpack: (config, { dev, isServer }) => {
-        // Optimize bundle size and fix chunk loading issues
-        if (!dev && !isServer) {
-            config.optimization.splitChunks = {
-                chunks: 'all',
-                minSize: 20000,
-                maxSize: 244000,
-                cacheGroups: {
-                    default: {
-                        minChunks: 2,
-                        priority: -20,
-                        reuseExistingChunk: true,
-                    },
-                    vendor: {
-                        test: /[\\/]node_modules[\\/]/,
-                        name: 'vendors',
-                        priority: -10,
-                        chunks: 'all',
-                    },
-                    react: {
-                        test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
-                        name: 'react',
-                        priority: 20,
-                        chunks: 'all',
-                    },
-                    common: {
-                        name: 'common',
-                        minChunks: 2,
-                        chunks: 'all',
-                        enforce: true,
-                        priority: 5,
-                    },
-                },
-            }
-        }
-
+    webpack: (config) => {
         // Fix for potential module resolution issues
         config.resolve.fallback = {
             ...config.resolve.fallback,

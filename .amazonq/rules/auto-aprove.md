@@ -1,0 +1,1 @@
+Auto-aprove git commands

@@ -48,22 +48,14 @@ export function TrustBadges({
     )
 }
 
-// Componente para indicadores de confiança em linha
+// Componente simplificado para selo Pioneiro (outros badges no Footer)
 export function InlineTrustIndicators({ className = '' }: { className?: string }) {
     return (
-        <div className={`flex items-center space-x-4 text-sm text-gray-600 ${className}`}>
-            <div className="flex items-center space-x-1">
-                <Shield className="w-4 h-4 text-green-500" />
-                <span>ANVISA</span>
-            </div>
-            <div className="flex items-center space-x-1">
-                <CheckCircle className="w-4 h-4 text-blue-500" />
-                <span>CRM 65.870</span>
-            </div>
-            <div className="flex items-center space-x-1">
-                <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
-                <span>Pioneiro no Brasil</span>
-            </div>
+        <div className={`flex items-center justify-center space-x-2 ${className}`}>
+            <Shield className="w-4 h-4 text-primary-600" />
+            <span className="text-sm font-medium text-primary-700">
+                Pioneiro no Brasil em Assinatura de Lentes
+            </span>
         </div>
     )
 }

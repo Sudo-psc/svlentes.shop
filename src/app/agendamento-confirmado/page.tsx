@@ -1,7 +1,7 @@
 'use client'
 
 import { useSearchParams, useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import { Button } from '@/components/ui/Button'
 import { CheckCircleIcon, ClockIcon, PhoneIcon, EnvelopeIcon } from '@heroicons/react/24/outline'
 
@@ -12,7 +12,7 @@ interface SchedulingDetails {
     nextSteps: string[]
 }
 
-export default function AgendamentoConfirmadoPage() {
+function AgendamentoConfirmadoContent() {
     const searchParams = useSearchParams()
     const router = useRouter()
     const [schedulingDetails, setSchedulingDetails] = useState<SchedulingDetails | null>(null)
@@ -206,5 +206,20 @@ export default function AgendamentoConfirmadoPage() {
                 </div>
             </div>
         </div>
+    )
+}
+
+export default function AgendamentoConfirmadoPage() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+                    <p className="text-gray-600">Carregando...</p>
+                </div>
+            </div>
+        }>
+            <AgendamentoConfirmadoContent />
+        </Suspense>
     )
 }

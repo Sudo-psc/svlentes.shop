@@ -26,7 +26,7 @@ export function LazySection({
 
     return (
         <div ref={ref} className={className}>
-            {hasIntersected ? children : fallback}
+            {hasIntersected ? <>{children}</> : fallback}
         </div>
     )
 }

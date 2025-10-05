@@ -1,428 +1,307 @@
 'use client'
 
 import { useState } from 'react'
-import { useForm } from 'react-hook-form'
-import { zodResolver } from '@hookform/resolvers/zod'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
-import { Select, SelectOption } from '@/components/ui/Select'
-import { Badge } from '@/components/ui/Badge'
-import { calculatorSchema, type CalculatorData } from '@/lib/validations'
-import { trackEvent } from '@/lib/analytics'
-import { trackCalculatorUsage } from '@/lib/conversion-tracking'
-import { calculateEconomy, formatEconomyResults, type EconomyCalculationResult } from '@/lib/economy-calculator'
-import { openWhatsAppWithContext } from '@/lib/whatsapp'
-import { formatCurrency } from '@/lib/utils'
-import {
-    Calculator,
-    TrendingDown,
-    DollarSign,
-    Calendar,
-    CheckCircle,
-    ArrowRight,
-    Sparkles,
-    Target,
-    MessageCircle,
-    Phone
-} from 'lucide-react'
+import { Checkbox } from '@/components/ui/Checkbox'
+import { Calculator, Plus, Minus, CheckCircle, ArrowRight } from 'lucide-react'
 
-interface EconomyCalculatorProps {
-    variant?: 'full' | 'compact' | 'embedded'
-    initialData?: Partial<CalculatorData>
-    onCalculate?: (data: CalculatorData, result: EconomyCalculationResult) => void
-    className?: string
+interface CalculatorData {
+    currentSpending: string
+    lensType: 'mensal' | 'trimestral' | 'semestral'
+    addOns: {
+        solution: boolean
+        drops: boolean
+        case: boolean
+        consultation: boolean
+    }
 }
 
-export function EconomyCalculator({
-    variant = 'full',
-    initialData,
-    onCalculate,
-    className = ''
-}: EconomyCalculatorProps) {
-    const [result, setResult] = useState<EconomyCalculationResult | null>(null)
-    const [isCalculating, setIsCalculating] = useState(false)
+interface EconomyResult {
+    monthlyEconomy: number
+    annualEconomy: number
+    percentage: number
+    planPrice: number
+}
 
-    const lensTypeOptions: SelectOption[] = [
-        {
-            value: 'daily',
-            label: 'Lentes Diárias',
-            description: 'Uso único, máxima higiene'
-        },
-        {
-            value: 'weekly',
-            label: 'Lentes Semanais',
-            description: 'Duração de 1 semana'
-        },
-        {
-            value: 'monthly',
-            label: 'Lentes Mensais',
-            description: 'Duração de 1 mês'
-        }
-    ]
+const addOnPrices = {
+    solution: 25,
+    drops: 15,
+    case: 10,
+    consultation: 80
+}
 
-    const usageOptions: SelectOption[] = [
-        {
-            value: 'occasional',
-            label: 'Uso Ocasional',
-            description: '~10 dias por mês'
-        },
-        {
-            value: 'regular',
-            label: 'Uso Regular',
-            description: '~20 dias por mês'
-        },
-        {
-            value: 'daily',
-            label: 'Uso Diário',
-            description: 'Todos os dias'
-        }
-    ]
+const addOnDescriptions = {
+    solution: 'Solução de limpeza mensal',
+    drops: 'Lágrimas artificiais',
+    case: 'Estojos de reposição',
+    consultation: 'Consultas de acompanhamento'
+}
 
-    const {
-        register,
-        handleSubmit,
-        formState: { errors },
-        watch,
-        setValue
-    } = useForm<CalculatorData>({
-        resolver: zodResolver(calculatorSchema),
-        defaultValues: {
-            nome: initialData?.nome || '',
-            whatsapp: initialData?.whatsapp || '',
-            email: initialData?.email || '',
-            lgpdConsent: initialData?.lgpdConsent || false,
-            currentSpending: initialData?.currentSpending || 0,
-            lensType: initialData?.lensType || 'monthly',
-            usage: initialData?.usage || 'regular'
+export function EconomyCalculator({ onContinue }: { onContinue: (data: CalculatorData, result: EconomyResult) => void }) {
+    const [calculatorData, setCalculatorData] = useState<CalculatorData>({
+        currentSpending: '',
+        lensType: 'mensal',
+        addOns: {
+            solution: false,
+            drops: false,
+            case: false,
+            consultation: false
         }
     })
 
-    const handleCalculate = async (data: CalculatorData) => {
-        setIsCalculating(true)
+    const [showResult, setShowResult] = useState(false)
+    const [result, setResult] = useState<EconomyResult | null>(null)
 
-        try {
-            // Simular processamento
-            await new Promise(resolve => setTimeout(resolve, 1000))
+    const calculateEconomy = (): EconomyResult => {
+        const currentSpending = parseFloat(calculatorData.currentSpending) || 0
 
-            const calculationResult = calculateEconomy({
-                lensType: data.lensType,
-                usage: data.usage,
-                currentSpending: data.currentSpending || undefined
-            })
+        // Preço base do plano conforme tipo de lente
+        const basePlanPrice = {
+            mensal: 89,
+            trimestral: 79,
+            semestral: 69
+        }[calculatorData.lensType]
 
-            setResult(calculationResult)
+        // Calcular preço dos add-ons
+        const addOnsTotal = Object.entries(calculatorData.addOns)
+            .filter(([_, selected]) => selected)
+            .reduce((total, [addOn]) => total + addOnPrices[addOn as keyof typeof addOnPrices], 0)
 
-            // Callback personalizado
-            onCalculate?.(data, calculationResult)
+        const planPrice = basePlanPrice + addOnsTotal
+        const monthlyEconomy = currentSpending - planPrice
+        const annualEconomy = monthlyEconomy * 12
+        const percentage = currentSpending > 0 ? (monthlyEconomy / currentSpending) * 100 : 0
 
-            // Analytics tracking
-            trackCalculatorUsage({
-                currentSpending: data.currentSpending,
-                lensType: data.lensType,
-                usage: data.usage,
-                economyCalculated: calculationResult.annualSavings,
-            })
-
-        } catch (error) {
-            console.error('Erro no cálculo:', error)
-        } finally {
-            setIsCalculating(false)
+        return {
+            monthlyEconomy,
+            annualEconomy,
+            percentage,
+            planPrice
         }
     }
 
-    const handleWhatsAppContact = () => {
-        const formData = watch()
-        openWhatsAppWithContext('calculator', {
-            page: 'landing-page',
-            section: 'economy-calculator',
-            calculatedEconomy: result?.annualSavings,
-            planInterest: result?.recommendedPlan.name,
-            userInfo: {
-                nome: formData.nome,
-                email: formData.email,
-                whatsapp: formData.whatsapp
-            }
-        })
+    const handleCalculate = () => {
+        if (!calculatorData.currentSpending) return
+
+        const calculationResult = calculateEconomy()
+        setResult(calculationResult)
+        setShowResult(true)
     }
 
-    const handleScheduleConsultation = () => {
-        const formData = watch()
-        openWhatsAppWithContext('consultation', {
-            page: 'landing-page',
-            section: 'economy-calculator-consultation',
-            calculatedEconomy: result?.annualSavings,
-            planInterest: result?.recommendedPlan.name,
-            userInfo: {
-                nome: formData.nome,
-                email: formData.email,
-                whatsapp: formData.whatsapp
+    const handleAddOnToggle = (addOn: keyof typeof calculatorData.addOns) => {
+        setCalculatorData(prev => ({
+            ...prev,
+            addOns: {
+                ...prev.addOns,
+                [addOn]: !prev.addOns[addOn]
             }
-        })
+        }))
     }
 
-    if (variant === 'compact' && result) {
-        return (
-            <div className={`bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg p-6 ${className}`}>
-                <div className="text-center">
-                    <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <TrendingDown className="w-8 h-8 text-green-600" />
-                    </div>
-                    <h3 className="text-xl font-bold text-green-800 mb-2">
-                        Você pode economizar
-                    </h3>
-                    <div className="text-3xl font-bold text-green-600 mb-4">
-                        {formatCurrency(result.annualSavings)} por ano
-                    </div>
-                    <Button
-                        onClick={handleWhatsAppContact}
-                        variant="whatsapp"
-                        className="w-full"
-                    >
-                        <MessageCircle className="w-4 h-4 mr-2" />
-                        Quero Economizar Agora
-                    </Button>
-                </div>
-            </div>
-        )
+    const handleContinue = () => {
+        if (result) {
+            onContinue(calculatorData, result)
+        }
     }
+
+    const selectedAddOnsTotal = Object.entries(calculatorData.addOns)
+        .filter(([_, selected]) => selected)
+        .reduce((total, [addOn]) => total + addOnPrices[addOn as keyof typeof addOnPrices], 0)
+
+    const basePlanPrice = {
+        mensal: 89,
+        trimestral: 79,
+        semestral: 69
+    }[calculatorData.lensType]
+
+    const totalPlanPrice = basePlanPrice + selectedAddOnsTotal
 
     return (
-        <div className={`bg-white rounded-2xl shadow-xl border border-gray-100 overflow-hidden ${className}`}>
-            {/* Header */}
-            <div className="bg-gradient-to-r from-primary-600 to-secondary-600 p-6 text-white">
-                <div className="text-center">
-                    <div className="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                        <Calculator className="w-8 h-8 text-white" />
-                    </div>
-                    <h2 className="text-2xl font-bold mb-2">Calculadora de Economia</h2>
-                    <p className="text-primary-100">
-                        Descubra quanto você pode economizar com nossa assinatura
-                    </p>
+        <div className="bg-white rounded-lg shadow-lg border border-gray-200 p-6">
+            <div className="text-center mb-6">
+                <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                    <Calculator className="w-6 h-6 text-primary-600" />
                 </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
+                    Calcule sua Economia
+                </h3>
+                <p className="text-sm text-gray-600">
+                    Descubra quanto você pode economizar sem compromisso
+                </p>
             </div>
 
-            <div className="p-6">
-                {!result ? (
-                    /* Formulário de Cálculo */
-                    <form onSubmit={handleSubmit(handleCalculate)} className="space-y-6">
+            {!showResult ? (
+                <div className="space-y-4">
+                    <Input
+                        label="Quanto você gasta por mês com lentes?"
+                        placeholder="R$ 0,00"
+                        value={calculatorData.currentSpending}
+                        onChange={(e) => setCalculatorData(prev => ({ ...prev, currentSpending: e.target.value }))}
+                        type="number"
+                        min="0"
+                        step="0.01"
+                    />
 
-                        {/* Dados Pessoais */}
-                        <div className="space-y-4">
-                            <h3 className="text-lg font-semibold text-gray-900 flex items-center">
-                                <Target className="w-5 h-5 mr-2 text-primary-600" />
-                                Seus Dados
-                            </h3>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <Input
-                                    {...register('nome')}
-                                    label="Nome"
-                                    placeholder="Seu nome"
-                                    error={errors.nome?.message}
-                                    required
-                                />
-
-                                <Input
-                                    {...register('whatsapp')}
-                                    label="WhatsApp"
-                                    placeholder="(11) 99999-9999"
-                                    error={errors.whatsapp?.message}
-                                    required
-                                />
-                            </div>
-
-                            <Input
-                                {...register('email')}
-                                type="email"
-                                label="Email"
-                                placeholder="seu@email.com"
-                                error={errors.email?.message}
-                                required
-                            />
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                            Tipo de lente que usa atualmente
+                        </label>
+                        <div className="grid grid-cols-3 gap-2">
+                            {[
+                                { value: 'mensal', label: 'Mensal' },
+                                { value: 'trimestral', label: 'Trimestral' },
+                                { value: 'semestral', label: 'Semestral' }
+                            ].map((type) => (
+                                <button
+                                    key={type.value}
+                                    onClick={() => setCalculatorData(prev => ({ ...prev, lensType: type.value as any }))}
+                                    className={`px-3 py-2 text-sm font-medium rounded-lg border transition-colors ${calculatorData.lensType === type.value
+                                            ? 'bg-primary-600 text-white border-primary-600'
+                                            : 'bg-white text-gray-700 border-gray-300 hover:bg-gray-50'
+                                        }`}
+                                >
+                                    {type.label}
+                                </button>
+                            ))}
                         </div>
+                    </div>
 
-                        {/* Configurações das Lentes */}
-                        <div className="space-y-4">
-                            <h3 className="text-lg font-semibold text-gray-900 flex items-center">
-                                <Sparkles className="w-5 h-5 mr-2 text-primary-600" />
-                                Suas Lentes Atuais
-                            </h3>
-
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                <Select
-                                    {...register('lensType')}
-                                    label="Tipo de Lente"
-                                    options={lensTypeOptions}
-                                    error={errors.lensType?.message}
-                                    required
-                                />
-
-                                <Select
-                                    {...register('usage')}
-                                    label="Frequência de Uso"
-                                    options={usageOptions}
-                                    error={errors.usage?.message}
-                                    required
-                                />
-                            </div>
-
-                            <Input
-                                {...register('currentSpending', { valueAsNumber: true })}
-                                type="number"
-                                label="Gasto Mensal Atual (opcional)"
-                                placeholder="Ex: 150"
-                                error={errors.currentSpending?.message}
-                                helperText="Se souber quanto gasta por mês, isso tornará o cálculo mais preciso"
-                            />
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700 mb-3">
+                            Serviços adicionais que utiliza
+                        </label>
+                        <div className="space-y-2">
+                            {Object.entries(addOnDescriptions).map(([key, description]) => (
+                                <div
+                                    key={key}
+                                    className="flex items-center justify-between p-3 border rounded-lg hover:bg-gray-50 cursor-pointer transition-colors"
+                                    onClick={() => handleAddOnToggle(key as keyof typeof calculatorData.addOns)}
+                                >
+                                    <div className="flex items-center space-x-3">
+                                        <Checkbox
+                                            checked={calculatorData.addOns[key as keyof typeof calculatorData.addOns]}
+                                            onChange={() => { }}
+                                        />
+                                        <span className="text-sm text-gray-700">{description}</span>
+                                    </div>
+                                    <span className="text-sm font-medium text-gray-900">
+                                        +R$ {addOnPrices[key as keyof typeof addOnPrices]}
+                                    </span>
+                                </div>
+                            ))}
                         </div>
+                    </div>
 
-                        {/* LGPD */}
-                        <div className="pt-4 border-t border-gray-200">
-                            <label className="flex items-start space-x-3">
-                                <input
-                                    {...register('lgpdConsent')}
-                                    type="checkbox"
-                                    className="mt-1"
-                                    required
-                                />
-                                <span className="text-sm text-gray-700">
-                                    Aceito receber o resultado por WhatsApp e concordo com a{' '}
-                                    <a href="/politica-privacidade" className="text-primary-600 hover:underline">
-                                        política de privacidade
-                                    </a>
-                                </span>
-                            </label>
-                            {errors.lgpdConsent && (
-                                <p className="text-sm text-red-600 mt-1">{errors.lgpdConsent.message}</p>
-                            )}
-                        </div>
-
-                        {/* Botão de Cálculo */}
-                        <Button
-                            type="submit"
-                            loading={isCalculating}
-                            disabled={!watch('lgpdConsent')}
-                            className="w-full flex items-center justify-center space-x-2 text-lg py-4"
-                        >
-                            <Calculator className="w-5 h-5" />
-                            <span>Calcular Minha Economia</span>
-                        </Button>
-                    </form>
-                ) : (
-                    /* Resultado do Cálculo */
-                    <div className="space-y-6">
-
-                        {/* Resultado Principal */}
-                        <div className="text-center bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg p-6">
-                            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <TrendingDown className="w-10 h-10 text-green-600" />
+                    {/* Resumo do Carrinho */}
+                    <div className="bg-gray-50 rounded-lg p-4 border border-gray-200">
+                        <h4 className="font-semibold text-gray-900 mb-3">Resumo do Plano</h4>
+                        <div className="space-y-2 text-sm">
+                            <div className="flex justify-between">
+                                <span className="text-gray-600">Plano {calculatorData.lensType}</span>
+                                <span className="font-medium">R$ {basePlanPrice}</span>
                             </div>
-
-                            <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                                Sua Economia Anual
-                            </h3>
-
-                            <div className="text-4xl font-bold text-green-600 mb-4">
-                                {formatCurrency(result.annualSavings)}
-                            </div>
-
-                            <div className="flex items-center justify-center space-x-4 text-sm text-gray-600">
-                                <div className="flex items-center space-x-1">
-                                    <DollarSign className="w-4 h-4" />
-                                    <span>{result.savingsPercentage.toFixed(0)}% de economia</span>
-                                </div>
-                                <div className="flex items-center space-x-1">
-                                    <Calendar className="w-4 h-4" />
-                                    <span>{formatCurrency(result.monthlySavings)}/mês</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        {/* Comparação */}
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                            <div className="bg-red-50 border border-red-200 rounded-lg p-4">
-                                <h4 className="font-semibold text-red-800 mb-2">Comprando Avulso</h4>
-                                <div className="text-2xl font-bold text-red-600">
-                                    {formatCurrency(result.currentAnnualCost)}/ano
-                                </div>
-                                <p className="text-sm text-red-700">
-                                    {formatCurrency(result.currentMonthlyCost)}/mês
-                                </p>
-                            </div>
-
-                            <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                                <h4 className="font-semibold text-green-800 mb-2">Com SV Lentes</h4>
-                                <div className="text-2xl font-bold text-green-600">
-                                    {formatCurrency(result.subscriptionAnnualCost)}/ano
-                                </div>
-                                <p className="text-sm text-green-700">
-                                    {formatCurrency(result.subscriptionMonthlyCost)}/mês
-                                </p>
-                            </div>
-                        </div>
-
-                        {/* Plano Recomendado */}
-                        <div className="bg-primary-50 border border-primary-200 rounded-lg p-6">
-                            <h4 className="font-semibold text-primary-800 mb-3 flex items-center">
-                                <Target className="w-5 h-5 mr-2" />
-                                Plano Recomendado para Você
-                            </h4>
-
-                            <div className="flex items-center justify-between mb-4">
-                                <div>
-                                    <h5 className="text-lg font-bold text-primary-900">
-                                        {result.recommendedPlan.name}
-                                    </h5>
-                                    <p className="text-primary-700">
-                                        {formatCurrency(result.recommendedPlan.price)}/mês
-                                    </p>
-                                </div>
-                                <Badge variant="success" size="lg">
-                                    Recomendado
-                                </Badge>
-                            </div>
-
-                            <div className="space-y-2">
-                                {result.additionalBenefits.slice(0, 4).map((benefit, index) => (
-                                    <div key={index} className="flex items-center space-x-2 text-sm text-primary-700">
-                                        <CheckCircle className="w-4 h-4 text-green-500" />
-                                        <span>{benefit}</span>
+                            {Object.entries(calculatorData.addOns)
+                                .filter(([_, selected]) => selected)
+                                .map(([addOn]) => (
+                                    <div key={addOn} className="flex justify-between">
+                                        <span className="text-gray-600">{addOnDescriptions[addOn as keyof typeof addOnDescriptions]}</span>
+                                        <span className="font-medium">+R$ {addOnPrices[addOn as keyof typeof addOnPrices]}</span>
                                     </div>
                                 ))}
+                            <div className="pt-2 mt-2 border-t border-gray-300">
+                                <div className="flex justify-between">
+                                    <span className="font-semibold text-gray-900">Total mensal</span>
+                                    <span className="font-bold text-primary-600">R$ {totalPlanPrice}</span>
+                                </div>
                             </div>
                         </div>
+                    </div>
 
-                        {/* CTAs */}
-                        <div className="space-y-3">
-                            <Button
-                                onClick={handleScheduleConsultation}
-                                className="w-full flex items-center justify-center space-x-2 text-lg py-4"
-                            >
-                                <Phone className="w-5 h-5" />
-                                <span>Agendar Consulta Gratuita</span>
-                                <ArrowRight className="w-5 h-5" />
-                            </Button>
-
-                            <Button
-                                onClick={handleWhatsAppContact}
-                                variant="whatsapp"
-                                className="w-full flex items-center justify-center space-x-2"
-                            >
-                                <MessageCircle className="w-5 h-5" />
-                                <span>Conversar no WhatsApp</span>
-                            </Button>
-
-                            <Button
-                                onClick={() => setResult(null)}
-                                variant="outline"
-                                className="w-full"
-                            >
-                                Calcular Novamente
-                            </Button>
+                    <Button
+                        onClick={handleCalculate}
+                        className="w-full flex items-center justify-center space-x-2 font-semibold text-base"
+                        disabled={!calculatorData.currentSpending}
+                    >
+                        <Calculator className="w-5 h-5" />
+                        <span>Calcular Economia</span>
+                    </Button>
+                </div>
+            ) : (
+                <div className="space-y-6">
+                    {/* Resultado */}
+                    <div className="text-center p-6 bg-gradient-to-r from-green-50 to-emerald-50 rounded-lg border border-green-200">
+                        <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <CheckCircle className="w-8 h-8 text-green-600" />
+                        </div>
+                        <h4 className="text-xl font-bold text-gray-900 mb-2">
+                            Você economizaria R$ {result?.monthlyEconomy.toFixed(2)} por mês!
+                        </h4>
+                        <p className="text-gray-600 mb-4">
+                            Economia total de R$ {result?.annualEconomy.toFixed(2)} ao ano ({result?.percentage.toFixed(0)}% de desconto)
+                        </p>
+                        <div className="bg-white rounded-lg p-4 border border-green-200">
+                            <div className="grid grid-cols-2 gap-4 text-sm">
+                                <div>
+                                    <span className="text-gray-600">Seu gasto atual:</span>
+                                    <div className="font-bold text-gray-900">R$ {calculatorData.currentSpending}</div>
+                                </div>
+                                <div>
+                                    <span className="text-gray-600">Plano SV Lentes:</span>
+                                    <div className="font-bold text-primary-600">R$ {result?.planPrice.toFixed(2)}</div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                )}
-            </div>
+
+                    {/* Opt-in */}
+                    <div className="space-y-4">
+                        <p className="text-sm text-gray-600 text-center">
+                            Quer receber esta economia? Deixe seu contato para falarmos com você:
+                        </p>
+
+                        <div className="space-y-3">
+                            <Input
+                                placeholder="Seu nome completo"
+                                className="w-full"
+                            />
+                            <Input
+                                placeholder="Seu WhatsApp"
+                                className="w-full"
+                            />
+                            <Input
+                                type="email"
+                                placeholder="Seu email"
+                                className="w-full"
+                            />
+                        </div>
+
+                        <Checkbox>
+                            <span className="text-sm text-gray-700">
+                                Aceito receber contato sobre o serviço e concordo com a{' '}
+                                <a href="/politica-privacidade" className="text-primary-600 hover:underline">
+                                    política de privacidade
+                                </a>
+                            </span>
+                        </Checkbox>
+
+                        <Button
+                            onClick={handleContinue}
+                            className="w-full flex items-center justify-center space-x-2 font-semibold text-base"
+                        >
+                            <ArrowRight className="w-5 h-5" />
+                            <span>Continuar e Agendar Consulta</span>
+                        </Button>
+                    </div>
+
+                    <button
+                        onClick={() => setShowResult(false)}
+                        className="w-full text-sm text-gray-500 hover:text-gray-700 transition-colors"
+                    >
+                        ← Refazer cálculo
+                    </button>
+                </div>
+            )}
         </div>
     )
 }

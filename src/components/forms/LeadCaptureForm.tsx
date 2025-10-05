@@ -204,6 +204,7 @@ export function LeadCaptureForm({
             <form onSubmit={handleSubmit(handleFormSubmit)} className="space-y-4">
                 <Input
                     {...register('nome')}
+                    id="lead-nome"
                     label="Nome completo"
                     placeholder="Digite seu nome"
                     error={errors.nome?.message}
@@ -212,6 +213,7 @@ export function LeadCaptureForm({
 
                 <Input
                     {...register('whatsapp')}
+                    id="lead-whatsapp"
                     label="WhatsApp"
                     placeholder="(11) 99999-9999"
                     onChange={handlePhoneChange}
@@ -222,6 +224,7 @@ export function LeadCaptureForm({
 
                 <Input
                     {...register('email')}
+                    id="lead-email"
                     type="email"
                     label="Email"
                     placeholder="seu@email.com"
@@ -231,6 +234,7 @@ export function LeadCaptureForm({
 
                 <Checkbox
                     {...register('lgpdConsent')}
+                    id="lead-lgpd-consent"
                     error={errors.lgpdConsent?.message}
                     required
                 >

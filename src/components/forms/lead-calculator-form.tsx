@@ -93,6 +93,7 @@ export function LeadCalculatorForm({ onLeadSubmit }: LeadCalculatorFormProps) {
               </label>
               <input
                 {...register('nome')}
+                id="calculator-nome"
                 type="text"
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 placeholder="Seu nome completo"
@@ -108,6 +109,7 @@ export function LeadCalculatorForm({ onLeadSubmit }: LeadCalculatorFormProps) {
               </label>
               <input
                 {...register('whatsapp')}
+                id="calculator-whatsapp"
                 type="tel"
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 placeholder="(11) 99999-9999"
@@ -123,6 +125,7 @@ export function LeadCalculatorForm({ onLeadSubmit }: LeadCalculatorFormProps) {
               </label>
               <input
                 {...register('email')}
+                id="calculator-email"
                 type="email"
                 className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                 placeholder="seu@email.com"
@@ -135,6 +138,7 @@ export function LeadCalculatorForm({ onLeadSubmit }: LeadCalculatorFormProps) {
             <div className="flex items-start">
               <input
                 {...register('lgpdConsent')}
+                id="calculator-lgpd-consent"
                 type="checkbox"
                 className="mt-1 h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
               />

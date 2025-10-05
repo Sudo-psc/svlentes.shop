@@ -1,4 +1,4 @@
-import { InputHTMLAttributes, forwardRef } from 'react'
+import { InputHTMLAttributes, forwardRef, useId } from 'react'
 import { cn } from '@/lib/utils'
 import { Check } from 'lucide-react'
 
@@ -10,7 +10,7 @@ export interface CheckboxProps extends Omit<InputHTMLAttributes<HTMLInputElement
 
 const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
     ({ className, label, error, description, children, ...props }, ref) => {
-        const checkboxId = props.id || `checkbox-${Math.random().toString(36).substr(2, 9)}`
+        const checkboxId = props.id
         const errorId = `${checkboxId}-error`
         const descId = `${checkboxId}-desc`
 
@@ -50,7 +50,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
                     </div>
 
                     <div className="flex-1">
-                        {label && (
+                        {label && checkboxId && (
                             <label
                                 htmlFor={checkboxId}
                                 className="block text-sm font-medium text-gray-900 cursor-pointer leading-relaxed"
@@ -66,7 +66,7 @@ const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
                             </div>
                         )}
 
-                        {description && (
+                        {description && checkboxId && (
                             <p
                                 id={descId}
                                 className="text-sm text-gray-600 mt-1"

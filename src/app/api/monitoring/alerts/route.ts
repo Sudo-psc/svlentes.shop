@@ -15,7 +15,9 @@ export async function POST(request: NextRequest) {
             id: `alert_${Date.now()}`,
             serverTimestamp: new Date().toISOString(),
             severity: determineSeverity(alert.type, alert.data),
-            ip: request.ip || 'unknown'
+            ip: request.headers.get('x-forwarded-for') ||
+                request.headers.get('x-real-ip') ||
+                'unknown'
         }
 
         // Log alert

@@ -11,8 +11,7 @@ export interface InputProps
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
     ({ className, type, label, error, helperText, ...props }, ref) => {
-        const generatedId = useId()
-        const inputId = props.id || `input-${generatedId}`
+        const inputId = props.id
         const errorId = `${inputId}-error`
         const helperId = `${inputId}-helper`
 
@@ -41,7 +40,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
         // Return wrapped input with label and messages
         return (
             <div className="space-y-2">
-                {label && (
+                {label && inputId && (
                     <label
                         htmlFor={inputId}
                         className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -57,7 +56,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
 
                 {inputElement}
 
-                {error && (
+                {error && inputId && (
                     <p
                         id={errorId}
                         className="text-sm text-destructive flex items-center space-x-1 font-medium"
@@ -69,7 +68,7 @@ const Input = React.forwardRef<HTMLInputElement, InputProps>(
                     </p>
                 )}
 
-                {helperText && !error && (
+                {helperText && !error && inputId && (
                     <p
                         id={helperId}
                         className="text-sm text-muted-foreground"

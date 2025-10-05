@@ -2,13 +2,9 @@
 
 import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
-import { InlineTrustIndicators } from '@/components/trust/TrustBadges'
-import { DoctorCard } from '@/components/trust/DoctorCard'
-import { LeadCaptureForm } from '@/components/forms/LeadCaptureForm'
 import { HeroImage } from '@/components/sections/HeroImage'
 import { openWhatsAppWithContext } from '@/lib/whatsapp'
-import { scrollToSection } from '@/lib/utils'
-import { Phone, MessageCircle, Star, Users, Award, Clock } from 'lucide-react'
+import { Phone, MessageCircle, Award } from 'lucide-react'
 
 interface HeroSectionProps {
     className?: string
@@ -28,13 +24,6 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
             section: 'hero-secondary-cta'
         })
     }
-
-    const socialProofStats = [
-        { icon: Users, value: '5.000+', label: 'Pacientes' },
-        { icon: Star, value: '98%', label: 'Satisfação' },
-        { icon: Award, value: '15+', label: 'Anos exp.' },
-        { icon: Clock, value: '24/7', label: 'Suporte' }
-    ]
 
     return (
         <section className={`relative bg-gradient-to-br from-primary-50 via-white to-secondary-50 overflow-hidden ${className}`}>
@@ -70,60 +59,53 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
                                 <span className="block text-gradient">fique sem lentes</span>
                             </h1>
 
-                            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-2xl">
-                                Assinatura integrada com logística e consulta médica especializada.
-                                <span className="block mt-2 font-medium text-primary-700">
-                                    Receba suas lentes em casa com acompanhamento do Dr. Philipe Saraiva Cruz.
-                                </span>
+                            <p className="text-xl md:text-2xl text-gray-600 leading-relaxed max-w-2xl mb-4">
+                                Assinatura com acompanhamento médico especializado.
+                            </p>
+
+                            <p className="text-lg text-gray-700 max-w-2xl">
+                                Receba suas lentes em casa com logística integrada e consultas regulares.
                             </p>
                         </div>
 
-                        {/* CTAs */}
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        {/* CTAs - Primary destacado */}
+                        <div className="flex flex-col gap-4 justify-center lg:justify-start">
+                            {/* Mobile: CTA primária full-width */}
                             <Button
                                 onClick={handleAgendarConsulta}
                                 size="lg"
-                                className="flex items-center justify-center space-x-2 shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-200 text-base font-bold"
-                                aria-label="Agendar consulta com Dr. Philipe Saraiva Cruz"
+                                className="w-full sm:w-auto sm:min-w-[200px] flex items-center justify-center space-x-2 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 text-lg font-bold bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 py-4"
+                                aria-label="Agendar consulta com oftalmologista - CTA principal"
                             >
                                 <Phone className="w-5 h-5" aria-hidden="true" />
-                                <span>Agendar Consulta</span>
+                                <span>Agendar consulta com oftalmologista</span>
                             </Button>
 
                             <Button
                                 onClick={handleFalarWhatsApp}
-                                variant="whatsapp"
+                                variant="outline"
                                 size="lg"
-                                className="flex items-center justify-center space-x-2 shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-200 text-base font-bold"
-                                aria-label="Falar com especialista pelo WhatsApp"
+                                className="w-full sm:w-auto sm:min-w-[200px] flex items-center justify-center space-x-2 border-2 border-gray-300 hover:bg-gray-50 hover:border-gray-400 text-gray-700 hover:text-gray-800 py-4"
+                                aria-label="Tirar dúvidas no WhatsApp - CTA secundário"
                             >
                                 <MessageCircle className="w-5 h-5" aria-hidden="true" />
-                                <span>Falar no WhatsApp</span>
+                                <span>Tirar dúvidas no WhatsApp</span>
                             </Button>
                         </div>
 
-                        {/* Trust Indicators */}
-                        <div className="space-y-4">
-                            <InlineTrustIndicators className="justify-center lg:justify-start" />
-
-                            {/* Social Proof Stats */}
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-6 border-t border-gray-200">
-                                {socialProofStats.map((stat, index) => (
-                                    <div
-                                        key={index}
-                                        className="text-center lg:text-left group"
-                                    >
-                                        <div className="flex items-center justify-center lg:justify-start space-x-2 mb-1">
-                                            <stat.icon className="w-4 h-4 text-primary-600 group-hover:text-primary-700 transition-colors" />
-                                            <span className="text-2xl font-bold text-gray-900 group-hover:text-primary-700 transition-colors">
-                                                {stat.value}
-                                            </span>
-                                        </div>
-                                        <p className="text-sm text-gray-600">{stat.label}</p>
-                                    </div>
-                                ))}
-                            </div>
+                        {/* Mobile Sticky CTA */}
+                        <div className="lg:hidden fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4 z-50">
+                            <Button
+                                onClick={handleAgendarConsulta}
+                                size="lg"
+                                className="w-full flex items-center justify-center space-x-2 shadow-lg bg-gradient-to-r from-primary-600 to-primary-700 text-white font-bold py-4"
+                                aria-label="Agendar consulta - Sticky CTA mobile"
+                            >
+                                <Phone className="w-5 h-5" aria-hidden="true" />
+                                <span>Agendar consulta com oftalmologista</span>
+                            </Button>
                         </div>
+
                     </div>
 
                     {/* Right Column - Hero Image */}

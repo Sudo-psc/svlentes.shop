@@ -4,10 +4,9 @@ import { useState } from 'react'
 import { EconomyCalculator } from '@/components/forms/EconomyCalculator'
 import { Badge } from '@/components/ui/Badge'
 import { Icon } from '@/components/ui/Icon'
-import { type CalculatorData } from '@/lib/validations'
-import { type EconomyCalculationResult } from '@/lib/economy-calculator'
 import { formatCurrency } from '@/lib/utils'
 import Image from 'next/image'
+import { CalcIcon, AtendidoIcon, FortyPercentIcon, TwelveHIcon, PiggyBankIcon } from '@/lib/icons'
 import {
     Calculator,
     Award,
@@ -15,43 +14,66 @@ import {
     Target
 } from 'lucide-react'
 
+// Import types from EconomyCalculator to match interface
+type CalculatorData = {
+    currentSpending: string
+    lensType: 'mensal' | 'trimestral' | 'semestral'
+    addOns: {
+        solution: boolean
+        drops: boolean
+        case: boolean
+        consultation: boolean
+    }
+}
+
+type EconomyResult = {
+    monthlyEconomy: number
+    annualEconomy: number
+    percentage: number
+    planPrice: number
+}
+
 interface EconomySectionProps {
     className?: string
 }
 
 export function EconomySection({ className = '' }: EconomySectionProps) {
-    const [calculationResult, setCalculationResult] = useState<EconomyCalculationResult | null>(null)
+    const [calculationResult, setCalculationResult] = useState<EconomyResult | null>(null)
     const [userData, setUserData] = useState<CalculatorData | null>(null)
 
-    const handleCalculation = (data: CalculatorData, result: EconomyCalculationResult) => {
+    const handleCalculation = (data: CalculatorData, result: EconomyResult) => {
         setUserData(data)
         setCalculationResult(result)
     }
 
     const economyStats = [
         {
-            iconPath: '/icones/piggy_bank_with_dollar_coin.png',
+            IconComponent: PiggyBankIcon,
             value: 'R$ 800',
             label: 'Economia média anual',
-            description: 'Nossos clientes economizam em média'
+            description: 'Nossos clientes economizam em média',
+            emoji: '💰'
         },
         {
-            iconPath: '/icones/atendido.png',
+            IconComponent: AtendidoIcon,
             value: '5.000+',
             label: 'Clientes satisfeitos',
-            description: 'Já confiam na nossa assinatura'
+            description: 'Já confiam na nossa assinatura',
+            emoji: '👥'
         },
         {
-            iconPath: '/icones/40percent.png',
+            IconComponent: FortyPercentIcon,
             value: '40%',
             label: 'Economia média',
-            description: 'Comparado à compra avulsa'
+            description: 'Comparado à compra avulsa',
+            emoji: '📊'
         },
         {
-            iconPath: '/icones/12h.png',
+            IconComponent: TwelveHIcon,
             value: '12h',
             label: 'Tempo economizado',
-            description: 'Por ano sem ir à ótica'
+            description: 'Por ano sem ir à ótica',
+            emoji: '⏰'
         }
     ]
 
@@ -80,14 +102,8 @@ export function EconomySection({ className = '' }: EconomySectionProps) {
                 {/* Header */}
                 <div className="text-center mb-16">
                     <div className="flex justify-center mb-6">
-                        <div className="relative w-20 h-20">
-                            <Image
-                                src="/icones/calc.png"
-                                alt="Calculadora de Economia"
-                                fill
-                                className="object-contain"
-                                priority
-                            />
+                        <div className="w-20 h-20 flex items-center justify-center">
+                            <CalcIcon size={80} />
                         </div>
                     </div>
 
@@ -109,13 +125,8 @@ export function EconomySection({ className = '' }: EconomySectionProps) {
                             key={index}
                             className="text-center p-6 bg-white rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                         >
-                            <div className="relative w-16 h-16 mx-auto mb-4">
-                                <Image
-                                    src={stat.iconPath}
-                                    alt={stat.label}
-                                    fill
-                                    className="object-contain"
-                                />
+                            <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center">
+                                <stat.IconComponent size={64} />
                             </div>
                             <div className="text-2xl font-bold text-gray-900 mb-1">
                                 {stat.value}
@@ -162,18 +173,19 @@ export function EconomySection({ className = '' }: EconomySectionProps) {
                         {calculationResult && userData && (
                             <div className="bg-gradient-to-r from-green-50 to-emerald-50 border border-green-200 rounded-lg p-6">
                                 <h4 className="text-lg font-semibold text-green-800 mb-4">
-                                    🎉 Parabéns, {userData.nome}!
+                                    🎉 Parabéns!
                                 </h4>
                                 <p className="text-green-700 mb-4">
                                     Com base no seu perfil de uso, você pode economizar:
                                 </p>
-                                <div className="text-center">
-                                    <div className="text-3xl font-bold text-green-600 mb-2">
-                                        {formatCurrency(calculationResult.annualSavings)}
+                                <div className="text-center mb-3">
+                                    <div className="text-3xl font-bold text-green-600 mb-1">
+                                        {formatCurrency(calculationResult.annualEconomy)}
                                     </div>
-                                    <div className="text-sm text-green-600">
-                                        por ano com o {calculationResult.recommendedPlan.name}
-                                    </div>
+                                    <div className="text-sm text-green-600">por ano</div>
+                                </div>
+                                <div className="text-center text-sm text-green-700">
+                                    Economia de <span className="font-semibold">{calculationResult.percentage}%</span>
                                 </div>
                             </div>
                         )}
@@ -208,8 +220,7 @@ export function EconomySection({ className = '' }: EconomySectionProps) {
                     {/* Right Column - Calculator */}
                     <div className="lg:sticky lg:top-8">
                         <EconomyCalculator
-                            variant="full"
-                            onCalculate={handleCalculation}
+                            onContinue={handleCalculation}
                         />
                     </div>
                 </div>

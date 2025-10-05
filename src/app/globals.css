@@ -2,8 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
-
 @layer base {
     :root {
         /* Base colors - High contrast for accessibility */
@@ -156,7 +154,7 @@
     }
 
     body {
-        font-family: 'Inter', system-ui, sans-serif;
+        font-family: var(--font-inter), system-ui, sans-serif;
         line-height: 1.6;
     }
 
@@ -166,7 +164,7 @@
     h4,
     h5,
     h6 {
-        font-family: 'Poppins', system-ui, sans-serif;
+        font-family: var(--font-poppins), system-ui, sans-serif;
         font-weight: 600;
         line-height: 1.2;
     }
@@ -288,5 +286,56 @@
 
     .bg-gradient-success {
         @apply bg-gradient-to-br from-success-50 to-success-100;
+    }
+
+    /* Custom Range Slider Styles */
+    input[type="range"].slider {
+        -webkit-appearance: none;
+        appearance: none;
+    }
+
+    input[type="range"].slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: #2563eb;
+        cursor: pointer;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+        transition: all 0.2s ease;
+    }
+
+    input[type="range"].slider::-webkit-slider-thumb:hover {
+        background: #1d4ed8;
+        transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.6);
+    }
+
+    input[type="range"].slider::-moz-range-thumb {
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background: #2563eb;
+        cursor: pointer;
+        border: none;
+        box-shadow: 0 2px 8px rgba(37, 99, 235, 0.4);
+        transition: all 0.2s ease;
+    }
+
+    input[type="range"].slider::-moz-range-thumb:hover {
+        background: #1d4ed8;
+        transform: scale(1.1);
+        box-shadow: 0 4px 12px rgba(37, 99, 235, 0.6);
+    }
+
+    input[type="range"].slider:focus {
+        outline: none;
+    }
+
+    input[type="range"].slider:focus::-webkit-slider-thumb {
+        ring: 2px;
+        ring-color: #2563eb;
+        ring-offset: 2px;
     }
 }

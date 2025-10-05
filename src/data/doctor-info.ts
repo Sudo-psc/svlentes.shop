@@ -13,8 +13,8 @@ export const doctorInfo = {
         'Especialização em Lentes de Contato',
         'Membro da Sociedade Brasileira de Oftalmologia'
     ],
-    experience: '15+ anos de experiência em oftalmologia',
-    bio: 'Dr. Philipe Saraiva Cruz é pioneiro no Brasil em serviços de assinatura de lentes de contato com acompanhamento médico especializado. Com mais de 15 anos de experiência, dedica-se a proporcionar cuidado oftalmológico personalizado e acessível.',
+    experience: '10+ anos de experiência em oftalmologia',
+    bio: 'Dr. Philipe Saraiva Cruz é pioneiro no Brasil em serviços de assinatura de lentes de contato com acompanhamento médico especializado. Com mais de 10 anos de experiência, dedica-se a proporcionar cuidado oftalmológico personalizado e acessível.',
     contact: {
         whatsapp: '+5511947038078',
         email: 'dr.philipe@svlentes.shop',
@@ -22,7 +22,7 @@ export const doctorInfo = {
     },
     socialProof: {
         patientsServed: '5000+',
-        yearsExperience: '15+',
+        yearsExperience: '10+',
         satisfactionRate: '98%',
         consultationsPerformed: '10000+'
     }

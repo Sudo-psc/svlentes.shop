@@ -30,17 +30,24 @@ export function HeroImage({ className = '', imageVariant = 'hero1' }: HeroImageP
                 )}
 
                 {/* Hero Image */}
-                <Image
-                    src={imageSrc}
-                    alt="Assinatura de lentes de contato SV Lentes - Pessoa feliz usando lentes de contato com acompanhamento médico especializado do Dr. Philipe Saraiva Cruz"
-                    fill
-                    priority
-                    quality={95}
-                    sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
-                    className={`object-cover transition-all duration-700 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
-                        }`}
-                    onLoad={() => setIsLoaded(true)}
-                />
+                <picture>
+                    <source
+                        srcSet={imageSrc}
+                        type="image/png"
+                    />
+                    <Image
+                        src={imageSrc}
+                        alt="Paciente usando lentes com acompanhamento do Dr. Philipe em Itaim Bibi, São Paulo"
+                        fill
+                        priority={false}
+                        loading="lazy"
+                        quality={90}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
+                        className={`object-cover transition-all duration-700 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
+                            }`}
+                        onLoad={() => setIsLoaded(true)}
+                    />
+                </picture>
 
                 {/* Gradient overlay for better text readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent" />

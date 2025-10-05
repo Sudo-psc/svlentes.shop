@@ -22,7 +22,10 @@
         "optimize:icons": "node scripts/optimize-icons.js",
         "optimize:logo": "node scripts/optimize-logo.js",
         "generate:favicons": "node scripts/generate-favicons.js",
-        "icons:catalog": "open docs/ICONES.md"
+        "icons:catalog": "open docs/ICONES.md",
+        "icons:watch": "node scripts/auto-icon-updater.js",
+        "icons:update": "node scripts/update-components-with-icons.js",
+        "icons:analyze": "node scripts/analyze-icons.js"
     },
     "dependencies": {
         "@heroicons/react": "^2.2.0",
@@ -39,9 +42,9 @@
         "clsx": "^2.1.1",
         "framer-motion": "^12.23.22",
         "lucide-react": "^0.303.0",
-        "next": "14.0.4",
-        "react": "^18",
-        "react-dom": "^18",
+        "next": "^15.5.4",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1",
         "react-hook-form": "^7.48.2",
         "stripe": "^14.9.0",
         "tailwind-merge": "^2.6.0",
@@ -57,14 +60,15 @@
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",
-        "autoprefixer": "^10.0.1",
+        "autoprefixer": "^10.4.20",
+        "chokidar": "^4.0.3",
         "eslint": "^8",
-        "eslint-config-next": "14.0.4",
+        "eslint-config-next": "15.1.6",
         "jest": "^29.7.0",
         "jest-environment-jsdom": "^29.7.0",
-        "postcss": "^8",
+        "postcss": "^8.4.49",
         "sharp": "^0.34.4",
-        "tailwindcss": "^3.3.0",
-        "typescript": "^5"
+        "tailwindcss": "^3.4.17",
+        "typescript": "^5.9.3"
     }
 }

@@ -1,9 +1,9 @@
 'use client'
 
 import { DoctorCard } from '@/components/trust/DoctorCard'
-import { LeadCaptureForm } from '@/components/forms/LeadCaptureForm'
+import { EconomyCalculator } from '@/components/forms/EconomyCalculator'
 import { scrollToSection } from '@/lib/utils'
-import { Shield, Truck } from 'lucide-react'
+import { Truck } from 'lucide-react'
 
 interface LeadCaptureSectionProps {
     className?: string
@@ -21,22 +21,12 @@ export function LeadCaptureSection({ className = '' }: LeadCaptureSectionProps) 
                         <DoctorCard variant="hero" showCTA={false} />
 
                         {/* Trust Elements */}
-                        <div className="grid grid-cols-2 gap-4">
-                            <div className="bg-gradient-to-br from-green-50/90 to-emerald-50/90 backdrop-blur-md rounded-2xl p-6 shadow-glass border border-green-200/50 text-center group hover:shadow-glass-lg transform hover:-translate-y-1 transition-all duration-300">
-                                <div className="w-14 h-14 bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                                    <Truck className="w-7 h-7 text-green-700" aria-hidden="true" />
-                                </div>
-                                <p className="text-sm font-bold text-gray-900 mb-1 drop-shadow-sm">Entrega Grátis</p>
-                                <p className="text-xs text-gray-700 font-medium">Todo Brasil</p>
+                        <div className="bg-gradient-to-br from-green-50/90 to-emerald-50/90 backdrop-blur-md rounded-2xl p-6 shadow-glass border border-green-200/50 text-center group hover:shadow-glass-lg transform hover:-translate-y-1 transition-all duration-300">
+                            <div className="w-14 h-14 bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                                <Truck className="w-7 h-7 text-green-700" aria-hidden="true" />
                             </div>
-
-                            <div className="bg-gradient-to-br from-blue-50/90 to-indigo-50/90 backdrop-blur-md rounded-2xl p-6 shadow-glass border border-blue-200/50 text-center group hover:shadow-glass-lg transform hover:-translate-y-1 transition-all duration-300">
-                                <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-indigo-100 rounded-2xl flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                                    <Shield className="w-7 h-7 text-blue-700" aria-hidden="true" />
-                                </div>
-                                <p className="text-sm font-bold text-gray-900 mb-1 drop-shadow-sm">100% Seguro</p>
-                                <p className="text-xs text-gray-700 font-medium">SSL + LGPD</p>
-                            </div>
+                            <p className="text-sm font-bold text-gray-900 mb-1 drop-shadow-sm">Entrega Grátis</p>
+                            <p className="text-xs text-gray-700 font-medium">Todo Brasil</p>
                         </div>
 
                         {/* Additional info */}
@@ -66,14 +56,14 @@ export function LeadCaptureSection({ className = '' }: LeadCaptureSectionProps) 
                         </div>
                     </div>
 
-                    {/* Right Column - Lead Form */}
+                    {/* Right Column - Economy Calculator */}
                     <div className="lg:sticky lg:top-24">
-                        <LeadCaptureForm
-                            variant="hero"
-                            onSubmit={(data) => {
-                                // Redirecionar para calculadora com dados do lead
-                                console.log('Lead capturado:', data)
-                                scrollToSection('calculadora-economia')
+                        <EconomyCalculator
+                            onContinue={(data, result) => {
+                                // Redirecionar para WhatsApp com dados do lead e resultado
+                                console.log('Dados da calculadora:', data)
+                                console.log('Resultado da economia:', result)
+                                scrollToSection('contato')
                             }}
                         />
                     </div>
