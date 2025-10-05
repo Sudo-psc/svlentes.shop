@@ -155,7 +155,7 @@ export function AnalyticsDashboard({ isVisible = false, onToggle }: AnalyticsDas
                     </button>
                     <button
                         onClick={() => {
-                            localStorage.removeItem('laas_user_journey');
+                            localStorage.removeItem('svlentes_user_journey');
                             window.location.reload();
                         }}
                         className="text-xs bg-red-100 text-red-800 px-2 py-1 rounded hover:bg-red-200"

@@ -97,7 +97,6 @@ export type {
 
 // Storage and cache utilities
 export {
-    StorageAdapter,
     LocalStorageAdapter,
     SessionStorageAdapter,
     MemoryAdapter,

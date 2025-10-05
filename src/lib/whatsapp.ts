@@ -18,8 +18,8 @@ export interface WhatsAppContextData {
 // Mensagens pré-definidas por contexto
 export const whatsappMessages = {
     hero: {
-        title: 'Interesse no LAAS',
-        message: `Olá! Vi o site do LAAS e tenho interesse no serviço de assinatura de lentes de contato com acompanhamento médico.
+        title: 'Interesse na SV Lentes',
+        message: `Olá! Vi o site da SV Lentes e tenho interesse no serviço de assinatura de lentes de contato com acompanhamento médico.
 
 Gostaria de saber mais sobre:
 • Como funciona o serviço
@@ -31,7 +31,7 @@ Quando posso agendar uma consulta?`
 
     pricing: {
         title: 'Interesse em Plano',
-        message: `Olá! Estou interessado(a) nos planos de assinatura do LAAS.
+        message: `Olá! Estou interessado(a) nos planos de assinatura da SV Lentes.
 
 Gostaria de mais informações sobre:
 • Diferenças entre os planos
@@ -47,7 +47,7 @@ Posso agendar uma consulta com Dr. Philipe?`
         message: `Olá Dr. Philipe! Gostaria de agendar uma consulta para avaliar minha necessidade de lentes de contato.
 
 Informações:
-• Interesse no serviço LAAS
+• Interesse no serviço SV Lentes
 • Primeira consulta
 • Disponibilidade: [informar horários]
 
@@ -55,8 +55,8 @@ Aguardo retorno para agendarmos!`
     },
 
     support: {
-        title: 'Suporte LAAS',
-        message: `Olá! Preciso de ajuda com o serviço LAAS.
+        title: 'Suporte SV Lentes',
+        message: `Olá! Preciso de ajuda com o serviço SV Lentes.
 
 Minha dúvida é sobre:
 • [descrever a dúvida]
@@ -66,7 +66,7 @@ Aguardo retorno da equipe!`
 
     calculator: {
         title: 'Resultado da Calculadora',
-        message: `Olá! Usei a calculadora de economia do LAAS e me interessei pelo resultado.
+        message: `Olá! Usei a calculadora de economia da SV Lentes e me interessei pelo resultado.
 
 Gostaria de:
 • Confirmar a economia calculada
@@ -83,7 +83,7 @@ Quando posso conversar com a equipe?`
 
 Situação:
 • [descrever o problema]
-• Sou cliente LAAS: [sim/não]
+• Sou cliente SV Lentes: [sim/não]
 
 Preciso de ajuda urgente!`
     }

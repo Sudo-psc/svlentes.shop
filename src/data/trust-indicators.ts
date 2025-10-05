@@ -11,7 +11,7 @@ export const trustBadges = [
     },
     {
         id: 'crm',
-        name: 'CRM 65.870',
+        name: 'CRM 69.870',
         description: 'Médico registrado no CRM-SP',
         icon: '👨‍⚕️',
         color: 'bg-green-100 text-green-800',

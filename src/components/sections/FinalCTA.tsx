@@ -105,7 +105,7 @@ export function FinalCTA() {
                     {/* Lista de benefícios adicionais */}
                     <div className="bg-white/5 backdrop-blur-sm rounded-xl p-8 mb-12">
                         <h3 className="text-2xl font-bold text-white mb-6">
-                            Por que escolher o LAAS?
+                            Por que escolher o SV Lentes?
                         </h3>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
                             {[

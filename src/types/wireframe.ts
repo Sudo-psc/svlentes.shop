@@ -1,7 +1,7 @@
 // Tipos baseados no wireframe da landing page
 
 export interface HeaderProps {
-    logo: string; // "LAAS"
+    logo: string; // "SV Lentes"
     navigation: {
         planos: string;
         comoFunciona: string;

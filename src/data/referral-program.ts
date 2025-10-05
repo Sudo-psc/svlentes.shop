@@ -1,4 +1,4 @@
-// Dados do programa de indicação LAAS
+// Dados do programa de indicação SV Lentes
 export interface ReferralProgram {
     mainCard: {
         title: string
@@ -74,11 +74,11 @@ export const referralProgramData: ReferralProgram = {
     terms: {
         title: 'Termos e Condições',
         conditions: [
-            'Válido apenas para novos clientes que nunca assinaram o LAAS',
+            'Válido apenas para novos clientes que nunca assinaram a SV Lentes',
             'O desconto do indicador é aplicado na próxima cobrança após confirmação',
             'O desconto do indicado é aplicado na primeira mensalidade',
             'Não cumulativo com outras promoções',
-            'LAAS se reserva o direito de alterar as condições do programa',
+            'SV Lentes se reserva o direito de alterar as condições do programa',
             'Programa sujeito a análise de fraude'
         ]
     }

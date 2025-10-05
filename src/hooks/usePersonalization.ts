@@ -505,7 +505,8 @@ export function usePersonalizationExperiment(
 
         // Track participação no experimento
         trackBehavior({
-            type: 'click',
+            type: 'page_view',
+            element: 'experiment_participation',
             value: {
                 experimentId,
                 variant,

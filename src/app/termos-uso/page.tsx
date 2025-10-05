@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-    title: 'Termos de Uso - LAAS | Assinatura de Lentes com Acompanhamento Médico',
-    description: 'Termos de uso do serviço LAAS - Assinatura de lentes de contato com acompanhamento médico especializado.',
+    title: 'Termos de Uso - SV Lentes | Assinatura de Lentes com Acompanhamento Médico',
+    description: 'Termos de uso do serviço de assinatura de lentes de contato da SV Lentes com acompanhamento médico especializado.',
     robots: 'index, follow',
 }
 
@@ -21,7 +21,7 @@ export default function TermosUsoPage() {
                         <section className="mb-8">
                             <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Aceitação dos Termos</h2>
                             <p className="text-gray-700 leading-relaxed">
-                                Ao utilizar os serviços da LAAS (Lentes as a Service), operado por SV Lentes - Serviços Oftalmológicos Especializados,
+                                Ao utilizar os serviços de assinatura de lentes de contato da SV Lentes - Serviços Oftalmológicos Especializados,
                                 você concorda com estes Termos de Uso. Se você não concordar com qualquer parte destes termos,
                                 não deve utilizar nossos serviços.
                             </p>
@@ -30,7 +30,7 @@ export default function TermosUsoPage() {
                         <section className="mb-8">
                             <h2 className="text-2xl font-semibold text-gray-900 mb-4">2. Descrição do Serviço</h2>
                             <p className="text-gray-700 leading-relaxed mb-4">
-                                A LAAS oferece um serviço de assinatura de lentes de contato com acompanhamento médico especializado,
+                                A SV Lentes oferece um serviço de assinatura de lentes de contato com acompanhamento médico especializado,
                                 sob supervisão do Dr. Philipe Saraiva Cruz (CRM 69.870).
                             </p>
                             <p className="text-gray-700 leading-relaxed">
@@ -99,7 +99,7 @@ export default function TermosUsoPage() {
                         <section className="mb-8">
                             <h2 className="text-2xl font-semibold text-gray-900 mb-4">7. Limitação de Responsabilidade</h2>
                             <p className="text-gray-700 leading-relaxed">
-                                A LAAS não se responsabiliza por danos decorrentes do uso inadequado das lentes de contato
+                                A SV Lentes não se responsabiliza por danos decorrentes do uso inadequado das lentes de contato
                                 ou descumprimento das orientações médicas. É fundamental seguir todas as instruções de uso,
                                 higiene e manutenção fornecidas pelo médico responsável.
                             </p>

@@ -10,10 +10,10 @@ interface LogoProps {
 }
 
 const SIZE_CONFIG = {
-  sm: { width: 120, height: 40, textSize: 'text-lg', src: '/logosv-sm.webp' },
-  md: { width: 180, height: 60, textSize: 'text-2xl', src: '/logosv-md.webp' },
-  lg: { width: 240, height: 80, textSize: 'text-3xl', src: '/logosv-lg.webp' },
-  xl: { width: 300, height: 100, textSize: 'text-4xl', src: '/logosv-xl.webp' }
+  sm: { width: 140, height: 48, textSize: 'text-lg', src: '/logosv-md.webp' },
+  md: { width: 200, height: 68, textSize: 'text-2xl', src: '/logosv-lg.webp' },
+  lg: { width: 280, height: 95, textSize: 'text-3xl', src: '/logosv-xl.webp' },
+  xl: { width: 360, height: 120, textSize: 'text-4xl', src: '/logosv-xl.webp' }
 }
 
 export function Logo({
@@ -36,15 +36,15 @@ export function Logo({
             width={config.width}
             height={config.height}
             priority={priority}
-            className="object-contain"
-            quality={95}
+            className="object-contain drop-shadow-sm contrast-110 brightness-105"
+            quality={100}
             sizes={`(max-width: 768px) ${config.width}px, ${config.width}px`}
           />
         </div>
         {showSubtitle && (
-          <div className="hidden lg:flex flex-col text-xs text-gray-600 dark:text-gray-300">
-            <span className="font-medium">Saraiva Vision</span>
-            <span className="text-primary-600 dark:text-primary-400 font-semibold">
+          <div className="hidden lg:flex flex-col text-sm text-gray-800 dark:text-gray-200">
+            <span className="font-semibold text-gray-900 dark:text-white drop-shadow-sm">Saraiva Vision</span>
+            <span className="text-primary-700 dark:text-primary-300 font-bold drop-shadow-sm">
               Dr. Philipe Saraiva Cruz
             </span>
           </div>
@@ -76,12 +76,12 @@ export function Logo({
     <div className={cn('flex flex-col', className)}>
       <span className={cn(
         config.textSize,
-        'font-bold bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent'
+        'font-bold bg-gradient-to-r from-primary-700 to-secondary-700 bg-clip-text text-transparent drop-shadow-sm'
       )}>
         SV Lentes
       </span>
       {showSubtitle && (
-        <span className="text-xs text-gray-600 dark:text-gray-400 font-medium">
+        <span className="text-sm text-gray-800 dark:text-gray-300 font-semibold drop-shadow-sm">
           Saraiva Vision Oftalmologia
         </span>
       )}
@@ -91,11 +91,11 @@ export function Logo({
 
 // Predefined logo variants for common use cases
 export function LogoHeader() {
-  return <Logo variant="full" size="md" priority showSubtitle />
+  return <Logo variant="full" size="lg" priority showSubtitle className="hover:scale-105 transition-transform duration-200" />
 }
 
 export function LogoFooter() {
-  return <Logo variant="full" size="lg" className="mb-4" />
+  return <Logo variant="full" size="lg" className="mb-4 hover:scale-105 transition-transform duration-200" />
 }
 
 export function LogoMobile() {

@@ -27,7 +27,7 @@ describe('LeadCaptureForm', () => {
 
             // Check for LGPD consent checkbox
             expect(screen.getByRole('checkbox')).toBeInTheDocument()
-            expect(screen.getByText(/Aceito receber contato sobre o serviço LAAS/)).toBeInTheDocument()
+            expect(screen.getByText(/Aceito receber contato sobre o serviço de assinatura de lentes de contato da SV Lentes/)).toBeInTheDocument()
 
             // Check for buttons
             expect(screen.getByRole('button', { name: /Calcular Economia/i })).toBeInTheDocument()

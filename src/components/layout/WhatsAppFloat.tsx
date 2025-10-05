@@ -127,7 +127,7 @@ export function WhatsAppFloat({ className }: WhatsAppFloatProps) {
                                         <MessageCircle className="w-5 h-5 text-white" />
                                     </div>
                                     <div>
-                                        <h3 className="font-semibold text-gray-900">LAAS</h3>
+                                        <h3 className="font-semibold text-gray-900">SV Lentes</h3>
                                         <div className="flex items-center space-x-1">
                                             {attendanceStatus.isOpen ? (
                                                 <CheckCircle className="w-3 h-3 text-green-500" />

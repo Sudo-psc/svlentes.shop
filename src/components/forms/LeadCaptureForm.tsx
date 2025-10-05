@@ -235,7 +235,7 @@ export function LeadCaptureForm({
                     required
                 >
                     <span className="text-sm text-gray-800 leading-relaxed">
-                        Aceito receber contato sobre o serviço LAAS e concordo com a{' '}
+                        Aceito receber contato sobre o serviço de assinatura de lentes de contato da SV Lentes e concordo com a{' '}
                         <a
                             href="/politica-privacidade"
                             className="text-primary-700 hover:text-primary-800 underline font-medium"

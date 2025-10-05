@@ -44,7 +44,7 @@ global.ResizeObserver = jest.fn().mockImplementation(() => ({
 // Simple mock components for testing responsive behavior
 const MockHeader = () => (
     <header className="flex justify-between items-center p-4">
-        <div className="text-xl font-bold">LAAS</div>
+        <div className="text-xl font-bold">SV Lentes</div>
         <nav className="hidden md:flex space-x-4">
             <span>Planos</span>
             <span>Como Funciona</span>
@@ -182,7 +182,7 @@ describe('Responsive Design Integration Tests', () => {
             render(<MockHeader />)
 
             // Logo should be visible
-            expect(screen.getByText('LAAS')).toBeInTheDocument()
+            expect(screen.getByText('SV Lentes')).toBeInTheDocument()
 
             // Mobile menu button should be present
             const menuButton = screen.getByRole('button', { name: /menu/i })

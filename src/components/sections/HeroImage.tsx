@@ -32,7 +32,7 @@ export function HeroImage({ className = '', imageVariant = 'hero1' }: HeroImageP
                 {/* Hero Image */}
                 <Image
                     src={imageSrc}
-                    alt="Assinatura de lentes de contato LAAS - Pessoa feliz usando lentes de contato com acompanhamento médico especializado do Dr. Philipe Saraiva Cruz"
+                    alt="Assinatura de lentes de contato SV Lentes - Pessoa feliz usando lentes de contato com acompanhamento médico especializado do Dr. Philipe Saraiva Cruz"
                     fill
                     priority
                     quality={95}

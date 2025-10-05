@@ -5,7 +5,7 @@ export const doctorInfo = {
     crm: 'CRM 69.870',
     crmEquipe: 'CRM_EQP 155869.006',
     specialty: 'Oftalmologia',
-    photo: '/drphilipe_perfil.jpeg',
+    photo: '/icones/drphilipe_perfil.jpeg',
     credentials: [
         'Especialista em Oftalmologia',
         'Graduado em Medicina pela Universidade Federal',

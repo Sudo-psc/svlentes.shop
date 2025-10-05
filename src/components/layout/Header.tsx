@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { Button } from '@/components/ui/Button'
-import { Logo } from '@/components/ui/Logo'
+import { LogoHeader } from '@/components/ui/Logo'
 import { scrollToSection, generateWhatsAppLink } from '@/lib/utils'
 import { Menu, X, Phone } from 'lucide-react'
 
@@ -64,7 +64,9 @@ Vim através do site SV Lentes e tenho interesse no serviço de assinatura com a
 
     return (
         <header
-            className={`fixed top-0 left-0 right-0 z-50 bg-white transition-all duration-300 ${isScrolled ? 'shadow-lg' : 'shadow-sm'
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+                    ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200/50'
+                    : 'bg-white shadow-sm'
                 } ${className}`}
         >
             <div className="container-custom">
@@ -79,7 +81,7 @@ Vim através do site SV Lentes e tenho interesse no serviço de assinatura com a
                         className="hover:opacity-90 transition-opacity"
                         aria-label="SV Lentes - Ir para o início"
                     >
-                        <Logo variant="full" size="md" priority showSubtitle />
+                        <LogoHeader />
                     </a>
 
                     {/* Navigation Desktop */}

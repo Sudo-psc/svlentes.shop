@@ -2,7 +2,8 @@
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
-import { Logo } from '@/components/ui/Logo'
+import { LogoFooter } from '@/components/ui/Logo'
+import { OptimizedImage } from '@/components/ui/OptimizedImage'
 import { generateWhatsAppLink } from '@/lib/utils'
 import { doctorInfo, clinicInfo } from '@/data/doctor-info'
 import { PrivacyPolicy } from '@/components/privacy/PrivacyPolicy'
@@ -75,7 +76,7 @@ export function Footer({ className }: FooterProps) {
                         <div>
                             {/* Logo */}
                             <div className="mb-4">
-                                <Logo variant="full" size="lg" />
+                                <LogoFooter />
                             </div>
                             <p className="text-lg text-gray-200 font-medium mb-3">
                                 Pioneiro no Brasil em Assinatura de Lentes de Contato
@@ -92,8 +93,15 @@ export function Footer({ className }: FooterProps) {
                                 Responsável Técnico
                             </h4>
                             <div className="flex items-start space-x-4">
-                                <div className="w-12 h-12 bg-gradient-to-br from-primary-600 to-primary-700 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <Heart className="w-6 h-6 text-white" aria-hidden="true" />
+                                <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-400 flex-shrink-0">
+                                    <OptimizedImage
+                                        src="/icones/drphilipe_perfil.jpeg"
+                                        alt="Dr. Philipe Saraiva Cruz"
+                                        width={48}
+                                        height={48}
+                                        quality={85}
+                                        className="w-full h-full object-cover"
+                                    />
                                 </div>
                                 <div>
                                     <h5 className="font-semibold text-lg text-white mb-1">

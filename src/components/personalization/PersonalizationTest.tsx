@@ -1,3 +1,5 @@
+'use client'
+
 import React, { useEffect, useState } from 'react'
 import { usePersonalization } from '@/hooks/usePersonalization'
 import { PersonaAnalyzer } from '@/lib/personalization/persona-analyzer'
@@ -152,8 +154,8 @@ export function PersonalizationTest() {
                     <h3 className="font-semibold text-blue-700 mb-3">👤 Persona Detectada</h3>
                     <div className="space-y-2 text-sm">
                         <div>
-                            <span className="text-gray-600">Persona:</span>
-                            <span className="ml-2 font-medium text-blue-800">{persona}</span>
+                            <span className="text-gray-600">Prob. Conversão:</span>
+                            <span className="ml-2 font-medium text-blue-800">{((profile?.conversionProbability || 0) * 100).toFixed(1)}%</span>
                         </div>
                         <div>
                             <span className="text-gray-600">Confiança:</span>
@@ -165,7 +167,7 @@ export function PersonalizationTest() {
                         </div>
                         <div>
                             <span className="text-gray-600">Prob. Conversão:</span>
-                            <span className="ml-2 font-medium text-blue-800">{(profile?.conversionProbability * 100).toFixed(1)}%</span>
+                            <span className="ml-2 font-medium text-blue-800">{((profile?.conversionProbability || 0) * 100).toFixed(1)}%</span>
                         </div>
                     </div>
                 </div>

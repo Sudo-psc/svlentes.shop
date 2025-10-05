@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
 import { Tabs, TabItem } from '@/components/ui/tabs'
 import { Icon } from '@/components/ui/Icon'
+import { OptimizedImage } from '@/components/ui/OptimizedImage'
 import { howItWorksSteps, processTimeline, serviceFeatures } from '@/data/how-it-works'
 import { openWhatsAppWithContext } from '@/lib/whatsapp'
 import { trackEvent } from '@/lib/analytics'
@@ -342,10 +343,19 @@ export function HowItWorksSection({ className = '' }: HowItWorksSectionProps) {
 
                             <div className="text-center">
                                 <div className="flex items-center justify-center mx-auto mb-2">
-                                    <Icon name="amorSaude" size="md" />
+                                    <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-200">
+                                        <OptimizedImage
+                                            src="/icones/drphilipe_perfil.jpeg"
+                                            alt="Dr. Philipe Saraiva Cruz"
+                                            width={48}
+                                            height={48}
+                                            quality={85}
+                                            className="w-full h-full object-cover"
+                                        />
+                                    </div>
                                 </div>
                                 <div className="text-sm font-medium text-gray-900">Cuidado Médico</div>
-                                <div className="text-xs text-gray-600">Dr. Philipe CRM 65.870</div>
+                                <div className="text-xs text-gray-600">Dr. Philipe CRM 69.870</div>
                             </div>
 
                             <div className="text-center">

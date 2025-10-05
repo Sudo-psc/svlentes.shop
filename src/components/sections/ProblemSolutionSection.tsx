@@ -2,7 +2,7 @@
 
 import { Button } from '@/components/ui/Button'
 import { Badge } from '@/components/ui/Badge'
-import { customerProblems, laasolutions, impactStats } from '@/data/problems-solutions'
+import { customerProblems, svlentesSolutions, impactStats } from '@/data/problems-solutions'
 import { openWhatsAppWithContext } from '@/lib/whatsapp'
 import {
     ArrowRight,
@@ -49,7 +49,7 @@ export function ProblemSolutionSection({ className = '' }: ProblemSolutionSectio
                     </h2>
 
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                        Sabemos exatamente pelo que você passa. Por isso criamos o LAAS -
+                        Sabemos exatamente pelo que você passa. Por isso criamos a SV Lentes -
                         para resolver de uma vez por todas esses problemas do dia a dia.
                     </p>
                 </div>
@@ -116,7 +116,7 @@ export function ProblemSolutionSection({ className = '' }: ProblemSolutionSectio
                                 <Lightbulb className="w-8 h-8 text-green-600" />
                             </div>
                             <h3 className="text-2xl font-bold text-gray-900 mb-4">
-                                ✨ Soluções do LAAS
+                                ✨ Soluções da SV Lentes
                             </h3>
                             <p className="text-gray-600 mb-8">
                                 Cada problema tem uma solução inteligente e definitiva!
@@ -124,7 +124,7 @@ export function ProblemSolutionSection({ className = '' }: ProblemSolutionSectio
                         </div>
 
                         <div className="space-y-4">
-                            {laasolutions.map((solution, index) => (
+                            {svlentesSolutions.map((solution, index) => (
                                 <div
                                     key={solution.id}
                                     className="flex items-start space-x-4 p-4 bg-green-50 border border-green-200 rounded-lg hover:bg-green-100 transition-colors group"
@@ -150,7 +150,7 @@ export function ProblemSolutionSection({ className = '' }: ProblemSolutionSectio
                         <div className="bg-green-50 border border-green-200 rounded-lg p-6">
                             <h4 className="font-semibold text-green-800 mb-4 flex items-center">
                                 <Target className="w-5 h-5 mr-2" />
-                                Resultados com LAAS
+                                Resultados com SV Lentes
                             </h4>
                             <div className="grid grid-cols-2 gap-4">
                                 {impactStats.slice(0, 2).map((stat, index) => (
@@ -175,7 +175,7 @@ export function ProblemSolutionSection({ className = '' }: ProblemSolutionSectio
                 <div className="bg-gradient-to-r from-primary-50 to-secondary-50 rounded-2xl p-8 lg:p-12 mb-16">
                     <div className="text-center mb-8">
                         <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
-                            A Transformação que o LAAS Proporciona
+                            A Transformação que a SV Lentes Proporciona
                         </h3>
                         <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                             Veja o impacto real na vida dos nossos clientes
@@ -209,7 +209,7 @@ export function ProblemSolutionSection({ className = '' }: ProblemSolutionSectio
                             Pronto para resolver esses problemas?
                         </h3>
                         <p className="text-lg text-gray-600 mb-8">
-                            Fale com um especialista e descubra como o LAAS pode transformar
+                            Fale com um especialista e descubra como a SV Lentes pode transformar
                             sua experiência com lentes de contato.
                         </p>
 

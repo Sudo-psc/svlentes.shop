@@ -33,7 +33,7 @@ export const customerProblems = [
     }
 ]
 
-export const laasolutions = [
+export const svlentesSolutions = [
     {
         id: 'automatic-delivery',
         icon: '📦',

@@ -132,7 +132,7 @@ export default function MonitoringDashboard() {
     return (
         <div className="p-6 max-w-7xl mx-auto">
             <div className="mb-6">
-                <h1 className="text-3xl font-bold text-gray-900">LAAS Monitoring Dashboard</h1>
+                <h1 className="text-3xl font-bold text-gray-900">SV Lentes Monitoring Dashboard</h1>
                 <p className="text-gray-600">System health and performance overview</p>
             </div>
 

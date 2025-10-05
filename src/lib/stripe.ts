@@ -15,21 +15,21 @@ export const stripeConfig = {
 // Produtos e preços do Stripe (IDs reais serão configurados no dashboard)
 export const stripeProducts = {
     basic: {
-        productId: 'prod_basic_laas',
+        productId: 'prod_basic_svlentes',
         prices: {
             monthly: 'price_basic_monthly',
             annual: 'price_basic_annual'
         }
     },
     premium: {
-        productId: 'prod_premium_laas',
+        productId: 'prod_premium_svlentes',
         prices: {
             monthly: 'price_premium_monthly',
             annual: 'price_premium_annual'
         }
     },
     vip: {
-        productId: 'prod_vip_laas',
+        productId: 'prod_vip_svlentes',
         prices: {
             monthly: 'price_vip_monthly',
             annual: 'price_vip_annual'

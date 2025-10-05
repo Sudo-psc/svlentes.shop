@@ -1,6 +1,6 @@
 'use client';
 
-import { customerProblems, laasolutions } from '@/data/problems-solutions';
+import { customerProblems, svlentesSolutions } from '@/data/problems-solutions';
 import { openWhatsAppWithContext } from '@/lib/whatsapp';
 
 export function ProblemSolution() {
@@ -35,7 +35,7 @@ export function ProblemSolution() {
                 Problemas Comuns
               </h3>
             </div>
-            
+
             <div className="space-y-4">
               {customerProblems.map((problem) => (
                 <div
@@ -54,12 +54,12 @@ export function ProblemSolution() {
             <div className="bg-green-50 border border-green-200 rounded-lg p-6 mb-6">
               <h3 className="text-xl font-semibold text-green-800 mb-4 flex items-center">
                 <span className="text-2xl mr-2">✨</span>
-                Soluções LAAS
+                Soluções SV Lentes
               </h3>
             </div>
-            
+
             <div className="space-y-4">
-              {laasolutions.map((solution) => (
+              {svlentesSolutions.map((solution) => (
                 <div
                   key={solution.id}
                   className="flex items-start space-x-3 p-4 bg-green-50 border border-green-100 rounded-lg"

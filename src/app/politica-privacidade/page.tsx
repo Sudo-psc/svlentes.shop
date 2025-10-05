@@ -2,8 +2,8 @@ import type { Metadata } from 'next';
 import { PrivacyPolicy } from '@/components/privacy/PrivacyPolicy';
 
 export const metadata: Metadata = {
-    title: 'Política de Privacidade | LAAS - Lens as a Service',
-    description: 'Política de privacidade da LAAS em conformidade com a LGPD. Saiba como protegemos seus dados pessoais.',
+    title: 'Política de Privacidade | SV Lentes - Assinatura de Lentes',
+    description: 'Política de privacidade da SV Lentes em conformidade com a LGPD. Saiba como protegemos seus dados pessoais.',
     robots: 'index, follow',
 };
 
@@ -25,7 +25,7 @@ export default function PrivacyPolicyPage() {
                             <section className="mb-8">
                                 <h2 className="text-xl font-semibold mb-4">1. Informações Gerais</h2>
                                 <p className="mb-4">
-                                    A LAAS - Lens as a Service, sob responsabilidade médica do Dr. Philipe Saraiva Cruz
+                                    A SV Lentes, sob responsabilidade médica do Dr. Philipe Saraiva Cruz
                                     (CRM 65.870), está comprometida com a proteção da privacidade e dos dados pessoais
                                     de nossos usuários, em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei 13.709/2018).
                                 </p>
@@ -123,7 +123,7 @@ export default function PrivacyPolicyPage() {
                                     Para exercer seus direitos ou esclarecer dúvidas sobre esta política:
                                 </p>
                                 <ul className="list-disc pl-6 mb-4">
-                                    <li><strong>E-mail:</strong> privacidade@laas.com.br</li>
+                                    <li><strong>E-mail:</strong> privacidade@svlentes.shop</li>
                                     <li><strong>WhatsApp:</strong> Através do botão no site</li>
                                     <li><strong>Responsável:</strong> Dr. Philipe Saraiva Cruz (CRM 65.870)</li>
                                 </ul>

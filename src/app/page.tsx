@@ -19,10 +19,10 @@ import {
 } from '@/lib/seo'
 
 export const metadata: Metadata = {
-    title: 'LAAS - Nunca mais fique sem lentes | Assinatura com Acompanhamento Médico',
+    title: 'SV Lentes - Nunca mais fique sem lentes | Assinatura com Acompanhamento Médico',
     description: 'Pioneiro no Brasil em assinatura de lentes de contato com acompanhamento médico especializado. Dr. Philipe Saraiva Cruz - CRM 65.870. Economia de até 40%.',
     alternates: {
-        canonical: 'https://laas.com.br',
+        canonical: 'https://svlentes.shop',
     },
 }
 
@@ -31,7 +31,7 @@ export default function HomePage() {
     const faqData = generateFAQStructuredData()
     const serviceData = generateServiceStructuredData()
     const breadcrumbData = generateBreadcrumbStructuredData([
-        { name: 'Início', url: 'https://laas.com.br' }
+        { name: 'Início', url: 'https://svlentes.shop' }
     ])
 
     return (

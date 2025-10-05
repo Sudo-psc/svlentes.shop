@@ -58,7 +58,7 @@ interface UserJourneyState {
 }
 
 // Session storage key for user journey
-const JOURNEY_STORAGE_KEY = 'laas_user_journey'
+const JOURNEY_STORAGE_KEY = 'svlentes_user_journey'
 
 // Initialize user journey tracking
 export function initializeUserJourney(): string {
@@ -76,7 +76,7 @@ export function initializeUserJourney(): string {
     // Track initial page view
     trackConversionFunnel('awareness', {
         funnel_step: FUNNEL_STEPS.page_view,
-        funnel_name: 'laas_subscription',
+        funnel_name: 'svlentes_subscription',
     })
 
     // Set initial user properties
@@ -122,7 +122,7 @@ export function progressFunnelStage(
     const funnelStage = getFunnelStageForAnalytics(stage)
     trackConversionFunnel(funnelStage, {
         funnel_step: FUNNEL_STEPS[stage],
-        funnel_name: 'laas_subscription',
+        funnel_name: 'svlentes_subscription',
         value: data?.value,
         currency: data?.value ? 'BRL' : undefined,
     })
@@ -329,7 +329,7 @@ export function trackConsultationBooked(consultationData: {
 
 // Utility functions
 function generateSessionId(): string {
-    return `laas_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
+    return `svlentes_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`
 }
 
 function getJourneyState(): UserJourneyState | null {

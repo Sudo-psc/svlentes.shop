@@ -351,7 +351,7 @@ export function EconomyCalculator({
                             </div>
 
                             <div className="bg-green-50 border border-green-200 rounded-lg p-4">
-                                <h4 className="font-semibold text-green-800 mb-2">Com LAAS</h4>
+                                <h4 className="font-semibold text-green-800 mb-2">Com SV Lentes</h4>
                                 <div className="text-2xl font-bold text-green-600">
                                     {formatCurrency(result.subscriptionAnnualCost)}/ano
                                 </div>

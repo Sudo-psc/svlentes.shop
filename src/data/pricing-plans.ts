@@ -16,7 +16,7 @@ export const pricingPlans: PricingPlan[] = [
             'Troca em caso de problema'
         ],
         recommended: false,
-        stripeProductId: 'prod_basic_laas',
+        stripeProductId: 'prod_basic_svlentes',
         stripePriceId: 'price_basic_monthly',
         ctaText: 'Assinar Plano Básico'
     },
@@ -36,7 +36,7 @@ export const pricingPlans: PricingPlan[] = [
             'App exclusivo para acompanhamento'
         ],
         recommended: true,
-        stripeProductId: 'prod_premium_laas',
+        stripeProductId: 'prod_premium_svlentes',
         stripePriceId: 'price_premium_monthly',
         ctaText: 'Assinar Premium'
     },
@@ -57,7 +57,7 @@ export const pricingPlans: PricingPlan[] = [
             'Desconto em cirurgias'
         ],
         recommended: false,
-        stripeProductId: 'prod_vip_laas',
+        stripeProductId: 'prod_vip_svlentes',
         stripePriceId: 'price_vip_monthly',
         ctaText: 'Assinar VIP'
     }

@@ -74,7 +74,7 @@ export function LeadCalculatorForm({ onLeadSubmit }: LeadCalculatorFormProps) {
           <h3 className="text-lg font-semibold text-gray-900 mb-4">
             Agende sua consulta
           </h3>
-          
+
           {calculatorResult && (
             <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
               <div className="text-center">
@@ -139,7 +139,7 @@ export function LeadCalculatorForm({ onLeadSubmit }: LeadCalculatorFormProps) {
                 className="mt-1 h-4 w-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
               />
               <label htmlFor="lgpdConsent" className="ml-2 text-sm text-gray-600">
-                Concordo em receber informações sobre os serviços LAAS e com o tratamento dos meus dados conforme a{' '}
+                Concordo em receber informações sobre os serviços de assinatura de lentes de contato da SV Lentes e com o tratamento dos meus dados conforme a{' '}
                 <a href="/politica-privacidade" className="text-blue-600 hover:underline">
                   Política de Privacidade
                 </a>

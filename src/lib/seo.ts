@@ -10,14 +10,14 @@ export const baseMetadata: Metadata = {
         default: 'SV Lentes - Nunca mais fique sem lentes | Assinatura com Acompanhamento Médico',
         template: '%s | SV Lentes'
     },
-    description: 'Pioneiro no Brasil em assinatura de lentes de contato com acompanhamento médico especializado. Dr. Philipe Saraiva Cruz - CRM 65.870. Economia de até 40%.',
+    description: 'Pioneiro no Brasil em assinatura de lentes de contato com acompanhamento médico especializado. Dr. Philipe Saraiva Cruz - CRM 69.870. Economia de até 40%.',
     keywords: [
         'lentes de contato',
         'assinatura lentes',
         'acompanhamento médico',
         'Dr. Philipe Saraiva Cruz',
         'oftalmologia',
-        'CRM 65.870',
+        'CRM 69.870',
         'lentes mensais',
         'lentes diárias',
         'consulta oftalmológica',
