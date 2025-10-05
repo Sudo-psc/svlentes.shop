@@ -223,7 +223,7 @@ test.describe('API Integration E2E', () => {
                 status: 200,
                 contentType: 'application/json',
                 body: JSON.stringify({
-                    whatsappUrl: 'https://wa.me/5511999999999?text=Olá%20LAAS'
+                    whatsappUrl: 'https://wa.me/5511999999999?text=Olá%20SVlentes'
                 })
             })
         })

@@ -1,4 +1,4 @@
-name: Deploy LAAS Landing Page
+name: Deploy SVlentes Landing Page
 
 on:
   push:
@@ -187,7 +187,7 @@ jobs:
         status: ${{ job.status }}
         channel: '#deployments'
         text: |
-          🚀 LAAS Landing Page deployed to production
+          🚀 SVlentes Landing Page deployed to production
           URL: ${{ steps.deploy.outputs.production_url }}
           Status: ${{ job.status }}
       env:
@@ -243,7 +243,7 @@ jobs:
         curl -X POST "${{ secrets.MONITORING_WEBHOOK_URL }}" \
           -H "Content-Type: application/json" \
           -d '{
-            "text": "🔍 Performance monitoring active for LAAS Landing Page",
+            "text": "🔍 Performance monitoring active for SVlentes Landing Page",
             "attachments": [{
               "color": "good",
               "fields": [

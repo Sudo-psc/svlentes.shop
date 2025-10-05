@@ -7,14 +7,11 @@ import { Icon } from '@/components/ui/Icon'
 import { type CalculatorData } from '@/lib/validations'
 import { type EconomyCalculationResult } from '@/lib/economy-calculator'
 import { formatCurrency } from '@/lib/utils'
+import Image from 'next/image'
 import {
     Calculator,
-    TrendingUp,
-    Users,
     Award,
     CheckCircle,
-    DollarSign,
-    Clock,
     Target
 } from 'lucide-react'
 
@@ -33,25 +30,25 @@ export function EconomySection({ className = '' }: EconomySectionProps) {
 
     const economyStats = [
         {
-            icon: DollarSign,
+            iconPath: '/icones/piggy_bank_with_dollar_coin.png',
             value: 'R$ 800',
             label: 'Economia média anual',
             description: 'Nossos clientes economizam em média'
         },
         {
-            icon: Users,
+            iconPath: '/icones/atendido.png',
             value: '5.000+',
             label: 'Clientes satisfeitos',
             description: 'Já confiam na nossa assinatura'
         },
         {
-            icon: TrendingUp,
+            iconPath: '/icones/40percent.png',
             value: '40%',
             label: 'Economia média',
             description: 'Comparado à compra avulsa'
         },
         {
-            icon: Clock,
+            iconPath: '/icones/12h.png',
             value: '12h',
             label: 'Tempo economizado',
             description: 'Por ano sem ir à ótica'
@@ -83,7 +80,15 @@ export function EconomySection({ className = '' }: EconomySectionProps) {
                 {/* Header */}
                 <div className="text-center mb-16">
                     <div className="flex justify-center mb-6">
-                        <Icon name="calculator" size="lg" priority />
+                        <div className="relative w-20 h-20">
+                            <Image
+                                src="/icones/calc.png"
+                                alt="Calculadora de Economia"
+                                fill
+                                className="object-contain"
+                                priority
+                            />
+                        </div>
                     </div>
 
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
@@ -93,28 +98,24 @@ export function EconomySection({ className = '' }: EconomySectionProps) {
 
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
                         Nossa calculadora personalizada mostra exatamente quanto você pode economizar
-                        com a assinatura LAAS baseada no seu perfil de uso atual.
+                        com a assinatura SVlentes baseada no seu perfil de uso atual.
                     </p>
                 </div>
 
                 {/* Stats - Com Ícones Customizados */}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-16">
-                    <div className="text-center p-6 bg-white rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow">
-                        <div className="flex items-center justify-center mx-auto mb-4">
-                            <Icon name="piggyBank" size="md" />
-                        </div>
-                        <div className="text-2xl font-bold text-gray-900 mb-1">R$ 800</div>
-                        <div className="text-sm font-medium text-gray-700 mb-1">Economia média anual</div>
-                        <div className="text-xs text-gray-500">Nossos clientes economizam em média</div>
-                    </div>
-
-                    {economyStats.slice(1).map((stat, index) => (
+                    {economyStats.map((stat, index) => (
                         <div
                             key={index}
                             className="text-center p-6 bg-white rounded-lg shadow-md border border-gray-100 hover:shadow-lg transition-shadow"
                         >
-                            <div className="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <stat.icon className="w-6 h-6 text-primary-600" />
+                            <div className="relative w-16 h-16 mx-auto mb-4">
+                                <Image
+                                    src={stat.iconPath}
+                                    alt={stat.label}
+                                    fill
+                                    className="object-contain"
+                                />
                             </div>
                             <div className="text-2xl font-bold text-gray-900 mb-1">
                                 {stat.value}
@@ -181,7 +182,7 @@ export function EconomySection({ className = '' }: EconomySectionProps) {
                         <div className="bg-white rounded-lg shadow-md border border-gray-100 p-6">
                             <h4 className="font-semibold text-gray-900 mb-4 flex items-center">
                                 <CheckCircle className="w-5 h-5 mr-2 text-green-500" />
-                                Garantias LAAS
+                                Garantias SVlentes
                             </h4>
                             <ul className="space-y-2 text-sm text-gray-600">
                                 <li className="flex items-center space-x-2">

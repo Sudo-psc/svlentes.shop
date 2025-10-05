@@ -1,11 +1,11 @@
 #!/bin/bash
 
-# LAAS Landing Page Deployment Script
+# SVlentes Landing Page Deployment Script
 # This script handles deployment to Vercel with proper checks and monitoring
 
 set -e  # Exit on any error
 
-echo "🚀 Starting LAAS Landing Page Deployment..."
+echo "🚀 Starting SVlentes Landing Page Deployment..."
 
 # Colors for output
 RED='\033[0;31m'
@@ -15,9 +15,9 @@ BLUE='\033[0;34m'
 NC='\033[0m' # No Color
 
 # Configuration
-PROJECT_NAME="laas-landing-page"
+PROJECT_NAME="svlentes-landing-page"
 VERCEL_ORG="your-vercel-org"
-PRODUCTION_DOMAIN="laas-landing.vercel.app"
+PRODUCTION_DOMAIN="svlentes-landing.vercel.app"
 
 # Functions
 log_info() {
@@ -198,10 +198,10 @@ send_deployment_notification() {
     local url=$2
     
     if [ "$status" = "success" ]; then
-        local message="🚀 LAAS Landing Page deployed successfully to production: $url"
+        local message="🚀 SVlentes Landing Page deployed successfully to production: $url"
         local color="good"
     else
-        local message="❌ LAAS Landing Page deployment failed"
+        local message="❌ SVlentes Landing Page deployment failed"
         local color="danger"
     fi
     
@@ -214,7 +214,7 @@ send_deployment_notification() {
     
     # Send email notification if configured
     if [ -n "$NOTIFICATION_EMAIL" ]; then
-        echo "$message" | mail -s "LAAS Deployment $status" "$NOTIFICATION_EMAIL" || log_warning "Failed to send email notification"
+        echo "$message" | mail -s "SVlentes Deployment $status" "$NOTIFICATION_EMAIL" || log_warning "Failed to send email notification"
     fi
 }
 

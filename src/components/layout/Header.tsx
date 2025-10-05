@@ -107,7 +107,7 @@ Vim através do site SV Lentes e tenho interesse no serviço de assinatura com a
                         <Button
                             onClick={handleAgendarConsulta}
                             className="flex items-center space-x-2"
-                            size="md"
+                            size="default"
                         >
                             <Phone className="w-4 h-4" />
                             <span>Agendar Consulta</span>
@@ -151,7 +151,7 @@ Vim através do site SV Lentes e tenho interesse no serviço de assinatura com a
                                 <Button
                                     onClick={handleAgendarConsulta}
                                     className="w-full flex items-center justify-center space-x-2"
-                                    size="md"
+                                    size="default"
                                 >
                                     <Phone className="w-4 h-4" />
                                     <span>Agendar Consulta</span>

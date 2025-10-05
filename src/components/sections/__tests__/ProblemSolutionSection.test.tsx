@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react'
 import { ProblemSolutionSection } from '../ProblemSolutionSection'
 import { openWhatsAppWithContext } from '@/lib/whatsapp'
-import { customerProblems, laasolutions, impactStats } from '@/data/problems-solutions'
+import { customerProblems, svlentesSolutions, impactStats } from '@/data/problems-solutions'
 import { it } from 'node:test'
 import { it } from 'node:test'
 import { describe } from 'node:test'
@@ -83,10 +83,10 @@ describe('ProblemSolutionSection', () => {
             expect(screen.getByText('Gasto extra anual')).toBeInTheDocument()
         })
 
-        it('renders all LAAS solutions from data', () => {
+        it('renders all SVlentes solutions from data', () => {
             render(<ProblemSolutionSection />)
 
-            laasolutions.forEach((solution) => {
+            svlentesSolutions.forEach((solution) => {
                 expect(screen.getByText(solution.title)).toBeInTheDocument()
                 expect(screen.getByText(solution.description)).toBeInTheDocument()
                 expect(screen.getByText(solution.icon)).toBeInTheDocument()
@@ -97,18 +97,18 @@ describe('ProblemSolutionSection', () => {
             render(<ProblemSolutionSection />)
 
             // Check for solutions section title
-            expect(screen.getByText('✨ Soluções do LAAS')).toBeInTheDocument()
+            expect(screen.getByText('✨ Soluções da SVlentes')).toBeInTheDocument()
             expect(screen.getByText(/Cada problema tem uma solução inteligente/)).toBeInTheDocument()
 
             // Check for solution stats
-            expect(screen.getByText('Resultados com LAAS')).toBeInTheDocument()
+            expect(screen.getByText('Resultados com SVlentes')).toBeInTheDocument()
         })
 
         it('renders impact statistics correctly', () => {
             render(<ProblemSolutionSection />)
 
             // Check transformation section
-            expect(screen.getByText('A Transformação que o LAAS Proporciona')).toBeInTheDocument()
+            expect(screen.getByText('A Transformação que a SVlentes Proporciona')).toBeInTheDocument()
             expect(screen.getByText(/Veja o impacto real na vida dos nossos clientes/)).toBeInTheDocument()
 
             // Check all impact stats - use getAllByText for values that appear multiple times
@@ -135,7 +135,7 @@ describe('ProblemSolutionSection', () => {
 
             // Check CTA content
             expect(screen.getByText('Pronto para resolver esses problemas?')).toBeInTheDocument()
-            expect(screen.getByText(/Fale com um especialista e descubra como o LAAS/)).toBeInTheDocument()
+            expect(screen.getByText(/Fale com um especialista e descubra como a SVlentes/)).toBeInTheDocument()
 
             // Check CTA buttons
             expect(screen.getByRole('button', { name: /Falar com Especialista/i })).toBeInTheDocument()
@@ -229,7 +229,7 @@ describe('ProblemSolutionSection', () => {
 
             // Problems and solutions should be in lists or proper containers
             const problemsSection = screen.getByText('😤 Problemas que você enfrenta').closest('div')
-            const solutionsSection = screen.getByText('✨ Soluções do LAAS').closest('div')
+            const solutionsSection = screen.getByText('✨ Soluções da SVlentes').closest('div')
 
             expect(problemsSection).toBeInTheDocument()
             expect(solutionsSection).toBeInTheDocument()
@@ -251,8 +251,8 @@ describe('ProblemSolutionSection', () => {
             render(<ProblemSolutionSection />)
 
             // Should render all solutions from data
-            expect(laasolutions).toHaveLength(6) // Verify data structure
-            laasolutions.forEach((solution) => {
+            expect(svlentesSolutions).toHaveLength(6) // Verify data structure
+            svlentesSolutions.forEach((solution) => {
                 expect(screen.getByText(solution.title)).toBeInTheDocument()
             })
         })
@@ -279,7 +279,7 @@ describe('ProblemSolutionSection', () => {
 
             // The arrow should be present (we can check for the ArrowRight icon indirectly)
             // Since it's an icon, we check for its container or related elements
-            const transformationSection = screen.getByText('A Transformação que o LAAS Proporciona')
+            const transformationSection = screen.getByText('A Transformação que a SVlentes Proporciona')
             expect(transformationSection).toBeInTheDocument()
         })
 
@@ -291,7 +291,7 @@ describe('ProblemSolutionSection', () => {
                 expect(screen.getByText(problem.icon)).toBeInTheDocument()
             })
 
-            laasolutions.forEach((solution) => {
+            svlentesSolutions.forEach((solution) => {
                 expect(screen.getByText(solution.icon)).toBeInTheDocument()
             })
         })
@@ -312,7 +312,7 @@ describe('ProblemSolutionSection', () => {
             // The problems and solutions should be in a grid layout
             // We can verify this by checking the structure contains the expected content
             expect(screen.getByText('😤 Problemas que você enfrenta')).toBeInTheDocument()
-            expect(screen.getByText('✨ Soluções do LAAS')).toBeInTheDocument()
+            expect(screen.getByText('✨ Soluções da SVlentes')).toBeInTheDocument()
         })
 
         it('renders impact statistics in grid format', () => {

@@ -268,7 +268,7 @@ npm install sharp --save-dev
 
 ### Estrutura de Arquivos
 ```
-LAAS-page-short/
+svlentes-page-short/
 ├── src/
 │   ├── lib/
 │   │   └── icons.ts                    # Catálogo TypeScript

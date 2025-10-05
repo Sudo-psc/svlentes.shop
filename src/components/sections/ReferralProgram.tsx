@@ -119,7 +119,7 @@ export default function ReferralProgram() {
     const shareReferralLink = async (platform: string) => {
         if (!referralLink) return
 
-        const shareText = `🎯 Descubra o LAAS - Nunca mais fique sem lentes de contato!\n\n✅ Lentes entregues em casa\n✅ Acompanhamento médico incluído\n✅ Economia garantida\n\nUse meu link e ganhe R$ 30 de desconto: ${referralLink}`
+        const shareText = `🎯 Descubra a SVlentes - Nunca mais fique sem lentes de contato!\n\n✅ Lentes entregues em casa\n✅ Acompanhamento médico incluído\n✅ Economia garantida\n\nUse meu link e ganhe R$ 30 de desconto: ${referralLink}`
 
         try {
             if (platform === 'whatsapp') {
@@ -129,7 +129,7 @@ export default function ReferralProgram() {
                 await navigator.clipboard.writeText(referralLink)
                 alert('Link copiado para a área de transferência!')
             } else if (platform === 'email') {
-                const emailUrl = `mailto:?subject=${encodeURIComponent('Conheça o LAAS - Assinatura de Lentes')}&body=${encodeURIComponent(shareText)}`
+                const emailUrl = `mailto:?subject=${encodeURIComponent('Conheça a SVlentes - Assinatura de Lentes')}&body=${encodeURIComponent(shareText)}`
                 window.open(emailUrl)
             }
 
@@ -161,7 +161,7 @@ export default function ReferralProgram() {
                         Compartilhe o Cuidado com a Visão
                     </h2>
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-                        Indique amigos e familiares para o LAAS e ambos ganham descontos especiais
+                        Indique amigos e familiares para a SVlentes e ambos ganham descontos especiais
                     </p>
                 </div>
 

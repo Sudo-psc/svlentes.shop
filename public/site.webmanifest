@@ -1,7 +1,7 @@
 {
-    "name": "LAAS - Lentes as a Service",
-    "short_name": "LAAS",
-    "description": "Assinatura de lentes de contato com acompanhamento médico especializado",
+    "name": "SV Lentes - Saraiva Vision Oftalmologia",
+    "short_name": "SV Lentes",
+    "description": "Assinatura de lentes de contato com acompanhamento médico especializado Dr. Philipe Saraiva Cruz",
     "start_url": "/",
     "display": "standalone",
     "background_color": "#ffffff",
@@ -9,27 +9,71 @@
     "orientation": "portrait-primary",
     "icons": [
         {
-            "src": "/android-chrome-192x192.png",
-            "sizes": "192x192",
-            "type": "image/png"
+            "src": "/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png",
+            "purpose": "any"
         },
         {
-            "src": "/android-chrome-512x512.png",
-            "sizes": "512x512",
-            "type": "image/png"
+            "src": "/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png",
+            "purpose": "any"
         },
         {
             "src": "/apple-touch-icon.png",
             "sizes": "180x180",
-            "type": "image/png"
+            "type": "image/png",
+            "purpose": "apple touch icon"
+        },
+        {
+            "src": "/android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/android-chrome-512x512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
         }
     ],
     "categories": [
         "health",
         "medical",
-        "shopping"
+        "shopping",
+        "lifestyle"
     ],
     "lang": "pt-BR",
+    "dir": "ltr",
     "scope": "/",
-    "prefer_related_applications": false
+    "prefer_related_applications": false,
+    "related_applications": [],
+    "shortcuts": [
+        {
+            "name": "Agendar Consulta",
+            "short_name": "Consulta",
+            "description": "Agende sua consulta com Dr. Philipe Saraiva Cruz",
+            "url": "/agendar-consulta",
+            "icons": [
+                {
+                    "src": "/android-chrome-192x192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Falar no WhatsApp",
+            "short_name": "WhatsApp",
+            "description": "Entre em contato via WhatsApp",
+            "url": "https://wa.me/5533998601427",
+            "icons": [
+                {
+                    "src": "/android-chrome-192x192.png",
+                    "sizes": "192x192"
+                }
+            ]
+        }
+    ]
 }

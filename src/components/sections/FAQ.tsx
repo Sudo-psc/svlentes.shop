@@ -53,10 +53,10 @@ export default function FAQ({ className }: FAQSectionProps) {
             <div className="container mx-auto px-4 max-w-4xl">
                 {/* Section Header */}
                 <div className="text-center mb-12">
-                    <h2 className="text-3xl md:text-4xl font-bold text-laas-gray-900 mb-4">
+                    <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
                         Perguntas Frequentes
                     </h2>
-                    <p className="text-lg text-laas-gray-600 max-w-2xl mx-auto">
+                    <p className="text-lg text-gray-600 max-w-2xl mx-auto">
                         Tire suas dúvidas sobre nosso serviço de assinatura de lentes com acompanhamento médico
                     </p>
                 </div>
@@ -68,7 +68,7 @@ export default function FAQ({ className }: FAQSectionProps) {
                             <AccordionItem
                                 key={item.id}
                                 value={item.id}
-                                className="border border-laas-gray-200 rounded-lg px-6 py-2 bg-white shadow-sm hover:shadow-md transition-shadow"
+                                className="border border-gray-200 rounded-lg px-6 py-2 bg-white shadow-sm hover:shadow-md transition-shadow"
                             >
                                 <AccordionTrigger
                                     className="text-left hover:no-underline py-6"
@@ -77,20 +77,20 @@ export default function FAQ({ className }: FAQSectionProps) {
                                     <div className="flex items-start gap-4 text-left">
                                         {/* Question Number */}
                                         {faqProps.numbering && (
-                                            <span className="flex-shrink-0 w-8 h-8 bg-laas-blue text-white rounded-full flex items-center justify-center text-sm font-semibold mt-1">
+                                            <span className="flex-shrink-0 w-8 h-8 bg-primary-600 text-white rounded-full flex items-center justify-center text-sm font-semibold mt-1">
                                                 {String(index + 1).padStart(2, '0')}
                                             </span>
                                         )}
 
                                         {/* Question Text */}
-                                        <span className="font-semibold text-laas-gray-900 text-base md:text-lg leading-relaxed">
+                                        <span className="font-semibold text-gray-900 text-base md:text-lg leading-relaxed">
                                             {item.question}
                                         </span>
                                     </div>
                                 </AccordionTrigger>
 
                                 <AccordionContent className="pt-2 pb-6">
-                                    <div className={`${faqProps.numbering ? 'ml-12' : ''} text-laas-gray-600 text-base leading-relaxed`}>
+                                    <div className={`${faqProps.numbering ? 'ml-12' : ''} text-gray-600 text-base leading-relaxed`}>
                                         {item.answer}
                                     </div>
                                 </AccordionContent>
@@ -101,7 +101,7 @@ export default function FAQ({ className }: FAQSectionProps) {
 
                 {/* Contact CTA */}
                 <div className="text-center mt-12">
-                    <p className="text-laas-gray-600 mb-6">
+                    <p className="text-gray-600 mb-6">
                         Não encontrou a resposta que procurava?
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -115,7 +115,7 @@ export default function FAQ({ className }: FAQSectionProps) {
                         </a>
                         <a
                             href="#contato"
-                            className="inline-flex items-center justify-center px-6 py-3 border-2 border-laas-blue text-laas-blue font-semibold rounded-lg hover:bg-laas-blue hover:text-white transition-colors"
+                            className="inline-flex items-center justify-center px-6 py-3 border-2 border-primary-600 text-primary-600 font-semibold rounded-lg hover:bg-primary-600 hover:text-white transition-colors"
                         >
                             Agendar Consulta
                         </a>

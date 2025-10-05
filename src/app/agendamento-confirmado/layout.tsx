@@ -3,10 +3,10 @@ import { StructuredData } from '@/components/seo/StructuredData'
 import { generateBreadcrumbStructuredData } from '@/lib/seo'
 
 export const metadata: Metadata = {
-    title: 'Agendamento Confirmado - LAAS',
+    title: 'Agendamento Confirmado - SVlentes',
     description: 'Seu agendamento de consulta foi confirmado. Nossa equipe entrará em contato em breve.',
     alternates: {
-        canonical: 'https://laas.com.br/agendamento-confirmado',
+        canonical: 'https://svlentes.com.br/agendamento-confirmado',
     },
     robots: {
         index: false,
@@ -20,9 +20,9 @@ export default function AgendamentoConfirmadoLayout({
     children: React.ReactNode
 }) {
     const breadcrumbData = generateBreadcrumbStructuredData([
-        { name: 'Início', url: 'https://laas.com.br' },
-        { name: 'Agendar Consulta', url: 'https://laas.com.br/agendar-consulta' },
-        { name: 'Confirmado', url: 'https://laas.com.br/agendamento-confirmado' }
+        { name: 'Início', url: 'https://svlentes.com.br' },
+        { name: 'Agendar Consulta', url: 'https://svlentes.com.br/agendar-consulta' },
+        { name: 'Confirmado', url: 'https://svlentes.com.br/agendamento-confirmado' }
     ])
 
     return (

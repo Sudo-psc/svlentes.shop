@@ -3,10 +3,10 @@ import { StructuredData } from '@/components/seo/StructuredData'
 import { generateBreadcrumbStructuredData } from '@/lib/seo'
 
 export const metadata: Metadata = {
-    title: 'Pagamento Realizado com Sucesso - LAAS',
-    description: 'Seu pagamento foi processado com sucesso. Bem-vindo ao LAAS! Suas lentes de contato serão enviadas conforme seu plano.',
+    title: 'Pagamento Realizado com Sucesso - SVlentes',
+    description: 'Seu pagamento foi processado com sucesso. Bem-vindo à SVlentes! Suas lentes de contato serão enviadas conforme seu plano.',
     alternates: {
-        canonical: 'https://laas.com.br/success',
+        canonical: 'https://svlentes.com.br/success',
     },
     robots: {
         index: false,
@@ -20,8 +20,8 @@ export default function SuccessLayout({
     children: React.ReactNode
 }) {
     const breadcrumbData = generateBreadcrumbStructuredData([
-        { name: 'Início', url: 'https://laas.com.br' },
-        { name: 'Sucesso', url: 'https://laas.com.br/success' }
+        { name: 'Início', url: 'https://svlentes.com.br' },
+        { name: 'Sucesso', url: 'https://svlentes.com.br/success' }
     ])
 
     return (

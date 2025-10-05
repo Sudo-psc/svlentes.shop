@@ -27,7 +27,7 @@
 
 - [x] 3. Desenvolver componentes de layout base
   - [x] 3.1 Implementar Header/Cabeçalho
-    - Criar componente Header com logo LAAS
+    - Criar componente Header com logo SVlentes
     - Implementar menu de navegação (Planos, Como Funciona, FAQ, Contato)
     - Adicionar CTA "Agendar Consulta" destacado
     - Implementar versão responsiva para mobile

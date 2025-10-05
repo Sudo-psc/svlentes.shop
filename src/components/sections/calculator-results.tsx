@@ -50,9 +50,9 @@ export function CalculatorResults({ result, onReset }: CalculatorResultsProps) {
           </div>
         </div>
 
-        {/* Assinatura LAAS */}
+        {/* Assinatura SVlentes */}
         <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-          <h3 className="font-semibold text-blue-800 mb-3">Assinatura LAAS</h3>
+          <h3 className="font-semibold text-blue-800 mb-3">Assinatura SVlentes</h3>
           <div className="space-y-2">
             <div className="flex justify-between">
               <span className="text-sm text-blue-700">Mensal:</span>

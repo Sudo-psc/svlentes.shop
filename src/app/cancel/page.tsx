@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 
 export const metadata: Metadata = {
-    title: 'Pagamento Cancelado - LAAS',
+    title: 'Pagamento Cancelado - SVlentes',
     description: 'Seu pagamento foi cancelado. Você pode tentar novamente a qualquer momento.',
 }
 
@@ -63,7 +63,7 @@ export default function CancelPage() {
 
                 {/* Benefits Reminder */}
                 <div className="bg-blue-50 border border-blue-200 rounded-lg p-6 mb-8">
-                    <h3 className="font-semibold text-blue-900 mb-3">Lembre-se dos benefícios da LAAS:</h3>
+                    <h3 className="font-semibold text-blue-900 mb-3">Lembre-se dos benefícios da SVlentes:</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-blue-800 text-sm">
                         <div className="flex items-center">
                             <svg className="w-4 h-4 text-blue-600 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -102,7 +102,7 @@ export default function CancelPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <a
-                            href="https://wa.me/5511947038078?text=Olá! Estava tentando assinar a LAAS mas tive um problema no pagamento. Podem me ajudar?"
+                            href="https://wa.me/5511947038078?text=Olá! Estava tentando assinar a SVlentes mas tive um problema no pagamento. Podem me ajudar?"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="block"

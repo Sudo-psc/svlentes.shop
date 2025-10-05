@@ -4,7 +4,7 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-console.log('🔍 Verificando performance e problemas do site LAAS...\n');
+console.log('🔍 Verificando performance e problemas do site SVlentes...\n');
 
 // Função para executar comandos e capturar saída
 function runCommand(command, description) {

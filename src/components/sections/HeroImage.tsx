@@ -47,8 +47,8 @@ export function HeroImage({ className = '', imageVariant = 'hero1' }: HeroImageP
             </div>
 
             {/* Floating trust badges */}
-            <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-sm">
-                <div className="bg-white/95 backdrop-blur-md rounded-2xl p-6 shadow-xl border border-gray-100/50">
+            <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-sm animate-float">
+                <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-6 shadow-glass-lg border border-white/20">
                     <div className="grid grid-cols-3 gap-4">
                         <div className="text-center group">
                             <div className="flex items-center justify-center mb-2">
@@ -89,10 +89,10 @@ export function HeroImage({ className = '', imageVariant = 'hero1' }: HeroImageP
             <div className="absolute top-1/4 -right-4 w-16 h-16 bg-gradient-to-br from-purple-400 to-pink-500 rounded-full opacity-25 blur-xl animate-pulse-slow" style={{ animationDelay: '4s' }} />
 
             {/* Medical credibility badge */}
-            <div className="absolute top-6 left-6 bg-white/90 backdrop-blur-sm rounded-xl px-4 py-2 shadow-lg border border-gray-100/50">
-                <div className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-                    <span className="text-sm font-medium text-gray-800">Acompanhamento Médico</span>
+            <div className="absolute top-6 left-6 bg-white/80 backdrop-blur-md rounded-2xl px-6 py-3 shadow-glass border border-white/30 transform hover:scale-105 transition-all duration-300">
+                <div className="flex items-center space-x-3">
+                    <div className="w-3 h-3 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full animate-pulse shadow-lg shadow-green-500/50" />
+                    <span className="text-sm font-semibold text-gray-800 drop-shadow-sm">Acompanhamento Médico</span>
                 </div>
             </div>
         </div>

@@ -1,5 +1,6 @@
 import * as React from "react"
 import { cn } from "@/lib/utils"
+import { useId } from "react"
 
 export interface InputProps
     extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -10,7 +11,8 @@ export interface InputProps
 
 const Input = React.forwardRef<HTMLInputElement, InputProps>(
     ({ className, type, label, error, helperText, ...props }, ref) => {
-        const inputId = props.id || `input-${Math.random().toString(36).substr(2, 9)}`
+        const generatedId = useId()
+        const inputId = props.id || `input-${generatedId}`
         const errorId = `${inputId}-error`
         const helperId = `${inputId}-helper`
 

@@ -111,7 +111,7 @@ export default function SuccessPage() {
                     </Badge>
 
                     <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                        Bem-vindo à LAAS! 🎉
+                        Bem-vindo à SVlentes! 🎉
                     </h1>
 
                     <p className="text-xl text-gray-600 max-w-2xl mx-auto">
@@ -267,7 +267,7 @@ export default function SuccessPage() {
 
                     <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <a
-                            href="https://wa.me/5511947038078?text=Olá! Acabei de assinar a LAAS e gostaria de tirar algumas dúvidas."
+                            href="https://wa.me/5511947038078?text=Olá! Acabei de assinar a SVlentes e gostaria de tirar algumas dúvidas."
                             target="_blank"
                             rel="noopener noreferrer"
                         >

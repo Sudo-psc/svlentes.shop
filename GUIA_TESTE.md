@@ -1,4 +1,4 @@
-# 🧪 Guia de Teste - Site LAAS
+# 🧪 Guia de Teste - Site SVlentes
 
 ## 🚀 Como Testar o Site
 

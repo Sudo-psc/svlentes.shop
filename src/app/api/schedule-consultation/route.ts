@@ -120,7 +120,7 @@ async function sendEmailNotification(schedulingData: any) {
 
     const emailContent = {
         to: schedulingData.leadInfo.email,
-        subject: 'Agendamento de Consulta - LAAS',
+        subject: 'Agendamento de Consulta - SVlentes',
         template: 'scheduling-confirmation',
         data: {
             patientName: schedulingData.leadInfo.nome,
@@ -143,7 +143,7 @@ async function sendWhatsAppNotification(schedulingData: any) {
     console.log('WhatsApp enviado para:', schedulingData.leadInfo.whatsapp)
 
     const whatsappMessage = `
-🏥 *LAAS - Agendamento Confirmado*
+🏥 *SVlentes - Agendamento Confirmado*
 
 Olá ${schedulingData.leadInfo.nome}!
 

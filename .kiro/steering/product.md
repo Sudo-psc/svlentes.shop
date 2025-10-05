@@ -1,6 +1,6 @@
 # Product Overview
 
-**LAAS (Lentes as a Service)** - Landing page para assinatura de lentes de contato com acompanhamento médico especializado.
+**SVlentes (Lentes as a Service)** - Landing page para assinatura de lentes de contato com acompanhamento médico especializado.
 
 ## Core Business Model
 - Subscription-based contact lens service

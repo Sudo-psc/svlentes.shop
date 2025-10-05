@@ -1,4 +1,4 @@
-# LAAS - Landing Page
+# SVlentes - Landing Page
 
 Landing page para assinatura de lentes de contato com acompanhamento médico especializado.
 
@@ -22,7 +22,7 @@ Landing page para assinatura de lentes de contato com acompanhamento médico esp
 1. Clone o repositório
 ```bash
 git clone <repository-url>
-cd laas-landing-page
+cd svlentes-landing-page
 ```
 
 2. Instale as dependências
@@ -100,9 +100,9 @@ Especialidade: Oftalmologia
 ## 📞 Contato
 
 - WhatsApp: +55 11 99999-9999
-- Email: contato@laas.com.br
-- Site: https://laas.com.br
+- Email: contato@svlentes.com.br
+- Site: https://svlentes.com.br
 
 ## 📄 Licença
 
-Este projeto é propriedade privada da LAAS.
+Este projeto é propriedade privada da SVlentes.

@@ -91,6 +91,8 @@ export function ShadcnDemo() {
                             <Button variant="ghost">Ghost</Button>
                             <Button variant="primary">Primary</Button>
                             <Button variant="whatsapp">WhatsApp</Button>
+                            <Button variant="success">Success</Button>
+                            <Button variant="warning">Warning</Button>
                         </div>
 
                         <div className="space-y-2">

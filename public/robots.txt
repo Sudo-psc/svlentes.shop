@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 
 # Sitemap
-Sitemap: https://laas.com.br/sitemap.xml
+Sitemap: https://svlentes.com.br/sitemap.xml
 
 # Disallow admin areas
 Disallow: /api/

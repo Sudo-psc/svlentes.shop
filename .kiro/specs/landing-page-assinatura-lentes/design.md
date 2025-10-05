@@ -42,7 +42,7 @@ src/
 ├── components/
 │   ├── ui/                        # Componentes base (Button, Input, etc.)
 │   ├── layout/
-│   │   ├── Header.tsx             # Cabeçalho com menu LAAS
+│   │   ├── Header.tsx             # Cabeçalho com menu SVlentes
 │   │   ├── Footer.tsx             # Rodapé com info legal/CRM
 │   │   └── WhatsAppFloat.tsx      # Botão flutuante WhatsApp
 │   ├── sections/
@@ -86,7 +86,7 @@ src/
 #### 1. Header/Cabeçalho
 ```typescript
 interface HeaderProps {
-  logo: string; // "LAAS"
+  logo: string; // "SVlentes"
   navigation: {
     planos: string;
     comoFunciona: string;
@@ -97,7 +97,7 @@ interface HeaderProps {
   utilityIcons: string[]; // idioma/conta
 }
 ```
-- Logo LAAS à esquerda
+- Logo SVlentes à esquerda
 - Menu horizontal: Planos, Como Funciona, FAQ, Contato
 - CTA destacado "Agendar Consulta" no canto direito
 - Versão mobile com menu simplificado
@@ -472,7 +472,7 @@ interface ErrorBoundaryState {
 ### SEO Strategy Baseada no Conteúdo
 ```typescript
 interface SEOMetadata {
-  title: string; // "LAAS - Assinatura de Lentes de Contato com Acompanhamento Médico"
+  title: string; // "SVlentes - Assinatura de Lentes de Contato com Acompanhamento Médico"
   description: string; // Baseada na proposta "Nunca mais fique sem lentes"
   keywords: string[]; // lentes de contato, assinatura, Dr. Philipe Saraiva Cruz, CRM
   openGraph: {
@@ -483,7 +483,7 @@ interface SEOMetadata {
   };
   structuredData: {
     '@type': 'MedicalBusiness';
-    name: 'LAAS - Lens as a Service';
+    name: 'SVlentes - Lens as a Service';
     description: string;
     physician: {
       '@type': 'Physician';

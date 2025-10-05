@@ -29,7 +29,7 @@ A tarefa 6 (Seção Problema-Solução) foi implementada com sucesso, incluindo:
   - Ícones emoji para cada problema
   - Lista de 6 problemas principais
 
-- **Coluna Direita**: Soluções da LAAS
+- **Coluna Direita**: Soluções da SVlentes
   - Fundo verde claro para destacar benefícios
   - Ícones emoji para cada solução
   - Título e descrição para cada solução

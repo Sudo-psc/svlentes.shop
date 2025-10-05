@@ -247,7 +247,7 @@ export function HowItWorksSection({ className = '' }: HowItWorksSectionProps) {
 
                     <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-6">
                         Como o{' '}
-                        <span className="text-gradient">LAAS Funciona</span>
+                        <span className="text-gradient">SVlentes Funciona</span>
                     </h2>
 
                     <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
@@ -301,7 +301,7 @@ export function HowItWorksSection({ className = '' }: HowItWorksSectionProps) {
                 <div className="text-center">
                     <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-8 lg:p-12 max-w-4xl mx-auto">
                         <h3 className="text-2xl lg:text-3xl font-bold text-gray-900 mb-4">
-                            Pronto para começar sua jornada LAAS?
+                            Pronto para começar sua jornada SVlentes?
                         </h3>
                         <p className="text-lg text-gray-600 mb-8">
                             {activeTab === 'monthly'

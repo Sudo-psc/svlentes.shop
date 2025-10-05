@@ -21,6 +21,7 @@
         "lighthouse": "lhci autorun",
         "optimize:icons": "node scripts/optimize-icons.js",
         "optimize:logo": "node scripts/optimize-logo.js",
+        "generate:favicons": "node scripts/generate-favicons.js",
         "icons:catalog": "open docs/ICONES.md"
     },
     "dependencies": {

@@ -1,4 +1,4 @@
-# Guia de Imagens Hero - LAAS
+# Guia de Imagens Hero - SVlentes
 
 ## Imagens Disponíveis 🖼️
 

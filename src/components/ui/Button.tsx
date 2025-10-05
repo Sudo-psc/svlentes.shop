@@ -18,8 +18,10 @@ const buttonVariants = cva(
                 ghost: "hover:bg-accent hover:text-accent-foreground",
                 link: "text-primary underline-offset-4 hover:underline",
                 // Custom variants for SV Lentes
-                primary: "bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500",
-                whatsapp: "bg-green-500 text-white hover:bg-green-600 focus:ring-green-400",
+                primary: "bg-primary-600 text-white hover:bg-primary-700 focus:ring-primary-500 shadow-sm hover:shadow-md",
+                whatsapp: "bg-whatsapp-500 text-white hover:bg-whatsapp-600 focus:ring-whatsapp-400 shadow-sm hover:shadow-md",
+                success: "bg-success-600 text-white hover:bg-success-700 focus:ring-success-500 shadow-sm hover:shadow-md",
+                warning: "bg-warning-500 text-warning-900 hover:bg-warning-600 focus:ring-warning-400 shadow-sm hover:shadow-md",
             },
             size: {
                 default: "h-10 px-4 py-2",

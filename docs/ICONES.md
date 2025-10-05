@@ -1,6 +1,6 @@
 # 📐 Catálogo de Ícones - SV Lentes
 
-Documentação completa do sistema de ícones do projeto SV Lentes (LAAS).
+Documentação completa do sistema de ícones do projeto SV Lentes (SVlentes).
 
 ## 📋 Índice
 

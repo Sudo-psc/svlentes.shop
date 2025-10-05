@@ -27,7 +27,7 @@ export function EconomyCalculator() {
             Calcule Sua Economia
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Descubra quanto você pode economizar com a assinatura LAAS 
+            Descubra quanto você pode economizar com a assinatura SVlentes
             comparado à compra avulsa de lentes de contato
           </p>
         </div>
@@ -51,7 +51,7 @@ export function EconomyCalculator() {
               Receba suas lentes sem sair de casa, com frete grátis
             </p>
           </div>
-          
+
           <div className="text-center">
             <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl">👨‍⚕️</span>
@@ -61,7 +61,7 @@ export function EconomyCalculator() {
               Dr. Philipe Saraiva Cruz acompanha sua saúde ocular
             </p>
           </div>
-          
+
           <div className="text-center">
             <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-4">
               <span className="text-2xl">🔄</span>

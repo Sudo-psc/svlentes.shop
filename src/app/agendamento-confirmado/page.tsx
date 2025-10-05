@@ -188,7 +188,7 @@ export default function AgendamentoConfirmadoPage() {
                     <Button
                         onClick={() => {
                             const whatsappMessage = encodeURIComponent(
-                                `Olá! Acabei de fazer um agendamento no site da LAAS. ID: ${schedulingDetails.id}. Gostaria de confirmar os detalhes.`
+                                `Olá! Acabei de fazer um agendamento no site da SVlentes. ID: ${schedulingDetails.id}. Gostaria de confirmar os detalhes.`
                             )
                             window.open(`https://wa.me/5511999999999?text=${whatsappMessage}`, '_blank')
                         }}

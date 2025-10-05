@@ -1,4 +1,4 @@
-# LAAS Landing Page - Resumo de Implementação
+# SVlentes Landing Page - Resumo de Implementação
 
 ## Status Atual: Tarefas 5 e 6 Concluídas ✅
 
@@ -42,7 +42,7 @@ src/lib/calculator.ts
 ### Funcionalidades Implementadas
 - **Layout Lado a Lado**: Problemas vs Soluções
 - **6 Problemas Identificados**: Com ícones emoji visuais
-- **6 Soluções LAAS**: Títulos e descrições detalhadas
+- **6 Soluções SVlentes**: Títulos e descrições detalhadas
 - **CTA Contextual**: "Fale com um especialista"
 
 ### Componentes Criados

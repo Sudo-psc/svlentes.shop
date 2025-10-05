@@ -82,7 +82,7 @@ export function ProblemSolution() {
               Pronto para Resolver Esses Problemas?
             </h3>
             <p className="text-gray-600 mb-6">
-              Converse com nosso especialista e descubra como a LAAS pode transformar sua experiência com lentes de contato
+              Converse com nosso especialista e descubra como a SVlentes pode transformar sua experiência com lentes de contato
             </p>
             <button
               onClick={handleSpecialistContact}

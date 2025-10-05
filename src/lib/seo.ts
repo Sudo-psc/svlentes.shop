@@ -42,22 +42,24 @@ export const baseMetadata: Metadata = {
         locale: 'pt_BR',
         url: 'https://svlentes.shop',
         siteName: 'SV Lentes',
-        title: 'SV Lentes - Nunca mais fique sem lentes',
-        description: 'Assinatura de lentes de contato com acompanhamento médico especializado. Pioneiro no Brasil.',
+        title: 'SV Lentes - Nunca mais fique sem lentes | Assinatura com Acompanhamento Médico',
+        description: 'Pioneiro no Brasil em assinatura de lentes de contato com acompanhamento médico especializado. Dr. Philipe Saraiva Cruz - CRM 69.870. Economia de até 40%.',
         images: [
             {
                 url: '/images/og-image.jpg',
                 width: 1200,
                 height: 630,
                 alt: 'SV Lentes - Assinatura de Lentes de Contato com Acompanhamento Médico',
+                type: 'image/jpeg'
             }
         ],
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'SV Lentes - Nunca mais fique sem lentes',
-        description: 'Assinatura de lentes de contato com acompanhamento médico especializado',
+        title: 'SV Lentes - Nunca mais fique sem lentes | Assinatura com Acompanhamento Médico',
+        description: 'Pioneiro no Brasil em assinatura de lentes de contato com acompanhamento médico especializado. Dr. Philipe Saraiva Cruz - CRM 69.870.',
         images: ['/images/og-image.jpg'],
+        site: '@svlentes',
     },
     robots: {
         index: true,

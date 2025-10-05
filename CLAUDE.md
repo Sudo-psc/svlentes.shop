@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Project Overview
 
-**SV Lentes (Lens as a Service - LAAS)** is a contact lens subscription service platform for Saraiva Vision clinic, combining automated lens delivery with continuous medical care.
+**SV Lentes (SVlentes)** is a contact lens subscription service platform for Saraiva Vision clinic, combining automated lens delivery with continuous medical care.
 
 ### Business Context
 - **Service**: Subscription-based contact lens delivery with ophthalmological monitoring
@@ -24,7 +24,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Repository Structure
 
 ```
-LAAS-page-short/
+svlentes-page-short/
 ├── Backend/          # Backend services (empty - to be developed)
 ├── Frontend/         # Frontend application
 │   ├── Docs/        # Project documentation

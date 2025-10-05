@@ -6,58 +6,141 @@
 
 @layer base {
     :root {
+        /* Base colors - High contrast for accessibility */
         --background: 0 0% 100%;
         --foreground: 222.2 84% 4.9%;
+
+        /* Card colors - Subtle contrast for depth */
         --card: 0 0% 100%;
         --card-foreground: 222.2 84% 4.9%;
+
+        /* Popover colors */
         --popover: 0 0% 100%;
         --popover-foreground: 222.2 84% 4.9%;
-        --primary: 221.2 83.2% 53.3%;
-        --primary-foreground: 210 40% 98%;
-        --secondary: 210 40% 96%;
+
+        /* Primary - Medical Blue (optimized for trust and professionalism) */
+        --primary: 214 88% 27%;
+        /* Deep medical blue #0f4c75 */
+        --primary-foreground: 0 0% 98%;
+
+        /* Secondary - Soft neutral for balance */
+        --secondary: 210 20% 96%;
+        /* Light gray-blue */
         --secondary-foreground: 222.2 84% 4.9%;
-        --muted: 210 40% 96%;
-        --muted-foreground: 215.4 16.3% 46.9%;
-        --accent: 210 40% 96%;
+
+        /* Muted colors - Better contrast for readability */
+        --muted: 210 40% 94%;
+        /* Lighter muted background */
+        --muted-foreground: 215.4 25% 35%;
+        /* Darker muted text for better contrast */
+
+        /* Accent - Subtle highlight */
+        --accent: 210 40% 94%;
         --accent-foreground: 222.2 84% 4.9%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 210 40% 98%;
-        --border: 214.3 31.8% 91.4%;
-        --input: 214.3 31.8% 91.4%;
-        --ring: 221.2 83.2% 53.3%;
+
+        /* Destructive - Improved red for better visibility */
+        --destructive: 0 72% 51%;
+        /* More saturated red #dc2626 */
+        --destructive-foreground: 0 0% 98%;
+
+        /* Border and input - Subtle but visible */
+        --border: 214.3 31.8% 88%;
+        /* Slightly darker border */
+        --input: 214.3 31.8% 88%;
+
+        /* Ring - Focus indicator */
+        --ring: 214 88% 27%;
+        /* Match primary for consistency */
+
+        /* Border radius */
         --radius: 0.5rem;
-        --chart-1: 12 76% 61%;
-        --chart-2: 173 58% 39%;
-        --chart-3: 197 37% 24%;
-        --chart-4: 43 74% 66%;
-        --chart-5: 27 87% 67%;
+
+        /* Success color for positive actions */
+        --success: 142 76% 36%;
+        /* Medical green #16a34a */
+        --success-foreground: 0 0% 98%;
+
+        /* Warning color */
+        --warning: 38 92% 50%;
+        /* Amber #f59e0b */
+        --warning-foreground: 0 0% 98%;
+
+        /* Chart colors - Harmonized palette */
+        --chart-1: 214 88% 27%;
+        /* Primary blue */
+        --chart-2: 142 76% 36%;
+        /* Success green */
+        --chart-3: 38 92% 50%;
+        /* Warning amber */
+        --chart-4: 262 83% 58%;
+        /* Purple accent */
+        --chart-5: 0 72% 51%;
+        /* Destructive red */
     }
 
     .dark {
+        /* Dark mode - High contrast for accessibility */
         --background: 222.2 84% 4.9%;
+        /* Dark blue-gray */
         --foreground: 210 40% 98%;
-        --card: 222.2 84% 4.9%;
+
+        /* Card colors - Elevated surface */
+        --card: 222.2 84% 8%;
+        /* Slightly lighter than background */
         --card-foreground: 210 40% 98%;
-        --popover: 222.2 84% 4.9%;
+
+        /* Popover colors */
+        --popover: 222.2 84% 8%;
         --popover-foreground: 210 40% 98%;
-        --primary: 217.2 91.2% 59.8%;
+
+        /* Primary - Lighter blue for dark mode */
+        --primary: 214 88% 65%;
+        /* Lighter medical blue for dark mode */
         --primary-foreground: 222.2 84% 4.9%;
+
+        /* Secondary - Dark mode secondary */
         --secondary: 217.2 32.6% 17.5%;
         --secondary-foreground: 210 40% 98%;
+
+        /* Muted colors - Balanced for dark mode */
         --muted: 217.2 32.6% 17.5%;
-        --muted-foreground: 215 20.2% 65.1%;
+        --muted-foreground: 215 20.2% 70%;
+        /* Lighter for better contrast */
+
+        /* Accent */
         --accent: 217.2 32.6% 17.5%;
         --accent-foreground: 210 40% 98%;
-        --destructive: 0 62.8% 30.6%;
+
+        /* Destructive - Softer red for dark mode */
+        --destructive: 0 62.8% 55%;
         --destructive-foreground: 210 40% 98%;
-        --border: 217.2 32.6% 17.5%;
-        --input: 217.2 32.6% 17.5%;
-        --ring: 224.3 76.3% 94.1%;
-        --chart-1: 220 70% 50%;
-        --chart-2: 160 60% 45%;
-        --chart-3: 30 80% 55%;
-        --chart-4: 280 65% 60%;
-        --chart-5: 340 75% 55%;
+
+        /* Border and input - Visible in dark mode */
+        --border: 217.2 32.6% 20%;
+        --input: 217.2 32.6% 20%;
+
+        /* Ring - Light ring for dark mode */
+        --ring: 214 88% 65%;
+
+        /* Success color for dark mode */
+        --success: 142 76% 45%;
+        --success-foreground: 210 40% 98%;
+
+        /* Warning color for dark mode */
+        --warning: 38 92% 60%;
+        --warning-foreground: 222.2 84% 4.9%;
+
+        /* Chart colors - Dark mode optimized */
+        --chart-1: 214 88% 65%;
+        /* Primary blue */
+        --chart-2: 142 76% 45%;
+        /* Success green */
+        --chart-3: 38 92% 60%;
+        /* Warning amber */
+        --chart-4: 262 83% 68%;
+        /* Purple accent */
+        --chart-5: 0 62.8% 55%;
+        /* Destructive red */
     }
 
     * {
@@ -144,7 +227,7 @@
     }
 
     .btn-secondary {
-        @apply bg-secondary-600 hover:bg-secondary-700 active:bg-secondary-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-secondary-500 focus:ring-offset-2 shadow-md hover:shadow-lg;
+        @apply bg-secondary-500 hover:bg-secondary-600 active:bg-secondary-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-secondary-400 focus:ring-offset-2 shadow-md hover:shadow-lg;
     }
 
     .btn-outline {
@@ -152,7 +235,15 @@
     }
 
     .btn-whatsapp {
-        @apply bg-green-600 hover:bg-green-700 active:bg-green-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 shadow-md hover:shadow-lg;
+        @apply bg-whatsapp-500 hover:bg-whatsapp-600 active:bg-whatsapp-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-whatsapp-400 focus:ring-offset-2 shadow-md hover:shadow-lg;
+    }
+
+    .btn-success {
+        @apply bg-success-600 hover:bg-success-700 active:bg-success-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-success-500 focus:ring-offset-2 shadow-md hover:shadow-lg;
+    }
+
+    .btn-warning {
+        @apply bg-warning-500 hover:bg-warning-600 active:bg-warning-700 text-warning-900 font-semibold py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-warning-400 focus:ring-offset-2 shadow-md hover:shadow-lg;
     }
 
     .container-custom {
@@ -168,22 +259,34 @@
     }
 
     .section-title {
-        @apply text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4;
+        @apply text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-4;
     }
 
     .section-subtitle {
-        @apply text-lg md:text-xl text-gray-600 max-w-3xl mx-auto;
+        @apply text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto;
     }
 
     .card {
-        @apply bg-white rounded-xl shadow-lg border border-gray-100 p-6 hover:shadow-xl transition-shadow duration-300;
+        @apply bg-card rounded-xl shadow-lg border border-border p-6 hover:shadow-xl transition-shadow duration-300;
     }
 
     .input-field {
-        @apply w-full px-4 py-3 border border-gray-300 rounded-lg text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-primary-500 focus:border-primary-500 transition-all duration-200 disabled:bg-gray-100 disabled:cursor-not-allowed;
+        @apply w-full px-4 py-3 border border-input rounded-lg text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-ring focus:border-ring transition-all duration-200 disabled:bg-muted disabled:cursor-not-allowed disabled:opacity-50;
     }
 
     .text-gradient {
-        @apply bg-gradient-to-r from-primary-600 to-secondary-600 bg-clip-text text-transparent;
+        @apply bg-gradient-to-r from-primary-600 to-success-600 bg-clip-text text-transparent;
+    }
+
+    .text-gradient-medical {
+        @apply bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent;
+    }
+
+    .bg-gradient-medical {
+        @apply bg-gradient-to-br from-primary-50 to-primary-100;
+    }
+
+    .bg-gradient-success {
+        @apply bg-gradient-to-br from-success-50 to-success-100;
     }
 }
