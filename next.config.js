@@ -27,9 +27,9 @@ const nextConfig = {
     poweredByHeader: false,
     generateEtags: true,
     env: {
-        STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
-        STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
-        STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET,
+        ASAAS_ENV: process.env.ASAAS_ENV,
+        ASAAS_API_KEY_SANDBOX: process.env.ASAAS_API_KEY_SANDBOX,
+        ASAAS_API_KEY_PROD: process.env.ASAAS_API_KEY_PROD,
     },
     headers: async () => {
         return [

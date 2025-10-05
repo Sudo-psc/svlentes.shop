@@ -50,11 +50,49 @@ export function SubscriptionFlow() {
     }
 
     const handleConfirm = async (contactData: any) => {
-        // Aqui você implementaria a lógica de envio para o backend
-        console.log('Order confirmed:', { ...flowData, contactData })
+        try {
+            const response = await fetch('/api/asaas/create-payment', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    planId: flowData.planId,
+                    billingInterval: flowData.billingCycle,
+                    billingType: 'PIX',
+                    customerData: {
+                        name: contactData.name,
+                        email: contactData.email,
+                        phone: contactData.phone,
+                        cpfCnpj: contactData.cpfCnpj,
+                    },
+                    metadata: {
+                        lensData: JSON.stringify(flowData.lensData),
+                        addOns: JSON.stringify(flowData.addOns),
+                        source: 'subscription_flow',
+                    },
+                }),
+            })
 
-        // Redirecionar para página de sucesso ou checkout
-        window.location.href = '/agendar-consulta'
+            if (!response.ok) {
+                const error = await response.json()
+                console.error('Erro ao criar pagamento:', error)
+                alert(`Erro ao processar pagamento: ${error.error || 'Erro desconhecido'}`)
+                return
+            }
+
+            const data = await response.json()
+            
+            if (data.invoiceUrl) {
+                window.location.href = data.invoiceUrl
+            } else {
+                console.log('Pagamento criado com sucesso:', data)
+                window.location.href = '/agendar-consulta'
+            }
+        } catch (error) {
+            console.error('Erro ao confirmar pedido:', error)
+            alert('Erro ao processar seu pedido. Por favor, tente novamente.')
+        }
     }
 
     return (
