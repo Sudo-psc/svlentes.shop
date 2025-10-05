@@ -193,6 +193,17 @@ async function handlePaymentRefunded(payment: any) {
 
 export async function POST(request: NextRequest) {
     try {
+        const asaasToken = request.headers.get('asaas-access-token')
+        const expectedToken = process.env.ASAAS_WEBHOOK_TOKEN
+        
+        if (expectedToken && asaasToken !== expectedToken) {
+            console.error('ASAAS_WEBHOOK_AUTH_FAILED: Invalid token')
+            return NextResponse.json(
+                { error: 'Unauthorized' },
+                { status: 401 }
+            )
+        }
+
         const body: AsaasWebhookEvent = await request.json()
 
         console.log(`ASAAS_WEBHOOK_RECEIVED: ${body.event}`)

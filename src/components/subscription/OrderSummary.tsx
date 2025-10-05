@@ -20,6 +20,8 @@ interface ContactData {
     name: string
     email: string
     phone: string
+    cpfCnpj?: string
+    billingType: 'PIX' | 'BOLETO' | 'CREDIT_CARD'
     acceptsTerms: boolean
 }
 
@@ -37,6 +39,8 @@ export function OrderSummary({ planId, billingCycle, lensData, addOns, onBack, o
         name: '',
         email: '',
         phone: '',
+        cpfCnpj: '',
+        billingType: 'PIX',
         acceptsTerms: false
     })
 
@@ -187,6 +191,26 @@ export function OrderSummary({ planId, billingCycle, lensData, addOns, onBack, o
                                 onChange={(e) => setContactData(prev => ({ ...prev, email: e.target.value }))}
                                 required
                             />
+                            <Input
+                                label="CPF/CNPJ"
+                                placeholder="000.000.000-00"
+                                value={contactData.cpfCnpj}
+                                onChange={(e) => setContactData(prev => ({ ...prev, cpfCnpj: e.target.value }))}
+                            />
+                            <div>
+                                <label className="block text-sm font-medium text-gray-700 mb-2">
+                                    Forma de Pagamento
+                                </label>
+                                <select
+                                    value={contactData.billingType}
+                                    onChange={(e) => setContactData(prev => ({ ...prev, billingType: e.target.value as 'PIX' | 'BOLETO' | 'CREDIT_CARD' }))}
+                                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                                >
+                                    <option value="PIX">PIX</option>
+                                    <option value="BOLETO">Boleto Bancário</option>
+                                    <option value="CREDIT_CARD">Cartão de Crédito</option>
+                                </select>
+                            </div>
                             <div className="pt-2">
                                 <label className="flex items-start space-x-3 cursor-pointer">
                                     <Checkbox

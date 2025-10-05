@@ -51,6 +51,8 @@ export function SubscriptionFlow() {
 
     const handleConfirm = async (contactData: any) => {
         try {
+            const billingType = contactData.billingType || 'PIX'
+            
             const response = await fetch('/api/asaas/create-payment', {
                 method: 'POST',
                 headers: {
@@ -59,7 +61,7 @@ export function SubscriptionFlow() {
                 body: JSON.stringify({
                     planId: flowData.planId,
                     billingInterval: flowData.billingCycle,
-                    billingType: 'PIX',
+                    billingType: billingType,
                     customerData: {
                         name: contactData.name,
                         email: contactData.email,

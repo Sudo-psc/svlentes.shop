@@ -26,11 +26,6 @@ const nextConfig = {
     compress: true,
     poweredByHeader: false,
     generateEtags: true,
-    env: {
-        ASAAS_ENV: process.env.ASAAS_ENV,
-        ASAAS_API_KEY_SANDBOX: process.env.ASAAS_API_KEY_SANDBOX,
-        ASAAS_API_KEY_PROD: process.env.ASAAS_API_KEY_PROD,
-    },
     headers: async () => {
         return [
             {
