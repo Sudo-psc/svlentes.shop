@@ -261,19 +261,38 @@ export function Footer({ className }: FooterProps) {
                         ))}
                     </div>
 
-                    {/* Trust Indicators */}
-                    <div className="flex flex-wrap items-center justify-center gap-6 mb-6 pb-6 border-b border-medical-800">
-                        <div className="flex items-center space-x-2 text-gray-400">
-                            <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" aria-hidden="true"></div>
-                            <span className="text-sm">Site Seguro SSL</span>
+                    {/* Enhanced Trust Indicators */}
+                    <div className="flex flex-wrap items-center justify-center gap-4 mb-6 pb-6 border-b border-medical-800">
+                        {/* SSL Security Badge */}
+                        <div className="ssl-badge-dark">
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+                            </svg>
+                            <span>Site Seguro SSL</span>
                         </div>
-                        <div className="flex items-center space-x-2 text-gray-400">
-                            <div className="w-2 h-2 bg-blue-500 rounded-full animate-pulse" aria-hidden="true"></div>
-                            <span className="text-sm">Conformidade LGPD</span>
+
+                        {/* LGPD Compliance */}
+                        <div className="flex items-center space-x-2 bg-green-900/30 border border-green-700/50 rounded-lg px-3 py-2 text-sm font-medium text-green-300">
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
+                            </svg>
+                            <span>LGPD Conforme</span>
                         </div>
-                        <div className="flex items-center space-x-2 text-gray-400">
-                            <div className="w-2 h-2 bg-purple-500 rounded-full animate-pulse" aria-hidden="true"></div>
-                            <span className="text-sm">Produtos ANVISA</span>
+
+                        {/* ANVISA */}
+                        <div className="flex items-center space-x-2 bg-blue-900/30 border border-blue-700/50 rounded-lg px-3 py-2 text-sm font-medium text-blue-300">
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                            </svg>
+                            <span>Produtos ANVISA</span>
+                        </div>
+
+                        {/* Medical Council */}
+                        <div className="flex items-center space-x-2 bg-purple-900/30 border border-purple-700/50 rounded-lg px-3 py-2 text-sm font-medium text-purple-300">
+                            <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 6a3 3 0 11-6 0 3 3 0 016 0zM17 6a3 3 0 11-6 0 3 3 0 016 0zM12.93 17c.046-.327.07-.66.07-1a6.97 6.97 0 00-1.5-4.33A5 5 0 0119 16v1h-6.07zM6 11a5 5 0 015 5v1H1v-1a5 5 0 015-5z" />
+                            </svg>
+                            <span>CRM {doctorInfo.crm}</span>
                         </div>
                     </div>
 

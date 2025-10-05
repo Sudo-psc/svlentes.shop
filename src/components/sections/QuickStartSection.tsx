@@ -58,11 +58,17 @@ export function QuickStartSection() {
                         </ul>
 
                         <Link href="/calculadora" className="block">
-                            <button className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold py-4 rounded-lg flex items-center justify-center space-x-2 transition-all">
-                                <Calculator className="w-5 h-5" />
-                                <span>Calcular Economia</span>
-                                <ArrowRight className="w-5 h-5" />
-                            </button>
+                            <div className="relative group">
+                                <div className="absolute -inset-1 bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                                <button className="relative w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold py-4 rounded-xl flex items-center justify-center space-x-3 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">
+                                    <Calculator className="w-6 h-6" />
+                                    <span>Calcular Economia Agora</span>
+                                    <ArrowRight className="w-5 h-5" />
+                                    <div className="ml-2 px-2 py-1 bg-yellow-400 text-green-900 text-xs font-bold rounded-full">
+                                        GRÁTIS
+                                    </div>
+                                </button>
+                            </div>
                         </Link>
                     </div>
 
@@ -115,11 +121,17 @@ export function QuickStartSection() {
                         </ul>
 
                         <Link href="/assinar" className="block">
-                            <button className="w-full bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold py-4 rounded-lg flex items-center justify-center space-x-2 transition-all">
-                                <ShoppingCart className="w-5 h-5" />
-                                <span>Começar Assinatura</span>
-                                <ArrowRight className="w-5 h-5" />
-                            </button>
+                            <div className="relative group">
+                                <div className="absolute -inset-1 bg-gradient-to-r from-primary-600 to-primary-800 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                                <button className="relative w-full bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-bold py-4 rounded-xl flex items-center justify-center space-x-3 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">
+                                    <ShoppingCart className="w-6 h-6" />
+                                    <span>Começar Assinatura</span>
+                                    <ArrowRight className="w-5 h-5" />
+                                    <div className="ml-2 px-2 py-1 bg-yellow-400 text-primary-900 text-xs font-bold rounded-full">
+                                        RÁPIDO
+                                    </div>
+                                </button>
+                            </div>
                         </Link>
                     </div>
                 </div>

@@ -68,28 +68,37 @@ export function HeroSection({ className = '' }: HeroSectionProps) {
                             </p>
                         </div>
 
-                        {/* CTAs - Primary destacado */}
+                        {/* CTAs - Primary destacado com novas variantes */}
                         <div className="flex flex-col gap-4 justify-center lg:justify-start">
-                            {/* Mobile: CTA primária full-width */}
-                            <Button
-                                onClick={handleAgendarConsulta}
-                                size="lg"
-                                className="w-full sm:w-auto sm:min-w-[200px] flex items-center justify-center space-x-2 shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-200 text-lg font-bold bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 py-4"
-                                aria-label="Agendar consulta com oftalmologista - CTA principal"
-                            >
-                                <Phone className="w-5 h-5" aria-hidden="true" />
-                                <span>Agendar consulta com oftalmologista</span>
-                            </Button>
+                            {/* CTA primária principal - Ultra destacada */}
+                            <div className="relative group">
+                                <div className="absolute -inset-1 bg-gradient-to-r from-primary-600 to-primary-700 rounded-2xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse-slow"></div>
+                                <Button
+                                    onClick={handleAgendarConsulta}
+                                    variant="cta"
+                                    size="xl"
+                                    className="relative w-full sm:w-auto sm:min-w-[280px] flex items-center justify-center space-x-3"
+                                    aria-label="Agendar consulta com oftalmologista - CTA principal"
+                                >
+                                    <Phone className="w-6 h-6" aria-hidden="true" />
+                                    <span>Agendar Consulta Médica</span>
+                                    <div className="ml-2 px-2 py-1 bg-yellow-400 text-yellow-900 text-xs font-bold rounded-full animate-pulse">
+                                        HOJE
+                                    </div>
+                                </Button>
+                            </div>
 
+                            {/* CTA secundária - WhatsApp destacado */}
                             <Button
                                 onClick={handleFalarWhatsApp}
-                                variant="outline"
+                                variant="whatsapp"
                                 size="lg"
-                                className="w-full sm:w-auto sm:min-w-[200px] flex items-center justify-center space-x-2 border-2 border-gray-300 hover:bg-gray-50 hover:border-gray-400 text-gray-700 hover:text-gray-800 py-4"
+                                className="w-full sm:w-auto sm:min-w-[240px] flex items-center justify-center space-x-2"
                                 aria-label="Tirar dúvidas no WhatsApp - CTA secundário"
                             >
                                 <MessageCircle className="w-5 h-5" aria-hidden="true" />
-                                <span>Tirar dúvidas no WhatsApp</span>
+                                <span>Tirar Dúvidas via WhatsApp</span>
+                                <div className="ml-2 w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                             </Button>
                         </div>
 

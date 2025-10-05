@@ -36,8 +36,8 @@ export function PrivacyPolicy({ isOpen, onClose }: PrivacyPolicyProps) {
                         <section className="mb-8">
                             <h3 className="text-lg font-semibold mb-4">1. Informações Gerais</h3>
                             <p className="mb-4">
-                                A SV Lentes, sob responsabilidade médica do Dr. Philipe Saraiva Cruz
-                                (CRM 65.870), está comprometida com a proteção da privacidade e dos dados pessoais
+                                A Saraiva Vision, sob responsabilidade médica do Dr. Philipe Saraiva Cruz
+                                (CRM-MG 69.870), está comprometida com a proteção da privacidade e dos dados pessoais
                                 de nossos usuários, em conformidade com a Lei Geral de Proteção de Dados (LGPD - Lei 13.709/2018).
                             </p>
                         </section>

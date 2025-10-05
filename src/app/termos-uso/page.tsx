@@ -1,8 +1,8 @@
 import { Metadata } from 'next'
 
 export const metadata: Metadata = {
-    title: 'Termos de Uso - SV Lentes | Assinatura de Lentes com Acompanhamento Médico',
-    description: 'Termos de uso do serviço de assinatura de lentes de contato da SV Lentes com acompanhamento médico especializado.',
+    title: 'Termos de Uso - Saraiva Vision | Assinatura de Lentes com Acompanhamento Médico',
+    description: 'Termos de uso do serviço de assinatura de lentes de contato da Saraiva Vision com acompanhamento médico especializado.',
     robots: 'index, follow',
 }
 
@@ -21,7 +21,7 @@ export default function TermosUsoPage() {
                         <section className="mb-8">
                             <h2 className="text-2xl font-semibold text-gray-900 mb-4">1. Aceitação dos Termos</h2>
                             <p className="text-gray-700 leading-relaxed">
-                                Ao utilizar os serviços de assinatura de lentes de contato da SV Lentes - Serviços Oftalmológicos Especializados,
+                                Ao utilizar os serviços de assinatura de lentes de contato da Saraiva Vision Care LTDA,
                                 você concorda com estes Termos de Uso. Se você não concordar com qualquer parte destes termos,
                                 não deve utilizar nossos serviços.
                             </p>
@@ -30,8 +30,8 @@ export default function TermosUsoPage() {
                         <section className="mb-8">
                             <h2 className="text-2xl font-semibold text-gray-900 mb-4">2. Descrição do Serviço</h2>
                             <p className="text-gray-700 leading-relaxed mb-4">
-                                A SV Lentes oferece um serviço de assinatura de lentes de contato com acompanhamento médico especializado,
-                                sob supervisão do Dr. Philipe Saraiva Cruz (CRM 69.870).
+                                A Saraiva Vision oferece um serviço de assinatura de lentes de contato com acompanhamento médico especializado,
+                                sob supervisão do Dr. Philipe Saraiva Cruz (CRM-MG 69.870).
                             </p>
                             <p className="text-gray-700 leading-relaxed">
                                 Nossos serviços incluem:
@@ -49,7 +49,7 @@ export default function TermosUsoPage() {
                             <h2 className="text-2xl font-semibold text-gray-900 mb-4">3. Responsabilidade Médica</h2>
                             <p className="text-gray-700 leading-relaxed mb-4">
                                 Todos os serviços médicos são prestados pelo Dr. Philipe Saraiva Cruz, médico oftalmologista
-                                devidamente registrado no Conselho Regional de Medicina de São Paulo sob o número CRM 69.870.
+                                devidamente registrado no Conselho Regional de Medicina de Minas Gerais sob o número CRM-MG 69.870.
                             </p>
                             <p className="text-gray-700 leading-relaxed">
                                 O uso de lentes de contato requer prescrição médica e acompanhamento profissional.
@@ -99,7 +99,7 @@ export default function TermosUsoPage() {
                         <section className="mb-8">
                             <h2 className="text-2xl font-semibold text-gray-900 mb-4">7. Limitação de Responsabilidade</h2>
                             <p className="text-gray-700 leading-relaxed">
-                                A SV Lentes não se responsabiliza por danos decorrentes do uso inadequado das lentes de contato
+                                A Saraiva Vision não se responsabiliza por danos decorrentes do uso inadequado das lentes de contato
                                 ou descumprimento das orientações médicas. É fundamental seguir todas as instruções de uso,
                                 higiene e manutenção fornecidas pelo médico responsável.
                             </p>
@@ -120,12 +120,14 @@ export default function TermosUsoPage() {
                                 Para dúvidas sobre estes Termos de Uso, entre em contato conosco:
                             </p>
                             <div className="bg-gray-50 p-4 rounded-lg">
-                                <p className="text-gray-700"><strong>SV Lentes - Serviços Oftalmológicos Especializados</strong></p>
-                                <p className="text-gray-700">CNPJ: 12.345.678/0001-90</p>
-                                <p className="text-gray-700">Endereço: Rua Joaquim Floriano, 466 - Itaim Bibi, São Paulo, SP</p>
-                                <p className="text-gray-700">CEP: 04534-002</p>
-                                <p className="text-gray-700">WhatsApp: (11) 94703-8078</p>
-                                <p className="text-gray-700">Email: contato@svlentes.shop</p>
+                                <p className="text-gray-700"><strong>Saraiva Vision Care LTDA</strong></p>
+                                <p className="text-gray-700">CNPJ: 53.864.119/0001-79</p>
+                                <p className="text-gray-700">Endereço: Rua Catarina Maria Passos, 97 - Santa Zita, Caratinga/MG</p>
+                                <p className="text-gray-700">(dentro da Clínica Amor e Saúde)</p>
+                                <p className="text-gray-700">WhatsApp: +55 33 99860-1427</p>
+                                <p className="text-gray-700">Email: saraivavision@gmail.com</p>
+                                <p className="text-gray-700">Website: https://saraivavision.com.br</p>
+                                <p className="text-gray-700">Instagram: @saraiva_vision</p>
                             </div>
                         </section>
 
@@ -133,7 +135,7 @@ export default function TermosUsoPage() {
                             <h2 className="text-2xl font-semibold text-gray-900 mb-4">10. Lei Aplicável</h2>
                             <p className="text-gray-700 leading-relaxed">
                                 Estes Termos de Uso são regidos pelas leis brasileiras.
-                                Qualquer disputa será resolvida no foro da comarca de São Paulo, SP.
+                                Qualquer disputa será resolvida no foro da comarca de Caratinga, MG.
                             </p>
                         </section>
                     </div>

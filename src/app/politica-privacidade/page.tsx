@@ -123,9 +123,9 @@ export default function PrivacyPolicyPage() {
                                     Para exercer seus direitos ou esclarecer dúvidas sobre esta política:
                                 </p>
                                 <ul className="list-disc pl-6 mb-4">
-                                    <li><strong>E-mail:</strong> privacidade@svlentes.shop</li>
-                                    <li><strong>WhatsApp:</strong> Através do botão no site</li>
-                                    <li><strong>Responsável:</strong> Dr. Philipe Saraiva Cruz (CRM 65.870)</li>
+                                    <li><strong>E-mail:</strong> saraivavision@gmail.com</li>
+                                    <li><strong>WhatsApp:</strong> +55 33 99860-1427</li>
+                                    <li><strong>Responsável:</strong> Dr. Philipe Saraiva Cruz (CRM-MG 69.870)</li>
                                 </ul>
                             </section>
 

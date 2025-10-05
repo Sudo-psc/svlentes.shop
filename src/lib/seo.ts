@@ -5,30 +5,31 @@ import { featuredFAQ } from '@/data/faq-data'
 
 // Base metadata configuration
 export const baseMetadata: Metadata = {
-    metadataBase: new URL('https://svlentes.shop'),
+    metadataBase: new URL('https://saraivavision.com.br'),
     title: {
-        default: 'SV Lentes - Nunca mais fique sem lentes | Assinatura com Acompanhamento Médico',
-        template: '%s | SV Lentes'
+        default: 'Saraiva Vision - Clínica Oftalmológica | Caratinga/MG',
+        template: '%s | Saraiva Vision'
     },
-    description: 'Pioneiro no Brasil em assinatura de lentes de contato com acompanhamento médico especializado. Dr. Philipe Saraiva Cruz - CRM 69.870. Economia de até 40%.',
+    description: 'Clínica oftalmológica em Caratinga/MG com tecnologia diagnóstica avançada e cuidado familiar. Dr. Philipe Saraiva Cruz - CRM-MG 69.870. Consultório próprio e parceria com Clínica Amor e Saúde.',
     keywords: [
         'lentes de contato',
         'assinatura lentes',
         'acompanhamento médico',
         'Dr. Philipe Saraiva Cruz',
         'oftalmologia',
-        'CRM 69.870',
+        'CRM-MG 69.870',
         'lentes mensais',
         'lentes diárias',
         'consulta oftalmológica',
         'telemedicina',
         'entrega domicilio',
-        'SV Lentes',
-        'svlentes.shop'
+        'Saraiva Vision',
+        'Caratinga MG',
+        'oftalmologista Caratinga'
     ],
     authors: [{
         name: doctorInfo.name,
-        url: 'https://svlentes.shop'
+        url: 'https://saraivavision.com.br'
     }],
     creator: doctorInfo.name,
     publisher: clinicInfo.name,
@@ -40,26 +41,26 @@ export const baseMetadata: Metadata = {
     openGraph: {
         type: 'website',
         locale: 'pt_BR',
-        url: 'https://svlentes.shop',
-        siteName: 'SV Lentes',
-        title: 'SV Lentes - Nunca mais fique sem lentes | Assinatura com Acompanhamento Médico',
-        description: 'Pioneiro no Brasil em assinatura de lentes de contato com acompanhamento médico especializado. Dr. Philipe Saraiva Cruz - CRM 69.870. Economia de até 40%.',
+        url: 'https://saraivavision.com.br',
+        siteName: 'Saraiva Vision',
+        title: 'Saraiva Vision - Clínica Oftalmológica | Caratinga/MG',
+        description: 'Clínica oftalmológica em Caratinga/MG com tecnologia diagnóstica avançada e cuidado familiar. Dr. Philipe Saraiva Cruz - CRM-MG 69.870.',
         images: [
             {
                 url: '/images/og-image.jpg',
                 width: 1200,
                 height: 630,
-                alt: 'SV Lentes - Assinatura de Lentes de Contato com Acompanhamento Médico',
+                alt: 'Saraiva Vision - Clínica Oftalmológica em Caratinga/MG',
                 type: 'image/jpeg'
             }
         ],
     },
     twitter: {
         card: 'summary_large_image',
-        title: 'SV Lentes - Nunca mais fique sem lentes | Assinatura com Acompanhamento Médico',
-        description: 'Pioneiro no Brasil em assinatura de lentes de contato com acompanhamento médico especializado. Dr. Philipe Saraiva Cruz - CRM 69.870.',
+        title: 'Saraiva Vision - Clínica Oftalmológica | Caratinga/MG',
+        description: 'Clínica oftalmológica em Caratinga/MG com tecnologia diagnóstica avançada e cuidado familiar. Dr. Philipe Saraiva Cruz - CRM-MG 69.870.',
         images: ['/images/og-image.jpg'],
-        site: '@svlentes',
+        site: '@saraiva_vision',
     },
     robots: {
         index: true,
@@ -78,7 +79,7 @@ export const baseMetadata: Metadata = {
         google: process.env.GOOGLE_VERIFICATION_CODE,
     },
     alternates: {
-        canonical: 'https://svlentes.shop',
+        canonical: 'https://saraivavision.com.br',
     },
     category: 'healthcare',
 }
@@ -90,10 +91,10 @@ export function generateMedicalBusinessStructuredData() {
         '@type': 'MedicalBusiness',
         name: clinicInfo.name,
         alternateName: clinicInfo.fullName,
-        description: 'Serviço pioneiro no Brasil de assinatura de lentes de contato com acompanhamento médico especializado',
-        url: 'https://svlentes.shop',
-        logo: 'https://svlentes.shop/images/logo.png',
-        image: 'https://svlentes.shop/images/og-image.jpg',
+        description: 'Clínica oftalmológica em Caratinga/MG com tecnologia diagnóstica avançada, cuidado familiar e serviço de assinatura de lentes de contato',
+        url: 'https://saraivavision.com.br',
+        logo: 'https://saraivavision.com.br/images/logo.png',
+        image: 'https://saraivavision.com.br/images/og-image.jpg',
         telephone: clinicInfo.contact.phone,
         email: clinicInfo.contact.email,
         address: {
@@ -106,8 +107,8 @@ export function generateMedicalBusinessStructuredData() {
         },
         geo: {
             '@type': 'GeoCoordinates',
-            latitude: -23.5505,
-            longitude: -46.6333
+            latitude: -19.7897,
+            longitude: -42.1394
         },
         openingHours: [
             'Mo-Fr 08:00-18:00',
@@ -129,12 +130,12 @@ export function generateMedicalBusinessStructuredData() {
             alumniOf: 'Universidade Federal',
             memberOf: 'Sociedade Brasileira de Oftalmologia',
             yearsOfExperience: 15,
-            image: `https://svlentes.shop${doctorInfo.photo}`,
+            image: `https://saraivavision.com.br${doctorInfo.photo}`,
             description: doctorInfo.bio
         },
         hasOfferCatalog: {
             '@type': 'OfferCatalog',
-            name: 'Planos de Assinatura SV Lentes',
+            name: 'Planos de Assinatura Saraiva Vision',
             itemListElement: pricingPlans.map(plan => ({
                 '@type': 'Offer',
                 name: plan.name,
@@ -218,7 +219,7 @@ export function generateServiceStructuredData() {
         },
         availableChannel: {
             '@type': 'ServiceChannel',
-            serviceUrl: 'https://svlentes.shop',
+            serviceUrl: 'https://saraivavision.com.br',
             serviceSmsNumber: clinicInfo.contact.whatsapp,
             servicePhone: clinicInfo.contact.phone
         },
@@ -254,8 +255,8 @@ export function generateOrganizationStructuredData() {
         '@type': 'Organization',
         name: clinicInfo.name,
         alternateName: clinicInfo.fullName,
-        url: 'https://svlentes.shop',
-        logo: 'https://svlentes.shop/images/logo.png',
+        url: 'https://saraivavision.com.br',
+        logo: 'https://saraivavision.com.br/images/logo.png',
         contactPoint: {
             '@type': 'ContactPoint',
             telephone: clinicInfo.contact.phone,
@@ -264,9 +265,8 @@ export function generateOrganizationStructuredData() {
             availableLanguage: 'Portuguese'
         },
         sameAs: [
-            'https://www.instagram.com/svlentes.shop',
-            'https://www.facebook.com/svlentes.shop',
-            'https://www.linkedin.com/company/svlentes'
+            'https://www.instagram.com/saraiva_vision',
+            clinicInfo.chatbot
         ],
         address: {
             '@type': 'PostalAddress',
@@ -284,14 +284,14 @@ export function generateWebSiteStructuredData() {
     return {
         '@context': 'https://schema.org',
         '@type': 'WebSite',
-        name: 'SV Lentes',
-        alternateName: 'SV Lentes',
-        url: 'https://svlentes.shop',
+        name: 'Saraiva Vision',
+        alternateName: 'Saraiva Vision Care',
+        url: 'https://saraivavision.com.br',
         potentialAction: {
             '@type': 'SearchAction',
             target: {
                 '@type': 'EntryPoint',
-                urlTemplate: 'https://svlentes.shop/search?q={search_term_string}'
+                urlTemplate: 'https://saraivavision.com.br/search?q={search_term_string}'
             },
             'query-input': 'required name=search_term_string'
         }

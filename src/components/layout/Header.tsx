@@ -65,8 +65,8 @@ Vim através do site SV Lentes e tenho interesse no serviço de assinatura com a
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                    ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200/50'
-                    : 'bg-white shadow-sm'
+                ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200/50'
+                : 'bg-white shadow-sm'
                 } ${className}`}
         >
             <div className="container-custom">
@@ -169,7 +169,7 @@ Vim através do site SV Lentes e tenho interesse no serviço de assinatura com a
                         <div className="flex items-center justify-center space-x-6 text-xs text-primary-700">
                             <div className="flex items-center space-x-1">
                                 <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                                <span>CRM 69.870</span>
+                                <span>CRM-MG 69.870</span>
                             </div>
                             <div className="flex items-center space-x-1">
                                 <span className="w-2 h-2 bg-blue-500 rounded-full"></span>

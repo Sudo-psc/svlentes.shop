@@ -11,7 +11,7 @@ export const faqData: FAQItem[] = [
     {
         id: 'medical-follow-up',
         question: 'Como é feito o acompanhamento médico?',
-        answer: 'O Dr. Philipe Saraiva Cruz (CRM 69.870) realiza consultas regulares conforme seu plano, além de estar disponível para teleorientação. Você tem acesso a um especialista em oftalmologia sempre que precisar.',
+        answer: 'O Dr. Philipe Saraiva Cruz (CRM-MG 69.870) realiza consultas regulares conforme seu plano, além de estar disponível para teleorientação. Você tem acesso a um especialista em oftalmologia sempre que precisar.',
         category: 'medico'
     },
     {

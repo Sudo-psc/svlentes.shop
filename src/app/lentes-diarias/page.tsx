@@ -28,7 +28,7 @@ export default function LentesDiariasPage() {
                                     <span className="font-medium">Em estoque</span>
                                 </div>
                                 <div className="flex items-center space-x-2 text-gray-600">
-                                    <span className="font-medium">CRM 69.870</span>
+                                    <span className="font-medium">CRM-MG 69.870</span>
                                     <span className="text-sm">• Dr. Philipe Saraiva Cruz</span>
                                 </div>
                             </div>

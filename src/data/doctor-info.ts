@@ -1,8 +1,8 @@
-// Dados do Dr. Philipe Saraiva Cruz - Médico responsável pela SV Lentes
+// Dados do Dr. Philipe Saraiva Cruz - Médico responsável pela Saraiva Vision
 
 export const doctorInfo = {
     name: 'Dr. Philipe Saraiva Cruz',
-    crm: 'CRM 69.870',
+    crm: 'CRM-MG 69.870',
     crmEquipe: 'CRM_EQP 155869.006',
     specialty: 'Oftalmologia',
     photo: '/icones/drphilipe_perfil.jpeg',
@@ -14,11 +14,11 @@ export const doctorInfo = {
         'Membro da Sociedade Brasileira de Oftalmologia'
     ],
     experience: '10+ anos de experiência em oftalmologia',
-    bio: 'Dr. Philipe Saraiva Cruz é pioneiro no Brasil em serviços de assinatura de lentes de contato com acompanhamento médico especializado. Com mais de 10 anos de experiência, dedica-se a proporcionar cuidado oftalmológico personalizado e acessível.',
+    bio: 'Dr. Philipe Saraiva Cruz é pioneiro no Brasil em serviços de assinatura de lentes de contato com acompanhamento médico especializado. Com mais de 10 anos de experiência, dedica-se a proporcionar cuidado oftalmológico personalizado e acessível, com foco em tecnologia diagnóstica e cuidado familiar.',
     contact: {
-        whatsapp: '+5511947038078',
-        email: 'dr.philipe@svlentes.shop',
-        clinicAddress: 'Rua Joaquim Floriano, 466 - Itaim Bibi, São Paulo, SP'
+        whatsapp: '+5533998601427',
+        email: 'saraivavision@gmail.com',
+        clinicAddress: 'Rua Catarina Maria Passos, 97 - Santa Zita, Caratinga/MG (dentro da Clínica Amor e Saúde)'
     },
     socialProof: {
         patientsServed: '5000+',
@@ -37,8 +37,8 @@ export const trustIndicators = {
     },
     crm: {
         name: 'Conselho Regional de Medicina',
-        description: 'Médico registrado no CRM-SP',
-        number: 'CRM 69.870',
+        description: 'Médico registrado no CRM-MG',
+        number: 'CRM-MG 69.870',
         logo: '/images/selo-crm.png',
         verified: true
     },
@@ -63,23 +63,31 @@ export const trustIndicators = {
 }
 
 export const clinicInfo = {
-    name: 'SV Lentes',
-    fullName: 'SV Lentes - Serviços Oftalmológicos Especializados',
-    cnpj: '12.345.678/0001-90',
+    name: 'Saraiva Vision',
+    fullName: 'Saraiva Vision Care LTDA',
+    cnpj: '53.864.119/0001-79',
     address: {
-        street: 'Rua Joaquim Floriano, 466',
-        neighborhood: 'Itaim Bibi',
-        city: 'São Paulo',
-        state: 'SP',
-        zipCode: '04534-002',
-        country: 'Brasil'
+        street: 'Rua Catarina Maria Passos, 97',
+        neighborhood: 'Santa Zita',
+        city: 'Caratinga',
+        state: 'MG',
+        zipCode: '',
+        country: 'Brasil',
+        complement: 'dentro da Clínica Amor e Saúde'
     },
     contact: {
-        phone: '+55 11 3456-7890',
-        whatsapp: '+55 11 94703-8078',
-        email: 'contato@svlentes.shop',
-        website: 'https://svlentes.shop'
+        phone: '+5533998601427',
+        whatsapp: '+5533998601427',
+        email: 'saraivavision@gmail.com',
+        website: 'https://saraivavision.com.br',
+        instagram: '@saraiva_vision'
     },
+    nursing: {
+        name: 'Ana Lúcia',
+        coren: 'COREN-MG 834184',
+        phone: '+5533984207437'
+    },
+    chatbot: 'https://chatgpt.com/g/g-quepJB90J-saraiva-vision-clinica-oftalmologica',
     businessHours: {
         weekdays: 'Segunda a Sexta: 8h às 18h',
         saturday: 'Sábado: 8h às 12h',
