@@ -156,11 +156,25 @@ Backend/
 - X-Frame-Options removido para funcionar no iframe do Replit
 - ASAAS configurado por padrão no ambiente sandbox para testes
 
-## Últimas Alterações (05/10/2025)
+## Últimas Alterações (06/10/2025)
+
+### Correções de Deploy
+- ✅ Corrigido erro de variáveis de ambiente no build
+  - ASAAS client agora é lazy-initialized
+  - Rotas API marcadas como `force-dynamic`
+  - Build não requer secrets durante compilação
+- ✅ Corrigido erro React.Children.only em `/lentes-diarias`
+  - Removido `asChild` de botões problemáticos
+- ✅ Corrigido erro de useSearchParams Suspense
+  - Páginas com useSearchParams marcadas como dinâmicas
+  - Layouts criados com `export const dynamic = 'force-dynamic'`
+
+### Alterações Anteriores (05/10/2025)
 - ✅ Migrado de Vercel para Replit
 - ✅ Sistema de pagamento migrado de Stripe para ASAAS
 - ✅ Configurações de porta e host ajustadas (5000, 0.0.0.0)
 - ✅ Headers HTTP ajustados para Replit
 - ✅ API keys ASAAS configuradas (sandbox e produção)
-- ✅ Webhook handler ASAAS implementado
+- ✅ Webhook handler ASAAS implementado com autenticação
 - ✅ SubscriptionFlow atualizado para ASAAS
+- ✅ Webhook testado com token `saraiva-vision-123`

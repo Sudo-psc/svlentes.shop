@@ -22,6 +22,9 @@ import {
 } from '@/lib/validations'
 import { pricingPlans } from '@/data/pricing-plans'
 
+// Force dynamic rendering to avoid Suspense boundary issue with useSearchParams
+export const dynamic = 'force-dynamic'
+
 // Schema completo para agendamento
 const schedulingFormSchema = z.object({
     // Dados de lead (podem vir preenchidos)

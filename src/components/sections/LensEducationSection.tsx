@@ -300,25 +300,21 @@ export function LensEducationSection() {
                             Entenda todo o processo de assinatura, desde a avaliação até a entrega mensal.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Button
-                                asChild
-                                className="flex items-center space-x-2"
-                            >
-                                <a href="#como-funciona">
-                                    Como Funciona
+                            <a href="#como-funciona">
+                                <Button className="w-full sm:w-auto flex items-center justify-center space-x-2">
+                                    <span>Como Funciona</span>
                                     <ChevronRight className="w-4 h-4" />
-                                </a>
-                            </Button>
-                            <Button
-                                variant="outline"
-                                asChild
-                                className="flex items-center space-x-2"
-                            >
-                                <a href="#perguntas-frequentes">
-                                    Dúvidas Frequentes
+                                </Button>
+                            </a>
+                            <a href="#perguntas-frequentes">
+                                <Button 
+                                    variant="outline" 
+                                    className="w-full sm:w-auto flex items-center justify-center space-x-2"
+                                >
+                                    <span>Dúvidas Frequentes</span>
                                     <ChevronRight className="w-4 h-4" />
-                                </a>
-                            </Button>
+                                </Button>
+                            </a>
                         </div>
                     </div>
                 </div>

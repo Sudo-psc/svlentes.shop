@@ -3,6 +3,13 @@ const nextConfig = {
     experimental: {
         optimizePackageImports: ['@heroicons/react'],
     },
+    // Skip type checking and linting during deployment build if needed
+    typescript: {
+        ignoreBuildErrors: false,
+    },
+    eslint: {
+        ignoreDuringBuilds: false,
+    },
     images: {
         remotePatterns: [
             {

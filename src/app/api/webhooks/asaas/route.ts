@@ -1,5 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server'
 
+// Prevent this route from being evaluated at build time
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 interface AsaasWebhookEvent {
     event: string
     payment?: {

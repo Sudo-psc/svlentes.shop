@@ -8,6 +8,9 @@ import { Badge } from '@/components/ui/Badge'
 import { trackEvent, trackSubscriptionEvent } from '@/lib/analytics'
 import { trackPaymentCompleted } from '@/lib/conversion-tracking'
 
+// Force dynamic rendering to avoid Suspense boundary issue with useSearchParams
+export const dynamic = 'force-dynamic'
+
 interface SessionData {
     customer_email: string
     customer_details: {

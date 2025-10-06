@@ -3,6 +3,10 @@ import { z } from 'zod'
 import { asaas } from '@/lib/asaas'
 import { pricingPlans } from '@/data/pricing-plans'
 
+// Prevent this route from being evaluated at build time
+export const dynamic = 'force-dynamic'
+export const runtime = 'nodejs'
+
 const paymentRequestSchema = z.object({
     planId: z.enum(['basic', 'premium', 'vip'], {
         errorMap: () => ({ message: 'Plano inválido' })

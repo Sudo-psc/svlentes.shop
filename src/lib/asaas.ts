@@ -209,6 +209,11 @@ export class AsaasClient {
 }
 
 const getApiKey = (): string => {
+    // During build time, return a placeholder
+    if (process.env.NODE_ENV === 'production' && !process.env.ASAAS_API_KEY_SANDBOX && !process.env.ASAAS_API_KEY_PROD) {
+        return 'build-time-placeholder'
+    }
+    
     const env = process.env.ASAAS_ENV || 'sandbox'
     
     if (env === 'production') {
@@ -226,9 +231,28 @@ const getApiKey = (): string => {
     }
 }
 
-export const asaas = new AsaasClient({
-    apiKey: getApiKey(),
-    environment: (process.env.ASAAS_ENV as 'sandbox' | 'production') || 'sandbox'
+// Lazy initialization of ASAAS client
+let asaasInstance: AsaasClient | null = null
+
+export const getAsaasClient = (): AsaasClient => {
+    if (!asaasInstance) {
+        const apiKey = getApiKey()
+        if (apiKey === 'build-time-placeholder') {
+            throw new Error('ASAAS API keys are not configured. Please set ASAAS_API_KEY_SANDBOX or ASAAS_API_KEY_PROD in environment variables.')
+        }
+        asaasInstance = new AsaasClient({
+            apiKey,
+            environment: (process.env.ASAAS_ENV as 'sandbox' | 'production') || 'sandbox'
+        })
+    }
+    return asaasInstance
+}
+
+// Export a getter for backward compatibility
+export const asaas = new Proxy({} as AsaasClient, {
+    get(target, prop, receiver) {
+        return Reflect.get(getAsaasClient(), prop, receiver)
+    }
 })
 
 export type {

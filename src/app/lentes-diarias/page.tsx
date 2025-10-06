@@ -5,6 +5,9 @@ import { LeadCaptureSection } from '@/components/sections/LeadCaptureSection'
 import FAQ from '@/components/sections/FAQ'
 import { FinalCTA } from '@/components/sections/FinalCTA'
 
+// Force dynamic rendering to avoid prerendering issues
+export const dynamic = 'force-dynamic'
+
 export default function LentesDiariasPage() {
     return (
         <div className="min-h-screen">
