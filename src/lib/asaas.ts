@@ -208,9 +208,13 @@ export class AsaasClient {
     }
 }
 
+// Check if we're in build environment
+const isBuildTime = process.env.NEXT_PHASE === 'phase-production-build' || 
+                   (typeof window === 'undefined' && !process.env.ASAAS_API_KEY_SANDBOX && !process.env.ASAAS_API_KEY_PROD)
+
 const getApiKey = (): string => {
     // During build time, return a placeholder
-    if (process.env.NODE_ENV === 'production' && !process.env.ASAAS_API_KEY_SANDBOX && !process.env.ASAAS_API_KEY_PROD) {
+    if (isBuildTime) {
         return 'build-time-placeholder'
     }
     
@@ -235,6 +239,11 @@ const getApiKey = (): string => {
 let asaasInstance: AsaasClient | null = null
 
 export const getAsaasClient = (): AsaasClient => {
+    // During build, return a dummy client that will never be used
+    if (isBuildTime) {
+        throw new Error('ASAAS client cannot be used during build time')
+    }
+    
     if (!asaasInstance) {
         const apiKey = getApiKey()
         if (apiKey === 'build-time-placeholder') {
@@ -248,10 +257,15 @@ export const getAsaasClient = (): AsaasClient => {
     return asaasInstance
 }
 
-// Export a getter for backward compatibility
+// Create a completely lazy proxy that doesn't initialize anything until actually used
+let proxyInstance: AsaasClient | null = null
+
 export const asaas = new Proxy({} as AsaasClient, {
     get(target, prop, receiver) {
-        return Reflect.get(getAsaasClient(), prop, receiver)
+        if (!proxyInstance) {
+            proxyInstance = getAsaasClient()
+        }
+        return Reflect.get(proxyInstance, prop, receiver)
     }
 })
 
