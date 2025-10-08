@@ -67,6 +67,7 @@ function AddOnCard({ addOn, isSelected, onToggle, layout, disabled = false }: Ad
                 onClick={() => onToggle(addOn.id)}
             >
                 <Checkbox
+                    id={`addon-chip-${addOn.id}`}
                     checked={isSelected}
                     onChange={() => onToggle(addOn.id)}
                     className="pointer-events-none"
@@ -110,6 +111,7 @@ function AddOnCard({ addOn, isSelected, onToggle, layout, disabled = false }: Ad
         >
             <div className="absolute top-3 right-3">
                 <Checkbox
+                    id={`addon-card-${addOn.id}`}
                     checked={isSelected}
                     onChange={() => onToggle(addOn.id)}
                     className="pointer-events-none"

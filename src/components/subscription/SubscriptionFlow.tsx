@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { PlanSelector } from './PlanSelector'
 import { LensSelector } from './LensSelector'
 import { AddOnsSelector } from './AddOnsSelector'
@@ -16,7 +17,12 @@ interface FlowData {
     addOns: string[]
 }
 
-export function SubscriptionFlow() {
+interface SubscriptionFlowProps {
+    onConfirm?: (data: any) => void
+    onBack?: () => void
+}
+
+export function SubscriptionFlow({ onConfirm, onBack }: SubscriptionFlowProps) {
     const [currentStep, setCurrentStep] = useState<FlowStep>('plan')
     const [flowData, setFlowData] = useState<FlowData>({
         planId: null,
@@ -24,6 +30,7 @@ export function SubscriptionFlow() {
         lensData: null,
         addOns: []
     })
+    const router = useRouter()
 
     const steps = [
         { id: 'plan', label: 'Plano', number: 1 },
@@ -50,11 +57,22 @@ export function SubscriptionFlow() {
     }
 
     const handleConfirm = async (contactData: any) => {
-        // Aqui você implementaria a lógica de envio para o backend
         console.log('Order confirmed:', { ...flowData, contactData })
 
-        // Redirecionar para página de sucesso ou checkout
-        window.location.href = '/agendar-consulta'
+        // Chamar função externa se existir
+        if (onConfirm) {
+            onConfirm({ ...flowData, contactData })
+        } else {
+            // Redirecionar para página de sucesso
+            router.push('/agendar-confirmado')
+        }
+    }
+
+    const handleBack = () => {
+        // Chamar função externa se existir
+        if (onBack) {
+            onBack()
+        }
     }
 
     return (
@@ -74,10 +92,10 @@ export function SubscriptionFlow() {
                                     <div className="flex flex-col items-center">
                                         <div
                                             className={`w-12 h-12 rounded-full flex items-center justify-center font-semibold transition-all ${isCompleted
-                                                    ? 'bg-green-600 text-white'
-                                                    : isCurrent
-                                                        ? 'bg-primary-600 text-white ring-4 ring-primary-100'
-                                                        : 'bg-gray-200 text-gray-500'
+                                                ? 'bg-green-600 text-white'
+                                                : isCurrent
+                                                    ? 'bg-primary-600 text-white ring-4 ring-primary-100'
+                                                    : 'bg-gray-200 text-gray-500'
                                                 }`}
                                         >
                                             {isCompleted ? (
@@ -116,14 +134,18 @@ export function SubscriptionFlow() {
                     {currentStep === 'lens' && (
                         <LensSelector
                             onContinue={handleLensSelect}
-                            onBack={() => setCurrentStep('plan')}
+                            onBack={handleBack}
+                            onScheduleConsultation={() => {
+                                // Redirecionar para página de agendamento
+                                router.push('/agendar-consulta')
+                            }}
                         />
                     )}
 
                     {currentStep === 'addons' && (
                         <AddOnsSelector
                             onContinue={handleAddOnsSelect}
-                            onBack={() => setCurrentStep('lens')}
+                            onBack={handleBack}
                         />
                     )}
 
@@ -133,7 +155,7 @@ export function SubscriptionFlow() {
                             billingCycle={flowData.billingCycle}
                             lensData={flowData.lensData}
                             addOns={flowData.addOns}
-                            onBack={() => setCurrentStep('addons')}
+                            onBack={handleBack}
                             onConfirm={handleConfirm}
                         />
                     )}

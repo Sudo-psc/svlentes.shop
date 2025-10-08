@@ -49,12 +49,15 @@ export function OptimizedImage({
             <div
                 className={`bg-gray-200 flex items-center justify-center ${className}`}
                 style={{ width, height }}
+                role="img"
+                aria-label="Imagem não disponível - erro ao carregar"
             >
                 <svg
                     className="w-8 h-8 text-gray-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
+                    aria-hidden="true"
                 >
                     <path
                         strokeLinecap="round"

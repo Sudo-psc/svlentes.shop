@@ -1,0 +1,280 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - link "SV Lentes - Ir para o início" [ref=e5] [cursor=pointer]:
+        - /url: "#hero"
+        - generic [ref=e6] [cursor=pointer]:
+          - img "SV Lentes - Saraiva Vision Oftalmologia" [ref=e8] [cursor=pointer]
+          - generic [ref=e9] [cursor=pointer]:
+            - generic [ref=e10] [cursor=pointer]: Saraiva Vision
+            - generic [ref=e11] [cursor=pointer]: Dr. Philipe Saraiva Cruz
+      - navigation [ref=e12]:
+        - link "Planos" [ref=e13] [cursor=pointer]:
+          - /url: "#planos-precos"
+          - text: Planos
+        - link "Como Funciona" [ref=e14] [cursor=pointer]:
+          - /url: "#como-funciona"
+          - text: Como Funciona
+        - link "FAQ" [ref=e15] [cursor=pointer]:
+          - /url: "#perguntas-frequentes"
+          - text: FAQ
+        - link "Contato" [ref=e16] [cursor=pointer]:
+          - /url: "#contato"
+          - text: Contato
+      - generic [ref=e17]:
+        - button "Assinar Agora" [ref=e18] [cursor=pointer]:
+          - img [ref=e19] [cursor=pointer]
+          - text: Assinar Agora
+        - button "Agendar Consulta" [ref=e21] [cursor=pointer]:
+          - img [ref=e22] [cursor=pointer]
+          - generic [ref=e24] [cursor=pointer]: Agendar Consulta
+  - main [ref=e25]:
+    - generic [ref=e26]:
+      - generic [ref=e28]:
+        - generic [ref=e34]:
+          - generic [ref=e35]:
+            - generic [ref=e37]:
+              - img [ref=e38]
+              - text: 🏆 Pioneiro no Brasil
+            - generic [ref=e41]:
+              - heading "Nunca mais fique sem lentes" [level=1] [ref=e42]:
+                - generic [ref=e43]: Nunca mais
+                - generic [ref=e44]: fique sem lentes
+              - paragraph [ref=e45]: Assinatura com acompanhamento médico especializado.
+              - paragraph [ref=e46]: Receba suas lentes em casa com logística integrada e consultas regulares.
+            - generic [ref=e47]:
+              - button "Agendar consulta com oftalmologista - CTA principal" [ref=e50] [cursor=pointer]:
+                - img [ref=e51] [cursor=pointer]
+                - generic [ref=e53] [cursor=pointer]: Agendar Consulta Médica
+                - generic [ref=e54] [cursor=pointer]: HOJE
+              - button "Tirar dúvidas no WhatsApp - CTA secundário" [ref=e55] [cursor=pointer]:
+                - img [ref=e56] [cursor=pointer]
+                - generic [ref=e58] [cursor=pointer]: Tirar Dúvidas via WhatsApp
+          - generic [ref=e61]:
+            - img "Paciente feliz usando lentes de contato de alta qualidade com acompanhamento médico especializado do Dr. Philipe Saraiva Cruz em Caratinga, Minas Gerais - Serviço de assinatura SV Lentes com entrega domiciliar" [ref=e63]
+            - region "Indicadores de confiança da SV Lentes" [ref=e65]:
+              - generic [ref=e67]:
+                - article "Taxa de satisfação dos clientes" [ref=e68]:
+                  - img [ref=e71]
+                  - paragraph [ref=e73]: 98%
+                  - paragraph [ref=e74]: Satisfação
+                - article "Quantidade de pacientes atendidos" [ref=e75]:
+                  - img [ref=e78]
+                  - paragraph [ref=e80]: 5K+
+                  - paragraph [ref=e81]: Pacientes
+                - article "Anos de experiência médica" [ref=e82]:
+                  - img [ref=e85]
+                  - paragraph [ref=e88]: 15+
+                  - paragraph [ref=e89]: Anos
+            - generic [ref=e96]: Acompanhamento Médico
+        - img [ref=e98]
+      - generic [ref=e105]:
+        - generic [ref=e106]:
+          - generic [ref=e107]:
+            - generic [ref=e108]:
+              - generic [ref=e109]: 👥
+              - generic [ref=e110]: 5.000+
+            - paragraph [ref=e111]: Pacientes
+          - generic [ref=e112]:
+            - generic [ref=e113]:
+              - generic [ref=e114]: ⭐
+              - generic [ref=e115]: 98%
+            - paragraph [ref=e116]: Satisfação
+          - generic [ref=e117]:
+            - generic [ref=e118]:
+              - generic [ref=e119]: 📋
+              - generic [ref=e120]: 10+
+            - paragraph [ref=e121]: Anos exp.
+          - generic [ref=e122]:
+            - generic [ref=e123]:
+              - generic [ref=e124]: 📞
+              - generic [ref=e125]: 24/7
+            - paragraph [ref=e126]: Suporte
+        - generic [ref=e128]:
+          - img [ref=e129]
+          - generic [ref=e131]: Pioneiro no Brasil em Assinatura de Lentes
+      - generic [ref=e134]:
+        - generic [ref=e135]:
+          - generic [ref=e136]:
+            - img [ref=e137]
+            - generic [ref=e139]: Comece agora
+          - heading "Dois caminhos para começar" [level=2] [ref=e140]
+          - paragraph [ref=e141]: Escolha a melhor forma de iniciar sua jornada com SV Lentes
+        - generic [ref=e142]:
+          - generic [ref=e143]:
+            - img [ref=e145]
+            - heading "Calcule sua Economia" [level=3] [ref=e147]
+            - paragraph [ref=e148]: Descubra em segundos quanto você pode economizar com nossa assinatura. Use o slider interativo e veja o resultado em tempo real.
+            - list [ref=e149]:
+              - listitem [ref=e150]:
+                - generic [ref=e152]: ✓
+                - text: Cálculo instantâneo e personalizado
+              - listitem [ref=e153]:
+                - generic [ref=e155]: ✓
+                - text: Compare com seu gasto atual
+              - listitem [ref=e156]:
+                - generic [ref=e158]: ✓
+                - text: Salve o resultado e continue
+            - link "Calcular Economia Agora GRÁTIS" [ref=e159] [cursor=pointer]:
+              - /url: /calculadora
+              - button "Calcular Economia Agora GRÁTIS" [ref=e162] [cursor=pointer]:
+                - img [ref=e163] [cursor=pointer]
+                - generic [ref=e165] [cursor=pointer]: Calcular Economia Agora
+                - img [ref=e166] [cursor=pointer]
+                - generic [ref=e168] [cursor=pointer]: GRÁTIS
+          - generic [ref=e169]:
+            - generic [ref=e171]: MAIS RÁPIDO
+            - img [ref=e173]
+            - heading "Assinar Direto" [level=3] [ref=e177]
+            - paragraph [ref=e178]: Já conhece nossos planos? Vá direto ao ponto! Configure sua assinatura em 4 passos simples e comece a economizar hoje.
+            - list [ref=e179]:
+              - listitem [ref=e180]:
+                - generic [ref=e182]: "1"
+                - text: Escolha seu plano ideal
+              - listitem [ref=e183]:
+                - generic [ref=e185]: "2"
+                - text: Informe o grau das lentes
+              - listitem [ref=e186]:
+                - generic [ref=e188]: "3"
+                - text: Adicione serviços extras (opcional)
+              - listitem [ref=e189]:
+                - generic [ref=e191]: "4"
+                - text: Finalize e agende sua consulta
+            - link "Começar Assinatura RÁPIDO" [ref=e192] [cursor=pointer]:
+              - /url: /assinar
+              - button "Começar Assinatura RÁPIDO" [ref=e195] [cursor=pointer]:
+                - img [ref=e196] [cursor=pointer]
+                - generic [ref=e200] [cursor=pointer]: Começar Assinatura
+                - img [ref=e201] [cursor=pointer]
+                - generic [ref=e203] [cursor=pointer]: RÁPIDO
+        - paragraph [ref=e205]: ✨ Mais de 1.000 pessoas já economizam com SV Lentes
+  - contentinfo [ref=e206]:
+    - generic [ref=e208]:
+      - generic [ref=e209]:
+        - generic [ref=e210]:
+          - img "SV Lentes - Saraiva Vision Oftalmologia" [ref=e214]
+          - paragraph [ref=e215]: Pioneiro no Brasil em Assinatura de Lentes de Contato
+          - paragraph [ref=e216]: Assinatura de lentes de contato com acompanhamento médico especializado. Nunca mais fique sem lentes com a comodidade e segurança que você merece.
+        - generic [ref=e217]:
+          - heading "Responsável Técnico" [level=4] [ref=e218]
+          - generic [ref=e219]:
+            - img "Dr. Philipe Saraiva Cruz" [ref=e223]
+            - generic [ref=e224]:
+              - heading "Dr. Philipe Saraiva Cruz" [level=5] [ref=e225]
+              - paragraph [ref=e226]: CRM-MG 69.870
+              - paragraph [ref=e227]: Oftalmologia
+              - paragraph [ref=e228]: 10+ anos de experiência em oftalmologia
+        - generic [ref=e229]:
+          - button "Assinar Agora" [ref=e230] [cursor=pointer]:
+            - img [ref=e231] [cursor=pointer]
+            - text: Assinar Agora
+          - button "Falar com especialista pelo WhatsApp" [ref=e233] [cursor=pointer]:
+            - img [ref=e234] [cursor=pointer]
+            - generic [ref=e236] [cursor=pointer]: Falar com Especialista
+      - generic [ref=e237]:
+        - heading "Navegação" [level=4] [ref=e238]
+        - navigation "Links rápidos" [ref=e239]:
+          - list [ref=e240]:
+            - listitem [ref=e241]:
+              - link "Assinar Agora" [ref=e242] [cursor=pointer]:
+                - /url: /assinatura
+                - text: Assinar Agora
+            - listitem [ref=e244]:
+              - link "Planos e Preços" [ref=e245] [cursor=pointer]:
+                - /url: "#planos-precos"
+                - text: Planos e Preços
+            - listitem [ref=e247]:
+              - link "Como Funciona" [ref=e248] [cursor=pointer]:
+                - /url: "#como-funciona"
+                - text: Como Funciona
+            - listitem [ref=e250]:
+              - link "FAQ" [ref=e251] [cursor=pointer]:
+                - /url: "#perguntas-frequentes"
+                - text: FAQ
+            - listitem [ref=e253]:
+              - link "Programa de Indicação" [ref=e254] [cursor=pointer]:
+                - /url: "#programa-indicacao"
+                - text: Programa de Indicação
+      - generic [ref=e256]:
+        - heading "Atendimento" [level=4] [ref=e257]
+        - generic [ref=e258]:
+          - generic [ref=e259]:
+            - img [ref=e260]
+            - generic [ref=e263]:
+              - paragraph [ref=e264]: Rua Catarina Maria Passos, 97
+              - paragraph [ref=e265]: Santa Zita
+              - paragraph [ref=e266]: Caratinga, MG
+              - paragraph [ref=e267]: "CEP:"
+          - generic [ref=e268]:
+            - img [ref=e269]
+            - link "Ligar para +5533998601427" [ref=e271] [cursor=pointer]:
+              - /url: tel:+5533998601427
+              - text: "+5533998601427"
+          - generic [ref=e272]:
+            - img [ref=e273]
+            - link "Enviar email para saraivavision@gmail.com" [ref=e276] [cursor=pointer]:
+              - /url: mailto:saraivavision@gmail.com
+              - text: saraivavision@gmail.com
+          - generic [ref=e277]:
+            - img [ref=e278]
+            - generic [ref=e281]:
+              - paragraph [ref=e282]: "Horário de Atendimento:"
+              - paragraph [ref=e283]: "Segunda a Sexta: 8h às 18h"
+              - paragraph [ref=e284]: "Sábado: 8h às 12h"
+              - paragraph [ref=e285]: 24h via WhatsApp para emergências
+    - generic [ref=e288]:
+      - generic [ref=e289]:
+        - img [ref=e290]
+        - generic [ref=e292]: Atendimento em todo o Brasil
+      - generic [ref=e295]: Entrega gratuita em todo território nacional
+    - generic [ref=e297]:
+      - generic [ref=e298]:
+        - button "Política de Privacidade" [ref=e299] [cursor=pointer]:
+          - img [ref=e300] [cursor=pointer]
+          - generic [ref=e303] [cursor=pointer]: Política de Privacidade
+        - button "Configurações de Privacidade" [ref=e304] [cursor=pointer]:
+          - img [ref=e305] [cursor=pointer]
+          - generic [ref=e308] [cursor=pointer]: Configurações de Privacidade
+        - button "Meus Dados (LGPD)" [ref=e309] [cursor=pointer]:
+          - img [ref=e310] [cursor=pointer]
+          - generic [ref=e313] [cursor=pointer]: Meus Dados (LGPD)
+        - link "Termos de Uso" [ref=e314] [cursor=pointer]:
+          - /url: /termos-uso
+          - img [ref=e315] [cursor=pointer]
+          - generic [ref=e318] [cursor=pointer]: Termos de Uso
+      - generic [ref=e319]:
+        - generic [ref=e320]:
+          - img [ref=e321]
+          - generic [ref=e323]: Site Seguro SSL
+        - generic [ref=e324]:
+          - img [ref=e325]
+          - generic [ref=e327]: LGPD Conforme
+        - generic [ref=e328]:
+          - img [ref=e329]
+          - generic [ref=e331]: Produtos ANVISA
+        - generic [ref=e332]:
+          - img [ref=e333]
+          - generic [ref=e335]: CRM CRM-MG 69.870
+      - generic [ref=e336]:
+        - paragraph [ref=e337]: © 2025 SV Lentes. Todos os direitos reservados.
+        - generic [ref=e338]:
+          - generic [ref=e339]: "CNPJ: 53.864.119/0001-79"
+          - generic [ref=e340]: •
+          - generic [ref=e341]: "Responsável Técnico: CRM-MG 69.870"
+          - generic [ref=e342]: •
+          - generic [ref=e343]: "Equipe: CRM_EQP 155869.006"
+  - button "Open Next.js Dev Tools" [ref=e349] [cursor=pointer]:
+    - img [ref=e350] [cursor=pointer]
+  - alert [ref=e353]
+  - generic [ref=e356]:
+    - generic [ref=e357]:
+      - heading "Utilizamos cookies para melhorar sua experiência" [level=3] [ref=e358]
+      - paragraph [ref=e359]: Utilizamos cookies essenciais para o funcionamento do site e cookies opcionais para análise e marketing. Você pode escolher quais aceitar.
+    - generic [ref=e360]:
+      - button "Personalizar" [ref=e361] [cursor=pointer]
+      - button "Rejeitar Opcionais" [ref=e362] [cursor=pointer]
+      - button "Aceitar Todos" [ref=e363] [cursor=pointer]
+```

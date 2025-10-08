@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://svlentes.com.br'
+    const baseUrl = 'https://saraivavision.com.br'
 
     return [
         {
@@ -11,28 +11,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
             priority: 1,
         },
         {
+            url: `${baseUrl}/assinatura`,
+            lastModified: new Date(),
+            changeFrequency: 'weekly',
+            priority: 0.9,
+        },
+        {
             url: `${baseUrl}/agendar-consulta`,
             lastModified: new Date(),
             changeFrequency: 'monthly',
             priority: 0.8,
         },
         {
-            url: `${baseUrl}/success`,
+            url: `${baseUrl}/calculadora`,
             lastModified: new Date(),
-            changeFrequency: 'yearly',
-            priority: 0.3,
+            changeFrequency: 'monthly',
+            priority: 0.7,
         },
         {
-            url: `${baseUrl}/cancel`,
+            url: `${baseUrl}/politica-privacidade`,
             lastModified: new Date(),
             changeFrequency: 'yearly',
-            priority: 0.3,
+            priority: 0.5,
         },
         {
-            url: `${baseUrl}/agendamento-confirmado`,
+            url: `${baseUrl}/termos-uso`,
             lastModified: new Date(),
             changeFrequency: 'yearly',
-            priority: 0.3,
+            priority: 0.5,
         },
     ]
 }

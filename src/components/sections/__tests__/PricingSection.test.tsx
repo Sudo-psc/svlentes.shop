@@ -67,7 +67,7 @@ describe('PricingSection', () => {
         render(<PricingSection {...mockProps} />)
 
         // Inicialmente deve estar na aba mensal
-        expect(screen.getByText('R$ 89,90')).toBeInTheDocument()
+        expect(screen.getByText('R$ 99,00')).toBeInTheDocument()
 
         // Clicar na aba anual
         const anualTab = screen.getByRole('button', { name: /anual/i })
@@ -76,7 +76,7 @@ describe('PricingSection', () => {
         await waitFor(() => {
             expect(trackTabChange).toHaveBeenCalledWith('annual')
             // Verificar se os preços mudaram para anuais (divididos por 12)
-            expect(screen.getByText('R$ 74,99')).toBeInTheDocument() // 899.90 / 12
+            expect(screen.getByText('R$ 90,75')).toBeInTheDocument() // 1089.00 / 12
         })
 
         // Voltar para mensal
@@ -86,7 +86,7 @@ describe('PricingSection', () => {
         await waitFor(() => {
             expect(trackTabChange).toHaveBeenCalledWith('monthly')
             // Verificar se voltou para preços mensais
-            expect(screen.getByText('R$ 89,90')).toBeInTheDocument()
+            expect(screen.getByText('R$ 99,00')).toBeInTheDocument()
         })
     })
 
@@ -94,7 +94,7 @@ describe('PricingSection', () => {
         render(<PricingSection {...mockProps} />)
 
         // Verificar se os preços mensais estão sendo exibidos
-        expect(screen.getByText('R$ 89,90')).toBeInTheDocument()
+        expect(screen.getByText('R$ 99,00')).toBeInTheDocument()
         expect(screen.getByText('R$ 149,90')).toBeInTheDocument()
         expect(screen.getByText('R$ 249,90')).toBeInTheDocument()
     })
@@ -107,9 +107,9 @@ describe('PricingSection', () => {
 
         await waitFor(() => {
             // Preços anuais divididos por 12
-            expect(screen.getByText('R$ 74,99')).toBeInTheDocument() // 899.90 / 12
-            expect(screen.getByText('R$ 124,99')).toBeInTheDocument() // 1499.90 / 12
-            expect(screen.getByText('R$ 208,33')).toBeInTheDocument() // 2499.90 / 12
+            expect(screen.getByText('R$ 90,75')).toBeInTheDocument() // 1089.00 / 12
+            expect(screen.getByText('R$ 137,41')).toBeInTheDocument() // 1648.90 / 12
+            expect(screen.getByText('R$ 229,08')).toBeInTheDocument() // 2749.00 / 12
         })
     })
 
@@ -121,12 +121,12 @@ describe('PricingSection', () => {
 
         await waitFor(() => {
             // Verificar se a economia está sendo calculada corretamente
-            // Básico: (89.90 * 12) - 899.90 = 178.90
-            expect(screen.getByText('Economize R$ 178,90')).toBeInTheDocument()
-            // Premium: (149.90 * 12) - 1499.90 = 298.90
-            expect(screen.getByText('Economize R$ 298,90')).toBeInTheDocument()
-            // VIP: (249.90 * 12) - 2499.90 = 498.90
-            expect(screen.getByText('Economize R$ 498,90')).toBeInTheDocument()
+            // Básico: (99.00 * 12) - 1089.00 = 99.00
+            expect(screen.getByText('Economize R$ 99,00')).toBeInTheDocument()
+            // Premium: (149.90 * 12) - 1648.90 = 149.90
+            expect(screen.getByText('Economize R$ 149,90')).toBeInTheDocument()
+            // VIP: (249.90 * 12) - 2749.00 = 249.90
+            expect(screen.getByText('Economize R$ 249,90')).toBeInTheDocument()
         })
     })
 
@@ -136,7 +136,7 @@ describe('PricingSection', () => {
         render(<PricingSection {...mockProps} />)
 
         // Inicialmente deve estar na aba mensal
-        expect(screen.getByText('R$ 89,90')).toBeInTheDocument()
+        expect(screen.getByText('R$ 99,00')).toBeInTheDocument()
 
         // Clicar na aba anual - usar role button para ser mais específico
         const anualTab = screen.getByRole('button', { name: /anual/i })
@@ -145,7 +145,7 @@ describe('PricingSection', () => {
         await waitFor(() => {
             expect(trackTabChange).toHaveBeenCalledWith('annual')
             // Preços devem mudar para anuais
-            expect(screen.getByText('R$ 74,99')).toBeInTheDocument()
+            expect(screen.getByText('R$ 90,75')).toBeInTheDocument()
         })
 
         // Voltar para mensal - usar role button para ser mais específico
@@ -155,7 +155,7 @@ describe('PricingSection', () => {
         await waitFor(() => {
             expect(trackTabChange).toHaveBeenCalledWith('monthly')
             // Preços devem voltar para mensais
-            expect(screen.getByText('R$ 89,90')).toBeInTheDocument()
+            expect(screen.getByText('R$ 99,00')).toBeInTheDocument()
         })
     })
 
@@ -172,10 +172,10 @@ describe('PricingSection', () => {
         fireEvent.click(anualTab)
 
         await waitFor(() => {
-            // Verificar cálculos precisos
-            const basicMonthly = (899.90 / 12).toFixed(2).replace('.', ',')
-            const premiumMonthly = (1499.90 / 12).toFixed(2).replace('.', ',')
-            const vipMonthly = (2499.90 / 12).toFixed(2).replace('.', ',')
+            // Verificar cálculos precisos (preço anual / 12)
+            const basicMonthly = (1089.00 / 12).toFixed(2).replace('.', ',')
+            const premiumMonthly = (1648.90 / 12).toFixed(2).replace('.', ',')
+            const vipMonthly = (2749.00 / 12).toFixed(2).replace('.', ',')
 
             expect(screen.getByText(`R$ ${basicMonthly}`)).toBeInTheDocument()
             expect(screen.getByText(`R$ ${premiumMonthly}`)).toBeInTheDocument()
@@ -209,7 +209,7 @@ describe('PricingSection', () => {
         fireEvent.click(anualTab)
 
         await waitFor(() => {
-            expect(screen.getByText('R$ 74,99')).toBeInTheDocument()
+            expect(screen.getByText('R$ 90,75')).toBeInTheDocument()
         })
 
         // Clicar em um botão de assinatura
@@ -218,7 +218,7 @@ describe('PricingSection', () => {
 
         // A aba deve continuar anual
         await waitFor(() => {
-            expect(screen.getByText('R$ 74,99')).toBeInTheDocument()
+            expect(screen.getByText('R$ 90,75')).toBeInTheDocument()
         })
     })
 
@@ -320,7 +320,7 @@ describe('PricingSection', () => {
             render(<PricingSection {...mockProps} />)
 
             // Verificar se os preços mensais estão sendo exibidos
-            expect(screen.getByText('R$ 89,90')).toBeInTheDocument()
+            expect(screen.getByText('R$ 99,00')).toBeInTheDocument()
             expect(screen.getByText('R$ 149,90')).toBeInTheDocument()
             expect(screen.getByText('R$ 249,90')).toBeInTheDocument()
         })
@@ -338,9 +338,9 @@ describe('PricingSection', () => {
                 expect(trackTabChange).toHaveBeenCalledWith('annual')
 
                 // Verificar preços anuais divididos por 12
-                expect(screen.getByText('R$ 74,99')).toBeInTheDocument() // 899.90 / 12
-                expect(screen.getByText('R$ 124,99')).toBeInTheDocument() // 1499.90 / 12
-                expect(screen.getByText('R$ 208,33')).toBeInTheDocument() // 2499.90 / 12
+                expect(screen.getByText('R$ 90,75')).toBeInTheDocument() // 1089.00 / 12
+                expect(screen.getByText('R$ 137,41')).toBeInTheDocument() // 1648.90 / 12
+                expect(screen.getByText('R$ 229,08')).toBeInTheDocument() // 2749.00 / 12
             })
         })
 
@@ -354,7 +354,7 @@ describe('PricingSection', () => {
             fireEvent.click(anualTab)
 
             await waitFor(() => {
-                expect(screen.getByText('R$ 74,99')).toBeInTheDocument()
+                expect(screen.getByText('R$ 90,75')).toBeInTheDocument()
             })
 
             // Voltar para mensal
@@ -362,14 +362,14 @@ describe('PricingSection', () => {
             fireEvent.click(mensalTab)
 
             await waitFor(() => {
-                expect(screen.getByText('R$ 89,90')).toBeInTheDocument()
+                expect(screen.getByText('R$ 99,00')).toBeInTheDocument()
             })
 
             // Ir para anual novamente
             fireEvent.click(anualTab)
 
             await waitFor(() => {
-                expect(screen.getByText('R$ 74,99')).toBeInTheDocument()
+                expect(screen.getByText('R$ 90,75')).toBeInTheDocument()
                 expect(trackTabChange).toHaveBeenCalledTimes(3) // 2 annual + 1 monthly
             })
         })
@@ -382,7 +382,7 @@ describe('PricingSection', () => {
             fireEvent.click(anualTab)
 
             await waitFor(() => {
-                expect(screen.getByText('R$ 74,99')).toBeInTheDocument()
+                expect(screen.getByText('R$ 90,75')).toBeInTheDocument()
             })
 
             // Interagir com outros elementos (scroll, hover, etc.)
@@ -390,7 +390,7 @@ describe('PricingSection', () => {
             fireEvent.mouseOver(subscribeButtons[0])
 
             // A aba deve continuar anual
-            expect(screen.getByText('R$ 74,99')).toBeInTheDocument()
+            expect(screen.getByText('R$ 90,75')).toBeInTheDocument()
         })
     })
 
@@ -404,9 +404,9 @@ describe('PricingSection', () => {
 
             await waitFor(() => {
                 // Verificar cálculos precisos (preço anual / 12)
-                const basicMonthly = (899.90 / 12).toFixed(2).replace('.', ',')
-                const premiumMonthly = (1499.90 / 12).toFixed(2).replace('.', ',')
-                const vipMonthly = (2499.90 / 12).toFixed(2).replace('.', ',')
+                const basicMonthly = (1089.00 / 12).toFixed(2).replace('.', ',')
+                const premiumMonthly = (1648.90 / 12).toFixed(2).replace('.', ',')
+                const vipMonthly = (2749.00 / 12).toFixed(2).replace('.', ',')
 
                 expect(screen.getByText(`R$ ${basicMonthly}`)).toBeInTheDocument()
                 expect(screen.getByText(`R$ ${premiumMonthly}`)).toBeInTheDocument()
@@ -422,9 +422,9 @@ describe('PricingSection', () => {
 
             await waitFor(() => {
                 // Verificar cálculo de economia: (preço mensal * 12) - preço anual
-                const basicSavings = (89.90 * 12 - 899.90).toFixed(2).replace('.', ',')
-                const premiumSavings = (149.90 * 12 - 1499.90).toFixed(2).replace('.', ',')
-                const vipSavings = (249.90 * 12 - 2499.90).toFixed(2).replace('.', ',')
+                const basicSavings = (99.00 * 12 - 1089.00).toFixed(2).replace('.', ',')
+                const premiumSavings = (149.90 * 12 - 1648.90).toFixed(2).replace('.', ',')
+                const vipSavings = (249.90 * 12 - 2749.00).toFixed(2).replace('.', ',')
 
                 expect(screen.getByText(`Economize R$ ${basicSavings}`)).toBeInTheDocument()
                 expect(screen.getByText(`Economize R$ ${premiumSavings}`)).toBeInTheDocument()
@@ -440,9 +440,9 @@ describe('PricingSection', () => {
 
             await waitFor(() => {
                 // Verificar se os valores anuais totais estão sendo exibidos
-                expect(screen.getAllByText(/899,90/)).toHaveLength(2) // Mobile e desktop
-                expect(screen.getAllByText(/1499,90/)).toHaveLength(2) // Mobile e desktop
-                expect(screen.getAllByText(/2499,90/)).toHaveLength(2) // Mobile e desktop
+                expect(screen.getAllByText(/1089,00/)).toHaveLength(2) // Mobile e desktop
+                expect(screen.getAllByText(/1648,90/)).toHaveLength(2) // Mobile e desktop
+                expect(screen.getAllByText(/2749,00/)).toHaveLength(2) // Mobile e desktop
 
                 // Verificar texto "cobrado anualmente"
                 const annualTexts = screen.getAllByText(/cobrado anualmente/i)
@@ -462,7 +462,7 @@ describe('PricingSection', () => {
             render(<PricingSection {...mockProps} />)
 
             // Verificar formatação mensal
-            expect(screen.getByText('R$ 89,90')).toBeInTheDocument()
+            expect(screen.getByText('R$ 99,00')).toBeInTheDocument()
             expect(screen.getByText('R$ 149,90')).toBeInTheDocument()
             expect(screen.getByText('R$ 249,90')).toBeInTheDocument()
 
@@ -472,14 +472,14 @@ describe('PricingSection', () => {
 
             await waitFor(() => {
                 // Preços mensais calculados devem usar vírgula
-                expect(screen.getByText('R$ 74,99')).toBeInTheDocument()
-                expect(screen.getByText('R$ 124,99')).toBeInTheDocument()
-                expect(screen.getByText('R$ 208,33')).toBeInTheDocument()
+                expect(screen.getByText('R$ 90,75')).toBeInTheDocument()
+                expect(screen.getByText('R$ 137,41')).toBeInTheDocument()
+                expect(screen.getByText('R$ 229,08')).toBeInTheDocument()
 
                 // Valores anuais também devem usar vírgula
-                expect(screen.getAllByText(/899,90/)).toHaveLength(2)
-                expect(screen.getAllByText(/1499,90/)).toHaveLength(2)
-                expect(screen.getAllByText(/2499,90/)).toHaveLength(2)
+                expect(screen.getAllByText(/1089,00/)).toHaveLength(2)
+                expect(screen.getAllByText(/1648,90/)).toHaveLength(2)
+                expect(screen.getAllByText(/2749,00/)).toHaveLength(2)
             })
         })
 

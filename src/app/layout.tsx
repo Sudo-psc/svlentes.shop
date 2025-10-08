@@ -3,7 +3,6 @@ import { Inter, Poppins } from 'next/font/google'
 import './globals.css'
 import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
-// import { StructuredData } from '@/components/seo/StructuredData'
 import { PerformanceMonitor } from '@/components/performance/PerformanceMonitor'
 import { ResourcePreloader } from '@/components/performance/ResourcePreloader'
 import { ServiceWorkerCleanup } from '@/components/performance/ServiceWorkerCleanup'
@@ -13,6 +12,10 @@ import { PrivacyProvider } from '@/components/privacy/PrivacyProvider'
 import { CookieConsent } from '@/components/privacy/CookieConsent'
 import { SmoothScroll } from '@/components/ui/SmoothScroll'
 import { CriticalCSS } from '@/components/performance/CriticalCSS'
+import { ThemeProvider } from '@/components/theme/ThemeProvider'
+import { ThemeScript } from '@/components/theme/ThemeScript'
+import { RootErrorBoundary } from '@/components/error/RootErrorBoundary'
+import { AccessibilityWidget, SkipToContent, KeyboardNavigationDetector } from '@/components/accessibility'
 import {
     baseMetadata,
     generateOrganizationStructuredData,
@@ -33,7 +36,10 @@ const poppins = Poppins({
     weight: ['400', '500', '600', '700', '800'],
 })
 
-export const metadata: Metadata = baseMetadata
+export const metadata: Metadata = {
+    ...baseMetadata,
+    metadataBase: new URL('https://saraivavision.com.br'),
+}
 
 export default function RootLayout({
     children,
@@ -49,37 +55,35 @@ export default function RootLayout({
     }
 
     return (
-        <html lang="pt-BR" className={`${inter.variable} ${poppins.variable}`}>
+        <html lang="pt-BR" className={`${inter.variable} ${poppins.variable}`} suppressHydrationWarning>
             <head>
+                <ThemeScript />
                 <CriticalCSS />
-                <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-                <link rel="icon" href="/favicon.ico" />
-                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-                <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-                <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-                <link rel="manifest" href="/site.webmanifest" />
-                <link rel="dns-prefetch" href="https://js.stripe.com" />
-                <link rel="dns-prefetch" href="https://api.whatsapp.com" />
-                <meta name="theme-color" content="#0066cc" />
-                <meta name="apple-mobile-web-app-capable" content="yes" />
-                <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-                <meta name="format-detection" content="telephone=no" />
+                <link rel="preconnect" href="https://js.stripe.com" />
+                <link rel="preconnect" href="https://api.whatsapp.com" />
+                <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
             </head>
             <body className="antialiased">
-                <PrivacyProvider>
-                    <ErrorHandler />
-                    <ServiceWorkerCleanup />
-                    <PerformanceMonitor />
-                    <ResourcePreloader />
-                    {/* <StructuredData data={[organizationData, websiteData]} /> */}
-                    <Header />
-                    <main className="pt-16 lg:pt-20">
-                        {children}
-                    </main>
-                    <Footer />
-                    <CookieConsent />
-                    <SmoothScroll />
-                </PrivacyProvider>
+                <RootErrorBoundary>
+                    <ThemeProvider>
+                        <PrivacyProvider>
+                            <SkipToContent />
+                            <KeyboardNavigationDetector />
+                            <ErrorHandler />
+                            <ServiceWorkerCleanup />
+                            <PerformanceMonitor />
+                            <ResourcePreloader />
+                            <Header />
+                            <main id="main-content" className="min-h-screen pt-20 lg:pt-24">
+                                {children}
+                            </main>
+                            <Footer />
+                            <CookieConsent />
+                            <SmoothScroll />
+                            <AccessibilityWidget />
+                        </PrivacyProvider>
+                    </ThemeProvider>
+                </RootErrorBoundary>
             </body>
         </html>
     )

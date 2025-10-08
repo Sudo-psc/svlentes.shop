@@ -2,143 +2,129 @@
 @tailwind components;
 @tailwind utilities;
 
+@import '../styles/accessibility.css';
+
 @layer base {
     :root {
-        /* Base colors - High contrast for accessibility */
+        /* Background - Clean white */
         --background: 0 0% 100%;
-        --foreground: 222.2 84% 4.9%;
+        --foreground: 222 47% 11%;
+        /* #111827 - High contrast text */
 
-        /* Card colors - Subtle contrast for depth */
+        /* Card colors */
         --card: 0 0% 100%;
-        --card-foreground: 222.2 84% 4.9%;
+        --card-foreground: 222 47% 11%;
 
         /* Popover colors */
         --popover: 0 0% 100%;
-        --popover-foreground: 222.2 84% 4.9%;
+        --popover-foreground: 222 47% 11%;
 
-        /* Primary - Medical Blue (optimized for trust and professionalism) */
-        --primary: 214 88% 27%;
-        /* Deep medical blue #0f4c75 */
-        --primary-foreground: 0 0% 98%;
+        /* Primary - Azul Médico #0066CC */
+        --primary: 211 100% 40%;
+        --primary-foreground: 0 0% 100%;
 
-        /* Secondary - Soft neutral for balance */
-        --secondary: 210 20% 96%;
-        /* Light gray-blue */
-        --secondary-foreground: 222.2 84% 4.9%;
+        /* Secondary - Verde Saúde #10b981 */
+        --secondary: 158 64% 52%;
+        --secondary-foreground: 0 0% 100%;
 
-        /* Muted colors - Better contrast for readability */
-        --muted: 210 40% 94%;
-        /* Lighter muted background */
-        --muted-foreground: 215.4 25% 35%;
-        /* Darker muted text for better contrast */
+        /* Accent - Laranja Energia #f97316 */
+        --accent: 24 95% 53%;
+        --accent-foreground: 0 0% 100%;
 
-        /* Accent - Subtle highlight */
-        --accent: 210 40% 94%;
-        --accent-foreground: 222.2 84% 4.9%;
+        /* Muted colors */
+        --muted: 220 14% 96%;
+        /* #F9FAFB */
+        --muted-foreground: 220 9% 46%;
+        /* #6B7280 */
 
-        /* Destructive - Improved red for better visibility */
-        --destructive: 0 72% 51%;
-        /* More saturated red #dc2626 */
-        --destructive-foreground: 0 0% 98%;
+        /* Destructive */
+        --destructive: 0 84% 60%;
+        --destructive-foreground: 0 0% 100%;
 
-        /* Border and input - Subtle but visible */
-        --border: 214.3 31.8% 88%;
-        /* Slightly darker border */
-        --input: 214.3 31.8% 88%;
+        /* Border and input */
+        --border: 220 13% 91%;
+        /* #E5E7EB */
+        --input: 220 13% 91%;
 
         /* Ring - Focus indicator */
-        --ring: 214 88% 27%;
-        /* Match primary for consistency */
+        --ring: 211 100% 40%;
 
         /* Border radius */
-        --radius: 0.5rem;
+        --radius: 0.75rem;
 
-        /* Success color for positive actions */
-        --success: 142 76% 36%;
-        /* Medical green #16a34a */
-        --success-foreground: 0 0% 98%;
+        /* Success */
+        --success: 158 64% 52%;
+        --success-foreground: 0 0% 100%;
 
-        /* Warning color */
+        /* Warning */
         --warning: 38 92% 50%;
-        /* Amber #f59e0b */
-        --warning-foreground: 0 0% 98%;
+        --warning-foreground: 0 0% 100%;
 
-        /* Chart colors - Harmonized palette */
-        --chart-1: 214 88% 27%;
-        /* Primary blue */
-        --chart-2: 142 76% 36%;
-        /* Success green */
-        --chart-3: 38 92% 50%;
-        /* Warning amber */
+        /* Chart colors */
+        --chart-1: 211 100% 40%;
+        --chart-2: 158 64% 52%;
+        --chart-3: 24 95% 53%;
         --chart-4: 262 83% 58%;
-        /* Purple accent */
-        --chart-5: 0 72% 51%;
-        /* Destructive red */
+        --chart-5: 0 84% 60%;
     }
 
     .dark {
-        /* Dark mode - High contrast for accessibility */
-        --background: 222.2 84% 4.9%;
-        /* Dark blue-gray */
+        /* Background - Dark blue-gray #0F172A */
+        --background: 222 47% 11%;
         --foreground: 210 40% 98%;
+        /* #F1F5F9 */
 
-        /* Card colors - Elevated surface */
-        --card: 222.2 84% 8%;
-        /* Slightly lighter than background */
+        /* Card colors - Elevated surface #1E293B */
+        --card: 217 33% 17%;
         --card-foreground: 210 40% 98%;
 
         /* Popover colors */
-        --popover: 222.2 84% 8%;
+        --popover: 217 33% 17%;
         --popover-foreground: 210 40% 98%;
 
-        /* Primary - Lighter blue for dark mode */
-        --primary: 214 88% 65%;
-        /* Lighter medical blue for dark mode */
-        --primary-foreground: 222.2 84% 4.9%;
+        /* Primary - Azul mais claro #3B82F6 */
+        --primary: 217 91% 60%;
+        --primary-foreground: 222 47% 11%;
 
-        /* Secondary - Dark mode secondary */
-        --secondary: 217.2 32.6% 17.5%;
-        --secondary-foreground: 210 40% 98%;
+        /* Secondary - Verde vibrante #34D399 */
+        --secondary: 158 64% 52%;
+        --secondary-foreground: 222 47% 11%;
 
-        /* Muted colors - Balanced for dark mode */
-        --muted: 217.2 32.6% 17.5%;
-        --muted-foreground: 215 20.2% 70%;
-        /* Lighter for better contrast */
+        /* Accent - Laranja suavizado #FB923C */
+        --accent: 24 95% 61%;
+        --accent-foreground: 222 47% 11%;
 
-        /* Accent */
-        --accent: 217.2 32.6% 17.5%;
-        --accent-foreground: 210 40% 98%;
+        /* Muted colors */
+        --muted: 217 33% 17%;
+        --muted-foreground: 215 20% 65%;
+        /* #94A3B8 */
 
-        /* Destructive - Softer red for dark mode */
-        --destructive: 0 62.8% 55%;
+        /* Destructive */
+        --destructive: 0 84% 60%;
         --destructive-foreground: 210 40% 98%;
 
-        /* Border and input - Visible in dark mode */
-        --border: 217.2 32.6% 20%;
-        --input: 217.2 32.6% 20%;
+        /* Border and input */
+        --border: 217 33% 24%;
+        /* #334155 */
+        --input: 217 33% 24%;
 
-        /* Ring - Light ring for dark mode */
-        --ring: 214 88% 65%;
+        /* Ring */
+        --ring: 217 91% 60%;
 
-        /* Success color for dark mode */
-        --success: 142 76% 45%;
-        --success-foreground: 210 40% 98%;
+        /* Success */
+        --success: 158 64% 52%;
+        --success-foreground: 222 47% 11%;
 
-        /* Warning color for dark mode */
+        /* Warning */
         --warning: 38 92% 60%;
-        --warning-foreground: 222.2 84% 4.9%;
+        --warning-foreground: 222 47% 11%;
 
-        /* Chart colors - Dark mode optimized */
-        --chart-1: 214 88% 65%;
-        /* Primary blue */
-        --chart-2: 142 76% 45%;
-        /* Success green */
-        --chart-3: 38 92% 60%;
-        /* Warning amber */
+        /* Chart colors */
+        --chart-1: 217 91% 60%;
+        --chart-2: 158 64% 52%;
+        --chart-3: 24 95% 61%;
         --chart-4: 262 83% 68%;
-        /* Purple accent */
-        --chart-5: 0 62.8% 55%;
-        /* Destructive red */
+        --chart-5: 0 84% 60%;
     }
 
     * {
@@ -363,27 +349,35 @@
 
 @layer components {
     .btn-primary {
-        @apply bg-primary-600 hover:bg-primary-700 active:bg-primary-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 shadow-md hover:shadow-lg;
+        @apply bg-primary hover:bg-primary-700 active:bg-primary-800 text-primary-foreground font-semibold min-h-[44px] py-3 px-6 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 shadow-md hover:shadow-lg hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
     }
 
     .btn-secondary {
-        @apply bg-secondary-500 hover:bg-secondary-600 active:bg-secondary-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-secondary-400 focus:ring-offset-2 shadow-md hover:shadow-lg;
+        @apply bg-secondary hover:bg-secondary-600 active:bg-secondary-700 text-secondary-foreground font-semibold min-h-[44px] py-3 px-6 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-secondary focus:ring-offset-2 shadow-md hover:shadow-lg hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+    }
+
+    .btn-accent {
+        @apply bg-accent hover:bg-accent-600 active:bg-accent-700 text-accent-foreground font-semibold min-h-[44px] py-3 px-6 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-accent focus:ring-offset-2 shadow-md hover:shadow-lg hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
     }
 
     .btn-outline {
-        @apply border-2 border-primary-600 text-primary-700 hover:bg-primary-600 hover:text-white active:bg-primary-700 font-semibold py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 shadow-sm hover:shadow-md;
+        @apply border-2 border-primary bg-transparent hover:bg-primary text-primary hover:text-primary-foreground active:bg-primary-700 font-semibold min-h-[44px] py-3 px-6 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 shadow-sm hover:shadow-md hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
     }
 
     .btn-whatsapp {
-        @apply bg-whatsapp-500 hover:bg-whatsapp-600 active:bg-whatsapp-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-whatsapp-400 focus:ring-offset-2 shadow-md hover:shadow-lg;
+        @apply bg-whatsapp hover:bg-whatsapp-600 active:bg-whatsapp-700 text-white font-semibold min-h-[44px] py-3 px-6 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-whatsapp focus:ring-offset-2 shadow-md hover:shadow-lg hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
     }
 
     .btn-success {
-        @apply bg-success-600 hover:bg-success-700 active:bg-success-800 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-success-500 focus:ring-offset-2 shadow-md hover:shadow-lg;
+        @apply bg-success hover:bg-success-600 active:bg-success-700 text-success-foreground font-semibold min-h-[44px] py-3 px-6 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-success focus:ring-offset-2 shadow-md hover:shadow-lg hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
     }
 
     .btn-warning {
-        @apply bg-warning-500 hover:bg-warning-600 active:bg-warning-700 text-warning-900 font-semibold py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-warning-400 focus:ring-offset-2 shadow-md hover:shadow-lg;
+        @apply bg-warning hover:bg-warning-600 active:bg-warning-700 text-warning-foreground font-semibold min-h-[44px] py-3 px-6 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-warning focus:ring-offset-2 shadow-md hover:shadow-lg hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100;
+    }
+
+    .btn-ghost {
+        @apply bg-transparent hover:bg-muted text-foreground font-semibold min-h-[44px] py-3 px-6 rounded-xl transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed;
     }
 
     .container-custom {
@@ -407,23 +401,27 @@
     }
 
     .card {
-        @apply bg-card rounded-xl shadow-lg border border-border p-6 hover:shadow-xl transition-shadow duration-300;
+        @apply bg-card rounded-xl shadow-lg border border-border p-6 hover:shadow-xl transition-all duration-300 hover:scale-[1.01];
+    }
+
+    .card-interactive {
+        @apply bg-card rounded-xl shadow-lg border border-border p-6 hover:shadow-2xl hover:border-primary/50 transition-all duration-300 hover:scale-[1.02] cursor-pointer;
     }
 
     .input-field {
-        @apply w-full px-4 py-3 border border-input rounded-lg text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-ring focus:border-ring transition-all duration-200 disabled:bg-muted disabled:cursor-not-allowed disabled:opacity-50;
+        @apply w-full min-h-[48px] px-4 py-3 border-2 border-input rounded-xl text-foreground placeholder:text-muted-foreground bg-background focus:ring-2 focus:ring-ring focus:border-ring transition-all duration-200 disabled:bg-muted disabled:cursor-not-allowed disabled:opacity-50;
     }
 
     .text-gradient {
-        @apply bg-gradient-to-r from-primary-600 to-success-600 bg-clip-text text-transparent;
+        @apply bg-gradient-to-r from-primary-600 to-primary-500 bg-clip-text text-transparent;
     }
 
     .text-gradient-medical {
-        @apply bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent;
+        @apply bg-gradient-to-r from-primary-700 to-primary-600 bg-clip-text text-transparent;
     }
 
     .bg-gradient-medical {
-        @apply bg-gradient-to-br from-primary-50 to-primary-100;
+        @apply bg-gradient-to-br from-primary-50 to-secondary-50;
     }
 
     .bg-gradient-success {

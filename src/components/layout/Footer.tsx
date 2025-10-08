@@ -1,11 +1,13 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter, usePathname } from 'next/navigation'
 import { Button } from '@/components/ui/Button'
 import { LogoFooter } from '@/components/ui/Logo'
 import { OptimizedImage } from '@/components/ui/OptimizedImage'
 import { generateWhatsAppLink } from '@/lib/utils'
 import { doctorInfo, clinicInfo } from '@/data/doctor-info'
+import { HeroSubscriptionButton } from '@/components/cta/HeroSubscriptionButton'
 import { PrivacyPolicy } from '@/components/privacy/PrivacyPolicy'
 import { PrivacySettings } from '@/components/privacy/PrivacySettings'
 import { DataControlPanel } from '@/components/privacy/DataControlPanel'
@@ -30,6 +32,8 @@ export function Footer({ className }: FooterProps) {
     const [showPrivacyPolicy, setShowPrivacyPolicy] = useState(false)
     const [showPrivacySettings, setShowPrivacySettings] = useState(false)
     const [showDataControl, setShowDataControl] = useState(false)
+    const router = useRouter()
+    const pathname = usePathname()
 
     const handleWhatsAppContact = () => {
         const message = `Olá! Entrei em contato através do site SV Lentes e gostaria de mais informações sobre o serviço de assinatura de lentes de contato com acompanhamento médico.`
@@ -42,11 +46,22 @@ export function Footer({ className }: FooterProps) {
         window.open(whatsappLink, '_blank')
     }
 
+    const handleAssinarAgora = () => {
+        // Se estivermos na página de checkout, não fazemos nada
+        if (pathname === '/assinatura') {
+            return
+        }
+
+        // Navegação suave para a página de assinatura
+        router.push('/assinatura')
+    }
+
     const quickLinks = [
-        { name: 'Planos e Preços', href: '#planos-precos' },
-        { name: 'Como Funciona', href: '#como-funciona' },
-        { name: 'FAQ', href: '#perguntas-frequentes' },
-        { name: 'Programa de Indicação', href: '#programa-indicacao' },
+        { name: 'Assinar Agora', href: '/assinatura' },
+        { name: 'Planos e Preços', href: '/assinatura' },
+        { name: 'Como Funciona', href: '/sdd-framework' },
+        { name: 'FAQ', href: '/sdd-framework#faq' },
+        { name: 'Calculadora', href: '/calculadora' },
     ]
 
     const legalLinks = [
@@ -95,7 +110,7 @@ export function Footer({ className }: FooterProps) {
                             <div className="flex items-start space-x-4">
                                 <div className="w-12 h-12 rounded-full overflow-hidden border-2 border-primary-400 flex-shrink-0">
                                     <OptimizedImage
-                                        src="/icones/drphilipe_perfil.jpeg"
+                                        src="/iconos/drphilipe_perfil.jpeg"
                                         alt="Dr. Philipe Saraiva Cruz"
                                         width={48}
                                         height={48}
@@ -121,15 +136,22 @@ export function Footer({ className }: FooterProps) {
                         </div>
 
                         {/* Contact CTA */}
-                        <Button
-                            onClick={handleWhatsAppContact}
-                            variant="whatsapp"
-                            className="w-full sm:w-auto flex items-center justify-center space-x-2"
-                            aria-label="Falar com especialista pelo WhatsApp"
-                        >
-                            <MessageCircle className="w-5 h-5" aria-hidden="true" />
-                            <span>Falar com Especialista</span>
-                        </Button>
+                        <div className="space-y-4">
+                            <HeroSubscriptionButton
+                                text="Assinar Agora"
+                                className="w-full"
+                                onClick={handleAssinarAgora}
+                            />
+                            <Button
+                                onClick={handleWhatsAppContact}
+                                variant="whatsapp"
+                                className="w-full sm:w-auto flex items-center justify-center space-x-2"
+                                aria-label="Falar com especialista pelo WhatsApp"
+                            >
+                                <MessageCircle className="w-5 h-5" aria-hidden="true" />
+                                <span>Falar com Especialista</span>
+                            </Button>
+                        </div>
                     </div>
 
                     {/* Quick Links */}
@@ -229,6 +251,36 @@ export function Footer({ className }: FooterProps) {
                 </div>
             </div>
 
+            {/* Medical Disclaimer */}
+            <div className="bg-medical-800 border-t border-medical-700 py-6">
+                <div className="container-custom">
+                    <div className="bg-medical-900/50 rounded-lg p-6 border border-medical-700">
+                        <h3 className="text-white font-semibold text-lg mb-3 flex items-center gap-2">
+                            <Shield className="w-5 h-5 text-primary-400" />
+                            Responsabilidade Médica
+                        </h3>
+                        <div className="space-y-2 text-sm text-gray-300">
+                            <p>
+                                <strong className="text-white">Médico Responsável:</strong> {doctorInfo.name} - {doctorInfo.crm}
+                            </p>
+                            <p>
+                                <strong className="text-white">Equipe Médica:</strong> {doctorInfo.crmEquipe}
+                            </p>
+                            <p className="text-gray-400 italic mt-3">
+                                ⚕️ Serviço médico registrado no Conselho Regional de Medicina de Minas Gerais (CRM-MG).
+                                Todas as prescrições de lentes de contato requerem avaliação oftalmológica prévia.
+                                Este serviço não substitui consultas médicas regulares e exames oftalmológicos de rotina.
+                            </p>
+                            <p className="text-red-300 font-medium mt-3 bg-red-900/20 p-3 rounded border border-red-800">
+                                ⚠️ <strong>Importante:</strong> Em caso de sintomas como dor ocular, vermelhidão intensa,
+                                visão turva ou secreção, remova as lentes imediatamente e procure atendimento médico.
+                                Emergências: <a href={`tel:${clinicInfo.contact.whatsapp}`} className="underline hover:no-underline font-bold">{clinicInfo.contact.phone}</a>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             {/* Bottom Bar */}
             <div className="bg-medical-950 py-8">
                 <div className="container-custom">
@@ -282,7 +334,7 @@ export function Footer({ className }: FooterProps) {
                         {/* ANVISA */}
                         <div className="flex items-center space-x-2 bg-blue-900/30 border border-blue-700/50 rounded-lg px-3 py-2 text-sm font-medium text-blue-300">
                             <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                                <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                                <path fillRule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 002.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                             </svg>
                             <span>Produtos ANVISA</span>
                         </div>

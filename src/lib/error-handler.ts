@@ -1,56 +1,60 @@
-// Global error handling utilities
-
-export const handleNetworkError = (error: Error, context?: string) => {
-    console.error(`Network error${context ? ` in ${context}` : ''}:`, error)
-
-    // Don't throw errors for common network issues in production
-    if (process.env.NODE_ENV === 'production') {
-        return
-    }
-
-    // Log additional context in development
-    if (error.message.includes('NetworkMonitor') || error.message.includes('Timeout')) {
-        console.warn('Network monitoring timeout - this is usually safe to ignore')
-        return
-    }
-
-    if (error.message.includes('Failed to fetch')) {
-        console.warn('Fetch failed - check network connection or API endpoint')
-        return
+export class AppError extends Error {
+    constructor(
+        message: string,
+        public code?: string,
+        public statusCode?: number
+    ) {
+        super(message)
+        this.name = 'AppError'
     }
 }
 
-export const setupGlobalErrorHandlers = () => {
+export function handleApiError(error: unknown): AppError {
+    if (error instanceof AppError) {
+        return error
+    }
+
+    if (error instanceof Error) {
+        return new AppError(error.message, 'UNKNOWN_ERROR', 500)
+    }
+
+    return new AppError('Erro desconhecido', 'UNKNOWN_ERROR', 500)
+}
+
+export async function withErrorHandling<T>(
+    fn: () => Promise<T>,
+    fallback?: T
+): Promise<T> {
+    try {
+        return await fn()
+    } catch (error) {
+        console.error('Error in withErrorHandling:', error)
+        if (fallback !== undefined) {
+            return fallback
+        }
+        throw handleApiError(error)
+    }
+}
+
+export function logError(error: unknown, context?: string) {
+    const timestamp = new Date().toISOString()
+    const errorMessage = error instanceof Error ? error.message : String(error)
+    
+    console.error(`[${timestamp}] ${context || 'Error'}:`, errorMessage)
+    
+    if (error instanceof Error && error.stack) {
+        console.error('Stack:', error.stack)
+    }
+}
+
+export function setupGlobalErrorHandlers() {
     if (typeof window === 'undefined') return
 
-    // Handle unhandled promise rejections
-    window.addEventListener('unhandledrejection', (event) => {
-        const error = event.reason
-
-        // Ignore common service worker and network errors
-        if (error?.message?.includes('NetworkMonitor') ||
-            error?.message?.includes('Failed to fetch') ||
-            error?.stack?.includes('sw.js')) {
-            event.preventDefault()
-            console.warn('Suppressed service worker error:', error.message)
-            return
-        }
-
-        handleNetworkError(error, 'unhandled promise rejection')
+    window.addEventListener('error', (event) => {
+        logError(event.error, 'Global Error')
     })
 
-    // Handle general errors
-    window.addEventListener('error', (event) => {
-        const error = event.error
-
-        // Ignore service worker errors
-        if (event.filename?.includes('sw.js') ||
-            error?.stack?.includes('sw.js')) {
-            event.preventDefault()
-            console.warn('Suppressed service worker error:', error?.message)
-            return
-        }
-
-        handleNetworkError(error, 'global error handler')
+    window.addEventListener('unhandledrejection', (event) => {
+        logError(event.reason, 'Unhandled Promise Rejection')
     })
 }

@@ -26,7 +26,7 @@ export const pricingPlans: PricingPlan[] = [
         priceMonthly: 149.90,
         priceAnnual: 1648.90, // 1 mês grátis
         features: [
-            'Lentes de contato diárias ou mensais',
+            'Lentes de contato mensais premium',
             'Entrega mensal automática',
             'Consulta médica semestral incluída',
             'Teleorientação ilimitada',
@@ -81,8 +81,8 @@ export const featureComparison = {
         {
             feature: 'Lentes de contato',
             basic: 'Mensais',
-            premium: 'Diárias ou mensais',
-            vip: 'Premium última geração'
+            premium: 'Mensais premium',
+            vip: 'Mensais última geração'
         },
         {
             feature: 'Frequência de entrega',
