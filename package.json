@@ -25,7 +25,10 @@
         "icons:catalog": "open docs/ICONES.md",
         "icons:watch": "node scripts/auto-icon-updater.js",
         "icons:update": "node scripts/update-components-with-icons.js",
-        "icons:analyze": "node scripts/analyze-icons.js"
+        "icons:analyze": "node scripts/analyze-icons.js",
+        "test:middleware-fallback": "ts-node scripts/test-middleware-fallback.ts",
+        "middleware:health": "curl -s http://localhost:3000/api/middleware-health | jq",
+        "middleware:reset": "curl -X POST http://localhost:3000/api/middleware-health -H 'Content-Type: application/json' -d '{\"action\":\"reset\"}'"
     },
     "dependencies": {
         "@heroicons/react": "^2.2.0",

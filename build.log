@@ -1,0 +1,46 @@
+
+> svlentes-landing-page@0.1.0 build
+> next build
+
+ ⚠ Warning: Next.js inferred your workspace root, but it may not be correct.
+ We detected multiple lockfiles and selected the directory of /Users/philipecruz/package-lock.json as the root directory.
+ To silence this warning, set `outputFileTracingRoot` in your Next.js config, or consider removing one of the lockfiles if it's not needed.
+   See https://nextjs.org/docs/app/api-reference/config/next-config-js/output#caveats for more information.
+ Detected additional lockfiles: 
+   * /Users/philipecruz/Saraiva Vision/LensAsService/LAAS-page-short/package-lock.json
+
+   ▲ Next.js 15.5.4
+   - Environments: .env.local
+   - Experiments (use with caution):
+     · optimizePackageImports
+
+   Creating an optimized production build ...
+
+
+Source path: /Users/philipecruz/Saraiva Vision/LensAsService/LAAS-page-short/src/app/globals.css
+Setting up new context...
+Finding changed files: 8.073ms
+Reading changed files: 156.795ms
+Sorting candidates: 6.383ms
+Generate rules: 108.617ms
+Build stylesheet: 4.481ms
+Potential classes:  13541
+Active contexts:  1
+JIT TOTAL: 426.567ms
+
+
+ ✓ Compiled successfully in 2.8s
+   Linting and checking validity of types ...
+Failed to compile.
+
+./src/components/landing/HowItWorksSection.tsx:62:44
+Type error: Cannot find name 'setBillingCycle'.
+
+[0m [90m 60 |[39m                     [33m<[39m[33mdiv[39m className[33m=[39m[32m"inline-flex items-center bg-white dark:bg-gray-800 rounded-full p-1 shadow-md"[39m[33m>[39m
+ [90m 61 |[39m                         [33m<[39m[33mbutton[39m
+[31m[1m>[22m[39m[90m 62 |[39m                             onClick[33m=[39m{() [33m=>[39m setBillingCycle([32m'monthly'[39m)}
+ [90m    |[39m                                            [31m[1m^[22m[39m
+ [90m 63 |[39m                             className[33m=[39m{[32m`px-6 py-2 rounded-full text-sm font-medium transition-colors ${billingCycle === 'monthly'[39m
+ [90m 64 |[39m [32m                                ? 'bg-primary-600 text-white'[39m
+ [90m 65 |[39m [32m                                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'[39m[0m
+Next.js build worker exited with code: 1 and signal: null

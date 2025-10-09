@@ -74,39 +74,31 @@ export function PricingCards({ className = '' }: PricingCardsProps) {
                 {/* Header */}
                 <div className="text-center mb-4">
                     <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                        Planos de Assinatura?
+                        Planos de Assinatura
                     </h2>
                     <div className="bg-green-50 rounded-lg p-4 inline-block">
                         <p className="text-sm text-gray-700">
-                            ⭐ Quem aprova?{' '}
-                            <span className="font-semibold">
-                                As lentes começaram caro e você está economizando + as
-                                lentes são de primeira classe!
-                            </span>
+                            ⭐ <span className="font-semibold">Quem aprova:</span>{' '}
+                            As lentes começaram caro e você está economizando + as
+                            lentes são de primeira classe!
                         </p>
                     </div>
                 </div>
-
-                <h3 className="text-2xl font-bold text-gray-900 text-center mt-12 mb-8">
-                    Quem aprova?
-                </h3>
 
                 {/* Pricing Cards Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
                     {plans.map((plan, index) => (
                         <div
                             key={index}
-                            className={`rounded-lg p-6 ${
-                                plan.highlighted
+                            className={`rounded-lg p-6 ${plan.highlighted
                                     ? 'bg-green-600 text-white shadow-xl ring-2 ring-green-600'
                                     : 'bg-white border-2 border-gray-200'
-                            }`}
+                                }`}
                         >
                             {/* Plan Name */}
                             <h4
-                                className={`text-lg font-bold mb-4 ${
-                                    plan.highlighted ? 'text-white' : 'text-gray-900'
-                                }`}
+                                className={`text-lg font-bold mb-4 ${plan.highlighted ? 'text-white' : 'text-gray-900'
+                                    }`}
                             >
                                 {plan.name}
                             </h4>
@@ -114,9 +106,8 @@ export function PricingCards({ className = '' }: PricingCardsProps) {
                             {/* Price */}
                             <div className="mb-6">
                                 <p
-                                    className={`text-3xl font-bold ${
-                                        plan.highlighted ? 'text-white' : 'text-gray-900'
-                                    }`}
+                                    className={`text-3xl font-bold ${plan.highlighted ? 'text-white' : 'text-gray-900'
+                                        }`}
                                 >
                                     {plan.price}
                                 </p>
@@ -127,14 +118,12 @@ export function PricingCards({ className = '' }: PricingCardsProps) {
                                 {plan.features.map((feature, idx) => (
                                     <li key={idx} className="flex items-start gap-2">
                                         <Check
-                                            className={`w-5 h-5 flex-shrink-0 mt-0.5 ${
-                                                plan.highlighted ? 'text-white' : 'text-green-600'
-                                            }`}
+                                            className={`w-5 h-5 flex-shrink-0 mt-0.5 ${plan.highlighted ? 'text-white' : 'text-green-600'
+                                                }`}
                                         />
                                         <span
-                                            className={`text-sm ${
-                                                plan.highlighted ? 'text-white' : 'text-gray-600'
-                                            }`}
+                                            className={`text-sm ${plan.highlighted ? 'text-white' : 'text-gray-600'
+                                                }`}
                                         >
                                             {feature}
                                         </span>
@@ -145,11 +134,10 @@ export function PricingCards({ className = '' }: PricingCardsProps) {
                             {/* CTA Button */}
                             <Button
                                 onClick={() => handleCTA(plan.name)}
-                                className={`w-full ${
-                                    plan.highlighted
+                                className={`w-full ${plan.highlighted
                                         ? 'bg-white text-green-600 hover:bg-gray-50'
                                         : 'bg-green-600 text-white hover:bg-green-700'
-                                }`}
+                                    }`}
                             >
                                 {plan.ctaText}
                             </Button>

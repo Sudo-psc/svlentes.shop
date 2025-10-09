@@ -1,5 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    // Corrigir warning de workspace root
+    outputFileTracingRoot: require('path').join(__dirname),
+
     experimental: {
         optimizePackageImports: ['@heroicons/react', 'lucide-react'],
     },

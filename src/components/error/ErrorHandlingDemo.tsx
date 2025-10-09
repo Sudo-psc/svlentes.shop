@@ -151,15 +151,19 @@ function NetworkStatusDemo() {
     )
 }
 
+function ProblematicComponent({ shouldError }: { shouldError: boolean }) {
+    if (shouldError) {
+        throw new Error('Componente com erro simulado!')
+    }
+    return (
+        <div className="text-center py-4">
+            <p className="text-sm text-success">✓ Componente funcionando corretamente</p>
+        </div>
+    )
+}
+
 function ErrorBoundaryDemo() {
     const [shouldError, setShouldError] = useState(false)
-
-    const ProblematicComponent = () => {
-        if (shouldError) {
-            throw new Error('Erro proposital para demonstração')
-        }
-        return <p className="text-sm text-success">✓ Componente funcionando normalmente</p>
-    }
 
     return (
         <DemoCard title="4. Error Boundary">
@@ -173,7 +177,7 @@ function ErrorBoundaryDemo() {
 
                 <div className="bg-muted/50 rounded-lg p-4 min-h-[100px]">
                     <ErrorBoundary showHomeButton={false} showBackButton={false}>
-                        <ProblematicComponent />
+                        <ProblematicComponent shouldError={shouldError} />
                     </ErrorBoundary>
                 </div>
             </div>

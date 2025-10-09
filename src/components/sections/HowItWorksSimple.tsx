@@ -16,7 +16,7 @@ export function HowItWorksSimple({ className = '' }: HowItWorksSimpleProps) {
         {
             icon: Package,
             title: 'Entrega rastreada 2x/ano direto na casa, com 7 dias de prazo',
-            description: 'Lentes novas semestralmente, gerencia pelos dígitos morfológicos'
+            description: 'Lentes novas semestralmente, gerenciadas pelos dígitos morfológicos'
         },
         {
             icon: FileText,

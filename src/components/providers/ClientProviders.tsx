@@ -4,14 +4,10 @@ import { ReactNode } from 'react'
 import dynamic from 'next/dynamic'
 import { ThemeProvider } from '@/components/theme/ThemeProvider'
 import { PrivacyProvider } from '@/components/privacy/PrivacyProvider'
+import { Header } from '@/components/layout/Header'
+import { Footer } from '@/components/layout/Footer'
 
-// Lazy load components pesados
-const Header = dynamic(() => import('@/components/layout/Header').then(mod => ({ default: mod.Header })), {
-    ssr: true
-})
-const Footer = dynamic(() => import('@/components/layout/Footer').then(mod => ({ default: mod.Footer })), {
-    ssr: true
-})
+// Lazy load apenas componentes não-críticos
 const CookieConsent = dynamic(() => import('@/components/privacy/CookieConsent').then(mod => ({ default: mod.CookieConsent })), {
     ssr: false
 })

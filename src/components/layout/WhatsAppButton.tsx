@@ -6,7 +6,7 @@ export function WhatsAppButton() {
     const handleClick = () => {
         const phoneNumber = '5533998765432' // Número do WhatsApp
         const message = encodeURIComponent('Olá! Gostaria de saber mais sobre a assinatura de lentes.')
-        window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank')
+        window.open(`https://wa.me/${phoneNumber}?text=${message}`, '_blank', 'noopener,noreferrer')
     }
 
     return (

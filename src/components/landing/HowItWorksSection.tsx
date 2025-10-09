@@ -35,7 +35,7 @@ export function HowItWorksSection() {
                 </div>
 
                 {/* Cards dos passos */}
-                <div className="grid md:grid-cols-3 gap-8 mb-12">
+                <div className="grid md:grid-cols-3 gap-8">
                     {steps.map((step, index) => {
                         const Icon = step.icon
                         return (
@@ -63,8 +63,8 @@ export function HowItWorksSection() {
                         <button
                             onClick={() => setBillingCycle('monthly')}
                             className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${billingCycle === 'monthly'
-                                    ? 'bg-primary-600 text-white'
-                                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                                ? 'bg-primary-600 text-white'
+                                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                                 }`}
                         >
                             Mensal
@@ -72,8 +72,8 @@ export function HowItWorksSection() {
                         <button
                             onClick={() => setBillingCycle('annual')}
                             className={`px-6 py-2 rounded-full text-sm font-medium transition-colors ${billingCycle === 'annual'
-                                    ? 'bg-primary-600 text-white'
-                                    : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
+                                ? 'bg-primary-600 text-white'
+                                : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white'
                                 }`}
                         >
                             Anual
