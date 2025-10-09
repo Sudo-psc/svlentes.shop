@@ -6,7 +6,7 @@
  */
 
 import { Redis } from '@upstash/redis'
-import type { UserProfile, PersonaScore } from '@/types/personalization'
+import type { UserProfile } from '@/types/personalization'
 
 interface CacheConfig {
     ttl: number // Time to live in seconds
@@ -160,6 +160,64 @@ export class RedisPersonaCache {
             this.metrics.errors++
             console.error('[RedisCache] Error getting behavioral data:', error)
             return null
+        }
+    }
+
+    /**
+     * Generic get method for simple key-value operations
+     * Used by middleware for direct persona cache access
+     */
+    async get<T>(key: string): Promise<T | null> {
+        const startTime = Date.now()
+        this.metrics.totalRequests++
+
+        try {
+            const fullKey = `${this.config.prefix}${key}`
+            const cached = await this.redis.get<string>(fullKey)
+
+            if (!cached) {
+                this.metrics.misses++
+                this.updateLatency(Date.now() - startTime)
+                return null
+            }
+
+            this.metrics.hits++
+            this.updateLatency(Date.now() - startTime)
+
+            // Handle primitive types (string, number, boolean)
+            if (typeof cached === 'string' && !cached.startsWith('{') && !cached.startsWith('[')) {
+                return cached as T
+            }
+
+            return this.deserialize<T>(cached)
+        } catch (error) {
+            this.metrics.errors++
+            this.updateLatency(Date.now() - startTime)
+            console.error('[RedisCache] Error getting value:', error)
+            return null
+        }
+    }
+
+    /**
+     * Generic set method for simple key-value operations
+     * Used by middleware for direct persona cache writes
+     */
+    async set<T>(key: string, value: T, ttl?: number): Promise<void> {
+        try {
+            const fullKey = `${this.config.prefix}${key}`
+
+            // Handle primitive types vs objects
+            const serialized = typeof value === 'object'
+                ? this.serialize(value)
+                : String(value)
+
+            const expiryTime = ttl || this.config.ttl
+
+            await this.redis.set(fullKey, serialized, { ex: expiryTime })
+        } catch (error) {
+            this.metrics.errors++
+            console.error('[RedisCache] Error setting value:', error)
+            throw error
         }
     }
 

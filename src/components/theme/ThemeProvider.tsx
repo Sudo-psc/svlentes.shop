@@ -25,15 +25,22 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 
     // Initialize theme from localStorage or system preference
     useEffect(() => {
-        const stored = localStorage.getItem('theme') as Theme | null
-        if (stored) {
-            setTheme(stored)
+        try {
+            const stored = localStorage.getItem('theme') as Theme | null
+            if (stored) {
+                setTheme(stored)
+            }
+        } catch (error) {
+            // Ignore localStorage errors during SSR
+            console.warn('Could not access localStorage:', error)
         }
         setMounted(true)
     }, [])
 
     // Apply theme and listen for system changes
     useEffect(() => {
+        if (!mounted || typeof window === 'undefined') return
+
         const root = window.document.documentElement
 
         const applyTheme = (themeToApply: 'light' | 'dark') => {
@@ -58,8 +65,13 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
             applyTheme(theme)
         }
 
-        localStorage.setItem('theme', theme)
-    }, [theme])
+        try {
+            localStorage.setItem('theme', theme)
+        } catch (error) {
+            // Ignore localStorage errors during SSR
+            console.warn('Could not save to localStorage:', error)
+        }
+    }, [theme, mounted])
 
     const toggleTheme = () => {
         setTheme((current) => {
@@ -70,11 +82,7 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
         })
     }
 
-    // Prevent flash of wrong theme
-    if (!mounted) {
-        return <>{children}</>
-    }
-
+    // Always provide context, even before mount to prevent SSR errors
     return (
         <ThemeContext.Provider value={{ theme, setTheme, resolvedTheme, toggleTheme }}>
             {children}
@@ -85,6 +93,15 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
 export function useTheme() {
     const context = useContext(ThemeContext)
     if (!context) {
+        // During SSR, return default values instead of throwing an error
+        if (typeof window === 'undefined') {
+            return {
+                theme: 'system' as Theme,
+                setTheme: () => { },
+                resolvedTheme: 'light' as 'light' | 'dark',
+                toggleTheme: () => { }
+            }
+        }
         throw new Error('useTheme must be used within ThemeProvider')
     }
     return context

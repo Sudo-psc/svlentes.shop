@@ -415,6 +415,11 @@ export const trackPaymentMethodSelect = (method: 'pix' | 'credit_card' | 'boleto
 // Type augmentation for window.gtag
 declare global {
   interface Window {
-    gtag?: (...args: any[]) => void
+    gtag?: (
+      command: 'config' | 'event' | 'js' | 'set' | 'consent',
+      targetId: string | Date | object,
+      config?: object
+    ) => void
+    dataLayer?: any[]
   }
 }

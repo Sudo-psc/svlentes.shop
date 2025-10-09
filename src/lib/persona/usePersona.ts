@@ -13,7 +13,7 @@
 'use client'
 
 import { useEffect, useState, useCallback, useRef } from 'react'
-import * as Cookies from 'js-cookie'
+import Cookies from 'js-cookie'
 import { EventTracker } from '../tracking/eventTracker'
 import { calculatePersona, isValidPersona } from './calculatePersona'
 import type { Persona, PersonaInference } from './types'

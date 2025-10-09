@@ -1,11 +1,10 @@
-import { Metadata } from 'next'
+'use client'
+
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 
-export const metadata: Metadata = {
-    title: 'Pagamento Cancelado - SVlentes',
-    description: 'Seu pagamento foi cancelado. Você pode tentar novamente a qualquer momento.',
-}
+// Force dynamic rendering to prevent prerender issues with ThemeProvider
+export const dynamic = 'force-dynamic'
 
 export default function CancelPage() {
     return (

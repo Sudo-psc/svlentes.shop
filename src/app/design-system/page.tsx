@@ -1,5 +1,10 @@
+'use client'
+
 import { Button } from '@/components/ui/Button'
 import { ThemeToggle } from '@/components/theme/ThemeToggle'
+
+// Force dynamic rendering to prevent prerender issues with ThemeProvider
+export const dynamic = 'force-dynamic'
 
 export default function DesignSystemPage() {
     return (

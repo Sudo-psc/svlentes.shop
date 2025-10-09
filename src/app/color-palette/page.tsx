@@ -1,9 +1,6 @@
-import { ColorPalette } from "@/components/examples/ColorPalette"
+'use client'
 
-export const metadata = {
-    title: "Paleta de Cores - SV Lentes",
-    description: "Sistema de cores otimizado para acessibilidade e harmonia visual da SV Lentes",
-}
+import { ColorPalette } from "@/components/examples/ColorPalette"
 
 export default function ColorPalettePage() {
     return <ColorPalette />

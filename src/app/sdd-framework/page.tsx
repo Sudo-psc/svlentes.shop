@@ -1,9 +1,14 @@
-import { Metadata } from 'next'
+'use client'
+
 import { SDDHero } from '@/components/sdd/SDDHero'
 import { SDDBenefits } from '@/components/sdd/SDDBenefits'
 import { SDDPlans } from '@/components/sdd/SDDPlans'
 import { SDDFAQ } from '@/components/sdd/SDDFAQ'
 
+// Force dynamic rendering to prevent prerender issues with ThemeProvider
+export const dynamic = 'force-dynamic'
+
+/*
 export const metadata: Metadata = {
     title: 'Assinatura de Lentes com Acompanhamento Médico em Caratinga | SV Lentes',
     description: 'Transforme sua visão com assinatura de lentes de contato e acompanhamento médico do Dr. Philipe Saraiva Cruz (CRM-MG 69.870). Planos Básico R$99, Padrão R$139, Premium R$199. Entrega em Caratinga/MG.',
@@ -65,6 +70,7 @@ export const metadata: Metadata = {
         yandex: 'your-yandex-verification-code',
     },
 }
+*/
 
 export default function SDDFrameworkPage() {
     return (

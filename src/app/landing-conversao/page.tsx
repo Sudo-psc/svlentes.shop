@@ -1,7 +1,12 @@
-import { Metadata } from 'next'
+'use client'
+
 import { ConversionHero } from '@/components/conversion/ConversionHero'
 import { ConversionCTA } from '@/components/conversion/ConversionCTA'
 
+// Force dynamic rendering to prevent prerender issues with ThemeProvider
+export const dynamic = 'force-dynamic'
+
+/*
 export const metadata: Metadata = {
     title: 'Transforme Sua Visão Hoje | Assinatura de Lentes com Acompanhamento Médico',
     description: 'Nunca mais fique sem lentes! Assinatura completa com entrega mensal e acompanhamento médico especializado. Economize até 40% com Dr. Philipe Saraiva Cruz - CRM 69.870.',
@@ -27,6 +32,7 @@ export const metadata: Metadata = {
         follow: true,
     },
 }
+*/
 
 export default function LandingConversao() {
     return (

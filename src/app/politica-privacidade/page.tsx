@@ -1,11 +1,9 @@
-import type { Metadata } from 'next';
+'use client'
+
 import { PrivacyPolicy } from '@/components/privacy/PrivacyPolicy';
 
-export const metadata: Metadata = {
-    title: 'Política de Privacidade | SV Lentes - Assinatura de Lentes',
-    description: 'Política de privacidade da SV Lentes em conformidade com a LGPD. Saiba como protegemos seus dados pessoais.',
-    robots: 'index, follow',
-};
+// Force dynamic rendering to prevent prerender issues with ThemeProvider
+export const dynamic = 'force-dynamic'
 
 export default function PrivacyPolicyPage() {
     return (

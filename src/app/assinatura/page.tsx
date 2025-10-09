@@ -1,6 +1,11 @@
-import { Metadata } from 'next'
+'use client'
+
 import { SubscriptionFlow } from '@/components/subscription/SubscriptionFlow'
 
+// Force dynamic rendering to prevent prerender issues with ThemeProvider
+export const dynamic = 'force-dynamic'
+
+/*
 export const metadata: Metadata = {
     title: 'Assinar Lentes de Contato - SV Lentes',
     description: 'Assine lentes de contato com acompanhamento médico especializado. Planos mensais e anuais com economia garantida.',
@@ -37,6 +42,7 @@ export const metadata: Metadata = {
         canonical: 'https://saraivavision.com.br/assinatura'
     }
 }
+*/
 
 export default function SubscriptionPage() {
     return (

@@ -1,6 +1,8 @@
 'use client'
 
 import { Component, ReactNode } from 'react'
+import { ErrorFallback } from './ErrorFallback'
+import { logError } from '@/lib/error-handler'
 
 interface Props {
     children: ReactNode
@@ -9,6 +11,7 @@ interface Props {
 interface State {
     hasError: boolean
     error?: Error
+    errorInfo?: any
 }
 
 class ErrorBoundaryClass extends Component<Props, State> {
@@ -22,26 +25,35 @@ class ErrorBoundaryClass extends Component<Props, State> {
     }
 
     componentDidCatch(error: Error, errorInfo: any) {
-        console.error('RootErrorBoundary caught error:', error, errorInfo)
+        // Log critical error
+        logError(error, 'RootErrorBoundary - Critical')
+
+        this.setState({ errorInfo })
+
+        // Send to monitoring service
+        if (process.env.NODE_ENV === 'production') {
+            // TODO: Send to error tracking service
+            console.error('Critical production error:', error, errorInfo)
+        }
+    }
+
+    private resetError = () => {
+        // For root errors, we reload the page to ensure clean state
+        window.location.reload()
     }
 
     render() {
         if (this.state.hasError) {
             return (
-                <div className="min-h-screen flex items-center justify-center bg-background p-4">
-                    <div className="text-center max-w-md">
-                        <h1 className="text-4xl font-bold text-foreground mb-4">Erro</h1>
-                        <p className="text-muted-foreground mb-6">
-                            Algo deu errado. Por favor, recarregue a página.
-                        </p>
-                        <button
-                            onClick={() => window.location.reload()}
-                            className="bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity"
-                        >
-                            Recarregar Página
-                        </button>
-                    </div>
-                </div>
+                <ErrorFallback
+                    error={this.state.error}
+                    resetError={this.resetError}
+                    variant="full"
+                    title="Erro Crítico"
+                    message="Ocorreu um erro crítico na aplicação. Vamos recarregar a página para você."
+                    showHomeButton={false}
+                    showBackButton={false}
+                />
             )
         }
 

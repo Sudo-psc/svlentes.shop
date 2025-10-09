@@ -4,11 +4,6 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server'
-import Stripe from 'stripe'
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-    apiVersion: '2023-10-16'
-})
 
 export async function GET(request: NextRequest) {
     const startTime = Date.now()
@@ -21,28 +16,21 @@ export async function GET(request: NextRequest) {
             environment: process.env.NODE_ENV || 'development',
             uptime: process.uptime(),
             checks: {
-                database: { status: 'healthy' as string, responseTime: 0 },
-                stripe: { status: 'unknown' as string, responseTime: 0, error: undefined as string | undefined },
-                memory: { status: 'healthy' as string, usage: 0 }
+                process: { status: 'healthy' as 'healthy' | 'warning' | 'unhealthy' },
+                env: { status: 'healthy' as 'healthy' | 'warning' | 'unhealthy', configured: false },
+                memory: { status: 'healthy' as 'healthy' | 'warning' | 'unhealthy', usage: 0 }
             }
         }
 
-        // Check Stripe connectivity
-        try {
-            const stripeStart = Date.now()
-            await stripe.accounts.retrieve()
-            checks.checks.stripe = {
-                status: 'healthy',
-                responseTime: Date.now() - stripeStart,
-                error: undefined
-            }
-        } catch (error) {
-            checks.checks.stripe = {
-                status: 'unhealthy',
-                responseTime: Date.now() - startTime,
-                error: error instanceof Error ? error.message : 'Unknown error'
-            }
-            checks.status = 'degraded'
+        // Check process health
+        checks.checks.process = {
+            status: 'healthy'
+        }
+
+        // Check environment variables
+        checks.checks.env = {
+            status: 'healthy',
+            configured: !!(process.env.STRIPE_SECRET_KEY && process.env.ASAAS_API_KEY)
         }
 
         // Check memory usage

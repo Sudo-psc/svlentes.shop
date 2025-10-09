@@ -1,35 +1,35 @@
 import { Metadata } from 'next'
 import { HeroSection } from '@/components/sections/HeroSection'
 import { MetricsStrip } from '@/components/sections/MetricsStrip'
-import { QuickStartSection } from '@/components/sections/QuickStartSection'
+import { HowItWorksSimple } from '@/components/sections/HowItWorksSimple'
+import { PricingCards } from '@/components/sections/PricingCards'
+import FAQ from '@/components/sections/FAQ'
+import { TestimonialsCarousel } from '@/components/sections/TestimonialsCarousel'
+
+// Force dynamic rendering due to parallel routes using headers()
+export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-    title: 'SV Lentes | Assinatura de Lentes de Contato com Acompanhamento Médico em São Paulo',
-    description: 'Transforme sua visão com a assinatura de lentes de contato pioneira no Brasil. Acompanhamento médico especializado, entrega mensal e economia de até 40%. Lentes diárias, tóricas, multifocais com Dr. Philipe Saraiva Cruz - CRM 69.870.',
+    title: 'SV Lentes | Assinatura de Lentes de Contato com Acompanhamento Médico',
+    description: 'Lentes por assinatura com acompanhamento médico. Simplifique sua visão. Cuide da saúde ocular. Dr. Philipe Saraiva Cruz - CRM-MG 69.870.',
     keywords: [
-        'assinatura lentes de contato São Paulo',
+        'assinatura lentes de contato',
         'lentes de contato mensal',
-        'lentes diárias com acompanhamento médico',
-        'oftalmologista especialista lentes de contato',
-        'Dr. Philipe Saraiva Cruz oftalmologista',
-        'lentes tóricas para astigmatismo',
-        'lentes multifocais presbiopia',
-        'clínica oftalmológica Caratinga',
-        'entrega domiciliar lentes de contato',
-        'economia lentes de contato assinatura',
-        'lentes de contato descartáveis qualidade',
-        'consulta oftalmológica lentes de contato',
-        'serviço assinatura lentes premium',
-        'lentes de contato personalizadas',
-        'saúde ocular São Paulo'
+        'acompanhamento médico oftalmológico',
+        'Dr. Philipe Saraiva Cruz',
+        'CRM-MG 69.870',
+        'Caratinga MG',
+        'entrega domiciliar lentes',
+        'LGPD compliant',
+        'lentes de contato descartáveis'
     ],
     alternates: {
-        canonical: 'https://saraivavision.com.br',
+        canonical: 'https://svlentes.shop',
     },
     openGraph: {
         title: 'SV Lentes - Assinatura de Lentes de Contato com Acompanhamento Médico',
-        description: 'Nunca mais fique sem lentes! Assinatura completa com acompanhamento médico especializado, entrega mensal e economia de até 40%.',
-        url: 'https://saraivavision.com.br',
+        description: 'Simplifique sua visão. Cuide da saúde ocular com acompanhamento médico especializado.',
+        url: 'https://svlentes.shop',
         siteName: 'SV Lentes',
         locale: 'pt_BR',
         type: 'website',
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     twitter: {
         card: 'summary_large_image',
         title: 'SV Lentes - Assinatura de Lentes de Contato',
-        description: 'Transforme sua visão com acompanhamento médico especializado e economia de até 40%',
+        description: 'Lentes por assinatura com acompanhamento médico especializado',
     },
     robots: {
         index: true,
@@ -55,48 +55,23 @@ export const metadata: Metadata = {
 export default function HomePage() {
     return (
         <div className="min-h-screen">
-            {/* Hero Section */}
-            <section id="hero">
-                <HeroSection />
-            </section>
+            {/* 1) Hero Section with Video Placeholder */}
+            <HeroSection />
 
-            {/* Metrics Strip - Consolidado após Hero */}
-            <section className="bg-white">
-                <MetricsStrip />
-            </section>
+            {/* 2) Metrics Strip - Trust Badges */}
+            <MetricsStrip />
 
-            {/* Quick Start Section - Novo fluxo */}
-            <section className="bg-gradient-to-br from-primary-600 to-primary-700">
-                <QuickStartSection />
-            </section>
+            {/* 3) How It Works - 3 Steps with Circular Icons */}
+            <HowItWorksSimple />
 
-            {/* Temporariamente comentado para debug */}
-            {/* <section id="planos-precos" className="bg-gray-50">
-                <LeadCaptureSection />
-            </section> */}
-            {/* <LazySection>
-                <ProblemSolutionSection />
-            </LazySection>
+            {/* 4) Pricing Cards - 4 Plans */}
+            <PricingCards />
 
-            <LazySection>
-                <EconomySection />
-            </LazySection>
-
-            <LazySection>
-                <HowItWorksSection />
-            </LazySection>
-
-            <LazySection>
-                <ReferralProgram />
-            </LazySection>
-
-            <AddOns services={addOnsData} layout="cards" />
-
+            {/* 5) FAQ Section */}
             <FAQ />
 
-            <LazySection>
-                <FinalCTA />
-            </LazySection> */}
+            {/* 6) Testimonials Carousel */}
+            <TestimonialsCarousel />
         </div>
     )
 }

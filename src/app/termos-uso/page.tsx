@@ -1,10 +1,7 @@
-import { Metadata } from 'next'
+'use client'
 
-export const metadata: Metadata = {
-    title: 'Termos de Uso - Saraiva Vision | Assinatura de Lentes com Acompanhamento Médico',
-    description: 'Termos de uso do serviço de assinatura de lentes de contato da Saraiva Vision com acompanhamento médico especializado.',
-    robots: 'index, follow',
-}
+// Force dynamic rendering to prevent prerender issues with ThemeProvider
+export const dynamic = 'force-dynamic'
 
 export default function TermosUsoPage() {
     return (

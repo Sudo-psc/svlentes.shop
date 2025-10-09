@@ -241,8 +241,8 @@ export class EdgeFingerprint {
         const cfCountry = request.headers.get('cf-ipcountry')
         if (cfCountry) return cfCountry
 
-        // Vercel provides country
-        const vercelCountry = request.geo?.country
+        // Vercel provides country via headers
+        const vercelCountry = request.headers.get('x-vercel-ip-country')
         if (vercelCountry) return vercelCountry
 
         // Default to Brazil
@@ -285,7 +285,8 @@ export class FingerprintRateLimit {
 
     static cleanup(): void {
         const now = Date.now()
-        for (const [hash, record] of this.limits.entries()) {
+        const entries = Array.from(this.limits.entries())
+        for (const [hash, record] of entries) {
             if (now - record.timestamp > this.WINDOW_MS * 2) {
                 this.limits.delete(hash)
             }
@@ -314,7 +315,9 @@ export async function getCachedFingerprint(request: NextRequest): Promise<Device
     // Cleanup old entries
     if (fingerprintCache.size > 10000) {
         const oldestKey = fingerprintCache.keys().next().value
-        fingerprintCache.delete(oldestKey)
+        if (oldestKey) {
+            fingerprintCache.delete(oldestKey)
+        }
     }
 
     return fingerprint

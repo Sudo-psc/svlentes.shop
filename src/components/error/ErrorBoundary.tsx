@@ -1,17 +1,22 @@
 'use client'
 
 import { Component, ReactNode } from 'react'
-import { AlertTriangle } from 'lucide-react'
-import { Button } from '@/components/ui/Button'
+import { ErrorFallback } from './ErrorFallback'
+import { NetworkErrorFallback } from './NetworkErrorFallback'
+import { logError, isNetworkError } from '@/lib/error-handler'
 
 interface Props {
     children: ReactNode
     fallback?: ReactNode
+    onError?: (error: Error, errorInfo: any) => void
+    showHomeButton?: boolean
+    showBackButton?: boolean
 }
 
 interface State {
     hasError: boolean
     error?: Error
+    errorInfo?: any
 }
 
 export class ErrorBoundary extends Component<Props, State> {
@@ -25,34 +30,48 @@ export class ErrorBoundary extends Component<Props, State> {
     }
 
     componentDidCatch(error: Error, errorInfo: any) {
-        console.error('ErrorBoundary caught:', error, errorInfo)
+        // Log error
+        logError(error, 'ErrorBoundary')
+
+        // Store error info
+        this.setState({ errorInfo })
+
+        // Call custom error handler if provided
+        if (this.props.onError) {
+            this.props.onError(error, errorInfo)
+        }
+
+        // Send to monitoring service in production
+        if (process.env.NODE_ENV === 'production') {
+            // TODO: Send to Sentry, LogRocket, etc.
+            console.error('Production error:', error, errorInfo)
+        }
+    }
+
+    private resetError = () => {
+        this.setState({ hasError: false, error: undefined, errorInfo: undefined })
     }
 
     render() {
         if (this.state.hasError) {
+            // Custom fallback
             if (this.props.fallback) {
                 return this.props.fallback
             }
 
+            // Network error fallback
+            if (isNetworkError(this.state.error)) {
+                return <NetworkErrorFallback onRetry={this.resetError} />
+            }
+
+            // Default error fallback
             return (
-                <div className="min-h-[400px] flex items-center justify-center p-8">
-                    <div className="text-center max-w-md">
-                        <AlertTriangle className="w-12 h-12 text-warning mx-auto mb-4" />
-                        <h3 className="text-xl font-semibold text-foreground mb-2">
-                            Algo deu errado
-                        </h3>
-                        <p className="text-muted-foreground mb-6">
-                            Não foi possível carregar este conteúdo. Por favor, tente novamente.
-                        </p>
-                        <Button
-                            onClick={() => this.setState({ hasError: false })}
-                            variant="primary"
-                            size="md"
-                        >
-                            Tentar Novamente
-                        </Button>
-                    </div>
-                </div>
+                <ErrorFallback
+                    error={this.state.error}
+                    resetError={this.resetError}
+                    showHomeButton={this.props.showHomeButton}
+                    showBackButton={this.props.showBackButton}
+                />
             )
         }
 

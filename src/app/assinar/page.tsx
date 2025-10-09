@@ -1,9 +1,9 @@
+'use client'
+
 import { SubscriptionFlow } from '@/components/subscription/SubscriptionFlow'
 
-export const metadata = {
-    title: 'Assinar SV Lentes - Escolha seu Plano',
-    description: 'Configure sua assinatura de lentes de contato com acompanhamento médico. Escolha o plano ideal e personalize com add-ons.',
-}
+// Force dynamic rendering to prevent prerender issues with ThemeProvider
+export const dynamic = 'force-dynamic'
 
 export default function AssinarPage() {
     return (

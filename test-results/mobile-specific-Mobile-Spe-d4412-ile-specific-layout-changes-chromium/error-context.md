@@ -1,0 +1,372 @@
+# Page snapshot
+
+```yaml
+- generic [active] [ref=e1]:
+  - banner [ref=e2]:
+    - generic [ref=e4]:
+      - generic [ref=e6]:
+        - img [ref=e8]
+        - generic [ref=e13]: SVlentes
+      - navigation [ref=e14]:
+        - link "Planos" [ref=e15]:
+          - /url: /assinatura
+          - text: Planos
+        - link "Como Funciona" [ref=e16]:
+          - /url: /sdd-framework
+          - text: Como Funciona
+        - link "FAQ" [ref=e17]:
+          - /url: /sdd-framework#faq
+          - text: FAQ
+        - link "Contato" [ref=e18]:
+          - /url: "#contato"
+          - text: Contato
+      - generic [ref=e19]:
+        - button "Mudar para modo escuro" [ref=e20]
+        - button "Assinar Agora" [ref=e22]:
+          - img [ref=e23]
+          - generic [ref=e25]: Assinar Agora
+        - button "Agendar Consulta" [ref=e26]:
+          - img [ref=e27]
+          - generic [ref=e29]: Agendar Consulta
+      - generic [ref=e30]:
+        - button "Mudar para modo escuro" [ref=e31]
+        - button "Toggle menu" [ref=e33]:
+          - img [ref=e34]
+  - main [ref=e35]:
+    - generic [ref=e38]:
+      - heading "Lentes de Contato por Assinatura" [level=1] [ref=e39]:
+        - text: Lentes de Contato por
+        - generic [ref=e40]: Assinatura
+      - paragraph [ref=e41]: Receba suas lentes em casa todo mês, com acompanhamento médico contínuo. Praticidade e cuidado com sua visão.
+      - generic [ref=e42]:
+        - link "Ver Planos" [ref=e43]:
+          - /url: "#planos"
+        - link "Como funciona" [ref=e44]:
+          - /url: "#como-funciona"
+          - text: Como funciona
+          - generic [ref=e45]: →
+    - generic [ref=e46]:
+      - generic [ref=e49]:
+        - generic [ref=e50]:
+          - heading "Lentes por assinatura com acompanhamento médico" [level=1] [ref=e51]
+          - paragraph [ref=e52]: Simplifique sua visão. Cuide da saúde ocular.
+          - generic [ref=e53]:
+            - button "Assinar Agora" [ref=e54]
+            - button "Agendar avaliação" [ref=e55]
+          - generic [ref=e56]:
+            - generic [ref=e57]: Entenda como funciona
+            - img [ref=e58]
+        - generic [ref=e60]:
+          - generic [ref=e62]:
+            - img [ref=e63]
+            - paragraph [ref=e66]: Vídeo Placeholder
+            - paragraph [ref=e67]: Conheça nosso serviço de assinatura
+          - generic [ref=e68]: Controles simulados / nome do vídeo.mp4 / Management
+      - generic [ref=e71]:
+        - generic [ref=e72]:
+          - img [ref=e73]
+          - generic [ref=e75]:
+            - paragraph [ref=e76]: CRM-MG 69.870
+            - paragraph [ref=e77]: "Médico responsável: Dr. Philipe Saraiva Cruz"
+        - generic [ref=e78]:
+          - img [ref=e79]
+          - generic [ref=e82]:
+            - paragraph [ref=e83]: LGPD compliant
+            - paragraph [ref=e84]: Seus dados protegidos e seguros
+        - generic [ref=e85]:
+          - img [ref=e86]
+          - generic [ref=e88]:
+            - paragraph [ref=e89]: 4.7/5 (Google)
+            - paragraph [ref=e90]: Avaliação média dos pacientes
+        - generic [ref=e91]:
+          - img [ref=e92]
+          - generic [ref=e97]:
+            - paragraph [ref=e98]: +250 pacientes ativos
+            - paragraph [ref=e99]: Confiam em nosso serviço
+      - generic [ref=e101]:
+        - heading "Como funciona?" [level=2] [ref=e102]
+        - generic [ref=e103]:
+          - generic [ref=e104]:
+            - img [ref=e106]
+            - heading "Acompanhamento médico mensal contínuo" [level=3] [ref=e109]
+            - paragraph [ref=e110]: Consulta de rotina e suporte contínuo para sua saúde visual
+          - generic [ref=e111]:
+            - img [ref=e113]
+            - heading "Entrega rastreada 2x/ano direto na casa, com 7 dias de prazo" [level=3] [ref=e117]
+            - paragraph [ref=e118]: Lentes novas semestralmente, gerencia pelos dígitos morfológicos
+          - generic [ref=e119]:
+            - img [ref=e121]
+            - heading "Marcas renomadas, consulte, troque a receita ANVISA" [level=3] [ref=e124]
+            - paragraph [ref=e125]: Escolha marcas conceituadas, ajuste quando necessário
+        - generic [ref=e127]:
+          - button "Monthly" [ref=e128]
+          - button "Annual" [ref=e129]
+          - generic [ref=e130]: + pricing policies
+      - generic [ref=e132]:
+        - generic [ref=e133]:
+          - heading "Planos de Assinatura?" [level=2] [ref=e134]
+          - paragraph [ref=e136]:
+            - text: ⭐ Quem aprova?
+            - generic [ref=e137]: As lentes começaram caro e você está economizando + as lentes são de primeira classe!
+        - heading "Quem aprova?" [level=3] [ref=e138]
+        - generic [ref=e139]:
+          - generic [ref=e140]:
+            - heading "Essencial" [level=4] [ref=e141]
+            - paragraph [ref=e143]: R$ 99,00
+            - list [ref=e144]:
+              - listitem [ref=e145]:
+                - img [ref=e146]
+                - generic [ref=e148]: 1 consulta/semestre
+              - listitem [ref=e149]:
+                - img [ref=e150]
+                - generic [ref=e152]: 5 especialistas ativas
+              - listitem [ref=e153]:
+                - img [ref=e154]
+                - generic [ref=e156]: Suporte online
+            - button "Assinar Essencial" [ref=e157]
+          - generic [ref=e158]:
+            - heading "Cuidado Plus Semestral" [level=4] [ref=e159]
+            - paragraph [ref=e161]: R$ 149,00
+            - list [ref=e162]:
+              - listitem [ref=e163]:
+                - img [ref=e164]
+                - generic [ref=e166]: 1 consulta/bimestre
+              - listitem [ref=e167]:
+                - img [ref=e168]
+                - generic [ref=e170]: 2 consultas de turno
+              - listitem [ref=e171]:
+                - img [ref=e172]
+                - generic [ref=e174]: Suporte de tarde
+            - button "Teste de trial" [ref=e175]
+          - generic [ref=e176]:
+            - heading "Cuidado Plus Anual" [level=4] [ref=e177]
+            - paragraph [ref=e179]: R$ 139,00
+            - list [ref=e180]:
+              - listitem [ref=e181]:
+                - img [ref=e182]
+                - generic [ref=e184]: 2 consulta/semestre
+              - listitem [ref=e185]:
+                - img [ref=e186]
+                - generic [ref=e188]: Sup/Mg prioritário
+              - listitem [ref=e189]:
+                - img [ref=e190]
+                - generic [ref=e192]: Lentes de teste
+            - button "Assinar Cuidadplus" [ref=e193]
+          - generic [ref=e194]:
+            - heading "Premium" [level=4] [ref=e195]
+            - paragraph [ref=e197]: R$ 199,00
+            - list [ref=e198]:
+              - listitem [ref=e199]:
+                - img [ref=e200]
+                - generic [ref=e202]: 2 consultas/semestre
+              - listitem [ref=e203]:
+                - img [ref=e204]
+                - generic [ref=e206]: 2 consultas de turno
+              - listitem [ref=e207]:
+                - img [ref=e208]
+                - generic [ref=e210]: Suporte de todo
+            - button "Assinar Cuidaplus" [ref=e211]
+      - generic [ref=e214]:
+        - generic [ref=e216]:
+          - heading "Perguntas Frequentes" [level=2] [ref=e217]
+          - heading "Transforme sua visão com SV Lentes." [level=3] [ref=e218]
+          - paragraph [ref=e219]: Entrega completa e licenciamento à data de suas consultas.
+          - button "Falar com um consultor" [ref=e220]
+          - paragraph [ref=e221]:
+            - text: Atendemos toda a
+            - generic [ref=e222]: Região Médio Piauí, SP, Caratinga/MG
+        - generic [ref=e223]:
+          - heading "Quem usa aprova" [level=3] [ref=e224]
+          - generic [ref=e225]:
+            - heading "Como funciona o serviço de assinatura?" [level=3] [ref=e227]:
+              - button "Como funciona o serviço de assinatura?" [ref=e228]:
+                - generic [ref=e229]: Como funciona o serviço de assinatura?
+                - img [ref=e230]
+            - heading "Como é feito o acompanhamento médico?" [level=3] [ref=e233]:
+              - button "Como é feito o acompanhamento médico?" [ref=e234]:
+                - generic [ref=e235]: Como é feito o acompanhamento médico?
+                - img [ref=e236]
+      - generic [ref=e239]:
+        - heading "Quem usa aprova" [level=2] [ref=e240]
+        - generic [ref=e241]:
+          - generic [ref=e242]:
+            - generic [ref=e243]:
+              - generic [ref=e245]:
+                - heading "Paula G." [level=4] [ref=e246]
+                - paragraph [ref=e247]: Resende-RJ
+              - paragraph [ref=e248]: "\"Os serviços estão ao mais alto padrão. É muito tranquilizador\""
+            - generic [ref=e249]:
+              - generic [ref=e251]:
+                - heading "Maria S." [level=4] [ref=e252]
+                - paragraph [ref=e253]: São Paulo-SP
+              - paragraph [ref=e254]: "\"O serviço foi simples e prático! O acompanhamento médico me deixou segura.\""
+          - generic [ref=e255]:
+            - button "Depoimento anterior" [ref=e256]:
+              - img [ref=e257]
+            - generic [ref=e259]:
+              - button "Ir para depoimento 1" [ref=e260]
+              - button "Ir para depoimento 2" [ref=e261]
+              - button "Ir para depoimento 3" [ref=e262]
+            - button "Próximo depoimento" [ref=e263]:
+              - img [ref=e264]
+    - generic [ref=e267]:
+      - heading "Escolha o Plano Ideal para Você" [level=2] [ref=e268]
+      - generic [ref=e269]:
+        - generic [ref=e270]:
+          - heading "Plano Básico" [level=3] [ref=e271]
+          - paragraph [ref=e272]: Lentes mensais com acompanhamento
+          - paragraph [ref=e273]:
+            - text: R$ 49,90
+            - generic [ref=e274]: /mês
+          - link "Assinar" [ref=e275]:
+            - /url: "#planos"
+        - generic [ref=e276]:
+          - generic [ref=e277]: Mais Popular
+          - heading "Plano Conforto" [level=3] [ref=e278]
+          - paragraph [ref=e279]: Lentes quinzenais + consultas
+          - paragraph [ref=e280]:
+            - text: R$ 89,90
+            - generic [ref=e281]: /mês
+          - link "Assinar" [ref=e282]:
+            - /url: "#planos"
+        - generic [ref=e283]:
+          - heading "Plano Premium" [level=3] [ref=e284]
+          - paragraph [ref=e285]: Lentes diárias + exames prioritários
+          - paragraph [ref=e286]:
+            - text: R$ 149,90
+            - generic [ref=e287]: /mês
+          - link "Assinar" [ref=e288]:
+            - /url: "#planos"
+  - contentinfo [ref=e289]:
+    - generic [ref=e291]:
+      - generic [ref=e292]:
+        - generic [ref=e293]:
+          - generic [ref=e295]:
+            - img [ref=e297]
+            - generic [ref=e301]:
+              - generic [ref=e302]: SVlentes
+              - generic [ref=e303]: Saraiva Vision
+          - paragraph [ref=e304]: Pioneiro no Brasil em Assinatura de Lentes de Contato
+          - paragraph [ref=e305]: Assinatura de lentes de contato com acompanhamento médico especializado. Nunca mais fique sem lentes com a comodidade e segurança que você merece.
+        - generic [ref=e306]:
+          - heading "Responsável Técnico" [level=4] [ref=e307]
+          - generic [ref=e308]:
+            - img "Dr. Philipe Saraiva Cruz" [ref=e312]
+            - generic [ref=e313]:
+              - heading "Dr. Philipe Saraiva Cruz" [level=5] [ref=e314]
+              - paragraph [ref=e315]: CRM-MG 69.870
+              - paragraph [ref=e316]: Oftalmologia
+              - paragraph [ref=e317]: 10+ anos de experiência em oftalmologia
+        - generic [ref=e318]:
+          - button "Assinar Agora" [ref=e319]:
+            - img [ref=e320]
+            - text: Assinar Agora
+          - button "Falar com especialista pelo WhatsApp" [ref=e322]:
+            - img [ref=e323]
+            - generic [ref=e325]: Falar com Especialista
+      - generic [ref=e326]:
+        - heading "Navegação" [level=4] [ref=e327]
+        - navigation "Links rápidos" [ref=e328]:
+          - list [ref=e329]:
+            - listitem [ref=e330]:
+              - link "Assinar Agora" [ref=e331]:
+                - /url: /assinatura
+            - listitem [ref=e332]:
+              - link "Planos e Preços" [ref=e333]:
+                - /url: /assinatura
+            - listitem [ref=e334]:
+              - link "Como Funciona" [ref=e335]:
+                - /url: /sdd-framework
+            - listitem [ref=e336]:
+              - link "FAQ" [ref=e337]:
+                - /url: /sdd-framework#faq
+            - listitem [ref=e338]:
+              - link "Calculadora" [ref=e339]:
+                - /url: /calculadora
+      - generic [ref=e340]:
+        - heading "Atendimento" [level=4] [ref=e341]
+        - generic [ref=e342]:
+          - generic [ref=e343]:
+            - img [ref=e344]
+            - generic [ref=e347]:
+              - paragraph [ref=e348]: Rua Catarina Maria Passos, 97
+              - paragraph [ref=e349]: Santa Zita
+              - paragraph [ref=e350]: Caratinga, MG
+              - paragraph [ref=e351]: "CEP:"
+          - generic [ref=e352]:
+            - img [ref=e353]
+            - link "Ligar para +5533998601427" [ref=e355]:
+              - /url: tel:+5533998601427
+              - text: "+5533998601427"
+          - generic [ref=e356]:
+            - img [ref=e357]
+            - link "Enviar email para saraivavision@gmail.com" [ref=e360]:
+              - /url: mailto:saraivavision@gmail.com
+              - text: saraivavision@gmail.com
+          - generic [ref=e361]:
+            - img [ref=e362]
+            - generic [ref=e365]:
+              - paragraph [ref=e366]: "Horário de Atendimento:"
+              - paragraph [ref=e367]: "Segunda a Sexta: 8h às 18h"
+              - paragraph [ref=e368]: "Sábado: 8h às 12h"
+              - paragraph [ref=e369]: 24h via WhatsApp para emergências
+    - generic [ref=e372]:
+      - generic [ref=e373]:
+        - img [ref=e374]
+        - generic [ref=e376]: Atendimento em todo o Brasil
+      - generic [ref=e378]: Entrega gratuita em todo território nacional
+    - generic [ref=e381]:
+      - heading "Responsabilidade Médica" [level=3] [ref=e382]:
+        - img [ref=e383]
+        - text: Responsabilidade Médica
+      - generic [ref=e385]:
+        - paragraph [ref=e386]:
+          - strong [ref=e387]: "Médico Responsável:"
+          - text: Dr. Philipe Saraiva Cruz - CRM-MG 69.870
+        - paragraph [ref=e388]:
+          - strong [ref=e389]: "Equipe Médica:"
+          - text: CRM_EQP 155869.006
+        - paragraph [ref=e390]: ⚕️ Serviço médico registrado no Conselho Regional de Medicina de Minas Gerais (CRM-MG). Todas as prescrições de lentes de contato requerem avaliação oftalmológica prévia. Este serviço não substitui consultas médicas regulares e exames oftalmológicos de rotina.
+        - paragraph [ref=e391]:
+          - text: ⚠️
+          - strong [ref=e392]: "Importante:"
+          - text: "Em caso de sintomas como dor ocular, vermelhidão intensa, visão turva ou secreção, remova as lentes imediatamente e procure atendimento médico. Emergências:"
+          - link "+5533998601427" [ref=e393]:
+            - /url: tel:+5533998601427
+    - generic [ref=e395]:
+      - generic [ref=e396]:
+        - button "Política de Privacidade" [ref=e397]:
+          - img [ref=e398]
+          - generic [ref=e401]: Política de Privacidade
+        - button "Configurações de Privacidade" [ref=e402]:
+          - img [ref=e403]
+          - generic [ref=e406]: Configurações de Privacidade
+        - button "Meus Dados (LGPD)" [ref=e407]:
+          - img [ref=e408]
+          - generic [ref=e411]: Meus Dados (LGPD)
+        - link "Termos de Uso" [ref=e412]:
+          - /url: /termos-uso
+          - img [ref=e413]
+          - generic [ref=e416]: Termos de Uso
+      - generic [ref=e417]:
+        - generic [ref=e418]:
+          - img [ref=e419]
+          - generic [ref=e421]: Site Seguro SSL
+        - generic [ref=e422]:
+          - img [ref=e423]
+          - generic [ref=e425]: LGPD Conforme
+        - generic [ref=e426]:
+          - img [ref=e427]
+          - generic [ref=e429]: Produtos ANVISA
+        - generic [ref=e430]:
+          - img [ref=e431]
+          - generic [ref=e433]: CRM CRM-MG 69.870
+      - generic [ref=e434]:
+        - paragraph [ref=e435]: © 2025 SV Lentes. Todos os direitos reservados.
+        - generic [ref=e436]:
+          - generic [ref=e437]: "CNPJ: 53.864.119/0001-79"
+          - generic [ref=e438]: •
+          - generic [ref=e439]: "Responsável Técnico: CRM-MG 69.870"
+          - generic [ref=e440]: •
+          - generic [ref=e441]: "Equipe: CRM_EQP 155869.006"
+```
