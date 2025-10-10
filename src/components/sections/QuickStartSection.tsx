@@ -5,22 +5,22 @@ import { Calculator, ShoppingCart, ArrowRight, Sparkles } from 'lucide-react'
 
 export function QuickStartSection() {
     return (
-        <div className="py-16">
+        <div className="py-20 sm:py-24">
             <div className="container-custom">
-                <div className="text-center mb-12">
-                    <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
-                        <Sparkles className="w-4 h-4 text-yellow-300" />
-                        <span className="text-white text-sm font-semibold">Comece agora</span>
+                <div className="text-center mb-16">
+                    <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full mb-6 shadow-lg">
+                        <Sparkles className="w-5 h-5 text-yellow-300 animate-pulse" />
+                        <span className="text-white text-base font-bold">Comece agora</span>
                     </div>
-                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
                         Dois caminhos para começar
                     </h2>
-                    <p className="text-xl text-primary-100 max-w-2xl mx-auto">
+                    <p className="text-xl md:text-2xl text-primary-50 max-w-3xl mx-auto leading-relaxed">
                         Escolha a melhor forma de iniciar sua jornada com SV Lentes
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+                <div className="grid md:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto">
                     {/* Calculator Path */}
                     <div className="bg-white rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2">
                         <div className="w-16 h-16 bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl flex items-center justify-center mb-6">
@@ -58,10 +58,10 @@ export function QuickStartSection() {
                         </ul>
 
                         <Link href="/calculadora" className="block">
-                            <button className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-semibold py-4 rounded-lg flex items-center justify-center space-x-2 transition-all">
-                                <Calculator className="w-5 h-5" />
+                            <button className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold text-lg py-5 rounded-xl flex items-center justify-center space-x-3 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-95">
+                                <Calculator className="w-6 h-6" />
                                 <span>Calcular Economia</span>
-                                <ArrowRight className="w-5 h-5" />
+                                <ArrowRight className="w-6 h-6" />
                             </button>
                         </Link>
                     </div>
@@ -115,10 +115,10 @@ export function QuickStartSection() {
                         </ul>
 
                         <Link href="/assinar" className="block">
-                            <button className="w-full bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-semibold py-4 rounded-lg flex items-center justify-center space-x-2 transition-all">
-                                <ShoppingCart className="w-5 h-5" />
+                            <button className="w-full bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-bold text-lg py-5 rounded-xl flex items-center justify-center space-x-3 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-95 ring-2 ring-primary-400/30 hover:ring-primary-400/50">
+                                <ShoppingCart className="w-6 h-6" />
                                 <span>Começar Assinatura</span>
-                                <ArrowRight className="w-5 h-5" />
+                                <ArrowRight className="w-6 h-6" />
                             </button>
                         </Link>
                     </div>

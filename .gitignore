@@ -44,3 +44,6 @@ next-env.d.ts
 
 # OS
 Thumbs.db
+
+.github/instructions/kluster-code-verify.instructions.md
+.kluster

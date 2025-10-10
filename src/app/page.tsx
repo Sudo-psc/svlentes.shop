@@ -1,5 +1,5 @@
 import { Metadata } from 'next'
-import { HeroSection } from '@/components/sections/HeroSection'
+import { VideoHeroSection } from '@/components/sections/VideoHeroSection'
 import { MetricsStrip } from '@/components/sections/MetricsStrip'
 import { QuickStartSection } from '@/components/sections/QuickStartSection'
 
@@ -27,9 +27,9 @@ export const metadata: Metadata = {
 export default function HomePage() {
     return (
         <div className="min-h-screen">
-            {/* Hero Section */}
+            {/* Hero Section - Vídeo em largura total */}
             <section id="hero">
-                <HeroSection />
+                <VideoHeroSection />
             </section>
 
             {/* Metrics Strip - Consolidado após Hero */}

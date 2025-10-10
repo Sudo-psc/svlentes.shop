@@ -125,7 +125,7 @@ export default function TermosUsoPage() {
                                 <p className="text-gray-700">Endereço: Rua Joaquim Floriano, 466 - Itaim Bibi, São Paulo, SP</p>
                                 <p className="text-gray-700">CEP: 04534-002</p>
                                 <p className="text-gray-700">WhatsApp: (11) 94703-8078</p>
-                                <p className="text-gray-700">Email: contato@svlentes.shop</p>
+                                <p className="text-gray-700">Email: <a href="mailto:contato@svlentes.shop" className="text-blue-600 hover:underline">contato@svlentes.shop</a></p>
                             </div>
                         </section>
 
