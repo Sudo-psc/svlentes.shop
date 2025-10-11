@@ -1,18 +1,7 @@
-import type { Metadata } from 'next'
 import { Inter, Poppins } from 'next/font/google'
+import type { Metadata } from 'next'
 import './globals.css'
-import { Header } from '@/components/layout/Header'
-import { Footer } from '@/components/layout/Footer'
-// import { StructuredData } from '@/components/seo/StructuredData'
-import { PerformanceMonitor } from '@/components/performance/PerformanceMonitor'
-import { ResourcePreloader } from '@/components/performance/ResourcePreloader'
-import { ServiceWorkerCleanup } from '@/components/performance/ServiceWorkerCleanup'
-import { ErrorHandler } from '@/components/performance/ErrorHandler'
-import { PrivacyProvider } from '@/components/privacy/PrivacyProvider'
-import { CookieConsent } from '@/components/privacy/CookieConsent'
-import { SmoothScroll } from '@/components/ui/SmoothScroll'
-import { CriticalCSS } from '@/components/performance/CriticalCSS'
-import { baseMetadata } from '@/lib/seo'
+import { ClientProviders } from '@/components/providers/ClientProviders'
 
 const inter = Inter({
     subsets: ['latin'],
@@ -28,45 +17,55 @@ const poppins = Poppins({
     weight: ['400', '500', '600', '700', '800'],
 })
 
-export const metadata: Metadata = baseMetadata
+export const metadata: Metadata = {
+    title: {
+        default: 'SV Lentes - Assinatura de Lentes de Contato | Dr. Philipe Saraiva Cruz',
+        template: '%s | SV Lentes'
+    },
+    description: 'Serviço de assinatura de lentes de contato com acompanhamento médico especializado em Caratinga/MG. Nunca mais fique sem lentes com comodidade e segurança.',
+    keywords: ['lentes de contato', 'assinatura', 'oftalmologia', 'Caratinga', 'Dr. Philipe Saraiva Cruz', 'acompanhamento médico'],
+}
 
 export default function RootLayout({
     children,
+    banner,
+    recommendations,
 }: {
     children: React.ReactNode
+    banner?: React.ReactNode
+    recommendations?: React.ReactNode
 }) {
     return (
-        <html lang="pt-BR" className={`${inter.variable} ${poppins.variable}`}>
+        <html lang="pt-BR" className={`${inter.variable} ${poppins.variable}`} suppressHydrationWarning>
             <head>
-                <CriticalCSS />
-                <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-                <link rel="icon" href="/favicon.ico" />
-                <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-                <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-                <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-                <link rel="manifest" href="/site.webmanifest" />
-                <link rel="dns-prefetch" href="https://js.stripe.com" />
-                <link rel="dns-prefetch" href="https://api.whatsapp.com" />
-                <meta name="theme-color" content="#0066cc" />
-                <meta name="apple-mobile-web-app-capable" content="yes" />
-                <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-                <meta name="format-detection" content="telephone=no" />
+                <link rel="preconnect" href="https://js.stripe.com" />
+                <link rel="preconnect" href="https://api.whatsapp.com" />
+                <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+                <script
+                    dangerouslySetInnerHTML={{
+                        __html: `
+                            (function() {
+                                try {
+                                    const theme = localStorage.getItem('theme') || 'system';
+                                    const root = document.documentElement;
+                                    if (theme === 'system') {
+                                        const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+                                        root.classList.add(systemTheme);
+                                    } else {
+                                        root.classList.add(theme);
+                                    }
+                                } catch (e) {}
+                            })();
+                        `,
+                    }}
+                />
             </head>
             <body className="antialiased">
-                <PrivacyProvider>
-                    <ErrorHandler />
-                    <ServiceWorkerCleanup />
-                    <PerformanceMonitor />
-                    <ResourcePreloader />
-                    {/* <StructuredData data={[organizationData, websiteData]} /> */}
-                    <Header />
-                    <main className="pt-16 lg:pt-20">
-                        {children}
-                    </main>
-                    <Footer />
-                    <CookieConsent />
-                    <SmoothScroll />
-                </PrivacyProvider>
+                <ClientProviders>
+                    {banner}
+                    {children}
+                    {recommendations}
+                </ClientProviders>
             </body>
         </html>
     )

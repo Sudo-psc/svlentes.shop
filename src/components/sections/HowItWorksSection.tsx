@@ -355,7 +355,7 @@ export function HowItWorksSection({ className = '' }: HowItWorksSectionProps) {
                                     </div>
                                 </div>
                                 <div className="text-sm font-medium text-gray-900">Cuidado Médico</div>
-                                <div className="text-xs text-gray-600">Dr. Philipe CRM 69.870</div>
+                                <div className="text-xs text-gray-600">Dr. Philipe CRM-MG 69.870</div>
                             </div>
 
                             <div className="text-center">

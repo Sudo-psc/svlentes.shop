@@ -31,7 +31,7 @@ export default function LentesDiariasPage() {
                                     <span className="font-medium">Em estoque</span>
                                 </div>
                                 <div className="flex items-center space-x-2 text-gray-600">
-                                    <span className="font-medium">CRM 69.870</span>
+                                    <span className="font-medium">CRM-MG 69.870</span>
                                     <span className="text-sm">• Dr. Philipe Saraiva Cruz</span>
                                 </div>
                             </div>
@@ -49,16 +49,7 @@ export default function LentesDiariasPage() {
             </section>
 
             {/* FAQ Específico */}
-            <section id="perguntas-frequentes">
-                <div className="container-custom py-16 lg:py-24">
-                    <div className="max-w-3xl mx-auto">
-                        <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 text-center mb-12">
-                            Dúvidas Frequentes sobre Lentes Diárias
-                        </h2>
-                        <FAQ />
-                    </div>
-                </div>
-            </section>
+            <FAQ />
 
             {/* CTA Final */}
             <section id="contato">

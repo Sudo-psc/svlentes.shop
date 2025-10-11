@@ -1,14 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    // Corrigir warning de workspace root
+    outputFileTracingRoot: require('path').join(__dirname),
+
     experimental: {
-        optimizePackageImports: ['@heroicons/react'],
-    },
-    // Skip type checking and linting during deployment build if needed
-    typescript: {
-        ignoreBuildErrors: false,
-    },
-    eslint: {
-        ignoreDuringBuilds: false,
+        optimizePackageImports: ['@heroicons/react', 'lucide-react'],
     },
     images: {
         remotePatterns: [
@@ -26,23 +22,30 @@ const nextConfig = {
             },
         ],
         formats: ['image/webp', 'image/avif'],
-        deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
-        imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
-        qualities: [75, 85, 90, 95, 100],
         minimumCacheTTL: 60 * 60 * 24 * 7, // 7 days
         dangerouslyAllowSVG: true,
         contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
-        unoptimized: false,
-        loader: 'default',
+        qualities: [25, 50, 75, 85, 90, 100],
+        deviceSizes: [640, 750, 828, 1080, 1200, 1920, 2048, 3840],
+        imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
     },
     compress: true,
     poweredByHeader: false,
     generateEtags: true,
+    env: {
+        STRIPE_PUBLISHABLE_KEY: process.env.STRIPE_PUBLISHABLE_KEY,
+        STRIPE_SECRET_KEY: process.env.STRIPE_SECRET_KEY,
+        STRIPE_WEBHOOK_SECRET: process.env.STRIPE_WEBHOOK_SECRET,
+    },
     headers: async () => {
         return [
             {
                 source: '/(.*)',
                 headers: [
+                    {
+                        key: 'X-Frame-Options',
+                        value: 'DENY',
+                    },
                     {
                         key: 'X-Content-Type-Options',
                         value: 'nosniff',

@@ -1,11 +1,10 @@
-import { Metadata } from 'next'
+'use client'
+
 import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 
-export const metadata: Metadata = {
-    title: 'Pagamento Cancelado - SVlentes',
-    description: 'Seu pagamento foi cancelado. Você pode tentar novamente a qualquer momento.',
-}
+// Force dynamic rendering to prevent prerender issues with ThemeProvider
+export const dynamic = 'force-dynamic'
 
 export default function CancelPage() {
     return (
@@ -102,7 +101,7 @@ export default function CancelPage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <a
-                            href="https://wa.me/5511947038078?text=Olá! Estava tentando assinar a SVlentes mas tive um problema no pagamento. Podem me ajudar?"
+                            href="https://wa.me/5533998601427?text=Olá! Estava tentando assinar a Saraiva Vision mas tive um problema no pagamento. Podem me ajudar?"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="block"

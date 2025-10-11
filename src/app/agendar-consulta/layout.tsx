@@ -6,10 +6,10 @@ import { generateBreadcrumbStructuredData } from '@/lib/seo'
 export const dynamic = 'force-dynamic'
 
 export const metadata: Metadata = {
-    title: 'Agendar Consulta com Dr. Philipe Saraiva Cruz - SVlentes',
-    description: 'Agende sua consulta oftalmológica com o Dr. Philipe Saraiva Cruz (CRM 65.870) para iniciar sua assinatura de lentes de contato com acompanhamento médico especializado.',
+    title: 'Agendar Consulta com Dr. Philipe Saraiva Cruz - Saraiva Vision',
+    description: 'Agende sua consulta oftalmológica com o Dr. Philipe Saraiva Cruz (CRM-MG 69.870) para iniciar sua assinatura de lentes de contato com acompanhamento médico especializado.',
     alternates: {
-        canonical: 'https://svlentes.com.br/agendar-consulta',
+        canonical: 'https://saraivavision.com.br/agendar-consulta',
     },
     openGraph: {
         title: 'Agendar Consulta - SVlentes',

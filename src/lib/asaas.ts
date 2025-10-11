@@ -1,277 +1,118 @@
-interface AsaasConfig {
-    apiKey: string
-    environment: 'sandbox' | 'production'
+// lib/asaas.ts - Cliente HTTP para API Asaas
+export const ASAAS_BASE = process.env.ASAAS_API_BASE!;
+const API_KEY = process.env.ASAAS_API_KEY!;
+
+export interface AsaasCustomer {
+    id?: string;
+    name: string;
+    email: string;
+    mobilePhone: string;
+    cpfCnpj: string;
+    postalCode?: string;
+    address?: string;
+    addressNumber?: string;
+    complement?: string;
+    province?: string;
+    notificationDisabled?: boolean;
 }
 
-interface AsaasCustomer {
-    name: string
-    email: string
-    phone?: string
-    mobilePhone?: string
-    cpfCnpj?: string
-    postalCode?: string
-    address?: string
-    addressNumber?: string
-    complement?: string
-    province?: string
-    externalReference?: string
-    notificationDisabled?: boolean
-    additionalEmails?: string
-    municipalInscription?: string
-    stateInscription?: string
-    observations?: string
+export interface AsaasSubscription {
+    id?: string;
+    customer: string;
+    billingType: 'PIX' | 'BOLETO' | 'CREDIT_CARD';
+    nextDueDate: string;
+    value: number;
+    cycle: 'WEEKLY' | 'BIWEEKLY' | 'MONTHLY' | 'QUARTERLY' | 'SEMIANNUALLY' | 'YEARLY';
+    description?: string;
+    creditCard?: {
+        holderName: string;
+        number: string;
+        expiryMonth: string;
+        expiryYear: string;
+        ccv: string;
+    };
+    creditCardHolderInfo?: {
+        name: string;
+        email: string;
+        cpfCnpj: string;
+        postalCode: string;
+        addressNumber: string;
+        addressComplement?: string;
+        phone?: string;
+        mobilePhone: string;
+    };
+    creditCardToken?: string;
+    remoteIp?: string;
 }
 
-interface AsaasPayment {
-    customer: string
-    billingType: 'BOLETO' | 'CREDIT_CARD' | 'PIX' | 'DEBIT_CARD'
-    value: number
-    dueDate: string
-    description?: string
-    externalReference?: string
-    installmentCount?: number
-    installmentValue?: number
-    discount?: {
-        value: number
-        dueDateLimitDays?: number
-        type?: 'FIXED' | 'PERCENTAGE'
-    }
-    interest?: {
-        value: number
-    }
-    fine?: {
-        value: number
-        type?: 'FIXED' | 'PERCENTAGE'
-    }
-    postalService?: boolean
+export interface AsaasPayment {
+    id?: string;
+    customer: string;
+    billingType: 'PIX' | 'BOLETO' | 'CREDIT_CARD';
+    value: number;
+    dueDate: string;
+    description?: string;
+    creditCard?: {
+        holderName: string;
+        number: string;
+        expiryMonth: string;
+        expiryYear: string;
+        ccv: string;
+    };
+    creditCardHolderInfo?: {
+        name: string;
+        email: string;
+        cpfCnpj: string;
+        postalCode: string;
+        addressNumber: string;
+        addressComplement?: string;
+        phone?: string;
+        mobilePhone: string;
+    };
+    creditCardToken?: string;
+    remoteIp?: string;
+    callback?: {
+        successUrl: string;
+        autoRedirect: boolean;
+    };
 }
 
-interface AsaasPaymentResponse {
-    object: string
-    id: string
-    dateCreated: string
-    customer: string
-    value: number
-    netValue: number
-    description?: string
-    billingType: string
-    status: 'PENDING' | 'RECEIVED' | 'CONFIRMED' | 'OVERDUE' | 'REFUNDED' | 'RECEIVED_IN_CASH' | 'REFUND_REQUESTED'
-    dueDate: string
-    originalDueDate: string
-    invoiceUrl: string
-    bankSlipUrl?: string
-    invoiceNumber?: string
-    externalReference?: string
-    deleted: boolean
-}
-
-export class AsaasClient {
-    private apiKey: string
-    private baseUrl: string
-
-    constructor(config: AsaasConfig) {
-        this.apiKey = config.apiKey
-        this.baseUrl = config.environment === 'production'
-            ? 'https://api.asaas.com/v3'
-            : 'https://sandbox.asaas.com/api/v3'
-    }
-
-    private async request<T>(
-        endpoint: string,
-        method: 'GET' | 'POST' | 'PUT' | 'DELETE' = 'GET',
-        body?: any
-    ): Promise<T> {
-        const url = `${this.baseUrl}${endpoint}`
-
-        const headers: HeadersInit = {
+async function asaas<T>(path: string, init?: RequestInit): Promise<T> {
+    const res = await fetch(`${ASAAS_BASE}${path}`, {
+        ...init,
+        headers: {
             'Content-Type': 'application/json',
-            'access_token': this.apiKey,
-        }
+            'Accept': 'application/json',
+            'access_token': API_KEY,
+            ...(init?.headers || {})
+        },
+        cache: 'no-store',
+    });
 
-        const options: RequestInit = {
-            method,
-            headers,
-        }
-
-        if (body && (method === 'POST' || method === 'PUT')) {
-            options.body = JSON.stringify(body)
-        }
-
-        try {
-            const response = await fetch(url, options)
-
-            if (!response.ok) {
-                const error = await response.json()
-                throw new Error(
-                    `ASAAS API Error: ${response.status} - ${JSON.stringify(error)}`
-                )
-            }
-
-            return await response.json()
-        } catch (error) {
-            console.error('ASAAS API Request Failed:', error)
-            throw error
-        }
+    if (!res.ok) {
+        const body = await res.text();
+        throw new Error(`Asaas ${res.status}: ${body}`);
     }
 
-    async createCustomer(customerData: AsaasCustomer): Promise<any> {
-        return this.request('/customers', 'POST', customerData)
-    }
-
-    async getCustomer(customerId: string): Promise<any> {
-        return this.request(`/customers/${customerId}`, 'GET')
-    }
-
-    async updateCustomer(customerId: string, customerData: Partial<AsaasCustomer>): Promise<any> {
-        return this.request(`/customers/${customerId}`, 'PUT', customerData)
-    }
-
-    async deleteCustomer(customerId: string): Promise<void> {
-        return this.request(`/customers/${customerId}`, 'DELETE')
-    }
-
-    async createPayment(paymentData: AsaasPayment): Promise<AsaasPaymentResponse> {
-        return this.request('/payments', 'POST', paymentData)
-    }
-
-    async getPayment(paymentId: string): Promise<AsaasPaymentResponse> {
-        return this.request(`/payments/${paymentId}`, 'GET')
-    }
-
-    async listPayments(filters?: {
-        customer?: string
-        billingType?: string
-        status?: string
-        subscription?: string
-        offset?: number
-        limit?: number
-    }): Promise<{ data: AsaasPaymentResponse[]; totalCount: number }> {
-        const queryParams = new URLSearchParams()
-
-        if (filters) {
-            Object.entries(filters).forEach(([key, value]) => {
-                if (value !== undefined) {
-                    queryParams.append(key, String(value))
-                }
-            })
-        }
-
-        const query = queryParams.toString()
-        return this.request(`/payments${query ? `?${query}` : ''}`, 'GET')
-    }
-
-    async deletePayment(paymentId: string): Promise<void> {
-        return this.request(`/payments/${paymentId}`, 'DELETE')
-    }
-
-    async refundPayment(paymentId: string, value?: number, description?: string): Promise<any> {
-        return this.request(`/payments/${paymentId}/refund`, 'POST', {
-            value,
-            description
-        })
-    }
-
-    async createSubscription(subscriptionData: {
-        customer: string
-        billingType: 'BOLETO' | 'CREDIT_CARD' | 'PIX'
-        value: number
-        nextDueDate: string
-        cycle: 'WEEKLY' | 'BIWEEKLY' | 'MONTHLY' | 'QUARTERLY' | 'SEMIANNUALLY' | 'YEARLY'
-        description?: string
-        externalReference?: string
-        discount?: {
-            value: number
-            type?: 'FIXED' | 'PERCENTAGE'
-        }
-    }): Promise<any> {
-        return this.request('/subscriptions', 'POST', subscriptionData)
-    }
-
-    async getSubscription(subscriptionId: string): Promise<any> {
-        return this.request(`/subscriptions/${subscriptionId}`, 'GET')
-    }
-
-    async updateSubscription(subscriptionId: string, updateData: any): Promise<any> {
-        return this.request(`/subscriptions/${subscriptionId}`, 'PUT', updateData)
-    }
-
-    async deleteSubscription(subscriptionId: string): Promise<void> {
-        return this.request(`/subscriptions/${subscriptionId}`, 'DELETE')
-    }
-
-    async getPixQrCode(paymentId: string): Promise<{
-        encodedImage: string
-        payload: string
-        expirationDate: string
-    }> {
-        return this.request(`/payments/${paymentId}/pixQrCode`, 'GET')
-    }
+    return res.json() as Promise<T>;
 }
 
-// Check if we're in build environment
-const isBuildTime = process.env.NEXT_PHASE === 'phase-production-build' || 
-                   (typeof window === 'undefined' && !process.env.ASAAS_API_KEY_SANDBOX && !process.env.ASAAS_API_KEY_PROD)
+export const Asaas = {
+    createCustomer: (payload: AsaasCustomer) =>
+        asaas('/customers', { method: 'POST', body: JSON.stringify(payload) }),
 
-const getApiKey = (): string => {
-    // During build time, return a placeholder
-    if (isBuildTime) {
-        return 'build-time-placeholder'
-    }
-    
-    const env = process.env.ASAAS_ENV || 'sandbox'
-    
-    if (env === 'production') {
-        const key = process.env.ASAAS_API_KEY_PROD
-        if (!key) {
-            throw new Error('ASAAS_API_KEY_PROD is not defined')
-        }
-        return key
-    } else {
-        const key = process.env.ASAAS_API_KEY_SANDBOX
-        if (!key) {
-            throw new Error('ASAAS_API_KEY_SANDBOX is not defined')
-        }
-        return key
-    }
-}
+    createSubscription: (payload: AsaasSubscription) =>
+        asaas('/subscriptions', { method: 'POST', body: JSON.stringify(payload) }),
 
-// Lazy initialization of ASAAS client
-let asaasInstance: AsaasClient | null = null
+    createPayment: (payload: AsaasPayment) =>
+        asaas('/payments', { method: 'POST', body: JSON.stringify(payload) }),
 
-export const getAsaasClient = (): AsaasClient => {
-    // During build, return a dummy client that will never be used
-    if (isBuildTime) {
-        throw new Error('ASAAS client cannot be used during build time')
-    }
-    
-    if (!asaasInstance) {
-        const apiKey = getApiKey()
-        if (apiKey === 'build-time-placeholder') {
-            throw new Error('ASAAS API keys are not configured. Please set ASAAS_API_KEY_SANDBOX or ASAAS_API_KEY_PROD in environment variables.')
-        }
-        asaasInstance = new AsaasClient({
-            apiKey,
-            environment: (process.env.ASAAS_ENV as 'sandbox' | 'production') || 'sandbox'
-        })
-    }
-    return asaasInstance
-}
+    getPayment: (id: string) =>
+        asaas(`/payments/${id}`, { method: 'GET' }),
 
-// Create a completely lazy proxy that doesn't initialize anything until actually used
-let proxyInstance: AsaasClient | null = null
+    getPixQrCode: (id: string) =>
+        asaas(`/payments/${id}/pixQrCode`, { method: 'GET' }),
 
-export const asaas = new Proxy({} as AsaasClient, {
-    get(target, prop, receiver) {
-        if (!proxyInstance) {
-            proxyInstance = getAsaasClient()
-        }
-        return Reflect.get(proxyInstance, prop, receiver)
-    }
-})
-
-export type {
-    AsaasConfig,
-    AsaasCustomer,
-    AsaasPayment,
-    AsaasPaymentResponse
-}
+    getSubscriptionPayments: (id: string) =>
+        asaas(`/subscriptions/${id}/payments`, { method: 'GET' }),
+};

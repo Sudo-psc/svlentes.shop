@@ -5,9 +5,10 @@
 
 import { test, expect, devices } from '@playwright/test'
 
-test.describe('Mobile-Specific E2E Tests', () => {
-    test.use({ ...devices['iPhone 12'] })
+// Configure mobile device at file level (outside describe blocks)
+test.use({ ...devices['iPhone 12'] })
 
+test.describe('Mobile-Specific E2E Tests', () => {
     test.beforeEach(async ({ page }) => {
         await page.goto('/')
         await page.waitForLoadState('networkidle')
@@ -127,8 +128,6 @@ test.describe('Mobile-Specific E2E Tests', () => {
 })
 
 test.describe('Mobile Accessibility E2E', () => {
-    test.use({ ...devices['iPhone 12'] })
-
     test('should have appropriate touch targets on mobile', async ({ page }) => {
         await page.goto('/')
 
@@ -181,8 +180,6 @@ test.describe('Mobile Accessibility E2E', () => {
 })
 
 test.describe('Mobile Performance E2E', () => {
-    test.use({ ...devices['iPhone 12'] })
-
     test('should load quickly on mobile network', async ({ page }) => {
         // Simulate slow 3G network
         await page.route('**/*', async (route) => {
@@ -239,8 +236,6 @@ test.describe('Mobile Performance E2E', () => {
 })
 
 test.describe('Mobile-Specific Features E2E', () => {
-    test.use({ ...devices['iPhone 12'] })
-
     test('should handle mobile-specific form features', async ({ page }) => {
         await page.goto('/')
 

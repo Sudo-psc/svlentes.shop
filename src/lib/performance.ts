@@ -152,14 +152,16 @@ export const getOptimizedImageProps = (
     height: number,
     quality: number = 75
 ) => {
+    // Create a simple SVG placeholder without Buffer for client-side compatibility
+    const svgPlaceholder = `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f3f4f6"/></svg>`;
+    const blurDataURL = `data:image/svg+xml,${encodeURIComponent(svgPlaceholder)}`;
+
     return {
         src,
         width,
         height,
         quality,
         placeholder: 'blur' as const,
-        blurDataURL: `data:image/svg+xml;base64,${Buffer.from(
-            `<svg width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg"><rect width="100%" height="100%" fill="#f3f4f6"/></svg>`
-        ).toString('base64')}`,
+        blurDataURL,
     }
 }

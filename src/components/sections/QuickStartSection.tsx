@@ -5,22 +5,22 @@ import { Calculator, ShoppingCart, ArrowRight, Sparkles } from 'lucide-react'
 
 export function QuickStartSection() {
     return (
-        <div className="py-20 sm:py-24">
+        <div className="py-16">
             <div className="container-custom">
-                <div className="text-center mb-16">
-                    <div className="inline-flex items-center space-x-2 bg-white/20 backdrop-blur-sm px-6 py-3 rounded-full mb-6 shadow-lg">
-                        <Sparkles className="w-5 h-5 text-yellow-300 animate-pulse" />
-                        <span className="text-white text-base font-bold">Comece agora</span>
+                <div className="text-center mb-12">
+                    <div className="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-4">
+                        <Sparkles className="w-4 h-4 text-yellow-300" />
+                        <span className="text-white text-sm font-semibold">Comece agora</span>
                     </div>
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white mb-6 leading-tight">
+                    <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
                         Dois caminhos para começar
                     </h2>
-                    <p className="text-xl md:text-2xl text-primary-50 max-w-3xl mx-auto leading-relaxed">
+                    <p className="text-xl text-primary-100 max-w-2xl mx-auto">
                         Escolha a melhor forma de iniciar sua jornada com SV Lentes
                     </p>
                 </div>
 
-                <div className="grid md:grid-cols-2 gap-8 lg:gap-10 max-w-6xl mx-auto">
+                <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     {/* Calculator Path */}
                     <div className="bg-white rounded-2xl p-8 shadow-2xl hover:shadow-3xl transition-all duration-300 transform hover:-translate-y-2">
                         <div className="w-16 h-16 bg-gradient-to-br from-green-100 to-emerald-100 rounded-2xl flex items-center justify-center mb-6">
@@ -58,11 +58,17 @@ export function QuickStartSection() {
                         </ul>
 
                         <Link href="/calculadora" className="block">
-                            <button className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold text-lg py-5 rounded-xl flex items-center justify-center space-x-3 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-95">
-                                <Calculator className="w-6 h-6" />
-                                <span>Calcular Economia</span>
-                                <ArrowRight className="w-6 h-6" />
-                            </button>
+                            <div className="relative group">
+                                <div className="absolute -inset-1 bg-gradient-to-r from-green-600 to-emerald-600 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                                <button className="relative w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white font-bold py-4 rounded-xl flex items-center justify-center space-x-3 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">
+                                    <Calculator className="w-6 h-6" />
+                                    <span>Calcular Economia Agora</span>
+                                    <ArrowRight className="w-5 h-5" />
+                                    <div className="ml-2 px-2 py-1 bg-yellow-400 text-green-900 text-xs font-bold rounded-full">
+                                        GRÁTIS
+                                    </div>
+                                </button>
+                            </div>
                         </Link>
                     </div>
 
@@ -115,11 +121,17 @@ export function QuickStartSection() {
                         </ul>
 
                         <Link href="/assinar" className="block">
-                            <button className="w-full bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-bold text-lg py-5 rounded-xl flex items-center justify-center space-x-3 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:scale-[1.02] active:scale-95 ring-2 ring-primary-400/30 hover:ring-primary-400/50">
-                                <ShoppingCart className="w-6 h-6" />
-                                <span>Começar Assinatura</span>
-                                <ArrowRight className="w-6 h-6" />
-                            </button>
+                            <div className="relative group">
+                                <div className="absolute -inset-1 bg-gradient-to-r from-primary-600 to-primary-800 rounded-xl blur opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
+                                <button className="relative w-full bg-gradient-to-r from-primary-600 to-primary-700 hover:from-primary-700 hover:to-primary-800 text-white font-bold py-4 rounded-xl flex items-center justify-center space-x-3 transition-all transform hover:scale-105 shadow-lg hover:shadow-xl">
+                                    <ShoppingCart className="w-6 h-6" />
+                                    <span>Começar Assinatura</span>
+                                    <ArrowRight className="w-5 h-5" />
+                                    <div className="ml-2 px-2 py-1 bg-yellow-400 text-primary-900 text-xs font-bold rounded-full">
+                                        RÁPIDO
+                                    </div>
+                                </button>
+                            </div>
                         </Link>
                     </div>
                 </div>

@@ -1,11 +1,17 @@
-import { Metadata } from 'next'
+'use client'
+
 import PersonalizationTest from '@/components/personalization/PersonalizationTest'
 
+// Force dynamic rendering to prevent prerender issues with ThemeProvider
+export const dynamic = 'force-dynamic'
+
+/*
 export const metadata: Metadata = {
     title: 'Teste de Personalização | SV Lentes',
     description: 'Página de teste do sistema de personalização dinâmica',
     robots: 'noindex, nofollow'
 }
+*/
 
 export default function TestPersonalizationPage() {
     return (

@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { useRouter } from 'next/navigation'
 import { PlanSelector } from './PlanSelector'
 import { LensSelector } from './LensSelector'
 import { AddOnsSelector } from './AddOnsSelector'
@@ -16,7 +17,12 @@ interface FlowData {
     addOns: string[]
 }
 
-export function SubscriptionFlow() {
+interface SubscriptionFlowProps {
+    onConfirm?: (data: any) => void
+    onBack?: () => void
+}
+
+export function SubscriptionFlow({ onConfirm, onBack }: SubscriptionFlowProps) {
     const [currentStep, setCurrentStep] = useState<FlowStep>('plan')
     const [flowData, setFlowData] = useState<FlowData>({
         planId: null,
@@ -24,6 +30,7 @@ export function SubscriptionFlow() {
         lensData: null,
         addOns: []
     })
+    const router = useRouter()
 
     const steps = [
         { id: 'plan', label: 'Plano', number: 1 },
@@ -50,50 +57,21 @@ export function SubscriptionFlow() {
     }
 
     const handleConfirm = async (contactData: any) => {
-        try {
-            const billingType = contactData.billingType || 'PIX'
-            
-            const response = await fetch('/api/asaas/create-payment', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    planId: flowData.planId,
-                    billingInterval: flowData.billingCycle,
-                    billingType: billingType,
-                    customerData: {
-                        name: contactData.name,
-                        email: contactData.email,
-                        phone: contactData.phone,
-                        cpfCnpj: contactData.cpfCnpj,
-                    },
-                    metadata: {
-                        lensData: JSON.stringify(flowData.lensData),
-                        addOns: JSON.stringify(flowData.addOns),
-                        source: 'subscription_flow',
-                    },
-                }),
-            })
+        console.log('Order confirmed:', { ...flowData, contactData })
 
-            if (!response.ok) {
-                const error = await response.json()
-                console.error('Erro ao criar pagamento:', error)
-                alert(`Erro ao processar pagamento: ${error.error || 'Erro desconhecido'}`)
-                return
-            }
+        // Chamar função externa se existir
+        if (onConfirm) {
+            onConfirm({ ...flowData, contactData })
+        } else {
+            // Redirecionar para página de sucesso
+            router.push('/agendar-confirmado')
+        }
+    }
 
-            const data = await response.json()
-            
-            if (data.invoiceUrl) {
-                window.location.href = data.invoiceUrl
-            } else {
-                console.log('Pagamento criado com sucesso:', data)
-                window.location.href = '/agendar-consulta'
-            }
-        } catch (error) {
-            console.error('Erro ao confirmar pedido:', error)
-            alert('Erro ao processar seu pedido. Por favor, tente novamente.')
+    const handleBack = () => {
+        // Chamar função externa se existir
+        if (onBack) {
+            onBack()
         }
     }
 
@@ -114,10 +92,10 @@ export function SubscriptionFlow() {
                                     <div className="flex flex-col items-center">
                                         <div
                                             className={`w-12 h-12 rounded-full flex items-center justify-center font-semibold transition-all ${isCompleted
-                                                    ? 'bg-green-600 text-white'
-                                                    : isCurrent
-                                                        ? 'bg-primary-600 text-white ring-4 ring-primary-100'
-                                                        : 'bg-gray-200 text-gray-500'
+                                                ? 'bg-green-600 text-white'
+                                                : isCurrent
+                                                    ? 'bg-primary-600 text-white ring-4 ring-primary-100'
+                                                    : 'bg-gray-200 text-gray-500'
                                                 }`}
                                         >
                                             {isCompleted ? (
@@ -156,14 +134,18 @@ export function SubscriptionFlow() {
                     {currentStep === 'lens' && (
                         <LensSelector
                             onContinue={handleLensSelect}
-                            onBack={() => setCurrentStep('plan')}
+                            onBack={handleBack}
+                            onScheduleConsultation={() => {
+                                // Redirecionar para página de agendamento
+                                router.push('/agendar-consulta')
+                            }}
                         />
                     )}
 
                     {currentStep === 'addons' && (
                         <AddOnsSelector
                             onContinue={handleAddOnsSelect}
-                            onBack={() => setCurrentStep('lens')}
+                            onBack={handleBack}
                         />
                     )}
 
@@ -173,7 +155,7 @@ export function SubscriptionFlow() {
                             billingCycle={flowData.billingCycle}
                             lensData={flowData.lensData}
                             addOns={flowData.addOns}
-                            onBack={() => setCurrentStep('addons')}
+                            onBack={handleBack}
                             onConfirm={handleConfirm}
                         />
                     )}

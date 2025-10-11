@@ -5,6 +5,9 @@ import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import { useEffect } from 'react'
 
+// Force dynamic rendering to prevent prerender issues with ThemeProvider
+export const dynamic = 'force-dynamic'
+
 export default function CalculadoraPage() {
     return (
         <main className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-16">

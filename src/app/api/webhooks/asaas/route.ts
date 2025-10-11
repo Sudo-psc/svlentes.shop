@@ -1,306 +1,199 @@
 import { NextRequest, NextResponse } from 'next/server'
+import { AsaasWebhookPayload, AsaasWebhookEvent } from '@/types/asaas'
 
-// Prevent this route from being evaluated at build time
-export const dynamic = 'force-dynamic'
-export const runtime = 'nodejs'
+const WEBHOOK_TOKEN = process.env.ASAAS_WEBHOOK_TOKEN
 
-interface AsaasWebhookEvent {
-    event: string
-    payment?: {
-        object: string
-        id: string
-        dateCreated: string
-        customer: string
-        subscription?: string
-        installment?: string
-        value: number
-        netValue: number
-        originalValue?: number
-        interestValue?: number
-        description: string
-        billingType: string
-        status: string
-        dueDate: string
-        originalDueDate: string
-        paymentDate?: string
-        clientPaymentDate?: string
-        invoiceUrl: string
-        invoiceNumber?: string
-        externalReference?: string
-        deleted: boolean
-    }
-}
-
-interface WebhookLog {
-    eventType: string
-    paymentId?: string
-    timestamp: string
-    customerId?: string
-    subscriptionId?: string
-    amount?: number
-    status: 'success' | 'error'
-    details?: any
-    error?: string
-}
-
-function logWebhookEvent(log: WebhookLog) {
-    const logEntry = {
-        ...log,
-        timestamp: new Date().toISOString(),
-        source: 'asaas_webhook'
-    }
-
-    console.log('ASAAS_WEBHOOK_EVENT:', JSON.stringify(logEntry))
-}
-
-async function handlePaymentCreated(payment: any) {
-    try {
-        logWebhookEvent({
-            eventType: 'PAYMENT_CREATED',
-            paymentId: payment.id,
-            timestamp: new Date().toISOString(),
-            customerId: payment.customer,
-            subscriptionId: payment.subscription,
-            amount: payment.value,
-            status: 'success',
-            details: {
-                billingType: payment.billingType,
-                dueDate: payment.dueDate,
-                description: payment.description,
-            }
-        })
-
-        console.log('PAYMENT_CREATED:', {
-            paymentId: payment.id,
-            customer: payment.customer,
-            value: payment.value,
-            billingType: payment.billingType,
-        })
-    } catch (error) {
-        console.error('Error handling payment created:', error)
-        throw error
-    }
-}
-
-async function handlePaymentReceived(payment: any) {
-    try {
-        logWebhookEvent({
-            eventType: 'PAYMENT_RECEIVED',
-            paymentId: payment.id,
-            timestamp: new Date().toISOString(),
-            customerId: payment.customer,
-            subscriptionId: payment.subscription,
-            amount: payment.value,
-            status: 'success',
-            details: {
-                paymentDate: payment.paymentDate,
-                netValue: payment.netValue,
-                externalReference: payment.externalReference,
-            }
-        })
-
-        console.log('CONVERSION_EVENT:', {
-            event: 'payment_confirmed',
-            paymentId: payment.id,
-            customerId: payment.customer,
-            value: payment.value,
-            currency: 'BRL',
-            externalReference: payment.externalReference,
-        })
-
-    } catch (error) {
-        console.error('Error handling payment received:', error)
-        throw error
-    }
-}
-
-async function handlePaymentConfirmed(payment: any) {
-    try {
-        logWebhookEvent({
-            eventType: 'PAYMENT_CONFIRMED',
-            paymentId: payment.id,
-            timestamp: new Date().toISOString(),
-            customerId: payment.customer,
-            subscriptionId: payment.subscription,
-            amount: payment.value,
-            status: 'success',
-            details: {
-                confirmedDate: payment.confirmedDate,
-                netValue: payment.netValue,
-            }
-        })
-
-        console.log('PAYMENT_CONFIRMED:', {
-            paymentId: payment.id,
-            customer: payment.customer,
-            value: payment.value,
-        })
-    } catch (error) {
-        console.error('Error handling payment confirmed:', error)
-        throw error
-    }
-}
-
-async function handlePaymentOverdue(payment: any) {
-    try {
-        logWebhookEvent({
-            eventType: 'PAYMENT_OVERDUE',
-            paymentId: payment.id,
-            timestamp: new Date().toISOString(),
-            customerId: payment.customer,
-            subscriptionId: payment.subscription,
-            amount: payment.value,
-            status: 'success',
-            details: {
-                dueDate: payment.dueDate,
-                originalDueDate: payment.originalDueDate,
-            }
-        })
-
-        console.log('PAYMENT_OVERDUE:', {
-            paymentId: payment.id,
-            customer: payment.customer,
-            dueDate: payment.dueDate,
-        })
-
-    } catch (error) {
-        console.error('Error handling payment overdue:', error)
-        throw error
-    }
-}
-
-async function handlePaymentRefunded(payment: any) {
-    try {
-        logWebhookEvent({
-            eventType: 'PAYMENT_REFUNDED',
-            paymentId: payment.id,
-            timestamp: new Date().toISOString(),
-            customerId: payment.customer,
-            subscriptionId: payment.subscription,
-            amount: payment.value,
-            status: 'success',
-            details: {
-                refundDate: new Date().toISOString(),
-            }
-        })
-
-        console.log('PAYMENT_REFUNDED:', {
-            paymentId: payment.id,
-            customer: payment.customer,
-            value: payment.value,
-        })
-    } catch (error) {
-        console.error('Error handling payment refunded:', error)
-        throw error
-    }
-}
+// Eventos que vamos processar
+const PROCESSED_EVENTS: AsaasWebhookEvent[] = [
+    'PAYMENT_CREATED',
+    'PAYMENT_CONFIRMED',
+    'PAYMENT_RECEIVED',
+    'PAYMENT_OVERDUE',
+    'PAYMENT_DELETED',
+    'PAYMENT_REFUNDED'
+]
 
 export async function POST(request: NextRequest) {
     try {
-        const asaasToken = request.headers.get('asaas-access-token')
-        const expectedToken = process.env.ASAAS_WEBHOOK_TOKEN
-        
-        if (expectedToken && asaasToken !== expectedToken) {
-            console.error('ASAAS_WEBHOOK_AUTH_FAILED: Invalid token')
-            return NextResponse.json(
-                { error: 'Unauthorized' },
-                { status: 401 }
-            )
+        // Validar token do webhook
+        const tokenHeader = request.headers.get('asaas-access-token')
+        if (!tokenHeader || tokenHeader !== WEBHOOK_TOKEN) {
+            console.error('Webhook ASAAS: Token inválido', {
+                receivedToken: tokenHeader,
+                expectedToken: WEBHOOK_TOKEN?.substring(0, 10) + '...'
+            })
+            return new NextResponse('Unauthorized', { status: 401 })
         }
 
-        const body: AsaasWebhookEvent = await request.json()
+        const body = await request.json()
+        const { event, payment } = body as AsaasWebhookPayload
 
-        console.log(`ASAAS_WEBHOOK_RECEIVED: ${body.event}`)
-
-        if (!body.event || !body.payment) {
-            return NextResponse.json(
-                { error: 'Invalid webhook payload' },
-                { status: 400 }
-            )
+        // Validar estrutura do payload
+        if (!event || !payment) {
+            console.error('Webhook ASAAS: Payload inválido', { event, payment })
+            return new NextResponse('Bad Request', { status: 400 })
         }
 
-        switch (body.event) {
+        // Verificar se processamos este tipo de evento
+        if (!PROCESSED_EVENTS.includes(event)) {
+            console.log('Webhook ASAAS: Evento não processado', { event, paymentId: payment.id })
+            return NextResponse.json({ ok: true, message: 'Event not processed' })
+        }
+
+        // Log do evento recebido
+        console.log('Webhook ASAAS: Evento recebido', {
+            event,
+            paymentId: payment.id,
+            customer: payment.customer,
+            subscription: payment.subscription,
+            value: payment.value,
+            status: payment.status,
+            billingType: payment.billingType
+        })
+
+        // TODO: Implementar idempotência
+        // Verificar se este paymentId já foi processado
+        // Ex: const alreadyProcessed = await checkPaymentProcessed(payment.id)
+        // if (alreadyProcessed) {
+        //     return NextResponse.json({ ok: true, message: 'Already processed' })
+        // }
+
+        // Processar o evento baseado no tipo
+        switch (event) {
             case 'PAYMENT_CREATED':
-                await handlePaymentCreated(body.payment)
-                break
-
-            case 'PAYMENT_UPDATED':
-                console.log('PAYMENT_UPDATED:', body.payment.id)
+                await handlePaymentCreated(payment)
                 break
 
             case 'PAYMENT_CONFIRMED':
             case 'PAYMENT_RECEIVED':
-                await handlePaymentConfirmed(body.payment)
-                await handlePaymentReceived(body.payment)
+                await handlePaymentConfirmed(payment)
                 break
 
             case 'PAYMENT_OVERDUE':
-                await handlePaymentOverdue(body.payment)
+                await handlePaymentOverdue(payment)
                 break
 
             case 'PAYMENT_DELETED':
-                console.log('PAYMENT_DELETED:', body.payment.id)
-                break
-
-            case 'PAYMENT_RESTORED':
-                console.log('PAYMENT_RESTORED:', body.payment.id)
+                await handlePaymentDeleted(payment)
                 break
 
             case 'PAYMENT_REFUNDED':
-                await handlePaymentRefunded(body.payment)
-                break
-
-            case 'PAYMENT_RECEIVED_IN_CASH_UNDONE':
-                console.log('PAYMENT_RECEIVED_IN_CASH_UNDONE:', body.payment.id)
-                break
-
-            case 'PAYMENT_CHARGEBACK_REQUESTED':
-                console.log('PAYMENT_CHARGEBACK_REQUESTED:', body.payment.id)
-                break
-
-            case 'PAYMENT_CHARGEBACK_DISPUTE':
-                console.log('PAYMENT_CHARGEBACK_DISPUTE:', body.payment.id)
-                break
-
-            case 'PAYMENT_AWAITING_CHARGEBACK_REVERSAL':
-                console.log('PAYMENT_AWAITING_CHARGEBACK_REVERSAL:', body.payment.id)
-                break
-
-            case 'PAYMENT_DUNNING_RECEIVED':
-                console.log('PAYMENT_DUNNING_RECEIVED:', body.payment.id)
-                break
-
-            case 'PAYMENT_DUNNING_REQUESTED':
-                console.log('PAYMENT_DUNNING_REQUESTED:', body.payment.id)
-                break
-
-            case 'PAYMENT_BANK_SLIP_VIEWED':
-                console.log('PAYMENT_BANK_SLIP_VIEWED:', body.payment.id)
-                break
-
-            case 'PAYMENT_CHECKOUT_VIEWED':
-                console.log('PAYMENT_CHECKOUT_VIEWED:', body.payment.id)
+                await handlePaymentRefunded(payment)
                 break
 
             default:
-                console.log('Unknown webhook event:', body.event)
+                console.log('Webhook ASAAS: Evento não tratado', { event })
         }
 
-        return NextResponse.json({ received: true }, { status: 200 })
-    } catch (error: any) {
-        console.error('Error processing ASAAS webhook:', error)
-
-        logWebhookEvent({
-            eventType: 'WEBHOOK_ERROR',
-            timestamp: new Date().toISOString(),
-            status: 'error',
-            error: error.message,
-            details: error,
+        return NextResponse.json({
+            ok: true,
+            message: 'Event processed successfully',
+            event,
+            paymentId: payment.id
         })
 
-        return NextResponse.json(
-            { error: 'Webhook processing failed' },
-            { status: 500 }
-        )
+    } catch (error) {
+        console.error('Webhook ASAAS: Erro ao processar evento', error)
+
+        // Em caso de erro, ainda retornamos 200 para não retry
+        // Mas logamos o erro para monitoramento
+        return NextResponse.json({
+            ok: false,
+            error: 'Internal server error',
+            message: 'Event processing failed'
+        }, { status: 500 })
     }
+}
+
+// Handlers específicos para cada tipo de evento
+async function handlePaymentCreated(payment: AsaasWebhookPayload['payment']) {
+    console.log('Processando PAYMENT_CREATED', {
+        paymentId: payment.id,
+        customer: payment.customer,
+        value: payment.value
+    })
+
+    // TODO: Implementar lógica de negócio
+    // - Marcar pagamento como pendente no banco
+    // - Enviar email de confirmação de pedido
+    // - Criar ordem de serviço
+    // - Atualizar dashboard administrativo
+}
+
+async function handlePaymentConfirmed(payment: AsaasWebhookPayload['payment']) {
+    console.log('Processando PAYMENT_CONFIRMED', {
+        paymentId: payment.id,
+        customer: payment.customer,
+        subscription: payment.subscription,
+        value: payment.value,
+        paymentDate: payment.paymentDate
+    })
+
+    // TODO: Implementar lógica de negócio
+    // - Ativar assinatura/se serviço
+    // - Enviar email de boas-vindas
+    // - Criar/agendar consultas
+    // - Atualizar status do pedido
+    // - Enviar notificações internas
+
+    // Se for assinatura, pode precisar ativar o acesso
+    if (payment.subscription) {
+        console.log('Pagamento de assinatura confirmado', {
+            subscriptionId: payment.subscription,
+            paymentId: payment.id
+        })
+    }
+}
+
+async function handlePaymentOverdue(payment: AsaasWebhookPayload['payment']) {
+    console.log('Processando PAYMENT_OVERDUE', {
+        paymentId: payment.id,
+        customer: payment.customer,
+        dueDate: payment.dueDate,
+        value: payment.value
+    })
+
+    // TODO: Implementar lógica de negócio
+    // - Enviar notificação de pagamento em atraso
+    // - Bloquear acesso temporariamente
+    // - Agendar cobranças adicionais
+    // - Notificar equipe de suporte
+}
+
+async function handlePaymentDeleted(payment: AsaasWebhookPayload['payment']) {
+    console.log('Processando PAYMENT_DELETED', {
+        paymentId: payment.id,
+        customer: payment.customer,
+        value: payment.value
+    })
+
+    // TODO: Implementar lógica de negócio
+    // - Cancelar ordem de serviço
+    // - Notificar cliente sobre cancelamento
+    // - Reembolsar se aplicável
+    // - Atualizar dashboard
+}
+
+async function handlePaymentRefunded(payment: AsaasWebhookPayload['payment']) {
+    console.log('Processando PAYMENT_REFUNDED', {
+        paymentId: payment.id,
+        customer: payment.customer,
+        value: payment.value,
+        refunds: payment.refunds
+    })
+
+    // TODO: Implementar lógica de negócio
+    // - Processar reembolso
+    // - Cancelar serviços futuros
+    // - Enviar confirmação de reembolso
+    // - Atualizar relatórios financeiros
+}
+
+// Endpoint GET para testes (opcional)
+export async function GET() {
+    return NextResponse.json({
+        message: 'Webhook ASAAS está ativo',
+        timestamp: new Date().toISOString(),
+        environment: process.env.ASAAS_ENV || 'sandbox'
+    })
 }

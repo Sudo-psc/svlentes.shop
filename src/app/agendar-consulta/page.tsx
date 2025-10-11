@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, Suspense } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -53,7 +53,7 @@ const schedulingFormSchema = z.object({
 
 type SchedulingFormData = z.infer<typeof schedulingFormSchema>
 
-export default function AgendarConsultaPage() {
+function AgendarConsultaPageContent() {
     const router = useRouter()
     const searchParams = useSearchParams()
     const [currentStep, setCurrentStep] = useState(1)
@@ -645,7 +645,7 @@ export default function AgendarConsultaPage() {
                             <div className="bg-green-50 border border-green-200 rounded-lg p-4 mb-6">
                                 <h3 className="font-semibold text-green-900 mb-2">Dr. Philipe Saraiva Cruz</h3>
                                 <p className="text-green-700 text-sm">
-                                    CRM 65.870 - Oftalmologista especialista em lentes de contato
+                                    CRM-MG 69.870 - Oftalmologista especialista em lentes de contato
                                 </p>
                             </div>
 
@@ -746,5 +746,20 @@ export default function AgendarConsultaPage() {
                 </form>
             </div>
         </div>
+    )
+}
+
+export default function AgendarConsultaPage() {
+    return (
+        <Suspense fallback={
+            <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 flex items-center justify-center">
+                <div className="text-center">
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto"></div>
+                    <p className="mt-4 text-gray-600">Carregando formulário...</p>
+                </div>
+            </div>
+        }>
+            <AgendarConsultaPageContent />
+        </Suspense>
     )
 }

@@ -11,11 +11,11 @@ import { doctorInfo, clinicInfo } from '@/data/doctor-info'
 export const organizationSchema = {
   '@context': 'https://schema.org',
   '@type': 'Organization',
-  name: 'SV Lentes - Saraiva Vision',
+  name: 'Saraiva Vision',
   alternateName: 'Saraiva Vision Care LTDA',
-  url: 'https://svlentes.shop',
-  logo: 'https://svlentes.shop/icones/logosv.webp',
-  description: 'Pioneiro no Brasil em assinatura de lentes de contato com acompanhamento médico especializado',
+  url: 'https://saraivavision.com.br',
+  logo: 'https://saraivavision.com.br/icones/logosv.webp',
+  description: 'Clínica oftalmológica em Caratinga/MG com tecnologia diagnóstica avançada, cuidado familiar e serviço de assinatura de lentes de contato',
   foundingDate: '2010',
   email: clinicInfo.contact.email,
   telephone: clinicInfo.contact.phone,
@@ -29,7 +29,7 @@ export const organizationSchema = {
   },
   sameAs: [
     'https://www.instagram.com/saraiva_vision',
-    'https://saraivavision.com.br'
+    clinicInfo.chatbot
   ],
   contactPoint: {
     '@type': 'ContactPoint',
@@ -46,13 +46,13 @@ export const organizationSchema = {
 export const medicalBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'MedicalBusiness',
-  '@id': 'https://svlentes.shop/#medicalbusiness',
-  name: 'SV Lentes - Clínica Oftalmológica',
-  image: 'https://svlentes.shop/icones/logosv.webp',
+  '@id': 'https://saraivavision.com.br/#medicalbusiness',
+  name: 'Saraiva Vision - Clínica Oftalmológica',
+  image: 'https://saraivavision.com.br/icones/logosv.webp',
   priceRange: 'R$ 99 - R$ 249',
   telephone: clinicInfo.contact.phone,
   email: clinicInfo.contact.email,
-  url: 'https://svlentes.shop',
+  url: 'https://saraivavision.com.br',
   address: {
     '@type': 'PostalAddress',
     streetAddress: clinicInfo.address.street,
@@ -124,9 +124,9 @@ export const medicalBusinessSchema = {
 export const physicianSchema = {
   '@context': 'https://schema.org',
   '@type': 'Physician',
-  '@id': 'https://svlentes.shop/#physician',
+  '@id': 'https://saraivavision.com.br/#physician',
   name: doctorInfo.name,
-  image: 'https://svlentes.shop/icones/drphilipe_perfil.jpeg',
+  image: 'https://saraivavision.com.br/icones/drphilipe_perfil.jpeg',
   jobTitle: 'Oftalmologista',
   description: `${doctorInfo.specialty} com ${doctorInfo.experience}`,
   alumniOf: {
@@ -145,7 +145,7 @@ export const physicianSchema = {
   },
   worksFor: {
     '@type': 'MedicalBusiness',
-    name: 'SV Lentes - Saraiva Vision',
+    name: 'Saraiva Vision',
     address: {
       '@type': 'PostalAddress',
       streetAddress: clinicInfo.address.street,
@@ -169,7 +169,7 @@ export const faqPageSchema = {
       name: 'Como funciona a assinatura de lentes de contato?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'A assinatura SV Lentes entrega suas lentes de contato mensalmente em casa, com acompanhamento médico especializado incluído. Você escolhe o plano ideal, recebe suas lentes automaticamente e tem consultas regulares com oftalmologista.'
+        text: 'A assinatura Saraiva Vision entrega suas lentes de contato mensalmente em casa, com acompanhamento médico especializado incluído. Você escolhe o plano ideal, recebe suas lentes automaticamente e tem consultas regulares com oftalmologista.'
       }
     },
     {
@@ -185,7 +185,7 @@ export const faqPageSchema = {
       name: 'O acompanhamento médico está incluído?',
       acceptedAnswer: {
         '@type': 'Answer',
-        text: 'Sim! O Dr. Philipe Saraiva Cruz (CRM 69.870) realiza consultas regulares conforme seu plano, além de estar disponível para teleorientação. Você tem acesso a um especialista em oftalmologia sempre que precisar.'
+        text: 'Sim! O Dr. Philipe Saraiva Cruz (CRM-MG 69.870) realiza consultas regulares conforme seu plano, além de estar disponível para teleorientação. Você tem acesso a um especialista em oftalmologia sempre que precisar.'
       }
     },
     {
@@ -229,9 +229,9 @@ export const faqPageSchema = {
 export const localBusinessSchema = {
   '@context': 'https://schema.org',
   '@type': 'LocalBusiness',
-  '@id': 'https://svlentes.shop/#localbusiness',
-  name: 'SV Lentes - Saraiva Vision',
-  image: 'https://svlentes.shop/icones/logosv.webp',
+  '@id': 'https://saraivavision.com.br/#localbusiness',
+  name: 'Saraiva Vision',
+  image: 'https://saraivavision.com.br/icones/logosv.webp',
   telephone: clinicInfo.contact.phone,
   email: clinicInfo.contact.email,
   address: {
@@ -244,10 +244,10 @@ export const localBusinessSchema = {
   },
   geo: {
     '@type': 'GeoCoordinates',
-    latitude: -19.7898,
-    longitude: -42.1395
+    latitude: -19.7897,
+    longitude: -42.1394
   },
-  url: 'https://svlentes.shop',
+  url: 'https://saraivavision.com.br',
   priceRange: 'R$ 99 - R$ 249',
   openingHoursSpecification: [
     {

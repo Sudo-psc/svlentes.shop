@@ -1,16 +1,7 @@
 // Google Analytics 4 Configuration and Custom Events
 // Based on the design document requirements for conversion tracking
 
-declare global {
-    interface Window {
-        gtag: (
-            command: 'config' | 'event' | 'js' | 'set' | 'consent',
-            targetId: string | Date | object,
-            config?: object
-        ) => void;
-        dataLayer: any[];
-    }
-}
+// Note: Window.gtag is declared in src/lib/tracking/eventTracker.ts
 
 export const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || '';
 
@@ -23,7 +14,7 @@ export const initGA = () => {
     // Initialize dataLayer
     window.dataLayer = window.dataLayer || [];
     window.gtag = function gtag() {
-        window.dataLayer.push(arguments);
+        window.dataLayer?.push(arguments);
     };
 
     window.gtag('js', new Date());

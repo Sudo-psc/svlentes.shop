@@ -1,0 +1,122 @@
+/* Accessibility Widget Styles */
+
+/* High Contrast Mode */
+.high-contrast {
+    --tw-bg-opacity: 1;
+    --tw-text-opacity: 1;
+}
+
+.high-contrast * {
+    border-color: currentColor !important;
+}
+
+.high-contrast button,
+.high-contrast a {
+    outline: 2px solid currentColor !important;
+    outline-offset: 2px;
+}
+
+.high-contrast img {
+    filter: contrast(1.2);
+}
+
+/* Grayscale Mode */
+.grayscale {
+    filter: grayscale(100%);
+}
+
+.grayscale img,
+.grayscale video {
+    filter: grayscale(100%);
+}
+
+/* Highlight Links */
+.highlight-links a {
+    background-color: #FFEB3B !important;
+    color: #000000 !important;
+    text-decoration: underline !important;
+    padding: 2px 4px;
+    border-radius: 2px;
+}
+
+.highlight-links a:hover {
+    background-color: #FDD835 !important;
+}
+
+/* Cursor Sizes */
+.cursor-large * {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32"><path fill="white" stroke="black" stroke-width="2" d="M4 4 L4 24 L10 18 L14 28 L18 26 L14 16 L22 16 Z"/></svg>') 4 4, auto !important;
+}
+
+.cursor-extra-large * {
+    cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48"><path fill="white" stroke="black" stroke-width="3" d="M6 6 L6 36 L15 27 L21 42 L27 39 L21 24 L33 24 Z"/></svg>') 6 6, auto !important;
+}
+
+/* Reduced Motion */
+.reduce-motion *,
+.reduce-motion *::before,
+.reduce-motion *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+}
+
+/* Line Height Override */
+:root {
+    --line-height: 1.5;
+    --letter-spacing: 0px;
+}
+
+body {
+    line-height: var(--line-height);
+    letter-spacing: var(--letter-spacing);
+}
+
+/* Focus Visible Enhancement */
+*:focus-visible {
+    outline: 3px solid #0066CC;
+    outline-offset: 2px;
+    border-radius: 4px;
+}
+
+/* Skip to Content Link */
+.skip-to-content {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: #0066CC;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
+    z-index: 100;
+    font-weight: 600;
+}
+
+.skip-to-content:focus {
+    top: 0;
+}
+
+/* Screen Reader Only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Keyboard Navigation Indicators */
+body:not(.user-is-tabbing) *:focus {
+    outline: none;
+}
+
+body.user-is-tabbing *:focus {
+    outline: 3px solid #0066CC;
+    outline-offset: 2px;
+}

@@ -37,10 +37,9 @@ export function HeroImage({ className = '', imageVariant = 'hero1' }: HeroImageP
                     />
                     <Image
                         src={imageSrc}
-                        alt="Paciente usando lentes com acompanhamento do Dr. Philipe em Itaim Bibi, São Paulo"
+                        alt="Paciente feliz usando lentes de contato de alta qualidade com acompanhamento médico especializado do Dr. Philipe Saraiva Cruz em Caratinga, Minas Gerais - Serviço de assinatura SV Lentes com entrega domiciliar"
                         fill
-                        priority={false}
-                        loading="lazy"
+                        priority={true}
                         quality={90}
                         sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 600px"
                         className={`object-cover transition-all duration-700 ${isLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'
@@ -54,36 +53,40 @@ export function HeroImage({ className = '', imageVariant = 'hero1' }: HeroImageP
             </div>
 
             {/* Floating trust badges */}
-            <div className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-sm animate-float">
+            <div
+                className="absolute -bottom-6 left-1/2 transform -translate-x-1/2 w-full max-w-sm animate-float"
+                role="region"
+                aria-label="Indicadores de confiança da SV Lentes"
+            >
                 <div className="bg-white/90 backdrop-blur-xl rounded-3xl p-6 shadow-glass-lg border border-white/20">
                     <div className="grid grid-cols-3 gap-4">
-                        <div className="text-center group">
+                        <div className="text-center group" role="article" aria-label="Taxa de satisfação dos clientes">
                             <div className="flex items-center justify-center mb-2">
                                 <div className="p-2 bg-primary-100 rounded-full group-hover:bg-primary-200 transition-colors">
-                                    <Star className="w-4 h-4 text-primary-600" />
+                                    <Star className="w-4 h-4 text-primary-600" aria-hidden="true" />
                                 </div>
                             </div>
-                            <p className="text-xl font-bold text-gray-900">98%</p>
+                            <p className="text-xl font-bold text-gray-900" aria-label="98 por cento">98%</p>
                             <p className="text-xs text-gray-600">Satisfação</p>
                         </div>
 
-                        <div className="text-center group">
+                        <div className="text-center group" role="article" aria-label="Quantidade de pacientes atendidos">
                             <div className="flex items-center justify-center mb-2">
                                 <div className="p-2 bg-green-100 rounded-full group-hover:bg-green-200 transition-colors">
-                                    <Shield className="w-4 h-4 text-green-600" />
+                                    <Shield className="w-4 h-4 text-green-600" aria-hidden="true" />
                                 </div>
                             </div>
-                            <p className="text-xl font-bold text-gray-900">5K+</p>
+                            <p className="text-xl font-bold text-gray-900" aria-label="Mais de 5 mil">5K+</p>
                             <p className="text-xs text-gray-600">Pacientes</p>
                         </div>
 
-                        <div className="text-center group">
+                        <div className="text-center group" role="article" aria-label="Anos de experiência médica">
                             <div className="flex items-center justify-center mb-2">
                                 <div className="p-2 bg-blue-100 rounded-full group-hover:bg-blue-200 transition-colors">
-                                    <Clock className="w-4 h-4 text-blue-600" />
+                                    <Clock className="w-4 h-4 text-blue-600" aria-hidden="true" />
                                 </div>
                             </div>
-                            <p className="text-xl font-bold text-gray-900">15+</p>
+                            <p className="text-xl font-bold text-gray-900" aria-label="Mais de 15">15+</p>
                             <p className="text-xs text-gray-600">Anos</p>
                         </div>
                     </div>

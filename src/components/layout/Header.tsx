@@ -1,34 +1,63 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Button } from '@/components/ui/Button'
 import { LogoHeader } from '@/components/ui/Logo'
-import { scrollToSection, generateWhatsAppLink } from '@/lib/utils'
-import { Menu, X, Phone } from 'lucide-react'
+import { generateWhatsAppLink } from '@/lib/utils'
+import { Phone, CreditCard, Menu, X } from 'lucide-react'
+import { Button } from '@/components/ui/Button'
+import { ThemeToggleSimple } from '@/components/theme/ThemeToggle'
+import { useRouter } from 'next/navigation'
 
 interface HeaderProps {
     className?: string
+    variant?: 'default' | 'conversion-focused'
 }
 
-export function Header({ className }: HeaderProps) {
-    const [isMenuOpen, setIsMenuOpen] = useState(false)
-    const [isScrolled, setIsScrolled] = useState(false)
+const navigation = [
+    { name: 'Planos', href: '/assinatura' },
+    { name: 'Como Funciona', href: '/sdd-framework' },
+    { name: 'FAQ', href: '/sdd-framework#faq' },
+    { name: 'Contato', href: '#contato' },
+]
 
-    // Detectar scroll para adicionar sombra no header
+export function Header({ className, variant = 'conversion-focused' }: HeaderProps) {
+    const [isScrolled, setIsScrolled] = useState(false)
+    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
+    const [activeSection, setActiveSection] = useState('')
+    const [scrollProgress, setScrollProgress] = useState(0)
+    const router = useRouter()
+
     useEffect(() => {
         const handleScroll = () => {
             setIsScrolled(window.scrollY > 10)
+
+            const windowHeight = window.innerHeight
+            const documentHeight = document.documentElement.scrollHeight
+            const scrollTop = window.scrollY
+            const progress = (scrollTop / (documentHeight - windowHeight)) * 100
+            setScrollProgress(Math.min(progress, 100))
+
+            const sections = navigation.map(item => item.href.substring(1))
+            for (const section of sections) {
+                const element = document.getElementById(section)
+                if (element) {
+                    const rect = element.getBoundingClientRect()
+                    if (rect.top <= 100 && rect.bottom >= 100) {
+                        setActiveSection(`#${section}`)
+                        break
+                    }
+                }
+            }
         }
 
-        window.addEventListener('scroll', handleScroll)
+        window.addEventListener('scroll', handleScroll, { passive: true })
         return () => window.removeEventListener('scroll', handleScroll)
     }, [])
 
-    // Fechar menu mobile ao redimensionar
     useEffect(() => {
         const handleResize = () => {
-            if (window.innerWidth >= 768) {
-                setIsMenuOpen(false)
+            if (window.innerWidth >= 1024) {
+                setIsMobileMenuOpen(false)
             }
         }
 
@@ -36,26 +65,32 @@ export function Header({ className }: HeaderProps) {
         return () => window.removeEventListener('resize', handleResize)
     }, [])
 
-    const navigation = [
-        { name: 'Planos', href: '#planos-precos' },
-        { name: 'Como Funciona', href: '#como-funciona' },
-        { name: 'FAQ', href: '#perguntas-frequentes' },
-        { name: 'Contato', href: '#contato' },
-    ]
-
     const handleNavClick = (href: string) => {
-        const sectionId = href.replace('#', '')
-        scrollToSection(sectionId)
-        setIsMenuOpen(false)
+        setIsMobileMenuOpen(false)
+
+        if (href.startsWith('#')) {
+            const element = document.querySelector(href)
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth', block: 'start' })
+            }
+        } else {
+            router.push(href)
+        }
+    }
+
+    const handleAssinarAgora = () => {
+        setIsMobileMenuOpen(false)
+        router.push('/assinatura')
     }
 
     const handleAgendarConsulta = () => {
+        setIsMobileMenuOpen(false)
         const whatsappMessage = `Olá! Gostaria de agendar uma consulta com o Dr. Philipe Saraiva Cruz para avaliar minha necessidade de lentes de contato.
 
 Vim através do site SV Lentes e tenho interesse no serviço de assinatura com acompanhamento médico.`
 
         const whatsappLink = generateWhatsAppLink(
-            process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5511947038078',
+            process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '5533998601427',
             whatsappMessage
         )
 
@@ -65,27 +100,18 @@ Vim através do site SV Lentes e tenho interesse no serviço de assinatura com a
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
-                    ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-gray-200/50'
-                    : 'bg-white shadow-sm'
+                ? 'bg-background/95 backdrop-blur-md shadow-lg border-b border-border'
+                : 'bg-background shadow-sm border-b border-border/50'
                 } ${className}`}
         >
-            <div className="container-custom">
-                <div className="flex items-center justify-between h-16 lg:h-20">
-                    {/* Logo */}
-                    <a
-                        href="#hero"
-                        onClick={(e) => {
-                            e.preventDefault()
-                            scrollToSection('hero')
-                        }}
-                        className="hover:opacity-90 transition-opacity"
-                        aria-label="SV Lentes - Ir para o início"
-                    >
+            <div className="absolute top-0 left-0 h-1 bg-gradient-to-r from-primary-600 via-primary-500 to-primary-600 transition-all duration-150" style={{ width: `${scrollProgress}%` }} />
+            <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+                <div className={`flex items-center justify-between transition-all duration-300 ${isScrolled ? 'h-16 lg:h-18' : 'h-20 lg:h-24'}`}>
+                    <div className={`hover:opacity-90 transition-all duration-300 -ml-2 lg:-ml-4 ${isScrolled ? 'scale-90' : 'scale-100'}`}>
                         <LogoHeader />
-                    </a>
+                    </div>
 
-                    {/* Navigation Desktop */}
-                    <nav className="hidden md:flex items-center space-x-8">
+                    <nav className="hidden lg:flex items-center space-x-10 xl:space-x-12">
                         {navigation.map((item) => (
                             <a
                                 key={item.name}
@@ -94,69 +120,104 @@ Vim através do site SV Lentes e tenho interesse no serviço de assinatura com a
                                     e.preventDefault()
                                     handleNavClick(item.href)
                                 }}
-                                className="text-gray-700 hover:text-primary-600 font-medium transition-colors duration-200 relative group"
+                                className={`font-semibold text-base transition-all duration-200 relative group whitespace-nowrap cursor-pointer ${activeSection === item.href
+                                    ? 'text-primary'
+                                    : 'text-foreground hover:text-primary'
+                                    }`}
                             >
                                 {item.name}
-                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary-600 transition-all duration-200 group-hover:w-full"></span>
+                                <span className={`absolute -bottom-1 left-0 h-0.5 bg-primary transition-all duration-200 ${activeSection === item.href ? 'w-full' : 'w-0 group-hover:w-full'
+                                    }`}></span>
                             </a>
                         ))}
                     </nav>
 
-                    {/* CTA Button Desktop */}
-                    <div className="hidden md:flex items-center space-x-4">
+                    {/* CTAs - Desktop */}
+                    <div className="hidden lg:flex items-center space-x-3 xl:space-x-4">
+                        <ThemeToggleSimple />
+
+                        <Button
+                            onClick={handleAssinarAgora}
+                            variant="primary"
+                            size="md"
+                            className="flex items-center space-x-2 relative overflow-hidden group"
+                        >
+                            <span className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+                            <CreditCard className="w-4 h-4 relative z-10 animate-pulse" />
+                            <span className="relative z-10">Assinar Agora</span>
+                        </Button>
+
                         <Button
                             onClick={handleAgendarConsulta}
+                            variant="outline"
+                            size="md"
                             className="flex items-center space-x-2"
-                            size="default"
                         >
                             <Phone className="w-4 h-4" />
                             <span>Agendar Consulta</span>
                         </Button>
                     </div>
 
-                    {/* Mobile Menu Button */}
-                    <button
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                        className="md:hidden p-2 rounded-lg text-gray-700 hover:bg-gray-100 transition-colors"
-                        aria-label="Toggle menu"
-                    >
-                        {isMenuOpen ? (
-                            <X className="w-6 h-6" />
-                        ) : (
-                            <Menu className="w-6 h-6" />
-                        )}
-                    </button>
+                    {/* Mobile Menu Button & Theme Toggle */}
+                    <div className="lg:hidden flex items-center space-x-2">
+                        <ThemeToggleSimple />
+                        <button
+                            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                            className="p-2 text-foreground hover:text-primary transition-colors"
+                            aria-label="Toggle menu"
+                        >
+                            {isMobileMenuOpen ? (
+                                <X className="w-7 h-7" />
+                            ) : (
+                                <Menu className="w-7 h-7" />
+                            )}
+                        </button>
+                    </div>
                 </div>
 
                 {/* Mobile Menu */}
-                {isMenuOpen && (
-                    <div className="md:hidden border-t border-gray-200 bg-white">
-                        <div className="py-4 space-y-4">
-                            {navigation.map((item) => (
-                                <a
-                                    key={item.name}
-                                    href={item.href}
-                                    onClick={(e) => {
-                                        e.preventDefault()
-                                        handleNavClick(item.href)
-                                    }}
-                                    className="block px-4 py-2 text-gray-700 hover:text-primary-600 hover:bg-gray-50 font-medium transition-colors duration-200"
-                                >
-                                    {item.name}
-                                </a>
-                            ))}
+                {isMobileMenuOpen && (
+                    <div className="lg:hidden border-t border-border py-4 space-y-2">
+                        {navigation.map((item) => (
+                            <a
+                                key={item.name}
+                                href={item.href}
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    handleNavClick(item.href)
+                                }}
+                                className={`block px-4 py-3 font-medium transition-all cursor-pointer rounded-lg ${activeSection === item.href
+                                    ? 'text-primary bg-primary/10 font-semibold'
+                                    : 'text-foreground hover:text-primary hover:bg-muted'
+                                    }`}
+                            >
+                                {item.name}
+                            </a>
+                        ))}
 
-                            {/* Mobile CTA */}
-                            <div className="px-4 pt-4 border-t border-gray-200">
-                                <Button
-                                    onClick={handleAgendarConsulta}
-                                    className="w-full flex items-center justify-center space-x-2"
-                                    size="default"
-                                >
-                                    <Phone className="w-4 h-4" />
-                                    <span>Agendar Consulta</span>
-                                </Button>
-                            </div>
+                        <div className="px-4 pt-4 pb-2 space-y-3 border-t border-border mt-4">
+                            <Button
+                                onClick={handleAssinarAgora}
+                                variant="primary"
+                                size="lg"
+                                fullWidth
+                                className="flex items-center justify-center space-x-2 relative overflow-hidden group"
+                            >
+                                <span className="absolute inset-0 bg-white/20 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></span>
+                                <CreditCard className="w-4 h-4 relative z-10" />
+                                <span className="relative z-10">Assinar Agora</span>
+                            </Button>
+
+                            <Button
+                                onClick={handleAgendarConsulta}
+                                variant="outline"
+                                size="lg"
+                                fullWidth
+                                className="flex items-center justify-center space-x-2"
+                            >
+                                <Phone className="w-4 h-4" />
+                                <span>Agendar Consulta</span>
+                            </Button>
                         </div>
                     </div>
                 )}
@@ -164,20 +225,22 @@ Vim através do site SV Lentes e tenho interesse no serviço de assinatura com a
 
             {/* Trust Indicators Bar - Visible on scroll */}
             {isScrolled && (
-                <div className="bg-primary-50 border-t border-primary-100 py-2">
-                    <div className="container-custom">
-                        <div className="flex items-center justify-center space-x-6 text-xs text-primary-700">
+                <div className="bg-primary/5 dark:bg-primary/10 border-t border-primary/20 py-2.5">
+                    <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8">
+                        <div className="flex items-center justify-center space-x-8 text-xs text-primary font-medium">
                             <div className="flex items-center space-x-1">
-                                <span className="w-2 h-2 bg-green-500 rounded-full"></span>
-                                <span>CRM 69.870</span>
+                                <span className="w-2 h-2 bg-success rounded-full animate-pulse"></span>
+                                <span className="hidden sm:inline">CRM-MG 69.870</span>
+                                <span className="sm:hidden">CRM</span>
                             </div>
                             <div className="flex items-center space-x-1">
-                                <span className="w-2 h-2 bg-blue-500 rounded-full"></span>
+                                <span className="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
                                 <span>ANVISA</span>
                             </div>
                             <div className="flex items-center space-x-1">
-                                <span className="w-2 h-2 bg-purple-500 rounded-full"></span>
-                                <span>Pioneiro no Brasil</span>
+                                <span className="w-2 h-2 bg-accent rounded-full animate-pulse"></span>
+                                <span className="hidden sm:inline">Pioneiro no Brasil</span>
+                                <span className="sm:hidden">Pioneiro</span>
                             </div>
                         </div>
                     </div>

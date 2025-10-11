@@ -67,6 +67,7 @@ function AddOnCard({ addOn, isSelected, onToggle, layout, disabled = false }: Ad
                 onClick={() => onToggle(addOn.id)}
             >
                 <Checkbox
+                    id={`addon-chip-${addOn.id}`}
                     checked={isSelected}
                     onChange={() => onToggle(addOn.id)}
                     className="pointer-events-none"
@@ -110,6 +111,7 @@ function AddOnCard({ addOn, isSelected, onToggle, layout, disabled = false }: Ad
         >
             <div className="absolute top-3 right-3">
                 <Checkbox
+                    id={`addon-card-${addOn.id}`}
                     checked={isSelected}
                     onChange={() => onToggle(addOn.id)}
                     className="pointer-events-none"
@@ -281,7 +283,7 @@ export default function AddOns({ services, layout = 'cards' }: AddOnsProps) {
                                                 .filter(s => selectedAddOns.includes(s.id))
                                                 .map(s => s.name)
                                                 .join(', ')}`
-                                            window.open(`https://wa.me/5511947038078?text=${encodeURIComponent(message)}`)
+                                            window.open(`https://wa.me/5533998601427?text=${encodeURIComponent(message)}`)
                                         }}
                                     >
                                         Falar no WhatsApp
@@ -300,7 +302,7 @@ export default function AddOns({ services, layout = 'cards' }: AddOnsProps) {
                                 variant="outline"
                                 onClick={() => {
                                     // TODO: Integrar com WhatsApp para dúvidas
-                                    window.open('https://wa.me/5511947038078?text=Olá! Gostaria de saber mais sobre os serviços adicionais.')
+                                    window.open('https://wa.me/5533998601427?text=Olá! Gostaria de saber mais sobre os serviços adicionais.')
                                 }}
                             >
                                 Tenho dúvidas - Falar no WhatsApp

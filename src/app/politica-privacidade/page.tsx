@@ -1,11 +1,9 @@
-import type { Metadata } from 'next';
+'use client'
+
 import { PrivacyPolicy } from '@/components/privacy/PrivacyPolicy';
 
-export const metadata: Metadata = {
-    title: 'Política de Privacidade | SV Lentes - Assinatura de Lentes',
-    description: 'Política de privacidade da SV Lentes em conformidade com a LGPD. Saiba como protegemos seus dados pessoais.',
-    robots: 'index, follow',
-};
+// Force dynamic rendering to prevent prerender issues with ThemeProvider
+export const dynamic = 'force-dynamic'
 
 export default function PrivacyPolicyPage() {
     return (
@@ -123,9 +121,9 @@ export default function PrivacyPolicyPage() {
                                     Para exercer seus direitos ou esclarecer dúvidas sobre esta política:
                                 </p>
                                 <ul className="list-disc pl-6 mb-4">
-                                    <li><strong>E-mail:</strong> <a href="mailto:privacidade@svlentes.shop" className="text-blue-600 hover:underline">privacidade@svlentes.shop</a></li>
-                                    <li><strong>WhatsApp:</strong> Através do botão no site</li>
-                                    <li><strong>Responsável:</strong> Dr. Philipe Saraiva Cruz (CRM 65.870)</li>
+                                    <li><strong>E-mail:</strong> saraivavision@gmail.com</li>
+                                    <li><strong>WhatsApp:</strong> +55 33 99860-1427</li>
+                                    <li><strong>Responsável:</strong> Dr. Philipe Saraiva Cruz (CRM-MG 69.870)</li>
                                 </ul>
                             </section>
 

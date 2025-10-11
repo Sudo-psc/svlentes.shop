@@ -14,10 +14,19 @@
 ## Source Code Organization (`src/`)
 
 ### App Router (`src/app/`)
-- **Next.js 14 App Router** structure
+- **Next.js 14 App Router** structure (já implementado)
 - Route-based organization with `page.tsx`, `layout.tsx`, `metadata.ts`
 - API routes in `src/app/api/`
-- Special pages: `success/`, `cancel/`, `agendar-consulta/`, etc.
+- Páginas principais:
+  - `/` - Landing page principal
+  - `/assinatura` - Fluxo de assinatura
+  - `/agendar-consulta` - Agendamento de consulta
+  - `/design-system` - Sistema de design (demo)
+  - `/landing-conversao` - Landing de conversão
+  - `/sdd-framework` - Framework SDD
+  - `/calculadora` - Calculadora de economia
+  - `/success`, `/cancel` - Páginas de checkout
+  - `/politica-privacidade`, `/termos-uso` - Páginas legais
 
 ### Components (`src/components/`)
 ```
