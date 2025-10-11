@@ -3,7 +3,7 @@
 - **Razão Social:** Saraiva Vision Care LTDA | CNPJ: 53.864.119/0001-79
 - **Endereço:** Rua Catarina Maria Passos, 97 – Santa Zita, Caratinga/MG (dentro da Clínica Amor e Saúde)
 - **Site institucional:** saraivavision.com.br | **E-commerce:** svlentes.shop
-- **Contatos:** WhatsApp/Tel.: +55 33 99860-1427 | E-mail: saraivavision@gmail.com
+- **Contatos:** WhatsApp/Tel.: +55 33 99860-1427 | E-mail: contato@saraivavision.com.br
 - **Instagram:** @saraiva_vision
 - **Chatbot:** https://chatgpt.com/g/g-quepJB90J-saraiva-vision-clinica-oftalmologica
 
@@ -49,7 +49,7 @@ O **SV Lentes** oferece assinatura de lentes de contato com:
 5. Teleorientação via WhatsApp ou chatbot
 
 ### Presencial (Clínica Saraiva Vision)
-1. Agende consulta: WhatsApp +55 33 99860-1427 ou saraivavision@gmail.com
+1. Agende consulta: WhatsApp +55 33 99860-1427 ou contato@saraivavision.com.br
 2. Consulta com Dr. Philipe Saraiva Cruz: refração, adaptação de lentes, exames complementares (topografia, paquimetria, meibografia, etc.)
 3. Prescrição personalizada e orientação sobre uso
 4. Assinatura do plano LAAS com acompanhamento contínuo
@@ -59,7 +59,7 @@ O **SV Lentes** oferece assinatura de lentes de contato com:
 - **E-commerce:** svlentes.shop
 - **Site institucional:** saraivavision.com.br
 - **WhatsApp/Tel.:** +55 33 99860-1427
-- **E-mail:** saraivavision@gmail.com
+- **E-mail:** contato@saraivavision.com.br
 - **Instagram:** @saraiva_vision
 - **Chatbot:** https://chatgpt.com/g/g-quepJB90J-saraiva-vision-clinica-oftalmologica
 
@@ -76,7 +76,7 @@ O **SV Lentes** oferece assinatura de lentes de contato com:
 ## Call to Action
 - **Assine agora:** Acesse svlentes.shop e escolha seu plano LAAS
 - **Atualize sua receita:** Envie prescrição válida via WhatsApp +55 33 99860-1427
-- **Agende consulta/exames:** WhatsApp +55 33 99860-1427 ou saraivavision@gmail.com
+- **Agende consulta/exames:** WhatsApp +55 33 99860-1427 ou contato@saraivavision.com.br
 - **Tire dúvidas:** Chatbot oficial ou Instagram @saraiva_vision
 - **Emergências oculares:** Procure atendimento presencial imediato na Clínica Saraiva Vision (Rua Catarina Maria Passos, 97 – Santa Zita, Caratinga/MG)
 

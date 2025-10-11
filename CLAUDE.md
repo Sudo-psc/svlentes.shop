@@ -63,11 +63,12 @@ svlentes-page-short/
 
 ### Contact Information
 - **WhatsApp**: +55 33 99860-1427
-- **Email**: saraivavision@gmail.com
+- **Email**: contato@saraivavision.com.br
 - **Instagram**: @saraiva_vision
 - **Chatbot**: https://chatgpt.com/g/g-quepJB90J-saraiva-vision-clinica-oftalmologica
 - **Institutional Site**: saraivavision.com.br
-- **Physical Address**: Rua Maria das Dores Cimini, CEP 35300-299, Caratinga/MG
+- **Physical Address**: Rua Catarina Maria Passos, 97 - Bairro Santa Zita - Caratinga/MG - CEP 35300-299
+- **Complemento**: Dentro da Clínica Amor e Saúde
 
 ### Clinical Safety Requirements
 

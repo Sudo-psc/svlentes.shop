@@ -24,58 +24,58 @@ module.exports = {
                 primary: {
                     DEFAULT: "hsl(var(--primary))",
                     foreground: "hsl(var(--primary-foreground))",
-                    50: '#f0f9ff',   /* Very light medical blue */
-                    100: '#e0f2fe',  /* Light medical blue */
-                    200: '#bae6fd',  /* Soft medical blue */
-                    300: '#7dd3fc',  /* Medium light medical blue */
-                    400: '#38bdf8',  /* Medium medical blue */
-                    500: '#0ea5e9',  /* Standard medical blue */
-                    600: '#0f4c75',  /* Deep medical blue (primary) */
-                    700: '#0c3d5a',  /* Darker medical blue */
-                    800: '#0a2e42',  /* Very dark medical blue */
-                    900: '#082030',  /* Deepest medical blue */
+                    50: '#e8f4f8',   /* Very light medical blue - Saraiva Vision inspired */
+                    100: '#d1e9f1',  /* Light medical blue */
+                    200: '#a3d3e3',  /* Soft medical blue */
+                    300: '#75bdd5',  /* Medium light medical blue */
+                    400: '#47a7c7',  /* Medium medical blue */
+                    500: '#1991b9',  /* Standard medical blue - Saraiva Vision primary */
+                    600: '#147494',  /* Deep medical blue (primary brand) */
+                    700: '#0f576f',  /* Darker medical blue */
+                    800: '#0a3a4a',  /* Very dark medical blue */
+                    900: '#051d25',  /* Deepest medical blue */
                 },
                 secondary: {
                     DEFAULT: "hsl(var(--secondary))",
                     foreground: "hsl(var(--secondary-foreground))",
-                    50: '#f8fafc',   /* Very light neutral */
-                    100: '#f1f5f9',  /* Light neutral */
-                    200: '#e2e8f0',  /* Soft neutral */
-                    300: '#cbd5e1',  /* Medium light neutral */
-                    400: '#94a3b8',  /* Medium neutral */
-                    500: '#64748b',  /* Standard neutral */
-                    600: '#475569',  /* Deep neutral */
-                    700: '#334155',  /* Darker neutral */
-                    800: '#1e293b',  /* Very dark neutral */
-                    900: '#0f172a',  /* Deepest neutral */
+                    50: '#f9fafb',   /* Very light neutral - Clean medical aesthetic */
+                    100: '#f3f4f6',  /* Light neutral */
+                    200: '#e5e7eb',  /* Soft neutral */
+                    300: '#d1d5db',  /* Medium light neutral */
+                    400: '#9ca3af',  /* Medium neutral */
+                    500: '#6b7280',  /* Standard neutral */
+                    600: '#4b5563',  /* Deep neutral - Professional gray */
+                    700: '#374151',  /* Darker neutral */
+                    800: '#1f2937',  /* Very dark neutral */
+                    900: '#111827',  /* Deepest neutral */
                 },
                 success: {
                     DEFAULT: "hsl(var(--success))",
                     foreground: "hsl(var(--success-foreground))",
-                    50: '#f0fdf4',   /* Very light green */
-                    100: '#dcfce7',  /* Light green */
-                    200: '#bbf7d0',  /* Soft green */
-                    300: '#86efac',  /* Medium light green */
-                    400: '#4ade80',  /* Medium green */
-                    500: '#22c55e',  /* Standard green */
-                    600: '#16a34a',  /* Deep green (success) */
-                    700: '#15803d',  /* Darker green */
-                    800: '#166534',  /* Very dark green */
-                    900: '#14532d',  /* Deepest green */
+                    50: '#ecfdf5',   /* Very light green - Medical approval */
+                    100: '#d1fae5',  /* Light green */
+                    200: '#a7f3d0',  /* Soft green */
+                    300: '#6ee7b7',  /* Medium light green */
+                    400: '#34d399',  /* Medium green */
+                    500: '#10b981',  /* Standard green - Health positive */
+                    600: '#059669',  /* Deep green (success) */
+                    700: '#047857',  /* Darker green */
+                    800: '#065f46',  /* Very dark green */
+                    900: '#064e3b',  /* Deepest green */
                 },
                 warning: {
                     DEFAULT: "hsl(var(--warning))",
                     foreground: "hsl(var(--warning-foreground))",
-                    50: '#fffbeb',   /* Very light amber */
-                    100: '#fef3c7',  /* Light amber */
-                    200: '#fde68a',  /* Soft amber */
-                    300: '#fcd34d',  /* Medium light amber */
-                    400: '#fbbf24',  /* Medium amber */
-                    500: '#f59e0b',  /* Standard amber (warning) */
-                    600: '#d97706',  /* Deep amber */
-                    700: '#b45309',  /* Darker amber */
-                    800: '#92400e',  /* Very dark amber */
-                    900: '#78350f',  /* Deepest amber */
+                    50: '#fefce8',   /* Very light amber - Attention indicator */
+                    100: '#fef9c3',  /* Light amber */
+                    200: '#fef08a',  /* Soft amber */
+                    300: '#fde047',  /* Medium light amber */
+                    400: '#facc15',  /* Medium amber */
+                    500: '#eab308',  /* Standard amber (warning) */
+                    600: '#ca8a04',  /* Deep amber */
+                    700: '#a16207',  /* Darker amber */
+                    800: '#854d0e',  /* Very dark amber */
+                    900: '#713f12',  /* Deepest amber */
                 },
                 destructive: {
                     DEFAULT: "hsl(var(--destructive))",
@@ -98,29 +98,29 @@ module.exports = {
                     foreground: "hsl(var(--card-foreground))",
                 },
                 medical: {
-                    50: '#f8fafc',   /* Very light medical gray */
-                    100: '#f1f5f9',  /* Light medical gray */
-                    200: '#e2e8f0',  /* Soft medical gray */
-                    300: '#cbd5e1',  /* Medium light medical gray */
-                    400: '#94a3b8',  /* Medium medical gray */
-                    500: '#64748b',  /* Standard medical gray */
-                    600: '#475569',  /* Deep medical gray */
-                    700: '#334155',  /* Darker medical gray */
-                    800: '#1e293b',  /* Very dark medical gray */
-                    900: '#0f172a',  /* Deepest medical gray */
+                    50: '#f0f9ff',   /* Very light medical blue-gray */
+                    100: '#e0f2fe',  /* Light medical blue-gray */
+                    200: '#bae6fd',  /* Soft medical blue-gray */
+                    300: '#7dd3fc',  /* Medium light medical blue-gray */
+                    400: '#38bdf8',  /* Medium medical blue-gray */
+                    500: '#0ea5e9',  /* Standard medical blue-gray */
+                    600: '#0284c7',  /* Deep medical blue-gray */
+                    700: '#0369a1',  /* Darker medical blue-gray */
+                    800: '#075985',  /* Very dark medical blue-gray */
+                    900: '#0c4a6e',  /* Deepest medical blue-gray */
                 },
                 whatsapp: {
-                    DEFAULT: '#25d366',  /* WhatsApp green */
+                    DEFAULT: '#0B5A50',  /* WhatsApp darkest green - WCAG AA compliant */
                     50: '#f0fdf4',
                     100: '#dcfce7',
                     200: '#bbf7d0',
                     300: '#86efac',
-                    400: '#4ade80',
-                    500: '#25d366',  /* Official WhatsApp green */
-                    600: '#16a34a',
-                    700: '#15803d',
-                    800: '#166534',
-                    900: '#14532d',
+                    400: '#25d366',  /* Original WhatsApp green */
+                    500: '#0B5A50',  /* WCAG AA compliant: 5.0:1 contrast with white */
+                    600: '#084539',  /* Darker for hover */
+                    700: '#063429',  /* Even darker */
+                    800: '#042418',  /* Very dark */
+                    900: '#021308',  /* Deepest */
                 }
             },
             borderRadius: {

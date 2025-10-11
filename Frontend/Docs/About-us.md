@@ -50,7 +50,7 @@ Explique que o **Lens as a Service (LAAS)** da SV Lentes é um modelo inovador d
 - Hiperemia (olho vermelho) intensa
 - Visão borrada súbita ou perda visual
 - Secreção purulenta, fotofobia intensa ou sensação de corpo estranho que não melhora
-- **Contato de emergência**: WhatsApp +55 33 99860-1427 ou presencial na clínica (Rua Maria das Dores Cimini, CEP 35300-299, Caratinga/MG)
+- **Contato de emergência**: WhatsApp +55 33 99860-1427 ou presencial na clínica (Rua Catarina Maria Passos, 97 - Santa Zita, CEP 35300-299, Caratinga/MG - Dentro da Clínica Amor e Saúde)
 
 ### Responsabilidade Técnica
 - **Dr. Philipe Saraiva Cruz** (CRM-MG 69.870) – Oftalmologista responsável técnico
@@ -66,13 +66,13 @@ Explique que o **Lens as a Service (LAAS)** da SV Lentes é um modelo inovador d
 5. **Confirmação**: receba cronograma de entregas e lembretes
 
 ### Atualizar Grau ou Prescrição
-- Agende consulta presencial: WhatsApp +55 33 99860-1427 ou saraivavision@gmail.com
+- Agende consulta presencial: WhatsApp +55 33 99860-1427 ou contato@saraivavision.com.br
 - Realize exames de refração e complementares conforme indicação médica
 - Prescrição atualizada integrada automaticamente ao seu plano LAAS
 
 ### Suporte e Dúvidas
 - **WhatsApp**: +55 33 99860-1427
-- **E-mail**: saraivavision@gmail.com
+- **E-mail**: contato@saraivavision.com.br
 - **Instagram**: @saraiva_vision
 - **Chatbot**: https://chatgpt.com/g/g-quepJB90J-saraiva-vision-clinica-oftalmologica
 - **Site institucional**: saraivavision.com.br
@@ -93,9 +93,8 @@ Seus dados são protegidos conforme Lei 13.709/2018 (LGPD) e não serão compart
 - Agende sua consulta de avaliação e adaptação com Dr. Philipe Saraiva Cruz
 
 **Saraiva Vision Care LTDA** | CNPJ: 53.864.119/0001-79
-Rua Maria das Dores Cimini, CEP 35300-299, Caratinga/MG
-
-> **Endereço adicional**: Rua Catarina Maria Passos, 97 – Santa Zita, Caratinga/MG (dentro da Clínica Amor e Saúde)
+Rua Catarina Maria Passos, 97 – Bairro Santa Zita – Caratinga/MG – CEP 35300-299
+(Dentro da Clínica Amor e Saúde)
 
 ---
 

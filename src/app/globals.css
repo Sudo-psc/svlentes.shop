@@ -16,14 +16,14 @@
         --popover: 0 0% 100%;
         --popover-foreground: 222.2 84% 4.9%;
 
-        /* Primary - Medical Blue (optimized for trust and professionalism) */
-        --primary: 214 88% 27%;
-        /* Deep medical blue #0f4c75 */
+        /* Primary - Saraiva Vision Medical Blue (optimized for trust and professionalism) */
+        --primary: 194 77% 40%;
+        /* Deep medical blue #147494 - Saraiva Vision brand */
         --primary-foreground: 0 0% 98%;
 
-        /* Secondary - Soft neutral for balance */
-        --secondary: 210 20% 96%;
-        /* Light gray-blue */
+        /* Secondary - Clean medical neutral */
+        --secondary: 220 14% 96%;
+        /* Light gray #f3f4f6 - Professional clean */
         --secondary-foreground: 222.2 84% 4.9%;
 
         /* Muted colors - Better contrast for readability */
@@ -54,21 +54,21 @@
         --radius: 0.5rem;
 
         /* Success color for positive actions */
-        --success: 142 76% 36%;
-        /* Medical green #16a34a */
+        --success: 160 84% 39%;
+        /* Medical green #059669 - Health positive */
         --success-foreground: 0 0% 98%;
 
         /* Warning color */
-        --warning: 38 92% 50%;
-        /* Amber #f59e0b */
+        --warning: 48 96% 53%;
+        /* Amber #eab308 - Attention indicator */
         --warning-foreground: 0 0% 98%;
 
-        /* Chart colors - Harmonized palette */
-        --chart-1: 214 88% 27%;
-        /* Primary blue */
-        --chart-2: 142 76% 36%;
+        /* Chart colors - Saraiva Vision harmonized palette */
+        --chart-1: 194 77% 40%;
+        /* Primary blue - Saraiva Vision */
+        --chart-2: 160 84% 39%;
         /* Success green */
-        --chart-3: 38 92% 50%;
+        --chart-3: 48 96% 53%;
         /* Warning amber */
         --chart-4: 262 83% 58%;
         /* Purple accent */
@@ -91,9 +91,9 @@
         --popover: 222.2 84% 8%;
         --popover-foreground: 210 40% 98%;
 
-        /* Primary - Lighter blue for dark mode */
-        --primary: 214 88% 65%;
-        /* Lighter medical blue for dark mode */
+        /* Primary - Lighter Saraiva Vision blue for dark mode */
+        --primary: 194 77% 60%;
+        /* Lighter medical blue for dark mode - Saraiva Vision */
         --primary-foreground: 222.2 84% 4.9%;
 
         /* Secondary - Dark mode secondary */
@@ -121,19 +121,19 @@
         --ring: 214 88% 65%;
 
         /* Success color for dark mode */
-        --success: 142 76% 45%;
+        --success: 160 84% 50%;
         --success-foreground: 210 40% 98%;
 
         /* Warning color for dark mode */
-        --warning: 38 92% 60%;
+        --warning: 48 96% 65%;
         --warning-foreground: 222.2 84% 4.9%;
 
-        /* Chart colors - Dark mode optimized */
-        --chart-1: 214 88% 65%;
-        /* Primary blue */
-        --chart-2: 142 76% 45%;
+        /* Chart colors - Dark mode optimized - Saraiva Vision */
+        --chart-1: 194 77% 60%;
+        /* Primary blue - Saraiva Vision */
+        --chart-2: 160 84% 50%;
         /* Success green */
-        --chart-3: 38 92% 60%;
+        --chart-3: 48 96% 65%;
         /* Warning amber */
         --chart-4: 262 83% 68%;
         /* Purple accent */
@@ -249,7 +249,7 @@
     }
 
     .btn-whatsapp {
-        @apply bg-whatsapp-500 hover:bg-whatsapp-600 active:bg-whatsapp-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-whatsapp-400 focus:ring-offset-2 shadow-md hover:shadow-lg;
+        @apply bg-whatsapp-500 hover:bg-whatsapp-600 active:bg-whatsapp-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-whatsapp-500 focus:ring-offset-2 shadow-md hover:shadow-lg;
     }
 
     .btn-success {

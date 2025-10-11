@@ -8,16 +8,11 @@ import { PerformanceMonitor } from '@/components/performance/PerformanceMonitor'
 import { ResourcePreloader } from '@/components/performance/ResourcePreloader'
 import { ServiceWorkerCleanup } from '@/components/performance/ServiceWorkerCleanup'
 import { ErrorHandler } from '@/components/performance/ErrorHandler'
-import { initializeChunkErrorHandler } from '@/lib/chunk-error-handler'
 import { PrivacyProvider } from '@/components/privacy/PrivacyProvider'
 import { CookieConsent } from '@/components/privacy/CookieConsent'
 import { SmoothScroll } from '@/components/ui/SmoothScroll'
 import { CriticalCSS } from '@/components/performance/CriticalCSS'
-import {
-    baseMetadata,
-    generateOrganizationStructuredData,
-    generateWebSiteStructuredData
-} from '@/lib/seo'
+import { baseMetadata } from '@/lib/seo'
 
 const inter = Inter({
     subsets: ['latin'],
@@ -40,14 +35,6 @@ export default function RootLayout({
 }: {
     children: React.ReactNode
 }) {
-    // const organizationData = generateOrganizationStructuredData()
-    // const websiteData = generateWebSiteStructuredData()
-
-    // Initialize chunk error handler
-    if (typeof window !== 'undefined') {
-        initializeChunkErrorHandler()
-    }
-
     return (
         <html lang="pt-BR" className={`${inter.variable} ${poppins.variable}`}>
             <head>

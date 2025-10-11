@@ -16,9 +16,9 @@ export const doctorInfo = {
     experience: '10+ anos de experiência em oftalmologia',
     bio: 'Dr. Philipe Saraiva Cruz é pioneiro no Brasil em serviços de assinatura de lentes de contato com acompanhamento médico especializado. Com mais de 10 anos de experiência, dedica-se a proporcionar cuidado oftalmológico personalizado e acessível.',
     contact: {
-        whatsapp: '+5511947038078',
-        email: 'dr.philipe@svlentes.shop',
-        clinicAddress: 'Rua Joaquim Floriano, 466 - Itaim Bibi, São Paulo, SP'
+        whatsapp: '+55 33 99860-1427',
+        email: 'contato@saraivavision.com.br',
+        clinicAddress: 'Rua Catarina Maria Passos, 97 - Santa Zita, Caratinga/MG'
     },
     socialProof: {
         patientsServed: '5000+',
@@ -37,8 +37,8 @@ export const trustIndicators = {
     },
     crm: {
         name: 'Conselho Regional de Medicina',
-        description: 'Médico registrado no CRM-SP',
-        number: 'CRM 69.870',
+        description: 'Médico registrado no CRM-MG',
+        number: 'CRM-MG 69.870',
         logo: '/images/selo-crm.png',
         verified: true
     },
@@ -64,21 +64,23 @@ export const trustIndicators = {
 
 export const clinicInfo = {
     name: 'SV Lentes',
-    fullName: 'SV Lentes - Serviços Oftalmológicos Especializados',
-    cnpj: '12.345.678/0001-90',
+    fullName: 'Clínica Saraiva Vision - Saraiva Vision Care LTDA',
+    cnpj: '53.864.119/0001-79',
     address: {
-        street: 'Rua Joaquim Floriano, 466',
-        neighborhood: 'Itaim Bibi',
-        city: 'São Paulo',
-        state: 'SP',
-        zipCode: '04534-002',
+        street: 'Rua Catarina Maria Passos, 97',
+        complement: 'Dentro da Clínica Amor e Saúde',
+        neighborhood: 'Santa Zita',
+        city: 'Caratinga',
+        state: 'MG',
+        zipCode: '35300-299',
         country: 'Brasil'
     },
     contact: {
-        phone: '+55 11 3456-7890',
-        whatsapp: '+55 11 94703-8078',
-        email: 'contato@svlentes.shop',
-        website: 'https://svlentes.shop'
+        phone: '+55 33 99860-1427',
+        whatsapp: '+55 33 99860-1427',
+        email: 'contato@saraivavision.com.br',
+        website: 'https://svlentes.shop',
+        instagram: '@saraiva_vision'
     },
     businessHours: {
         weekdays: 'Segunda a Sexta: 8h às 18h',
